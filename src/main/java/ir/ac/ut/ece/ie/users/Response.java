@@ -8,8 +8,8 @@ import lombok.Data;
 @Data
 @Builder
 public class Response {
-    private boolean success;
-    private  String message;
+    private Boolean success;
+    private String message;
 
     public static Response ok(String message) {
         return new Response(true, message);
