@@ -1,8 +1,10 @@
 package ir.ac.ut.ece.ie.users;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
+@Builder
 @AllArgsConstructor
 @Getter
 public class User {
