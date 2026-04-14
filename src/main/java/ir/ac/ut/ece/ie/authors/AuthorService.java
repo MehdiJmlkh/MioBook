@@ -3,27 +3,31 @@ package ir.ac.ut.ece.ie.authors;
 import ir.ac.ut.ece.ie.users.Response;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
+@Service
 public class AuthorService {
-    private final AuthorRepository authorRepository = new AuthorRepository();
-    private final UserRepository userRepository = new UserRepository();
-    private final AuthorMapper authorMapper = Mappers.getMapper(AuthorMapper.class);
+    private final AuthorRepository authorRepository;
+    private final UserRepository userRepository;
+    private final AuthorMapper authorMapper;
 
-    public Response addAuthor(AddAuthorRequest request) {
-        var author = authorRepository.findByName(request.getName()).orElse(null);
-        if (author != null) {
-            return Response.failed("An author with this name already exists.");
+    public void addAuthor(AddAuthorRequest request) {
+        if (authorRepository.findByName(request.getName()).isPresent()) {
+            throw new AuthorNameAlreadyExistsException();
         }
 
-        var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
+        var user = userRepository.findByUsername(request.getUsername()).orElse(null);
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+
         if (!user.getRole().equals("admin")) {
-            return Response.failed("Only admins can add an author.");
+            throw new NotAdminException();
         }
 
         authorRepository.addAuthor(authorMapper.toAuthor(request));
-
-        return Response.ok("Author added successfully.");
     }
 }

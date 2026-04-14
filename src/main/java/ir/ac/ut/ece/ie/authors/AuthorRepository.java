@@ -1,9 +1,12 @@
 package ir.ac.ut.ece.ie.authors;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Repository
 public class AuthorRepository {
     private final Set<Author> authors = new LinkedHashSet<>();
 
