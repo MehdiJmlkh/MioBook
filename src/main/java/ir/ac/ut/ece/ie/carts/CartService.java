@@ -9,12 +9,16 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @AllArgsConstructor
 @Service
 public class CartService {
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
+    private final PurchaseRepository purchaseRepository;
 
     public Cart addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
@@ -61,4 +65,32 @@ public class CartService {
         cart.getBooks().remove(book);
     }
 
+    public PurchaseDto purchaseCart(PurchaseCartRequest request) {
+        var user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
+
+        var cart = cartRepository.findByUser(user)
+                .orElseThrow(EmptyCartException::new);
+
+        if (cart.isEmpty()) {
+            throw new EmptyCartException();
+        }
+
+        if (cart.getTotalPrice() > user.getCredit()) {
+            throw new NotEnoughCreditException();
+        }
+
+        var purchase = new Purchase();
+        purchase.setUser(user);
+        purchase.setBooks(cart.getBooks());
+        purchase.setDate(LocalDateTime.now());
+        purchase.setTotalCost(cart.getTotalPrice());
+
+        user.withdrawCredit(cart.getTotalPrice());
+        return PurchaseDto.builder()
+                .bookCount(purchase.getBooks().size())
+                .totalCost(purchase.getTotalCost())
+                .date(purchase.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .build();
+    }
 }

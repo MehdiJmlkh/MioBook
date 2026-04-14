@@ -22,6 +22,13 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/purchase")
+    public ResponseEntity<PurchaseDto> purchaseCart(@RequestBody PurchaseCartRequest request) {
+        var purchase = cartService.purchaseCart(request);
+
+        return ResponseEntity.ok(purchase);
+    }
+
     @ExceptionHandler(CartIsFullException.class)
     public ResponseEntity<ErrorDto> handleCartIsFullException() {
         return ResponseEntity.badRequest()
@@ -32,5 +39,17 @@ public class CartController {
     public ResponseEntity<ErrorDto> handleBookNotInCartException() {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("Cart does not contain the book."));
+    }
+
+    @ExceptionHandler(EmptyCartException.class)
+    public ResponseEntity<ErrorDto> handleEmptyCartException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("Cart is empty."));
+    }
+
+    @ExceptionHandler(NotEnoughCreditException.class)
+    public ResponseEntity<ErrorDto> handleNotEnoughCreditException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("Credit is not enough."));
     }
 }

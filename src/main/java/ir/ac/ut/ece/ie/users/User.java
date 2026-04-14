@@ -17,7 +17,11 @@ public class User {
     private Address address;
     private Integer credit;
 
-    public void addCredit(Integer credit) {
-        this.credit += credit;
+    public void addCredit(Integer amount) {
+        this.credit += amount;
+    }
+
+    public void withdrawCredit(Integer amount) {
+        credit -= amount;
     }
 }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.BinaryOperator;
 
 @Getter
 @Setter
@@ -20,5 +21,16 @@ public class Cart {
 
     public boolean contains(Book book) {
         return books.contains(book);
+    }
+
+    public boolean isEmpty() {
+        return books.isEmpty();
+    }
+
+    public int getTotalPrice() {
+        return books.stream()
+                .map(Book::getPrice)
+                .reduce(Integer::sum)
+                .orElse(0);
     }
 }
