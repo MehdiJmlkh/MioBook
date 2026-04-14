@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.books;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class BookService {
     private final UserRepository userRepository;
     private final BookMapper bookMapper;
 
-    public void addBook(AddBookRequest request) {
+    public Book addBook(AddBookRequest request) {
         if (bookRepository.findByTitle(request.getTitle()).isPresent()) {
             throw new BookTitleAlreadyExistsException();
         }
@@ -27,11 +28,14 @@ public class BookService {
         if (user == null) {
             throw new UserNotFoundException();
         }
-        if (user.getRole().equals("customer")) {
+        if (user.getRole() != Role.ADMIN) {
             throw new NotAdminException();
         }
 
         var book = bookMapper.toBook(request);
+        book.setAuthor(author);
+
         bookRepository.addBook(book);
+        return book;
     }
 }

@@ -43,6 +43,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotAdminException.class)
     public ResponseEntity<ErrorDto> handleNotAdminException() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .body(new ErrorDto("Only admins can add authors."));
+                .body(new ErrorDto("This command is restricted to admins."));
     }
 }

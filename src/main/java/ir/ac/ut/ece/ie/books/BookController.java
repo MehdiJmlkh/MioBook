@@ -14,9 +14,9 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addBook(@RequestBody AddBookRequest request) {
-        bookService.addBook(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Book> addBook(@RequestBody AddBookRequest request) {
+        var book = bookService.addBook(request);
+        return ResponseEntity.ok(book);
     }
 
     @ExceptionHandler(BookTitleAlreadyExistsException.class)
@@ -29,17 +29,5 @@ public class BookController {
     public ResponseEntity<ErrorDto> handleAuthorNotExistsException() {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("The author does not exists."));
-    }
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleUserNotFoundException() {
-        return ResponseEntity.badRequest()
-                .body(new ErrorDto("User not found."));
-    }
-
-    @ExceptionHandler(NotAdminException.class)
-    public ResponseEntity<ErrorDto> handleNotAdminException() {
-        return ResponseEntity.badRequest()
-                .body(new ErrorDto("Only admins can add a book."));
     }
 }

@@ -10,8 +10,8 @@ public class AddBookRequest {
     private String title;
     private String author;
     private String publisher;
-    private String year;
-    private String price;
+    private Integer year;
+    private Integer price;
     private String synopsis;
     private String content;
     private Set<String> genres;
