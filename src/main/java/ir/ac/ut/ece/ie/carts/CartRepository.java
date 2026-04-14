@@ -2,7 +2,6 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.users.User;
-import org.mapstruct.control.MappingControl;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashSet;
@@ -24,9 +23,6 @@ public class CartRepository {
                 .findFirst();
     }
 
-    public void deleteCart(Cart cart) {
-        carts.remove(cart);
-    }
 
     private Cart getCart(User user) {
         var cart =  carts.stream()

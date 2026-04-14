@@ -16,7 +16,7 @@ public class CartService {
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
 
-    public Cart addCart(AddCartRequest request) {
+    public Cart addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
@@ -27,12 +27,20 @@ public class CartService {
             throw new NotCustomerException();
         }
 
+        cartRepository.findByUser(user).ifPresent(
+            cart -> {
+                if (cart.getBooks().size() >= 10) {
+                    throw new CartIsFullException();
+                }
+            }
+        );
+
         cartRepository.addCart(user, book);
 
         return cartRepository.findByUser(user).orElseThrow();
     }
 
-    public void removeCart(RemoveCartRequest request) {
+    public void removeItemFromCart(RemoveCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
@@ -50,7 +58,7 @@ public class CartService {
             throw new BookNotInCartException();
         }
 
-        cartRepository.deleteCart(cart);
+        cart.getBooks().remove(book);
     }
 
 }

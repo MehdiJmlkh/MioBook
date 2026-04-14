@@ -7,14 +7,16 @@ import lombok.Getter;
 import lombok.Setter;
 import org.mapstruct.control.MappingControl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
 @Setter
 public class Cart {
     private User user;
-    private Set<Book> books = new LinkedHashSet<>();
+    private List<Book> books = new ArrayList<>();
 
     public boolean contains(Book book) {
         return books.contains(book);

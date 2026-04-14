@@ -12,19 +12,25 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping("/add")
-    public Cart addCart(@RequestBody AddCartRequest request) {
-        return cartService.addCart(request);
+    public Cart addItemToCart(@RequestBody AddCartRequest request) {
+        return cartService.addItemToCart(request);
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> removeCart(@RequestBody RemoveCartRequest request) {
-        cartService.removeCart(request);
+    public ResponseEntity<Void> removeItemFromCart(@RequestBody RemoveCartRequest request) {
+        cartService.removeItemFromCart(request);
         return ResponseEntity.ok().build();
     }
 
+    @ExceptionHandler(CartIsFullException.class)
+    public ResponseEntity<ErrorDto> handleCartIsFullException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("Cart is full."));
+    }
+
     @ExceptionHandler(BookNotInCartException.class)
-    public void handleBookNotInCartException() {
-        ResponseEntity.badRequest()
+    public ResponseEntity<ErrorDto> handleBookNotInCartException() {
+        return ResponseEntity.badRequest()
                 .body(new ErrorDto("Cart does not contain the book."));
     }
 }
