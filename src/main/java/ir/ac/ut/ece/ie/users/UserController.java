@@ -16,9 +16,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addUser(@Valid @RequestBody AddUserRequest addUserRequest) {
-        userService.addUser(addUserRequest);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest addUserRequest) {
+        var user = userService.addUser(addUserRequest);
+        return ResponseEntity.ok(user);
     }
 
     @ExceptionHandler(UsernameExistsException.class)

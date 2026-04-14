@@ -10,7 +10,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public void addUser(AddUserRequest request) {
+    public User addUser(AddUserRequest request) {
         if (userRepository.findByUsername(request.getUsername()).isPresent()) {
             throw new UsernameExistsException();
         }
@@ -20,7 +20,9 @@ public class UserService {
         }
 
         var user = userMapper.toUser(request);
+        user.setWallet(0);
 
         userRepository.addUser(user);
+        return user;
     }
 }
