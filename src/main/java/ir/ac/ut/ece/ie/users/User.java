@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Builder
 @AllArgsConstructor
 @Getter
@@ -17,5 +15,9 @@ public class User {
     private String password;
     private String email;
     private Address address;
-    private Integer wallet;
+    private Integer credit;
+
+    public void addCredit(Integer credit) {
+        this.credit += credit;
+    }
 }

@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.users;
 
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ public class UserService {
         }
 
         var user = userMapper.toUser(request);
-        user.setWallet(0);
+        user.setCredit(0);
 
         userRepository.addUser(user);
         return user;
