@@ -1,9 +1,12 @@
 package ir.ac.ut.ece.ie.users;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Repository
 public class UserRepository {
     private final Set<User> users = new LinkedHashSet<>();
 

@@ -2,12 +2,13 @@ package ir.ac.ut.ece.ie.users;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
+@Service
 public class UserService {
-    private final UserRepository userRepository = new UserRepository();
-    private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     public Response addUser(@Valid AddUserRequest request) {
         var user = userRepository.findByUsername(request.getUsername()).orElse(null);
@@ -31,6 +32,7 @@ public class UserService {
         if (request.getPassword().length() < 4) {
             return Response.failed("Password must be at least 4 characters long");
         }
+
         if (!(request.getRole().equals("customer") || request.getRole().equals("admin"))) {
             return Response.failed("Role must be customer or admin.");
         }

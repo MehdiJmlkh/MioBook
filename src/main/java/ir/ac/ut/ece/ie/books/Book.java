@@ -8,7 +8,7 @@ import java.util.Set;
 @Data
 public class Book {
     private String title;
-    private Author author;
+    private String author;
     private String publisher;
     private Integer year;
     private Set<String> genres;
