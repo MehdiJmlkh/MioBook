@@ -1,6 +1,8 @@
 package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.common.NotAdminException;
+import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,17 +26,5 @@ public class AuthorController {
     public ResponseEntity<ErrorDto> handleAuthorNameAlreadyExistsException() {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("An author with this name already exists."));
-    }
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleUserNotFoundException() {
-        return ResponseEntity.badRequest()
-                .body(new ErrorDto("User not found."));
-    }
-
-    @ExceptionHandler(NotAdminException.class)
-    public ResponseEntity<ErrorDto> handleNotAdminException() {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .body(new ErrorDto("Only admins can add authors."));
     }
 }

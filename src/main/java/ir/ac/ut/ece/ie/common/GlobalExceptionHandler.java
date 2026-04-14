@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.common;
 
 import ir.ac.ut.ece.ie.users.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,5 +32,17 @@ public class GlobalExceptionHandler {
                 });
 
         return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleUserNotFoundException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("User not found."));
+    }
+
+    @ExceptionHandler(NotAdminException.class)
+    public ResponseEntity<ErrorDto> handleNotAdminException() {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new ErrorDto("Only admins can add authors."));
     }
 }

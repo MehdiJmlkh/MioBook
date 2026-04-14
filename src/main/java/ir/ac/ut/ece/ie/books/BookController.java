@@ -1,7 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
-import ir.ac.ut.ece.ie.authors.NotAdminException;
-import ir.ac.ut.ece.ie.authors.UserNotFoundException;
+import ir.ac.ut.ece.ie.common.NotAdminException;
+import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.common.ErrorDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

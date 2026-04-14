@@ -1,13 +1,10 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
-import ir.ac.ut.ece.ie.authors.NotAdminException;
-import ir.ac.ut.ece.ie.authors.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.Response;
-import ir.ac.ut.ece.ie.users.User;
+import ir.ac.ut.ece.ie.common.NotAdminException;
+import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor

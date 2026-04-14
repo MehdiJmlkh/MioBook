@@ -1,6 +1,6 @@
 package ir.ac.ut.ece.ie.carts;
 
-import ir.ac.ut.ece.ie.authors.UserNotFoundException;
+import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.users.Response;
 import ir.ac.ut.ece.ie.users.UserRepository;

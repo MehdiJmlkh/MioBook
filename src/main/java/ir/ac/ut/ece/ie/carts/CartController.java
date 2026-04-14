@@ -15,5 +15,4 @@ public class CartController {
     public ResponseEntity<Void> addCart() {
         return ResponseEntity.ok().build();
     }
-
 }
