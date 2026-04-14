@@ -62,7 +62,7 @@ public class CartService {
             throw new BookNotInCartException();
         }
 
-        cart.getItems().remove(book);
+        cart.removeBook(book);
     }
 
     public PurchaseDto purchaseCart(PurchaseCartRequest request) {

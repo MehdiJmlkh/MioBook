@@ -37,6 +37,13 @@ public class Cart {
         items.add(cartItem);
     }
 
+    public void removeBook(Book book) {
+        items.stream()
+                .filter(item -> item.getBook() == book)
+                .findFirst()
+                .ifPresent(cartItem -> items.remove(cartItem));
+    }
+
     public List<Book> getBooks() {
         return items.stream()
                 .map(CartItem::getBook)
