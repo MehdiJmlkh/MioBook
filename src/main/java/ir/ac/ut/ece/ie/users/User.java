@@ -15,13 +15,13 @@ public class User {
     private String password;
     private String email;
     private Address address;
-    private Integer credit;
+    private Integer balance;
 
     public void addCredit(Integer amount) {
-        this.credit += amount;
+        balance += amount;
     }
 
     public void withdrawCredit(Integer amount) {
-        credit -= amount;
+        balance -= amount;
     }
 }

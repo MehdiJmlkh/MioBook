@@ -15,6 +15,11 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
 
+    @GetMapping("/{username}")
+    public User getUser(@PathVariable String username) {
+        return userService.getUser(username);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest addUserRequest) {
         var user = userService.addUser(addUserRequest);

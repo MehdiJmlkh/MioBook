@@ -8,8 +8,6 @@ import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -95,7 +93,7 @@ public class CartService {
             throw new EmptyCartException();
         }
 
-        if (cart.getTotalPrice() > user.getCredit()) {
+        if (cart.getTotalPrice() > user.getBalance()) {
             throw new NotEnoughCreditException();
         }
 
