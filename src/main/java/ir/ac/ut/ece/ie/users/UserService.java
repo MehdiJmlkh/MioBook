@@ -10,21 +10,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public Response addUser(AddUserRequest request) {
-        var user = userRepository.findByUsername(request.getUsername()).orElse(null);
-        if (user != null) {
-            return Response.failed("A user with this username already exists.");
+    public void addUser(AddUserRequest request) {
+        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+            throw new UsernameExistsException();
         }
 
-        user = userRepository.findByEmail(request.getEmail()).orElse(null);
-        if (user != null) {
-            return Response.failed("A user with this email already exists.");
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new EmailExistsException();
         }
 
-        user = userMapper.toUser(request);
+        var user = userMapper.toUser(request);
 
         userRepository.addUser(user);
-
-        return Response.ok("User added successfully.");
     }
 }
