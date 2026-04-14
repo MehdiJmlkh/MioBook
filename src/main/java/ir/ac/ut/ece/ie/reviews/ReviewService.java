@@ -38,6 +38,7 @@ public class ReviewService {
                 .date(LocalDate.now())
                 .build();
 
+        book.getReviews().add(review);
         reviewRepository.addReview(review);
     }
 }

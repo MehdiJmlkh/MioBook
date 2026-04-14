@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
+import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
@@ -16,6 +17,13 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
     private final BookMapper bookMapper;
+
+    public BookDto getBook(String title) {
+        var book = bookRepository.findByTitle(title)
+                .orElseThrow(BookNotFoundException::new);
+
+        return bookMapper.toDto(book);
+    }
 
     public Book addBook(AddBookRequest request) {
         if (bookRepository.findByTitle(request.getTitle()).isPresent()) {

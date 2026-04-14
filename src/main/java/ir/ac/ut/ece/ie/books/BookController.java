@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private final BookService bookService;
 
+    @GetMapping("/{title}")
+    public BookDto getBook(@PathVariable(name = "title") String title) {
+        return bookService.getBook(title);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Book> addBook(@RequestBody AddBookRequest request) {
         var book = bookService.addBook(request);
