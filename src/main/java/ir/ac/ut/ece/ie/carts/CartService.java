@@ -8,6 +8,8 @@ import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,7 +41,8 @@ public class CartService {
             }
         );
 
-        cartRepository.addCart(user, book);
+        var cartItem = CartItem.BuyCartItem(book);
+        cartRepository.addItemToCart(user, cartItem);
 
         return cartRepository.findByUser(user).orElseThrow();
     }
@@ -63,6 +66,24 @@ public class CartService {
         }
 
         cart.removeBook(book);
+    }
+
+    public void borrowBook(BorrowBookRequest request) {
+        var book = bookRepository.findByTitle(request.getTitle())
+                .orElseThrow(BookNotFoundException::new);
+
+        var user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        var cart = cartRepository.findByUser(user);
+
+        var cartItem = CartItem.BorrowCartItem(book, request.getDays());
+
+        cartRepository.addItemToCart(user, cartItem);
     }
 
     public PurchaseDto purchaseCart(PurchaseCartRequest request) {

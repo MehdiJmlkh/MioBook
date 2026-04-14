@@ -32,9 +32,8 @@ public class Cart {
                 .orElse(0);
     }
 
-    public void addBook(Book book) {
-        var cartItem = CartItem.BuyCartItem(book);
-        items.add(cartItem);
+    public void addItem(CartItem item) {
+        items.add(item);
     }
 
     public void removeBook(Book book) {

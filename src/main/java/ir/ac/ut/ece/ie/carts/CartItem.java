@@ -18,4 +18,12 @@ public class CartItem {
         cartItem.price = book.getPrice();
         return cartItem;
     }
+
+    public static CartItem BorrowCartItem(Book book, Integer days) {
+        var cartItem = new CartItem();
+        cartItem.type = CartItemType.BORROW;
+        cartItem.book = book;
+        cartItem.price = book.getPrice() * (days / 10);
+        return cartItem;
+    }
 }

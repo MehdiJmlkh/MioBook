@@ -31,7 +31,8 @@ public class CartController {
 
     @PostMapping("/borrow")
     public ResponseEntity<Void> borrowBook(@RequestBody BorrowBookRequest request) {
-        return null;
+        cartService.borrowBook(request);
+        return ResponseEntity.ok().build();
     }
 
     @ExceptionHandler(CartIsFullException.class)

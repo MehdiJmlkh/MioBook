@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.carts;
 
-import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.users.User;
 import org.springframework.stereotype.Repository;
 
@@ -12,10 +11,11 @@ import java.util.Set;
 public class CartRepository {
     private final Set<Cart> carts = new LinkedHashSet<>();
 
-    public void addCart(User user, Book book) {
+    public void addItemToCart(User user, CartItem item) {
         var cart = getCart(user);
-        cart.addBook(book);
+        cart.addItem(item);
     }
+
 
     public Optional<Cart> findByUser(User user) {
         return carts.stream()
