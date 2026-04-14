@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorController {
     private final AuthorService authorService;
 
+    @GetMapping("/{name}")
+    public Author getAuthor(@PathVariable(name = "name") String name) {
+        return authorService.getAuthor(name);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Author> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
         var author = authorService.addAuthor(request);

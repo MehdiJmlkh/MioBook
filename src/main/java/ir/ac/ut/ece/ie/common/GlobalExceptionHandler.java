@@ -57,4 +57,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
                 .body(new ErrorDto("This command is restricted to customers."));
     }
+
+    @ExceptionHandler(AuthorNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleAuthorNotFoundException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("The author not found."));
+    }
 }

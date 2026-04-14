@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
+import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
@@ -22,7 +23,7 @@ public class BookService {
         }
 
         var author = authorRepository.findByName(request.getAuthor())
-                .orElseThrow(AuthorNotExistsException::new);
+                .orElseThrow(AuthorNotFoundException::new);
 
         var user = userRepository.findByUsername(request.getUsername()).orElse(null);
         if (user == null) {
