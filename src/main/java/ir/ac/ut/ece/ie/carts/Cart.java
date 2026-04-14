@@ -2,35 +2,44 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.users.User;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.mapstruct.control.MappingControl;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.BinaryOperator;
 
 @Getter
 @Setter
 public class Cart {
     private User user;
-    private List<Book> books = new ArrayList<>();
+    private List<CartItem> items = new ArrayList<>();
 
     public boolean contains(Book book) {
-        return books.contains(book);
+        return items.stream().
+                map(CartItem::getBook)
+                .toList()
+                .contains(book);
     }
 
     public boolean isEmpty() {
-        return books.isEmpty();
+        return items.isEmpty();
     }
 
     public int getTotalPrice() {
-        return books.stream()
-                .map(Book::getPrice)
+        return items.stream()
+                .map(CartItem::getPrice)
                 .reduce(Integer::sum)
                 .orElse(0);
+    }
+
+    public void addBook(Book book) {
+        var cartItem = CartItem.BuyCartItem(book);
+        items.add(cartItem);
+    }
+
+    public List<Book> getBooks() {
+        return items.stream()
+                .map(CartItem::getBook)
+                .toList();
     }
 }

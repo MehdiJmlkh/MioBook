@@ -29,6 +29,11 @@ public class CartController {
         return ResponseEntity.ok(purchase);
     }
 
+    @PostMapping("/borrow")
+    public ResponseEntity<Void> borrowBook(@RequestBody BorrowBookRequest request) {
+        return null;
+    }
+
     @ExceptionHandler(CartIsFullException.class)
     public ResponseEntity<ErrorDto> handleCartIsFullException() {
         return ResponseEntity.badRequest()

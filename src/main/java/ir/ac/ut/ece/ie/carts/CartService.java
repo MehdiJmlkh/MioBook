@@ -33,7 +33,7 @@ public class CartService {
 
         cartRepository.findByUser(user).ifPresent(
             cart -> {
-                if (cart.getBooks().size() >= 10) {
+                if (cart.getItems().size() >= 10) {
                     throw new CartIsFullException();
                 }
             }
@@ -62,7 +62,7 @@ public class CartService {
             throw new BookNotInCartException();
         }
 
-        cart.getBooks().remove(book);
+        cart.getItems().remove(book);
     }
 
     public PurchaseDto purchaseCart(PurchaseCartRequest request) {

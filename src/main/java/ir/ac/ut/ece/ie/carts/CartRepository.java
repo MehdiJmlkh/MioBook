@@ -14,7 +14,7 @@ public class CartRepository {
 
     public void addCart(User user, Book book) {
         var cart = getCart(user);
-        cart.getBooks().add(book);
+        cart.addBook(book);
     }
 
     public Optional<Cart> findByUser(User user) {
