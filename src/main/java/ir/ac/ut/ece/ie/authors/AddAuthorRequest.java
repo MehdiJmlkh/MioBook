@@ -14,4 +14,5 @@ public class AddAuthorRequest {
     private String name;
     private String penName;
     private String born;
+    private String nationality;
 }

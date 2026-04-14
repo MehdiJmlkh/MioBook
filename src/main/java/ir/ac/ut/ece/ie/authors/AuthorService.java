@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.users.Response;
+import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ public class AuthorService {
     private final UserRepository userRepository;
     private final AuthorMapper authorMapper;
 
-    public void addAuthor(AddAuthorRequest request) {
+    public Author addAuthor(AddAuthorRequest request) {
         if (authorRepository.findByName(request.getName()).isPresent()) {
             throw new AuthorNameAlreadyExistsException();
         }
@@ -24,10 +25,12 @@ public class AuthorService {
             throw new UserNotFoundException();
         }
 
-        if (!user.getRole().equals("admin")) {
+        if (user.getRole() != Role.ADMIN) {
             throw new NotAdminException();
         }
 
-        authorRepository.addAuthor(authorMapper.toAuthor(request));
+        var author = authorMapper.toAuthor(request);
+        authorRepository.addAuthor(author);
+        return author;
     }
 }

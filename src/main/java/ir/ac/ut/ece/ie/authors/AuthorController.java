@@ -14,10 +14,10 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
-        authorService.addAuthor(request);
+    public ResponseEntity<Author> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
+        var author = authorService.addAuthor(request);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(author);
     }
 
     @ExceptionHandler(AuthorNameAlreadyExistsException.class)
