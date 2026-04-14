@@ -79,8 +79,6 @@ public class CartService {
             throw new NotCustomerException();
         }
 
-        var cart = cartRepository.findByUser(user);
-
         var cartItem = CartItem.BorrowCartItem(book, request.getDays());
 
         cartRepository.addItemToCart(user, cartItem);
@@ -108,6 +106,7 @@ public class CartService {
         purchase.setTotalCost(cart.getTotalPrice());
 
         user.withdrawCredit(cart.getTotalPrice());
+        cartRepository.removeCart(cart);
         return PurchaseDto.builder()
                 .bookCount(purchase.getBooks().size())
                 .totalCost(purchase.getTotalCost())

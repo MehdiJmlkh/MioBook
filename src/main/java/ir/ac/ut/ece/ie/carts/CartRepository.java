@@ -16,13 +16,15 @@ public class CartRepository {
         cart.addItem(item);
     }
 
-
     public Optional<Cart> findByUser(User user) {
         return carts.stream()
                 .filter(cart -> cart.getUser() == user)
                 .findFirst();
     }
 
+    public void removeCart(Cart cart) {
+        carts.remove(cart);
+    }
 
     private Cart getCart(User user) {
         var cart =  carts.stream()
