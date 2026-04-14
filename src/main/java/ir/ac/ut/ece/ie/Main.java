@@ -14,18 +14,18 @@ public class Main {
         ApplicationContext context = SpringApplication.run(Main.class, args);
 
 
-        var request = new AddUserRequest();
-        request.setRole("customer");
-        request.setUsername("Mosh");
-        request.setPassword("1234");
-        request.setEmail("mosh@codewithmosh.com");
-        request.setAddress(new AddressDto("country", "city"));
-        var userService = context.getBean(UserService.class);
-        var response = userService.addUser(request);
-
-        var userRepository = context.getBean(UserRepository.class);
-        var user = userRepository.findByUsername("Mosh");
-        System.out.println(user);
-        System.out.println(response);
+//        var request = new AddUserRequest();
+//        request.setRole("customer");
+//        request.setUsername("Mosh");
+//        request.setPassword("123");
+//        request.setEmail("mosh@codewithmosh.com");
+//        request.setAddress(new AddressDto("country", "city"));
+//        var userService = context.getBean(UserService.class);
+//        var response = userService.addUser(request);
+//
+//        var userRepository = context.getBean(UserRepository.class);
+//        var user = userRepository.findByUsername("Mosh");
+//        System.out.println(user);
+//        System.out.println(response);
     }
 }
