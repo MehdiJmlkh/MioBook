@@ -4,7 +4,6 @@ import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.books.BookRepository;
-import ir.ac.ut.ece.ie.users.Response;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
@@ -31,6 +30,27 @@ public class CartService {
         cartRepository.addCart(user, book);
 
         return cartRepository.findByUser(user).orElseThrow();
+    }
+
+    public void removeCart(RemoveCartRequest request) {
+        var book = bookRepository.findByTitle(request.getTitle())
+                .orElseThrow(BookNotFoundException::new);
+
+        var user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        var cart = cartRepository.findByUser(user)
+                .orElseThrow(BookNotFoundException::new);
+
+        if (!cart.contains(book)) {
+            throw new BookNotInCartException();
+        }
+
+        cartRepository.deleteCart(cart);
     }
 
 }

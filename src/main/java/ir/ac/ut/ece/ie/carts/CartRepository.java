@@ -24,6 +24,10 @@ public class CartRepository {
                 .findFirst();
     }
 
+    public void deleteCart(Cart cart) {
+        carts.remove(cart);
+    }
+
     private Cart getCart(User user) {
         var cart =  carts.stream()
                 .filter(c -> c.getUser() == user)

@@ -15,4 +15,8 @@ import java.util.Set;
 public class Cart {
     private User user;
     private Set<Book> books = new LinkedHashSet<>();
+
+    public boolean contains(Book book) {
+        return books.contains(book);
+    }
 }
