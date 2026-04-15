@@ -55,10 +55,9 @@ public class BookService {
         var author = authorRepository.findByName(request.getAuthor())
                 .orElseThrow(AuthorNotFoundException::new);
 
-        var user = userRepository.findByUsername(request.getUsername()).orElse(null);
-        if (user == null) {
-            throw new UserNotFoundException();
-        }
+        var user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
+
         if (user.getRole() != Role.ADMIN) {
             throw new NotAdminException();
         }
