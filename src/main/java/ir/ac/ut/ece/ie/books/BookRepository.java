@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.books;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,5 +19,12 @@ public class BookRepository {
         return books.stream()
                 .filter(book -> book.getTitle().equals(title))
                 .findFirst();
+    }
+
+
+    public List<Book> findByTitleLikes(String title) {
+        return books.stream()
+                .filter(book -> book.getTitle().contains(title))
+                .toList();
     }
 }

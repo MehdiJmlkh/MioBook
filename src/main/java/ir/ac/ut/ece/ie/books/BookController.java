@@ -1,10 +1,12 @@
 package ir.ac.ut.ece.ie.books;
 
-import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -15,6 +17,11 @@ public class BookController {
     @GetMapping("/{title}")
     public BookDto getBook(@PathVariable("title") String title) {
         return bookService.getBook(title);
+    }
+
+    @GetMapping("/search/title/{title}")
+    public List<BookDto> searchBooksByTitle(@PathVariable("title") String title) {
+        return bookService.getBooksByTitle(title);
     }
 
     @PostMapping("/{title}/content")

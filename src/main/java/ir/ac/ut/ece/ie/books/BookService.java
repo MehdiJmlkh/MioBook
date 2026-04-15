@@ -11,6 +11,8 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class BookService {
@@ -64,5 +66,11 @@ public class BookService {
 
         bookRepository.addBook(book);
         return book;
+    }
+
+    public List<BookDto> getBooksByTitle(String title) {
+        return bookRepository.findByTitleLikes(title).stream()
+                .map(bookMapper::toDto)
+                .toList();
     }
 }
