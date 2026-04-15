@@ -10,7 +10,9 @@ import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 @AllArgsConstructor
@@ -82,6 +84,16 @@ public class BookService {
 
     public List<BookDto> getBooksByGenre(String genre) {
         return bookRepository.findByGenre(genre).stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
+
+    public List<BookDto> getBooksByYear(Integer from, Integer to) {
+        if (from >= to) {
+            throw new InvalidYearRangeException();
+        }
+
+        return bookRepository.findByYear(from, to).stream()
                 .map(bookMapper::toDto)
                 .toList();
     }

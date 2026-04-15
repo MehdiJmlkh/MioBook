@@ -36,4 +36,10 @@ public class BookRepository {
                 .filter(book -> book.getGenres().contains(genre))
                 .toList();
     }
+
+    public List<Book> findByYear(Integer from, Integer to) {
+        return books.stream()
+                .filter(book -> book.publishedInRange(from, to))
+                .toList();
+    }
 }

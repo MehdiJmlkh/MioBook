@@ -34,6 +34,14 @@ public class BookController {
         return bookService.getBooksByGenre(genre);
     }
 
+    @GetMapping("search/year")
+    public List<BookDto> searchBooksByYear(
+            @RequestParam(value = "from") Integer from,
+            @RequestParam(value = "to") Integer to
+    ) {
+        return bookService.getBooksByYear(from, to);
+    }
+
     @PostMapping("/{title}/content")
     public BookContentDto getBookContent(
             @PathVariable("title") String title,
@@ -51,5 +59,11 @@ public class BookController {
     public ResponseEntity<ErrorDto> handleBookTitleAlreadyExistsException() {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("A book with this title already exists."));
+    }
+
+    @ExceptionHandler(InvalidYearRangeException.class)
+    public ResponseEntity<ErrorDto> handleInvalidYearRangeException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("Start year must be earlier than the end year."));
     }
 }

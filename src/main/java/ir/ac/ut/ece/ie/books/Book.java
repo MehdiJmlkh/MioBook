@@ -29,4 +29,8 @@ public class Book {
                 .reduce(Integer::sum)
                 .orElse(0) / reviews.size();
     }
+
+    public boolean publishedInRange(Integer from, Integer to) {
+        return (from <= year) && (year <= to);
+    }
 }
