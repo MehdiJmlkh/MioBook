@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.books;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +21,7 @@ public class AddBookRequest {
     private Integer price;
     private String synopsis;
     private String content;
+
+    @NotEmpty(message = "Genres must not be empty")
     private Set<String> genres;
 }
