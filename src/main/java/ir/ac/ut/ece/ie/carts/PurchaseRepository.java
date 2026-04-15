@@ -15,6 +15,12 @@ public class PurchaseRepository {
         purchases.add(purchase);
     }
 
+    public List<Purchase> findByUsername(String username) {
+        return purchases.stream()
+                .filter(purchase -> purchase.getUser().getUsername().equals(username))
+                .toList();
+    }
+
     public Optional<PurchaseItem> findByUsernameAndTitle(String username, String title) {
         return purchases.stream()
                 .filter(purchase -> purchase.getUser().getUsername().equals(username))
