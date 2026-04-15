@@ -2,10 +2,7 @@ package ir.ac.ut.ece.ie.books;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class BookRepository {
@@ -25,6 +22,12 @@ public class BookRepository {
     public List<Book> findByTitleLikes(String title) {
         return books.stream()
                 .filter(book -> book.getTitle().contains(title))
+                .toList();
+    }
+
+    public List<Book> findByAuthorLikes(String author) {
+        return books.stream()
+                .filter(book -> book.getAuthor().getName().contains(author))
                 .toList();
     }
 }
