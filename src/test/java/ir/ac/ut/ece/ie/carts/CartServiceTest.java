@@ -16,7 +16,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -102,5 +102,83 @@ public class CartServiceTest {
                 item.getBook().equals(book) &&
                 item.getPrice().equals(book.getPrice())
         ));
+    }
+
+    @Test
+    void removeItemFromCart_bookNotFound_throwsException() {
+        var request = new RemoveCartRequest();
+        assertThrows(BookNotFoundException.class, () -> cartService.removeItemFromCart(request));
+    }
+
+    @Test
+    void removeItemFromCart_userNotFound_throwsException() {
+        var request = new RemoveCartRequest();
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        assertThrows(UserNotFoundException.class, () -> cartService.removeItemFromCart(request));
+    }
+
+    @Test
+    void removeItemFromCart_notCustomerUser_throwsException() {
+        var request = new RemoveCartRequest();
+
+        var user = new User();
+        user.setRole(Role.ADMIN);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(request));
+    }
+
+    @Test
+    void removeItemFromCart_bookNotInCart_throwsException() {
+        var request = new RemoveCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
+
+        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(request));
+    }
+
+    @Test
+    void removeItemFromCart_cartNotExists_throwsException() {
+        var request = new RemoveCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
+
+        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(request));
+    }
+
+    @Test
+    void removeItemFromCart_validInput_removesCartItem() {
+        var request = new RemoveCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        var book = new Book();
+
+        var cartItem = new CartItem();
+        cartItem.setBook(book);
+
+        var cart = new Cart();
+        cart.getItems().add(cartItem);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+
+        cartService.removeItemFromCart(request);
+
+        assertFalse(cart.contains(book));
     }
 }

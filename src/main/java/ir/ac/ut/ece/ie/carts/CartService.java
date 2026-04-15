@@ -85,7 +85,7 @@ public class CartService {
         }
 
         var cart = cartRepository.findByUser(user)
-                .orElseThrow(BookNotFoundException::new);
+                .orElseThrow(BookNotInCartException::new);
 
         if (!cart.contains(book)) {
             throw new BookNotInCartException();
