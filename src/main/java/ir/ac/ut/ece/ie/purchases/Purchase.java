@@ -1,4 +1,4 @@
-package ir.ac.ut.ece.ie.carts;
+package ir.ac.ut.ece.ie.purchases;
 
 import ir.ac.ut.ece.ie.users.User;
 import lombok.Getter;

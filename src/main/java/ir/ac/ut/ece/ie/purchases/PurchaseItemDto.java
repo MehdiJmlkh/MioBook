@@ -1,9 +1,7 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.carts.PurchaseItem;
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data

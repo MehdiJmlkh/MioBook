@@ -1,7 +1,5 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.carts.Purchase;
-import ir.ac.ut.ece.ie.carts.PurchaseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

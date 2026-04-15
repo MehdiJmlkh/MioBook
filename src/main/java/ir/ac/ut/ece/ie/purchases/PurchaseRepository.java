@@ -1,4 +1,4 @@
-package ir.ac.ut.ece.ie.carts;
+package ir.ac.ut.ece.ie.purchases;
 
 import org.springframework.stereotype.Repository;
 

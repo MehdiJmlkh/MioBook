@@ -1,13 +1,10 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.carts.Purchase;
-import ir.ac.ut.ece.ie.carts.PurchaseRepository;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor

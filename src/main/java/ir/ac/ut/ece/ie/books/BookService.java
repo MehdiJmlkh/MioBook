@@ -1,7 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
-import ir.ac.ut.ece.ie.carts.PurchaseRepository;
+import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
