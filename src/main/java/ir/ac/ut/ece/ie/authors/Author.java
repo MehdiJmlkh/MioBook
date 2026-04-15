@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.authors;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
