@@ -16,5 +16,5 @@ public class Review {
     private String comment;
     private LocalDate date;
     private Book book;
-    private User use;
+    private User user;
 }

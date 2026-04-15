@@ -5,7 +5,6 @@ import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
-import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +17,22 @@ public class ReviewService {
     private final UserRepository userRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
+    private final ReviewMapper reviewMapper;
+
+    public ReviewListDto getAllReviews(String title) {
+        var book = bookRepository.findByTitle(title)
+                .orElseThrow(BookNotFoundException::new);
+        var reviews = book.getReviews().stream()
+                .map(reviewMapper::toDto)
+                .toList();
+
+        var reviewListDto = new ReviewListDto();
+        reviewListDto.setTitle(title);
+        reviewListDto.setReviews(reviews);
+        reviewListDto.setAverageRating(book.getAverageRating());
+
+        return reviewListDto;
+    }
 
     public void addReview(AddReviewRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
@@ -31,7 +46,7 @@ public class ReviewService {
         }
 
         var review = Review.builder()
-                .use(user)
+                .user(user)
                 .book(book)
                 .rate(request.getRate())
                 .comment(request.getComment())
