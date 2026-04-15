@@ -5,7 +5,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface PurchaseMapper {
-    @Mapping(target = "items", expression = "java(purchase.getItems().stream().map(PurchaseItemDto::fromPurchaseItem).toList())")
+
+    @Mapping(target = "items",
+            expression = "java(purchase.getItems().stream().map(PurchaseItemDto::fromPurchaseItem).toList())")
     @Mapping(target = "purchaseDate", source = "purchase.date")
-    PurchaseHistoryDto toDto(Purchase purchase);
+    PurchaseDto toDto(Purchase purchase);
 }

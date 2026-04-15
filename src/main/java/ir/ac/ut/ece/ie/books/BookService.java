@@ -36,7 +36,7 @@ public class BookService {
         var purchase =purchaseRepository.findByUsernameAndTitle(username, title)
                 .orElseThrow(BookNotInStockException::new);
 
-        if (purchase.isBorrowed() && purchase.hasExpired()) {
+        if (purchase.getIsBorrowed() && purchase.hasExpired()) {
             throw new BookNotInStockException();
         }
 

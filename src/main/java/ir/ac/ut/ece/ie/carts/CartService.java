@@ -5,7 +5,7 @@ import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.purchases.Purchase;
-import ir.ac.ut.ece.ie.purchases.PurchaseDto;
+import ir.ac.ut.ece.ie.purchases.PurchaseSummaryDto;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -110,7 +110,7 @@ public class CartService {
         cartRepository.addItemToCart(user, cartItem);
     }
 
-    public PurchaseDto purchaseCart(PurchaseCartRequest request) {
+    public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
@@ -139,7 +139,7 @@ public class CartService {
         cartRepository.removeCart(cart);
         purchaseRepository.addPurchase(purchase);
 
-        return PurchaseDto.builder()
+        return PurchaseSummaryDto.builder()
                 .bookCount(purchase.getItems().size())
                 .totalCost(purchase.getTotalCost())
                 .date(purchase.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))

@@ -1,12 +1,12 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-@Builder
 public class PurchaseDto {
-    private Integer bookCount;
+    private String purchaseDate;
     private Integer totalCost;
-    private String date;
+    private List<PurchaseItemDto> items;
 }

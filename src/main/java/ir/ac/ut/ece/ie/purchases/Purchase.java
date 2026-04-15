@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 public class Purchase {
     private User user;
-    private Set<PurchaseItem> items = new LinkedHashSet<>();
     private Integer totalCost;
     private LocalDateTime date;
+    private Set<PurchaseItem> items = new LinkedHashSet<>();
 }

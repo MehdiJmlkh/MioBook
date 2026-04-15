@@ -13,7 +13,7 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     @GetMapping("/{username}")
-    public PurchaseListDto getPurchase(@PathVariable("username") String username) {
-        return purchaseService.getPurchase(username);
+    public PurchaseHistoryDto getAllPurchases(@PathVariable("username") String username) {
+        return purchaseService.getAllPurchases(username);
     }
 }

@@ -1,7 +1,7 @@
 package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
-import ir.ac.ut.ece.ie.purchases.PurchaseDto;
+import ir.ac.ut.ece.ie.purchases.PurchaseSummaryDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +29,7 @@ public class CartController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<PurchaseDto> purchaseCart(@RequestBody PurchaseCartRequest request) {
+    public ResponseEntity<PurchaseSummaryDto> purchaseCart(@RequestBody PurchaseCartRequest request) {
         var purchase = cartService.purchaseCart(request);
 
         return ResponseEntity.ok(purchase);

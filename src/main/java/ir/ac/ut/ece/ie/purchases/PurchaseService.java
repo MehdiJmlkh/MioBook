@@ -14,7 +14,7 @@ public class PurchaseService {
     private final UserRepository userRepository;
     private final PurchaseMapper purchaseMapper;
 
-    public PurchaseListDto getPurchase(String username) {
+    public PurchaseHistoryDto getAllPurchases(String username) {
         var user = userRepository.findByUsername(username)
                         .orElseThrow(UserNotFoundException::new);
 
@@ -24,14 +24,13 @@ public class PurchaseService {
 
         var purchases = purchaseRepository.findByUsername(username);
 
-        var purchasesDto = purchases.stream()
+        var purchaseDtos = purchases.stream()
                 .map(purchaseMapper::toDto)
                 .toList();
 
-        var purchaseListDto = new PurchaseListDto();
-        purchaseListDto.setUsername(username);
-        purchaseListDto.setPurchaseHistory(purchasesDto);
-
-        return purchaseListDto;
+        return PurchaseHistoryDto.builder()
+                .username(username)
+                .purchaseHistory(purchaseDtos)
+                .build();
     }
 }

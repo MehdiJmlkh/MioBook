@@ -7,11 +7,12 @@ import java.time.LocalDateTime;
 
 @Data
 public class PurchaseItem {
-    private boolean isBorrowed;
-    private int borrowDays;
     private Book book;
+    private Boolean isBorrowed;
+    private Integer borrowDays;
     private Integer price;
     private LocalDateTime date;
+
 
     public boolean hasExpired() {
         if (!isBorrowed) {
@@ -22,5 +23,4 @@ public class PurchaseItem {
 
         return LocalDateTime.now().isAfter(expiryDate);
     }
-
 }
