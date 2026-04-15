@@ -45,7 +45,7 @@ public class AuthorServiceTest {
         var request = new AddAuthorRequest();
         request.setUsername("username");
 
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(null);
+        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.empty());
 
         assertThrows(UserNotFoundException.class, () -> authorService.addAuthor(request));
     }
