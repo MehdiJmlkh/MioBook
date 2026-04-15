@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CartItem {
-    private boolean isBorrowed;
-    private int borrowDays;
+    private Boolean isBorrowed;
+    private Integer borrowDays;
     private Book book;
     private Integer price;
 

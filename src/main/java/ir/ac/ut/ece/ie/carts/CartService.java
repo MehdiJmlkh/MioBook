@@ -22,6 +22,29 @@ public class CartService {
     private final PurchaseRepository purchaseRepository;
     private final CartMapper cartMapper;
 
+    public CartDto getCart(String username) {
+        var user = userRepository.findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        var cart = cartRepository.findByUser(user)
+                .orElse(new Cart());
+
+        var items = cart.getItems().stream()
+                .map(CartItemDto::fromCartItem)
+                .toList();
+
+        var cartDto = new CartDto();
+        cartDto.setUsername(username);
+        cartDto.setTotalCost(cart.getTotalPrice());
+        cartDto.setItems(items);
+
+        return cartDto;
+    }
+
     public Cart addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
