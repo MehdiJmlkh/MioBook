@@ -16,4 +16,9 @@ public class PurchaseController {
     public PurchaseHistoryDto getAllPurchases(@PathVariable("username") String username) {
         return purchaseService.getAllPurchases(username);
     }
+
+    @GetMapping("/{username}/books")
+    public PurchasedBooksHistory getPurchasedBooks(@PathVariable("username") String username) {
+        return purchaseService.getPurchasedBooks(username);
+    }
 }

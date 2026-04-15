@@ -33,4 +33,27 @@ public class PurchaseService {
                 .purchaseHistory(purchaseDtos)
                 .build();
     }
+
+    public PurchasedBooksHistory getPurchasedBooks(String username) {
+        var user = userRepository.findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        var purchases = purchaseRepository.findByUsername(username);
+
+        var purchasedBooks = purchases.stream()
+                .flatMap(purchase -> purchase.getItems().stream())
+                .filter(purchaseItem -> !purchaseItem.hasExpired())
+                .map(purchaseMapper::toDto)
+                .toList();
+
+        var purchasedBooksHistory = new PurchasedBooksHistory();
+        purchasedBooksHistory.setUsername(username);
+        purchasedBooksHistory.setBooks(purchasedBooks);
+
+        return purchasedBooksHistory;
+    }
 }
