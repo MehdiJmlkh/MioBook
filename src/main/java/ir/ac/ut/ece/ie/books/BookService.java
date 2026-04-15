@@ -79,4 +79,10 @@ public class BookService {
                 .map(bookMapper::toDto)
                 .toList();
     }
+
+    public List<BookDto> getBooksByGenre(String genre) {
+        return bookRepository.findByGenre(genre).stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
 }

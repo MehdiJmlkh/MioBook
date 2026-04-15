@@ -30,4 +30,10 @@ public class BookRepository {
                 .filter(book -> book.getAuthor().getName().contains(author))
                 .toList();
     }
+
+    public List<Book> findByGenre(String genre) {
+        return books.stream()
+                .filter(book -> book.getGenres().contains(genre))
+                .toList();
+    }
 }
