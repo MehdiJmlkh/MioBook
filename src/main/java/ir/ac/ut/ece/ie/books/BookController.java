@@ -13,8 +13,15 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/{title}")
-    public BookDto getBook(@PathVariable(name = "title") String title) {
+    public BookDto getBook(@PathVariable("title") String title) {
         return bookService.getBook(title);
+    }
+
+    @PostMapping("/{title}/content")
+    public BookContentDto getBookContent(
+            @PathVariable("title") String title,
+            @RequestBody GetBookContentRequest request) {
+        return bookService.getBookContent(request.getUsername(), title);
     }
 
     @PostMapping("/add")

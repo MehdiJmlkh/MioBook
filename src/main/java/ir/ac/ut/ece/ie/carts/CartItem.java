@@ -7,13 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CartItem {
-    private CartItemType type;
+    private boolean isBorrowed;
+    private int borrowDays;
     private Book book;
     private Integer price;
 
     public static CartItem BuyCartItem(Book book) {
         var cartItem = new CartItem();
-        cartItem.type = CartItemType.BUY;
+        cartItem.isBorrowed = false;
         cartItem.book = book;
         cartItem.price = book.getPrice();
         return cartItem;
@@ -21,8 +22,9 @@ public class CartItem {
 
     public static CartItem BorrowCartItem(Book book, Integer days) {
         var cartItem = new CartItem();
-        cartItem.type = CartItemType.BORROW;
+        cartItem.isBorrowed = true;
         cartItem.book = book;
+        cartItem.borrowDays = days;
         cartItem.price = book.getPrice() * (days / 10);
         return cartItem;
     }

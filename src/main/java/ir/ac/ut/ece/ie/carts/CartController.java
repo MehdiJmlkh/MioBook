@@ -31,7 +31,7 @@ public class CartController {
 
     @PostMapping("/borrow")
     public ResponseEntity<Void> borrowBook(@RequestBody BorrowBookRequest request) {
-        cartService.borrowBook(request);
+        cartService.addBorrowedBookToCart(request);
         return ResponseEntity.ok().build();
     }
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -19,6 +20,7 @@ public class CartService {
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
     private final PurchaseRepository purchaseRepository;
+    private final CartMapper cartMapper;
 
     public Cart addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
@@ -66,7 +68,7 @@ public class CartService {
         cart.removeBook(book);
     }
 
-    public void borrowBook(BorrowBookRequest request) {
+    public void addBorrowedBookToCart(BorrowBookRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
@@ -99,14 +101,20 @@ public class CartService {
 
         var purchase = new Purchase();
         purchase.setUser(user);
-        purchase.setBooks(cart.getBooks());
+        var purchaseItems = cart.getItems().stream()
+                        .map(cartMapper::toPurchaseItem)
+                                .collect(Collectors.toSet());
+        purchaseItems.forEach(purchaseItem -> purchaseItem.setDate(LocalDateTime.now()));
+        purchase.setItems(purchaseItems);
         purchase.setDate(LocalDateTime.now());
         purchase.setTotalCost(cart.getTotalPrice());
 
         user.withdrawCredit(cart.getTotalPrice());
         cartRepository.removeCart(cart);
+        purchaseRepository.addPurchase(purchase);
+
         return PurchaseDto.builder()
-                .bookCount(purchase.getBooks().size())
+                .bookCount(purchase.getItems().size())
                 .totalCost(purchase.getTotalCost())
                 .date(purchase.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .build();

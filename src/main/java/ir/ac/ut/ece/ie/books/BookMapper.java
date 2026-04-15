@@ -12,4 +12,6 @@ public interface BookMapper {
     @Mapping(target = "author", source = "book.author.name")
     @Mapping(target = "averageRating", expression = "java(book.getAverageRating())")
     BookDto toDto(Book book);
+
+    BookContentDto toContentDto(Book book);
 }
