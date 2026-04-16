@@ -1,10 +1,16 @@
 package ir.ac.ut.ece.ie.reviews;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 public class AddReviewRequest {
     private String username;

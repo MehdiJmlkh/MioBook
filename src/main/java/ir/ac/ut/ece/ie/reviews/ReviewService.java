@@ -38,12 +38,12 @@ public class ReviewService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        var book = bookRepository.findByTitle(request.getTitle())
-                .orElseThrow(BookNotFoundException::new);
-
         if (user.getRole() != Role.CUSTOMER) {
             throw new NotCustomerException();
         }
+
+        var book = bookRepository.findByTitle(request.getTitle())
+                .orElseThrow(BookNotFoundException::new);
 
         var review = Review.builder()
                 .user(user)
