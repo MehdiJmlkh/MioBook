@@ -5,14 +5,20 @@ import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.Purchase;
+import ir.ac.ut.ece.ie.purchases.PurchaseItem;
+import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -29,6 +35,8 @@ public class CartServiceTest {
     private UserRepository userRepository;
     @MockitoBean
     private BookRepository bookRepository;
+    @MockitoBean
+    private PurchaseRepository purchaseRepository;
 
     @Autowired
     private CartService cartService;
@@ -180,5 +188,118 @@ public class CartServiceTest {
         cartService.removeItemFromCart(request);
 
         assertFalse(cart.contains(book));
+    }
+
+    @Test
+    void purchaseCart_userNotFound_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        assertThrows(UserNotFoundException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
+    void purchaseCart_notCustomerUser_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        var user = new User();
+        user.setRole(Role.ADMIN);
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotCustomerException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
+    void purchaseCart_cartNotExists_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
+
+        assertThrows(EmptyCartException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
+    void purchaseCart_emptyCart_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
+
+        assertThrows(EmptyCartException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
+    void purchaseCart_notEnoughCredit_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+        user.setBalance(50);
+
+        var cart = new Cart();
+        var cartItem = new CartItem();
+        cartItem.setPrice(100);
+        cart.addItem(cartItem);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+
+        assertThrows(NotEnoughCreditException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
+    void purchaseCart_validInput_addsToPurchaseRepository() {
+        var request = new PurchaseCartRequest();
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+        user.setBalance(110);
+
+        var book = new Book();
+        book.setPrice(100);
+        var cartItem = CartItem.BuyCartItem(book);
+
+        var cart = new Cart();
+        cart.addItem(cartItem);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+
+        LocalDateTime before = LocalDateTime.now();
+        var purchaseSummary = cartService.purchaseCart(request);
+        LocalDateTime after = LocalDateTime.now();
+
+        var captor = ArgumentCaptor.forClass(Purchase.class);
+        verify(purchaseRepository).addPurchase(captor.capture());
+
+        Purchase purchase = captor.getValue();
+        PurchaseItem purchaseItem = purchase.getItems().iterator().next();
+
+        assertEquals(100, purchase.getTotalCost());
+        assertTrue(purchase.getDate().isAfter(before));
+        assertTrue(purchase.getDate().isBefore(after));
+        assertEquals(user, purchase.getUser());
+
+        assertFalse(purchaseItem.getIsBorrowed());
+        assertEquals(book, purchaseItem.getBook());
+        assertEquals(100, purchaseItem.getPrice());
+        assertTrue(purchaseItem.getDate().isAfter(before));
+        assertTrue(purchaseItem.getDate().isBefore(after));
+
+        assertEquals(10, user.getBalance());
+
+        verify(cartRepository).removeCart(eq(cart));
+
+        assertEquals(1, purchaseSummary.getBookCount());
+        assertEquals(100, purchaseSummary.getTotalCost());
+        String expected = purchase.getDate()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        assertEquals(expected, purchaseSummary.getDate());
     }
 }

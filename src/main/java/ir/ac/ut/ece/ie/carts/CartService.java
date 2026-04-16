@@ -114,6 +114,10 @@ public class CartService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
         var cart = cartRepository.findByUser(user)
                 .orElseThrow(EmptyCartException::new);
 
