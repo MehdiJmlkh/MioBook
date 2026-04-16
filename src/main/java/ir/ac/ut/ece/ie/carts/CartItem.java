@@ -25,7 +25,7 @@ public class CartItem {
         cartItem.isBorrowed = true;
         cartItem.book = book;
         cartItem.borrowDays = days;
-        cartItem.price = book.getPrice() * (days / 10);
+        cartItem.price = (book.getPrice() * days) / 10;
         return cartItem;
     }
 }
