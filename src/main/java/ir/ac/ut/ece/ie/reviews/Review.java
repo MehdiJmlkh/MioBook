@@ -2,12 +2,12 @@ package ir.ac.ut.ece.ie.reviews;
 
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.users.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Setter
