@@ -6,6 +6,9 @@ import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.Purchase;
+import ir.ac.ut.ece.ie.purchases.PurchaseItem;
+import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.reviews.Review;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
@@ -23,8 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class BookServiceTest {
@@ -35,6 +37,8 @@ public class BookServiceTest {
     private AuthorRepository authorRepository;
     @MockitoBean
     private BookRepository bookRepository;
+    @MockitoBean
+    private PurchaseRepository purchaseRepository;
     @Autowired
     private BookService bookService;
 
@@ -143,5 +147,62 @@ public class BookServiceTest {
         assertEquals(book.getPrice(), bookDto.getPrice());
         assertEquals(book.getSynopsis(), bookDto.getSynopsis());
         assertEquals(3.5, bookDto.getAverageRating());
+    }
+
+    @Test
+    void getBookContent_bookNotFound_throwsException() {
+        assertThrows(BookNotFoundException.class, () -> bookService.getBookContent("username", "title"));
+    }
+
+    @Test
+    void getBookContent_userNotFound_throwsException() {
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        assertThrows(UserNotFoundException.class, () -> bookService.getBookContent("username", "title"));
+    }
+
+    @Test
+    void getBookContent_notPurchasedBook_throwsException() {
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
+        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.empty());
+
+        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
+    }
+
+    @Test
+    void getBookContent_expiredBorrowedBook_throwsException() {
+        var purchase = mock(PurchaseItem.class);
+
+        when(purchase.hasExpired()).thenReturn(true);
+        when(purchase.getIsBorrowed()).thenReturn(true);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
+        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchase));
+
+        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
+    }
+
+    @Test
+    void getBookContent_validInput_returnsContent() {
+        String username = "username";
+        String title = "title";
+
+        var purchase = new PurchaseItem();
+        var book = new Book();
+        purchase.setBook(book);
+        purchase.setIsBorrowed(false);
+
+        book.setContent("content");
+        book.setTitle(title);
+
+        when(bookRepository.findByTitle(title)).thenReturn(Optional.of(book));
+        when(userRepository.findByUsername(username)).thenReturn(Optional.of(new User()));
+        when(purchaseRepository.findByUsernameAndTitle(username, title)).thenReturn(Optional.of(purchase));
+
+        var bookContentDto = bookService.getBookContent(username, title);
+
+        assertEquals(title, bookContentDto.getTitle());
+        assertEquals(book.getContent(), bookContentDto.getContent());
     }
 }

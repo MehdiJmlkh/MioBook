@@ -31,10 +31,10 @@ public class BookService {
     }
 
     public BookContentDto getBookContent(String username, String title) {
-        var book = bookRepository.findByTitle(title)
+        bookRepository.findByTitle(title)
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = userRepository.findByUsername(username)
+        userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
         var purchase =purchaseRepository.findByUsernameAndTitle(username, title)
