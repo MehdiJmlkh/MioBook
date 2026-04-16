@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.users;
 
+import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -62,6 +63,20 @@ public class UserServiceTest {
                 user.getBalance().equals(0)
         ));
     }
+
+    @Test
+    void getUser_userNotFound_throwsException() {
+        assertThrows(UserNotFoundException.class, () -> userService.getUser("username"));
+    }
+
+    @Test
+    void getUser_validInput_returnsUser() {
+        var user = new User();
+        user.setUsername("username");
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        assertEquals(user, userService.getUser(user.getUsername()));
+    }
+
 }
 
 
