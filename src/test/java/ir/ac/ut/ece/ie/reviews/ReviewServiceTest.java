@@ -91,6 +91,8 @@ public class ReviewServiceTest {
         assertEquals(user, review.getUser());
         assertFalse(review.getDate().isBefore(before));
         assertFalse(review.getDate().isAfter(after));
+
+        assertEquals(1, book.getReviews().size());
     }
 
     @Test
