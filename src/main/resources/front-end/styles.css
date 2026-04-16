@@ -1,0 +1,34 @@
+:root {
+  --color-primary: #17423b;
+  --color-secondary: #f7f4ed;
+  --color-text: #010000;
+  --color-text-light: #faf9ff;
+
+  --color-accent: #ff3400;
+  --color-headings: #1b0760;
+  --color-body: #faf9ff;
+  --color-body-darker: #5c5577;
+  --color-border: #ccc;
+  --border-radius: 30px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 10px;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  font-weight: 500;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+.btn:hover {
+  background-color: #12352f;
+}
