@@ -93,4 +93,51 @@ public class ReviewServiceTest {
         assertFalse(review.getDate().isAfter(after));
     }
 
+    @Test
+    void getAllReviews_bookNotFound_throwsException() {
+        assertThrows(BookNotFoundException.class, () -> reviewService.getAllReviews("title"));
+    }
+
+    @Test
+    void getAllReviews_validInput_returnsReviewListDto() {
+        var book = new Book();
+
+        var user1 = User.builder().username("user1").build();
+        var review1 = Review.builder()
+                .rate(3)
+                .comment("comment1")
+                .date(LocalDate.of(2001, 1,1))
+                .book(book)
+                .user(user1)
+                .build();
+
+        var user2 = User.builder().username("user2").build();
+        var review2 = Review.builder()
+                .rate(4)
+                .comment("comment2")
+                .date(LocalDate.of(2002, 2,2))
+                .book(book)
+                .user(user2)
+                .build();
+
+        book.getReviews().add(review1);
+        book.getReviews().add(review2);
+
+        when(bookRepository.findByTitle(book.getTitle())).thenReturn(Optional.of(book));
+
+        var reviewListDto = reviewService.getAllReviews(book.getTitle());
+
+        assertEquals(book.getTitle(), reviewListDto.getTitle());
+        assertEquals(3.5, reviewListDto.getAverageRating());
+
+        var reviewDto1 = reviewListDto.getReviews().get(0);
+        assertEquals(review1.getComment(), reviewDto1.getComment());
+        assertEquals(review1.getRate(), reviewDto1.getRate());
+        assertEquals(user1.getUsername(), reviewDto1.getUsername());
+
+        var reviewDto2 = reviewListDto.getReviews().get(1);
+        assertEquals(review2.getComment(), reviewDto2.getComment());
+        assertEquals(review2.getRate(), reviewDto2.getRate());
+        assertEquals(user2.getUsername(), reviewDto2.getUsername());
+    }
 }
