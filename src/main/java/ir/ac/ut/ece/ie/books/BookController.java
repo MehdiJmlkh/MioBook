@@ -66,4 +66,10 @@ public class BookController {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("Start year must be earlier than the end year."));
     }
+
+    @ExceptionHandler(BookNotInStockException.class)
+    public ResponseEntity<ErrorDto> handleBookNotInStockException() {
+        return ResponseEntity.badRequest()
+                .body(new ErrorDto("This is not in your stock"));
+    }
 }
