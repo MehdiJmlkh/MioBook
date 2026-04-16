@@ -8,5 +8,5 @@ import java.util.List;
 public class ReviewListDto {
     private String title;
     private List<ReviewDto> reviews;
-    private Integer averageRating;
+    private float averageRating;
 }

@@ -2,11 +2,17 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.reviews.Review;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Book {
     private String title;
@@ -20,11 +26,11 @@ public class Book {
 
     private Set<Review> reviews = new LinkedHashSet<>();
 
-    public Integer getAverageRating() {
+    public float getAverageRating() {
         if (reviews.isEmpty()) {
             return 0;
         }
-        return reviews.stream()
+        return (float) reviews.stream()
                 .map(Review::getRate)
                 .reduce(Integer::sum)
                 .orElse(0) / reviews.size();
