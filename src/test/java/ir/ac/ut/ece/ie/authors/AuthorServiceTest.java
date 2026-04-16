@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
@@ -13,6 +14,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -84,5 +86,18 @@ public class AuthorServiceTest {
                 author.getBorn().equals(LocalDate.of(2020, 1, 1)) &&
                 author.getNationality().equals(request.getNationality())
         ));
+    }
+
+    @Test
+    void getAuthor_authorNotFound_throwsException() {
+        assertThrows(AuthorNotFoundException.class, () -> authorService.getAuthor("name"));
+    }
+
+    @Test
+    void getAuthor_validInput_returnsAuthor() {
+        var author = new Author();
+        author.setName("name");
+        when(authorRepository.findByName(author.getName())).thenReturn(Optional.of(author));
+        assertEquals(author, authorService.getAuthor("name"));
     }
 }
