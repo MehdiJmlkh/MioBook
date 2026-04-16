@@ -1,10 +1,8 @@
 package ir.ac.ut.ece.ie.carts;
 
-import jakarta.validation.constraints.Min;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
-import java.util.Map;
 
 @Data
 public class BorrowBookRequest {

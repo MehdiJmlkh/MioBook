@@ -256,6 +256,7 @@ public class CartServiceTest {
     @Test
     void purchaseCart_validInput_addsToPurchaseRepository() {
         var request = new PurchaseCartRequest();
+        request.setUsername("username");
 
         var user = new User();
         user.setRole(Role.CUSTOMER);
@@ -268,8 +269,8 @@ public class CartServiceTest {
         var cart = new Cart();
         cart.addItem(cartItem);
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
 
         LocalDateTime before = LocalDateTime.now();
         var purchaseSummary = cartService.purchaseCart(request);
@@ -301,5 +302,60 @@ public class CartServiceTest {
         String expected = purchase.getDate()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         assertEquals(expected, purchaseSummary.getDate());
+    }
+
+    @Test
+    void addBorrowedBookToCart_bookNotFound_throwsException() {
+        var request = new BorrowBookRequest();
+        assertThrows(BookNotFoundException.class, () -> cartService.addBorrowedBookToCart(request));
+    }
+
+    @Test
+    void addBorrowedBookToCart_userNotFound_throwsException() {
+        var request = new BorrowBookRequest();
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+
+        assertThrows(UserNotFoundException.class, () -> cartService.addBorrowedBookToCart(request));
+    }
+
+    @Test
+    void addBorrowedBookToCart_notCustomerUser_throwsException() {
+        var request = new BorrowBookRequest();
+
+        var user = new User();
+        user.setRole(Role.ADMIN);
+
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotCustomerException.class, () -> cartService.addBorrowedBookToCart(request));
+    }
+
+    @Test
+    void addBorrowedBookToCart_validInput_addsCartItem() {
+        var request = new BorrowBookRequest();
+        request.setUsername("username");
+        request.setTitle("title");
+        request.setDays(5);
+
+        var book = new Book();
+        book.setPrice(100);
+        when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
+
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+
+        cartService.addBorrowedBookToCart(request);
+
+        var captor = ArgumentCaptor.forClass(CartItem.class);
+        verify(cartRepository).addItemToCart(eq(user), captor.capture());
+        var cartItem = captor.getValue();
+
+        assertTrue(cartItem.getIsBorrowed());
+        assertEquals(5, cartItem.getBorrowDays());
+        assertEquals(book, cartItem.getBook());
+        assertEquals(50, cartItem.getPrice());
     }
 }
