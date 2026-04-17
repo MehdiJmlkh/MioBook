@@ -20,52 +20,18 @@ body {
   margin: 10px;
 }
 
-.bi-star-fill {
-  color: #eba452;
-}
-
-.block-book {
-  background: var(--color-primary);
-  border-radius: 20px;
-  overflow: hidden;
+.footer {
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  font-size: 1.6rem;
+  padding: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   text-align: center;
-  width: fit-content;
-}
-
-.block-book__img {
-  width: 20rem;
-  height: 15rem;
-  object-fit: cover;
-}
-
-.block-book__body {
-  padding: 0 1.5rem;
-}
-
-.block-book__title,
-.block-book__author {
-  font-size: 1.8rem;
-  margin: 1rem;
-}
-
-.block-book__title {
-  font-weight: bold;
-}
-
-.block-book__author {
-  font-weight: 400;
-}
-
-.block-book__btn {
   width: 100%;
 }
 
-.block-book__badges {
-  display: flex;
-  justify-content: space-between;
+.footer__copyright {
+  margin: 0;
 }
-
-.block-book__price {
-  font-size: 1.5rem;
-}
-
