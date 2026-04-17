@@ -1,29 +1,3 @@
-:root {
-  --color-primary: #f5efe7;
-  --color-secondary: #d9d9d9;
-  --color-accent: #16423c;
-  --color-text: #010000;
-  --color-text-light: #faf9ff;
-
-  --color-headings: #1b0760;
-  --color-body: #faf9ff;
-  --color-body-darker: #5c5577;
-  --color-border: #ccc;
-  --border-radius: 30px;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  margin: 10px;
-}
-
-.bi-star-fill {
-  color: #eba452;
-}
-
 .block-book {
   background: var(--color-primary);
   border-radius: 20px;
@@ -68,4 +42,3 @@ body {
 .block-book__price {
   font-size: 1.5rem;
 }
-
