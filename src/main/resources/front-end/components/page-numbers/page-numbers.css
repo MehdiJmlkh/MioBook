@@ -1,25 +1,3 @@
-:root {
-  --color-primary: #f5efe7;
-  --color-secondary: #eaecee;
-  --color-accent: #16423c;
-  --color-text: #010000;
-  --color-text-light: #faf9ff;
-
-  --color-headings: #1b0760;
-  --color-body: #faf9ff;
-  --color-body-darker: #5c5577;
-  --color-border: #ccc;
-  --border-radius: 30px;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  margin: 10px;
-}
-
 .page-numbers {
   display: flex;
   font-size: 1.3rem;
