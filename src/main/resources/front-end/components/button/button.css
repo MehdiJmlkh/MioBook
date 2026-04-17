@@ -1,5 +1,6 @@
 .btn {
-  background: var(--color-primary);
+  background: var(--color-accent);
+  border-color: #12352f;
   border-radius: 10px;
   color: var(--color-text-light);
   font-size: 1.8rem;
