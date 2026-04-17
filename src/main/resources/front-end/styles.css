@@ -20,16 +20,6 @@ body {
   margin: 10px;
 }
 
-.btn {
-  background: var(--color-accent);
-  color: var(--color-text-light);
-  border-color: #12352f;
-  font-weight: 500;
-  font-size: 1.8rem;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-}
-
-.btn:hover {
-  background-color: #12352f;
+.bi-star-fill {
+  color: #eba452;
 }
