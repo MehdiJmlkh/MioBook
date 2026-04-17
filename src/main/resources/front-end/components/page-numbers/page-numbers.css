@@ -3,6 +3,8 @@
   font-size: 1.3rem;
   justify-content: space-between;
   width: fit-content;
+  justify-self: center;
+  margin: 2rem 0 6rem;
 }
 
 .page-number,

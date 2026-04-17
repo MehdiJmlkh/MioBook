@@ -1,11 +1,9 @@
 .books-grid {
   align-items: stretch;
   display: grid;
-  gap: 4rem 3rem;
+  gap: 3rem 2rem;
   grid-template-columns: repeat(5, 1fr);
   justify-items: stretch;
-  margin: 0 auto;
-  padding: 0 10%;
 }
 
 @media (max-width: 1260px) {
@@ -23,7 +21,6 @@
 @media (max-width: 768px) {
   .books-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 5%;
   }
 }
 

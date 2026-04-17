@@ -20,38 +20,3 @@ html {
 body {
   /* margin: 10px; */
 }
-
-.books-grid {
-  align-items: stretch;
-  display: grid;
-  gap: 4rem 3rem;
-  grid-template-columns: repeat(5, 1fr);
-  justify-items: stretch;
-  margin: 0 auto;
-  padding: 0 10%;
-}
-
-@media (max-width: 1260px) {
-  .books-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .books-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .books-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 5%;
-  }
-}
-
-@media (max-width: 425px) {
-  .books-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
