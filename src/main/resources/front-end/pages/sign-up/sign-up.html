@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="components/button/button.css" />
+    <link rel="stylesheet" href="components/header/header.css" />
+    <link rel="stylesheet" href="components/stars/stars.css" />
+    <link rel="stylesheet" href="components/block-book/block-book.css" />
+    <link rel="stylesheet" href="components/footer/footer.css" />
+    <link rel="stylesheet" href="components/page-numbers/page-numbers.css" />
+    <link rel="stylesheet" href="components/hero/hero.css" />
+    <link rel="stylesheet" href="components/books-grid/books-grid.css" />
+    <link rel="stylesheet" href="components/meow-icon/meow-icon.css" />
+    <link rel="stylesheet" href="components/search-block/search-block.css" />
+    <link rel="stylesheet" href="components/link/link.css" />
+    <link rel="stylesheet" href="components/form/form.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="form-container">
+    <div class="form">
+        <h1 class="form__heading">Sign Up</h1>
+        <h2 class="form__sub-heading">MioBook</h2>
+        <form action="">
+            <input type="text" class="form-control" placeholder="Username" />
+            <input type="text" class="form-control" placeholder="Password" />
+            <input type="text" class="form-control" placeholder="Email" />
+
+            <div class="input-container--1x2">
+                <input
+                        type="text"
+                        class="form-control form-control--half-width"
+                        placeholder="Country"
+                />
+                <input
+                        type="text"
+                        class="form-control form-control--half-width"
+                        placeholder="City"
+                />
+            </div>
+            <p class="role-heading">I am</p>
+            <div class="input-container--1x2">
+                <label>
+                    <input type="radio" name="role" class="d-none" />
+                    <div class="role-option">
+                        <i class="bi bi-person-circle input__icon"></i>
+                        Customer
+                    </div>
+                </label>
+
+                <label>
+                    <input type="radio" name="role" class="d-none" />
+                    <div class="role-option">
+                        <i class="bi bi-briefcase input__icon" ></i>
+                        Admin
+                    </div>
+                </label>
+            </div>
+            <button class="btn btn-secondary form__btn">Sign Up</button>
+            <p class="form__footer">
+                Already have an account?
+                <a href="#" class="fw-semibold link">Sign in</a>
+            </p>
+        </form>
+    </div>
+</main>
+<footer class="footer">
+    <p class="footer__copyright">Copyright &copy; 2025 - MioBook</p>
+</footer>
+</body>
+</html>

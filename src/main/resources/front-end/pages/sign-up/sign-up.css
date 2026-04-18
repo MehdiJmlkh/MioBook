@@ -1,0 +1,22 @@
+.role-option {
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.role-heading {
+  text-align: left;
+}
+
+input[type="radio"]:checked + .role-option {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: #f0f5f4;
+}
+
+.input__icon {
+  padding: 0 1rem;
+}
