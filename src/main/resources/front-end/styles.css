@@ -22,67 +22,6 @@ body {
   background: #f7f9fb;
 }
 
-.book {
-  border-radius: var(--border-radius);
-  padding: 3rem;
-  overflow: hidden;
-  background: #fff;
-  display: flex;
-  border-bottom: 1px solid #804900;
-}
-.book__img {
-  height: fit-content;
-  padding-right: 4rem;
-  border-radius: var(--border-radius);
-  display: inline;
-}
-
-.book__content {
-  display: grid;
-}
-
-.book__details__title {
-  color: #969696;
-  font-size: 1.2rem;
-}
-
-.book__details__value {
-  font-size: 1.5rem;
-}
-
-.book__rating {
-  margin-left: 1rem;
-  font-size: 1.5rem;
-}
-
-.book__price {
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.book__btn {
-  padding: 0.5rem 3rem;
-  margin: 0;
-  width: 20rem;
-}
-
-.grid {
-  display: grid;
-}
-
-.grid--1x3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (max-width: 768px) {
-  .book {
-    display: grid;
-  }
-
-  .book__title,
-  .book__details__title,
-  .book__btn {
-    margin-top: 2rem;
-  }
+.review__icon {
+  margin-left: 5px;
 }

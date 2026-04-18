@@ -25,3 +25,14 @@
 .btn-secondary:focus {
   box-shadow: none;
 }
+
+.btn-gray {
+  border: 0;
+  color: var(--color-text);
+  background: var(--color-secondary);
+}
+
+.btn-gray:hover,
+.btn-gray:focus {
+  background-color: #d5d7da;
+}
