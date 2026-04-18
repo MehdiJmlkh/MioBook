@@ -4,6 +4,7 @@
   grid-template-columns: 60% 40%;
   background: var(--color-primary);
   padding: 10rem 15%;
+  margin-top: 7rem;
 }
 
 .hero__content {

@@ -1,0 +1,18 @@
+.main__headings {
+    font-size: 3rem;
+}
+
+.main {
+    margin: 1rem 20% 14rem;
+}
+
+.main__headings {
+    margin: 6rem 0 3rem;
+}
+
+@media (max-width: 1600px) {
+    .main {
+        margin-left: 10%;
+        margin-right: 15%;
+    }
+}

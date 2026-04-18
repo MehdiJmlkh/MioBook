@@ -21,46 +21,21 @@ body {
   /* margin: 10px; */
 }
 
-.hero {
-  display: grid;
-  height: 40%;
-  grid-template-columns: 60% 40%;
-  background: var(--color-primary);
-  padding: 10rem 15%;
+.main__headings {
+    font-size: 3rem;
 }
 
-.hero__content {
-  font-size: 2.5rem;
-  align-self: center;
+.main {
+    margin: 1rem 20% 14rem;
 }
 
-.hero__content p {
-  padding: 1rem;
+.main__headings {
+    margin: 6rem 0 3rem;
 }
 
-.hero_image {
-  width: 100%;
-  padding-left: 20%;
-  align-self: center;
-}
-
-@media (max-width: 1224px) {
-  .hero {
-    padding-right: 5%;
-    padding-left: 5%;
-  }
-  .hero_image {
-    padding-left: 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-right: 5%;
-    padding-left: 5%;
-  }
-  .hero_image {
-    order: -1;
-  }
+@media (max-width: 1600px) {
+    .main {
+        margin-left: 10%;
+        margin-right: 15%;
+    }
 }
