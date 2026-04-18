@@ -1,12 +1,3 @@
-.book {
-  border-radius: var(--border-radius);
-  padding: 3rem;
-  overflow: hidden;
-  background: #fff;
-  display: flex;
-  border-bottom: 1px solid #804900;
-}
-
 .book__img {
   height: fit-content;
   padding-right: 4rem;
