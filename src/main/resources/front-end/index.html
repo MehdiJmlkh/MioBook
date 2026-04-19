@@ -23,159 +23,23 @@
     <link rel="stylesheet" href="components/block/block.css" />
     <link rel="stylesheet" href="components/book/book.css" />
     <link rel="stylesheet" href="components/block-review/block-review.css" />
+    <link rel="stylesheet" href="components/empty-card/empty-card.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <span class="meow-icon header__icon">
-        <img src="images/meow-icon.png" alt="" />
+    <div class="empty-card">
+      <span class="empty-card__heading">
+        <img class="empty-card__heading__icon" src="images/cart.svg" alt="" />
+        <h1 class="empty-card__heading__title">Cart</h1>
       </span>
-      <div class="block-search search-box header__search-box">
-        <span>Author</span>
-        <i class="bi bi-chevron-down search-box__chevron"></i>
-        <input type="text" class="search-box__input" placeholder="Search" />
+      <div class="empty-card__content">
+        <img
+          class="empty-card__image"
+          src="images/no-product.svg"
+          alt=""
+        />
+        <p>No Product</p>
       </div>
-      <button class="btn btn-primary header__btn">Buy now</button>
-    </header>
-    <main>
-      <div class="block book">
-        <img class="book__img" src="images/no-image.svg" alt="book's image" />
-        <div class="book__content">
-          <h1 class="book__title">Book Title</h1>
-          <div>
-            <i class="bi bi-star-fill fs-3"></i>
-            <i class="bi bi-star-fill fs-3"></i>
-            <i class="bi bi-star-fill fs-3"></i>
-            <i class="bi bi-star-fill fs-3"></i>
-            <i class="bi bi-star fs-3"></i>
-            <span class="book__rating">5.0</span>
-          </div>
-          <div class="grid grid--1x3">
-            <span>
-              <h2 class="book__details__title">Author</h2>
-              <p class="book__details__value">Author McName</p>
-            </span>
-            <span>
-              <h2 class="book__details__title">Publisher</h2>
-              <p class="book__details__value">The Publishers</p>
-            </span>
-            <span>
-              <h2 class="book__details__title">Year</h2>
-              <p class="book__details__value">2025</p>
-            </span>
-          </div>
-          <div>
-            <h2 class="book__details__title">About</h2>
-            <p class="book__details__value">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-              nemo inventore nam laboriosam dicta voluptatum suscipit quisquam
-              ullam veritatis nesciunt cum officiis expedita, earum molestias
-              sapiente, reiciendis minus blanditiis, nisi eveniet porro totam.
-              Temporibus, sequi? Provident quidem tenetur fuga beatae, maxime
-              eligendi voluptatem adipisci? Cum soluta enim reiciendis culpa
-              natus.
-            </p>
-          </div>
-          <span class="book__price">$18.99</span>
-          <button class="btn btn-primary book__btn">Add to Cart</button>
-        </div>
-      </div>
-      <div class="block block-review">
-        <div class="block-review__heading">
-          <div>
-            <span class="block-review__heading__title"> Reviews </span>
-            <span class="block-review__heading__counts">130</span>
-          </div>
-          <button class="btn btn-gray block-review__btn">
-            Add reviews
-            <img class="review__icon" src="images/reviews-icon.svg" alt="" />
-          </button>
-        </div>
-        <div class="review">
-          <div class="review__avatar">TW</div>
-          <h3 class="review__heading">The Person</h3>
-          <p class="review__content">
-            I bought it 3 weeks ago and now come back just to say "Awesome". I
-            realy enjoy it.
-          </p>
-          <span class="review__rating">
-            <div>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star fs-3"></i>
-            </div>
-            <span class="review__date"> February 20, 2025 </span>
-          </span>
-        </div>
-        <div class="review">
-          <div class="review__avatar">TW</div>
-          <h3 class="review__heading">The Person</h3>
-          <p class="review__content">
-            I bought it 3 weeks ago and now come back just to say "Awesome". I
-            realy enjoy it.
-          </p>
-          <span class="review__rating">
-            <div>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star fs-3"></i>
-            </div>
-            <span class="review__date"> February 20, 2025 </span>
-          </span>
-        </div>
-        <div class="review">
-          <div class="review__avatar">TW</div>
-          <h3 class="review__heading">The Person</h3>
-          <p class="review__content">
-            I bought it 3 weeks ago and now come back just to say "Awesome". I
-            realy enjoy it.
-          </p>
-          <span class="review__rating">
-            <div>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star fs-3"></i>
-            </div>
-            <span class="review__date"> February 20, 2025 </span>
-          </span>
-        </div>
-        <div class="review">
-          <div class="review__avatar">TW</div>
-          <h3 class="review__heading">The Person</h3>
-          <p class="review__content">
-            I bought it 3 weeks ago and now come back just to say "Awesome". I
-            realy enjoy it.
-          </p>
-          <span class="review__rating">
-            <div>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star-fill fs-3"></i>
-              <i class="bi bi-star fs-3"></i>
-            </div>
-            <span class="review__date"> February 20, 2025 </span>
-          </span>
-        </div>
-        <div class="page-numbers">
-          <i class="bi bi-chevron-left"></i>
-          <span class="page-number page-number--current-page">1</span>
-          <span class="page-number">2</span>
-          <span class="page-number">3</span>
-          <span class="page-number">4</span>
-          <span class="page-number">5</span>
-          <i class="bi bi-chevron-right"></i>
-        </div>
-      </div>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">Copyright &copy; 2025 - MioBook</p>
-    </footer>
+    </div>
   </body>
 </html>

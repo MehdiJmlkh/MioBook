@@ -1,0 +1,32 @@
+.empty-card {
+  background: #fff;
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  border: 0;
+}
+
+.empty-card__heading {
+  display: flex;
+  align-items: center;
+}
+
+.empty-card__heading__icon {
+  margin-right: 1.5rem;
+}
+
+.empty-card__heading__title {
+  font-size: 3rem;
+}
+
+.empty-card__image {
+  display: block;
+}
+
+.empty-card__content {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: 3rem;
+  color: #9e9b9b;
+}
