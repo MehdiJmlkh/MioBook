@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.carts;
 
+import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -19,7 +20,9 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -357,5 +360,128 @@ public class CartServiceTest {
         assertEquals(5, cartItem.getBorrowDays());
         assertEquals(book, cartItem.getBook());
         assertEquals(50, cartItem.getPrice());
+    }
+
+    @Test
+    void getCart_userNotFound_throwsException() {
+        assertThrows(UserNotFoundException.class, () -> cartService.getCart("username"));
+    }
+
+    @Test
+    void getCart_notCustomerUser_throwsException() {
+        var user = new User();
+        user.setRole(Role.ADMIN);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotCustomerException.class, () -> cartService.getCart("username"));
+    }
+
+    @Test
+    void getCart_emptyCart_returnsEmptyCartDto() {
+        var user = new User();
+        user.setRole(Role.CUSTOMER);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        var cartDto = cartService.getCart("username");
+
+        assertEquals(0, cartDto.getItems().size());
+        assertEquals(0, cartDto.getTotalCost());
+    }
+
+    @Test
+    void getCart_buyCartItem_returnsCartDto() {
+        var user = new User();
+        user.setUsername("username");
+        user.setRole(Role.CUSTOMER);
+
+        var author = new Author();
+        author.setName("author's name");
+        var book = Book.builder()
+                .title("title")
+                .author(author)
+                .publisher("publisher")
+                .year(2000)
+                .genres(Set.of("genre"))
+                .price(15)
+                .synopsis("synopsis")
+                .content("content")
+                .reviews(Set.of())
+                .build();
+
+        book.setPrice(15);
+        var cartItem = CartItem.BuyCartItem(book);
+
+        var cart = new Cart();
+        cart.setUser(user);
+        cart.setItems(List.of(cartItem));
+
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
+
+        var cartDto = cartService.getCart("username");
+
+        assertEquals(user.getUsername(), cartDto.getUsername());
+        assertEquals(1, cartDto.getItems().size());
+        assertEquals(15, cartDto.getTotalCost());
+
+        var cartItemDto = cartDto.getItems().get(0);
+        assertEquals(book.getTitle(), cartItemDto.getTitle());
+        assertEquals(author.getName(), cartItemDto.getAuthor());
+        assertEquals(book.getPublisher(), cartItemDto.getPublisher());
+        assertEquals(book.getGenres(), cartItemDto.getGenres());
+        assertEquals(book.getYear(), cartItemDto.getYear());
+        assertEquals(book.getPrice(), cartItemDto.getPrice());
+        assertEquals(false, cartItemDto.getIsBorrowed());
+        assertEquals(book.getPrice(), cartItemDto.getFinalPrice());
+    }
+
+    @Test
+    void getCart_borrowCartItem_returnsCartDto() {
+        var user = new User();
+        user.setUsername("username");
+        user.setRole(Role.CUSTOMER);
+
+        var author = new Author();
+        author.setName("author's name");
+        var book = Book.builder()
+                .title("title")
+                .author(author)
+                .publisher("publisher")
+                .year(2000)
+                .genres(Set.of("genre"))
+                .price(15)
+                .synopsis("synopsis")
+                .content("content")
+                .reviews(Set.of())
+                .build();
+
+        book.setPrice(15);
+        var cartItem = CartItem.BorrowCartItem(book, 5);
+
+        var cart = new Cart();
+        cart.setUser(user);
+        cart.setItems(List.of(cartItem));
+
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
+
+        var cartDto = cartService.getCart("username");
+
+        assertEquals(user.getUsername(), cartDto.getUsername());
+        assertEquals(1, cartDto.getItems().size());
+        assertEquals(7, cartDto.getTotalCost());
+
+        var cartItemDto = cartDto.getItems().get(0);
+        assertEquals(book.getTitle(), cartItemDto.getTitle());
+        assertEquals(author.getName(), cartItemDto.getAuthor());
+        assertEquals(book.getPublisher(), cartItemDto.getPublisher());
+        assertEquals(book.getGenres(), cartItemDto.getGenres());
+        assertEquals(book.getYear(), cartItemDto.getYear());
+        assertEquals(book.getPrice(), cartItemDto.getPrice());
+        assertEquals(true, cartItemDto.getIsBorrowed());
+        assertEquals(5, cartItem.getBorrowDays());
+        assertEquals(7, cartItemDto.getFinalPrice());
     }
 }
