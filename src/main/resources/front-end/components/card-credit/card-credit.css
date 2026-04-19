@@ -1,0 +1,22 @@
+.card-credit__content {
+  column-gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-top: 1.5rem;
+}
+
+.card-credit input {
+  border-radius: var(--border-radius);
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.card-credit input ,
+.card-credit input::placeholder {
+  font-size: 1.5rem;
+}
+
+.card-credit button {
+  font-weight: 400;
+  margin: 0;
+}
