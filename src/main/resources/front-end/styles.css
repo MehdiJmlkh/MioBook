@@ -27,38 +27,3 @@ body {
   background: #f7f9fb;
   min-height: 100vh;
 }
-
-.error-page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.error-page {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  max-width: 420px;
-  width: 100%;
-}
-
-.error-page__heading {
-  font-size: 6rem;
-  font-weight: 800;
-  color: #b5b6bc;
-  margin-bottom: 0.5rem;
-}
-
-.error-page__sub-heading {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.error-page__content {
-  font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 2rem;
-}
