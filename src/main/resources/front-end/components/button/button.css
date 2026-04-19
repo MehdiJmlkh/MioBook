@@ -37,3 +37,7 @@
 .btn-gray:focus {
   background-color: #d5d7da;
 }
+
+.btn--large {
+  padding: 0.5rem 9rem;
+}

@@ -18,38 +18,16 @@ html {
 }
 
 body {
-  margin: 30px;
+  /* margin: 30px; */
   background: #f7f9fb;
   padding-bottom: 5rem;
 }
 
-.cart-table {
-  width: stretch;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  overflow: hidden;
+.empty-card__content {
+  margin-top: 1.5rem;
+  display: block;
 }
 
-.cart-table__header {
-  background: var(--color-secondary);
-  color: #8c8d95;
-}
-
-.cart-product__image {
-  width: 3rem;
-  padding: 0.3rem 0;
-}
-
-.cart-table th {
-  font-weight: 400;
-  padding: 1rem;
-}
-
-.cart-table th,
-.cart-table td {
-  padding-left: 1.5rem;
-}
-
-.cart-table__row {
-  border-bottom: 1px solid var(--color-secondary);
+.btn--purchase {
+  margin-bottom: 0;
 }
