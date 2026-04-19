@@ -390,15 +390,11 @@ public class CartServiceTest {
         assertEquals(0, cartDto.getTotalCost());
     }
 
-    @Test
-    void getCart_buyCartItem_returnsCartDto() {
-        var user = new User();
-        user.setUsername("username");
-        user.setRole(Role.CUSTOMER);
-
+    Book getDummyBook() {
         var author = new Author();
         author.setName("author's name");
-        var book = Book.builder()
+
+        return Book.builder()
                 .title("title")
                 .author(author)
                 .publisher("publisher")
@@ -409,8 +405,15 @@ public class CartServiceTest {
                 .content("content")
                 .reviews(Set.of())
                 .build();
+    }
 
-        book.setPrice(15);
+    @Test
+    void getCart_buyCartItem_returnsCartDto() {
+        var user = new User();
+        user.setUsername("username");
+        user.setRole(Role.CUSTOMER);
+
+        var book = getDummyBook();
         var cartItem = CartItem.BuyCartItem(book);
 
         var cart = new Cart();
@@ -428,7 +431,7 @@ public class CartServiceTest {
 
         var cartItemDto = cartDto.getItems().get(0);
         assertEquals(book.getTitle(), cartItemDto.getTitle());
-        assertEquals(author.getName(), cartItemDto.getAuthor());
+        assertEquals(book.getAuthor().getName(), cartItemDto.getAuthor());
         assertEquals(book.getPublisher(), cartItemDto.getPublisher());
         assertEquals(book.getGenres(), cartItemDto.getGenres());
         assertEquals(book.getYear(), cartItemDto.getYear());
@@ -443,21 +446,8 @@ public class CartServiceTest {
         user.setUsername("username");
         user.setRole(Role.CUSTOMER);
 
-        var author = new Author();
-        author.setName("author's name");
-        var book = Book.builder()
-                .title("title")
-                .author(author)
-                .publisher("publisher")
-                .year(2000)
-                .genres(Set.of("genre"))
-                .price(15)
-                .synopsis("synopsis")
-                .content("content")
-                .reviews(Set.of())
-                .build();
+        var book = getDummyBook();
 
-        book.setPrice(15);
         var cartItem = CartItem.BorrowCartItem(book, 5);
 
         var cart = new Cart();
@@ -475,7 +465,7 @@ public class CartServiceTest {
 
         var cartItemDto = cartDto.getItems().get(0);
         assertEquals(book.getTitle(), cartItemDto.getTitle());
-        assertEquals(author.getName(), cartItemDto.getAuthor());
+        assertEquals(book.getAuthor().getName(), cartItemDto.getAuthor());
         assertEquals(book.getPublisher(), cartItemDto.getPublisher());
         assertEquals(book.getGenres(), cartItemDto.getGenres());
         assertEquals(book.getYear(), cartItemDto.getYear());
