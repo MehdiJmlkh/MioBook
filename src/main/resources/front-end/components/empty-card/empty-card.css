@@ -3,6 +3,7 @@
   padding: 3rem;
   border-radius: var(--border-radius);
   border: 0;
+  margin: 5rem;
 }
 
 .empty-card__heading {

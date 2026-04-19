@@ -1,0 +1,28 @@
+
+.grid {
+  display: grid;
+}
+
+.grid--1x2 {
+  grid-template-columns: 1fr auto;
+}
+
+.card-credit {
+  margin-bottom: 0;
+}
+
+.card-account {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+@media (max-width: 800px) {
+  .grid--1x2 {
+    grid-template-columns: 1fr;
+  }
+
+  .card-account {
+    order: -1;
+    margin-left: 5rem;
+  }
+}

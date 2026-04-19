@@ -18,24 +18,35 @@ html {
 }
 
 body {
-  margin: 30px;
+  /* margin: 30px; */
   background: #f7f9fb;
+  padding-bottom: 5rem;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid--1x2 {
+  grid-template-columns: 1fr auto;
+}
+
+.card-credit {
+  margin-bottom: 0;
 }
 
 .card-account {
-  font-size: 1.5rem;
-}
-.card-account i {
-  margin-right: 1rem;
+  margin-bottom: 0;
+  margin-left: 0;
 }
 
-.card-account__username {
-  margin-bottom: 1rem;
-}
+@media (max-width: 800px) {
+  .grid--1x2 {
+    grid-template-columns: 1fr;
+  }
 
-.card-account__logout {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin: 1rem 0 0;
-  padding: 0.5rem 2rem;
+  .card-account {
+    order: -1;
+    margin-left: 5rem;
+  }
 }
