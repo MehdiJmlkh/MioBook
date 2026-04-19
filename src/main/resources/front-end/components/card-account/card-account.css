@@ -1,0 +1,17 @@
+.card-account {
+  font-size: 1.5rem;
+}
+.card-account i {
+  margin-right: 1rem;
+}
+
+.card-account__username {
+  margin-bottom: 1rem;
+}
+
+.card-account__logout {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem 0 0;
+  padding: 0.5rem 2rem;
+}
