@@ -26,19 +26,61 @@
     <link rel="stylesheet" href="components/empty-card/empty-card.css" />
     <link rel="stylesheet" href="components/card-account/card-account.css" />
     <link rel="stylesheet" href="components/card-credit/card-credit.css" />
+    <link rel="stylesheet" href="components/amount/amount.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <span class="amount">
-      <button class="amount__btn minus--gray">
-        <i class="bi bi-dash-square-fill"></i>
-      </button>
+    <table class="cart-table">
+      <tr class="cart-table__header">
+        <th>Image</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Amount</th>
+      </tr>
 
-      <span class="amount__number">1</span>
+      <tr class="cart-table__row">
+        <td>
+          <img class="cart-product__image" src="images/book.png" alt="" />
+        </td>
+        <td>The Design of Books</td>
+        <td>Debbie Berne</td>
+        <td>$ 18.00</td>
+        <td>
+          <span class="amount">
+            <button class="amount__btn minus--gray">
+              <i class="bi bi-dash-square-fill"></i>
+            </button>
 
-      <button class="amount__btn plus--accent">
-        <i class="bi bi-plus-square-fill"></i>
-      </button>
-    </span>
+            <span class="amount__number">1</span>
+
+            <button class="amount__btn plus--accent">
+              <i class="bi bi-plus-square-fill"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+      <tr class="cart-table__row">
+        <td>
+          <img class="cart-product__image" src="images/book.png" alt="" />
+        </td>
+        <td>The Design of Books</td>
+        <td>Debbie Berne</td>
+        <td>$ 18.00</td>
+        <td>
+          <span class="amount">
+            <button class="amount__btn minus--gray">
+              <i class="bi bi-dash-square-fill"></i>
+            </button>
+
+            <span class="amount__number">1</span>
+
+            <button class="amount__btn plus--accent">
+              <i class="bi bi-plus-square-fill"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
