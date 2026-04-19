@@ -18,7 +18,8 @@
 }
 
 .btn:hover,
-.btn:focus {
+.btn:focus,
+.btn-primary.btn:active {
   background-color: #12352f;
 }
 
