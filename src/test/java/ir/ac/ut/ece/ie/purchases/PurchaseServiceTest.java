@@ -110,4 +110,65 @@ public class PurchaseServiceTest {
         assertEquals(15, purchaseItemDto.getPrice());
         assertEquals(7, purchaseItemDto.getFinalPrice());
     }
+
+    @Test
+    void getPurchasedBooks_userNotFound_throwsException() {
+        assertThrows(UserNotFoundException.class, () -> purchaseService.getPurchasedBooks("username"));
+    }
+
+    @Test
+    void getPurchasedBooks_notCustomerUser_throwsException() {
+        var user = new User();
+        user.setRole(Role.ADMIN);
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotCustomerException.class, () -> purchaseService.getPurchasedBooks("username"));
+    }
+
+    @Test
+    void getPurchasedBooks_validInput_returnsPurchasedBooksHistory() {
+        var user = new User();
+        user.setUsername("username");
+        user.setRole(Role.CUSTOMER);
+
+        var author = new Author();
+        author.setName("name");
+
+        var book = new Book();
+        book.setTitle("title");
+        book.setAuthor(author);
+        book.setPrice(15);
+
+        var purchaseItem = PurchaseItem.builder()
+                .book(book)
+                .isBorrowed(true)
+                .borrowDays(5)
+                .price(7)
+                .date(LocalDateTime.now())
+                .build();
+
+        var purchase = new Purchase();
+        purchase.setTotalCost(100);
+        purchase.setUser(user);
+        purchase.setDate(LocalDateTime.now());
+        purchase.getItems().add(purchaseItem);
+
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
+
+        var purchasedBooksHistory= purchaseService.getPurchasedBooks("username");
+
+        assertEquals(user.getUsername(), purchasedBooksHistory.getUsername());
+        assertEquals(1, purchasedBooksHistory.getBooks().size());
+
+        var purchasedBookDto = purchasedBooksHistory.getBooks().get(0);
+
+        assertEquals(book.getTitle(), purchasedBookDto.getTitle());
+        assertEquals(author.getName(), purchasedBookDto.getAuthor());
+        assertEquals(book.getPublisher(), purchasedBookDto.getPublisher());
+        assertEquals(book.getGenres(), purchasedBookDto.getGenres());
+        assertEquals(book.getYear(), purchasedBookDto.getYear());
+        assertEquals(purchaseItem.getPrice(), purchasedBookDto.getPrice());
+        assertEquals(purchaseItem.getIsBorrowed(), purchasedBookDto.getIsBorrowed());
+    }
 }
