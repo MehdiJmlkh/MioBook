@@ -23,30 +23,25 @@ body {
   padding-bottom: 5rem;
 }
 
-.grid {
-  display: grid;
+.amount {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.grid--1x2 {
-  grid-template-columns: 1fr auto;
+.amount__btn {
+  background: none;
+  border: none;
 }
 
-.card-credit {
-  margin-bottom: 0;
+.amount__btn:active {
+  transform: scale(0.9);
 }
 
-.card-account {
-  margin-bottom: 0;
-  margin-left: 0;
+.minus--gray i {
+  color: var(--color-secondary);
 }
 
-@media (max-width: 800px) {
-  .grid--1x2 {
-    grid-template-columns: 1fr;
-  }
-
-  .card-account {
-    order: -1;
-    margin-left: 5rem;
-  }
+.plus--accent i {
+  color: var(--color-accent);
 }

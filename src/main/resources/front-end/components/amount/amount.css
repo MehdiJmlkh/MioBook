@@ -1,0 +1,22 @@
+.amount {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amount__btn {
+  background: none;
+  border: none;
+}
+
+.amount__btn:active {
+  transform: scale(0.9);
+}
+
+.minus--gray i {
+  color: var(--color-secondary);
+}
+
+.plus--accent i {
+  color: var(--color-accent);
+}
