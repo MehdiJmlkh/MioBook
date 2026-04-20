@@ -1,11 +1,14 @@
 package ir.ac.ut.ece.ie.reviews;
 
 import ir.ac.ut.ece.ie.books.Book;
+import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.carts.CartItem;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.PurchaseItem;
+import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
@@ -21,8 +24,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class ReviewServiceTest {
@@ -32,6 +34,8 @@ public class ReviewServiceTest {
     private BookRepository bookRepository;
     @MockitoBean
     private ReviewRepository reviewRepository;
+    @MockitoBean
+    private PurchaseRepository purchaseRepository;
     @Autowired
     private ReviewService reviewService;
 
@@ -59,6 +63,55 @@ public class ReviewServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(BookNotFoundException.class, () -> reviewService.addReview(request));
+    }
+
+    @Test
+    void addReview_bookNotBought_throwsException() {
+        var request = new AddReviewRequest();
+        var user = TestDataFactory.sampleCustomerUser();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+
+        assertThrows(BookNotInStockException.class, () -> reviewService.addReview(request));
+    }
+
+    @Test
+    void addReview_borrowedBookHasExpired_throwsException() {
+        var request = new AddReviewRequest();
+        var user = TestDataFactory.sampleCustomerUser();
+        var book = new Book();
+
+        var purchaseItem = mock(PurchaseItem.class);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
+        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
+        when(purchaseItem.hasExpired()).thenReturn(true);
+
+        assertThrows(BookNotInStockException.class, () -> reviewService.addReview(request));
+    }
+
+    @Test
+    void addReview_reviewedBefore_removesPreviousReview() {
+        var request = new AddReviewRequest();
+        var user = TestDataFactory.sampleCustomerUser();
+        request.setUsername(user.getUsername());
+
+        var book = new Book();
+
+        var purchaseItem = mock(PurchaseItem.class);
+        var previousReview = new Review();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
+        when(purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())).thenReturn(Optional.of(purchaseItem));
+        when(purchaseItem.hasExpired()).thenReturn(false);
+        when(reviewRepository.findByUserAndBook(user, book)).thenReturn(Optional.of(previousReview));
+
+        reviewService.addReview(request);
+
+        verify(reviewRepository).deleteReview(previousReview);
     }
 
     @Test
