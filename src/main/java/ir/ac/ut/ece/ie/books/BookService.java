@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.lang.reflect.Parameter;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @AllArgsConstructor
@@ -64,6 +65,7 @@ public class BookService {
 
         var book = bookMapper.toBook(request);
         book.setAuthor(author);
+        book.setReviews(new LinkedHashSet<>());
 
         bookRepository.addBook(book);
         return book;
