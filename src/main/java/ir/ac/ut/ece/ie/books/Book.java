@@ -37,6 +37,12 @@ public class Book {
     }
 
     public boolean publishedInRange(Integer from, Integer to) {
+        if (from == null) {
+            return year <= to;
+        }
+        if (to == null) {
+            return from <= year;
+        }
         return (from <= year) && (year <= to);
     }
 }

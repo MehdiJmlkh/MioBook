@@ -19,27 +19,9 @@ public class BookController {
         return bookService.getBook(title);
     }
 
-    @GetMapping("/search/title/{title}")
-    public List<BookDto> searchBooksByTitle(@PathVariable("title") String title) {
-        return bookService.getBooksByTitle(title);
-    }
-
-    @GetMapping("/search/author/{author}")
-    public List<BookDto> searchBooksByAuthor(@PathVariable("author") String author) {
-        return bookService.getBooksByAuthor(author);
-    }
-
-    @GetMapping("search/genre/{genre}")
-    public List<BookDto> searchBooksByGenre(@PathVariable("genre") String genre) {
-        return bookService.getBooksByGenre(genre);
-    }
-
-    @GetMapping("search/year")
-    public List<BookDto> searchBooksByYear(
-            @RequestParam(value = "from") Integer from,
-            @RequestParam(value = "to") Integer to
-    ) {
-        return bookService.getBooksByYear(from, to);
+    @GetMapping("/search")
+    public List<BookDto> searchBook(SearchQuery query) {
+        return bookService.getBooks(query);
     }
 
     @PostMapping("/{title}/content")

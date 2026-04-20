@@ -19,6 +19,21 @@ public class BookRepository {
     }
 
 
+    public List<Book> findByQuery(SearchQuery query) {
+        String title = query.getTitle();
+        String author = query.getAuthor();
+        String genre = query.getGenre();
+        Integer from = query.getFrom();
+        Integer to = query.getTo();
+
+        return books.stream()
+                .filter(book -> title == null || book.getTitle().contains(title))
+                .filter(book -> author == null || book.getAuthor().getName().contains(author))
+                .filter(book -> genre == null || book.getGenres().contains(genre))
+                .filter(book -> (from == null && to == null) || book.publishedInRange(from, to))
+                .toList();
+    }
+
     public List<Book> findByTitleLikes(String title) {
         return books.stream()
                 .filter(book -> book.getTitle().contains(title))

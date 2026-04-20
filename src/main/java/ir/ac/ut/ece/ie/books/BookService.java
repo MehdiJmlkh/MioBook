@@ -71,30 +71,15 @@ public class BookService {
         return book;
     }
 
-    public List<BookDto> getBooksByTitle(String title) {
-        return bookRepository.findByTitleLikes(title).stream()
-                .map(bookMapper::toDto)
-                .toList();
-    }
+    public List<BookDto> getBooks(SearchQuery query) {
+        var from = query.getFrom();
+        var to = query.getTo();
 
-    public List<BookDto> getBooksByAuthor(String author) {
-        return bookRepository.findByAuthorLikes(author).stream()
-                .map(bookMapper::toDto)
-                .toList();
-    }
-
-    public List<BookDto> getBooksByGenre(String genre) {
-        return bookRepository.findByGenre(genre).stream()
-                .map(bookMapper::toDto)
-                .toList();
-    }
-
-    public List<BookDto> getBooksByYear(Integer from, Integer to) {
-        if (from >= to) {
+        if (from != null && to != null && from >= to) {
             throw new InvalidYearRangeException();
         }
 
-        return bookRepository.findByYear(from, to).stream()
+        return bookRepository.findByQuery(query).stream()
                 .map(bookMapper::toDto)
                 .toList();
     }
