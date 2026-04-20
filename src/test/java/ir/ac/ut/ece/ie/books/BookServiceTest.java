@@ -206,4 +206,35 @@ public class BookServiceTest {
         assertEquals(title, bookContentDto.getTitle());
         assertEquals(book.getContent(), bookContentDto.getContent());
     }
+
+    @Test
+    void getBooks_invalidYearRange_throwsException() {
+        var query = new SearchQuery();
+        query.setFrom(2001);
+        query.setTo(2000);
+
+        assertThrows(InvalidYearRangeException.class, () -> bookService.getBooks(query));
+    }
+
+    @Test
+    void getBooks_validInput_returnsBooksDto() {
+        var query = new SearchQuery();
+        var book = TestDataFactory.sampleBook();
+
+        when(bookRepository.findByQuery(eq(query))).thenReturn(List.of(book));
+
+        var bookDtoList = bookService.getBooks(query);
+
+        assertEquals(1, bookDtoList.size());
+
+        var bookDto = bookDtoList.get(0);
+        assertEquals(book.getTitle(), bookDto.getTitle());
+        assertEquals(book.getAuthor().getName(), bookDto.getAuthor());
+        assertEquals(book.getPublisher(), bookDto.getPublisher());
+        assertEquals(book.getGenres(), bookDto.getGenres());
+        assertEquals(book.getYear(), bookDto.getYear());
+        assertEquals(book.getPrice(), bookDto.getPrice());
+        assertEquals(book.getSynopsis(), bookDto.getSynopsis());
+        assertEquals(book.getAverageRating(), bookDto.getAverageRating());
+    }
 }
