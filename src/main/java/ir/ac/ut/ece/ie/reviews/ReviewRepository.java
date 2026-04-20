@@ -21,20 +21,20 @@ public class ReviewRepository {
     }
 
     public List<Review> findByBook(Book book, Integer page, Integer size) {
+        var filteredReviews =  reviews.stream()
+                .filter(review -> review.getBook().equals(book))
+                .toList();
+
         if (page == null || size == null) {
-            return reviews.stream()
-                    .filter(review -> review.getBook().equals(book))
-                    .toList();
+            return filteredReviews;
         }
 
         int from = page * size;
-        int to = Math.min(from + size, reviews.size());
+        int to = Math.min(from + size, filteredReviews.size());
 
-        return reviews.stream()
-                .toList().subList(from, to).stream()
-                .filter(review -> review.getBook().equals(book))
-                .toList();
+        return filteredReviews.subList(from, to);
     }
+
     public void addReview(Review review) {
         reviews.add(review);
     }
