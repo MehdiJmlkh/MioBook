@@ -1,19 +1,14 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.authors.Author;
-import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
-import ir.ac.ut.ece.ie.users.Role;
-import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,32 +56,13 @@ public class PurchaseServiceTest {
     void getAllPurchases_validInput_returnsPurchaseHistoryDto() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        var author = new Author();
-        author.setName("name");
-
-        var book = new Book();
-        book.setTitle("title");
-        book.setAuthor(author);
-        book.setPrice(15);
-
-        var purchaseItem = PurchaseItem.builder()
-                .book(book)
-                .isBorrowed(true)
-                .borrowDays(5)
-                .price(7)
-                .date(LocalDateTime.now())
-                .build();
-
-        var purchase = new Purchase();
-        purchase.setTotalCost(100);
-        purchase.setUser(user);
-        purchase.setDate(LocalDateTime.now());
-        purchase.getItems().add(purchaseItem);
+        var purchase = TestDataFactory.samplePurchaseWithOneBorrowItem(user);
+        var book = purchase.getItems().stream().findFirst().orElseThrow().getBook();
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
 
-        var purchaseHistoryDto = purchaseService.getAllPurchases("username");
+        var purchaseHistoryDto = purchaseService.getAllPurchases(user.getUsername());
 
         assertEquals(user.getUsername(), purchaseHistoryDto.getUsername());
         assertEquals(1, purchaseHistoryDto.getPurchaseHistory().size());
@@ -98,13 +74,13 @@ public class PurchaseServiceTest {
 
         var purchaseItemDto = purchaseDto.getItems().get(0);
         assertEquals(book.getTitle(), purchaseItemDto.getTitle());
-        assertEquals(author.getName(), purchaseItemDto.getAuthor());
+        assertEquals(book.getAuthor().getName(), purchaseItemDto.getAuthor());
         assertEquals(book.getPublisher(), purchaseItemDto.getPublisher());
         assertEquals(book.getGenres(), purchaseItemDto.getGenres());
         assertEquals(book.getYear(), purchaseItemDto.getYear());
-        assertEquals(purchaseItem.getIsBorrowed(), purchaseItemDto.getIsBorrowed());
-        assertEquals(15, purchaseItemDto.getPrice());
-        assertEquals(7, purchaseItemDto.getFinalPrice());
+        assertEquals(true, purchaseItemDto.getIsBorrowed());
+        assertEquals(book.getPrice(), purchaseItemDto.getPrice());
+        assertEquals(purchase.getTotalCost(), purchaseItemDto.getFinalPrice());
     }
 
     @Test
@@ -124,32 +100,14 @@ public class PurchaseServiceTest {
     void getPurchasedBooks_validInput_returnsPurchasedBooksHistory() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        var author = new Author();
-        author.setName("name");
-
-        var book = new Book();
-        book.setTitle("title");
-        book.setAuthor(author);
-        book.setPrice(15);
-
-        var purchaseItem = PurchaseItem.builder()
-                .book(book)
-                .isBorrowed(true)
-                .borrowDays(5)
-                .price(7)
-                .date(LocalDateTime.now())
-                .build();
-
-        var purchase = new Purchase();
-        purchase.setTotalCost(100);
-        purchase.setUser(user);
-        purchase.setDate(LocalDateTime.now());
-        purchase.getItems().add(purchaseItem);
+        var purchase = TestDataFactory.samplePurchaseWithOneBorrowItem(user);
+        var purchaseItem = purchase.getItems().stream().findFirst().orElseThrow();
+        var book = purchaseItem.getBook();
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
 
-        var purchasedBooksHistory= purchaseService.getPurchasedBooks("username");
+        var purchasedBooksHistory= purchaseService.getPurchasedBooks(user.getUsername());
 
         assertEquals(user.getUsername(), purchasedBooksHistory.getUsername());
         assertEquals(1, purchasedBooksHistory.getBooks().size());
@@ -157,11 +115,11 @@ public class PurchaseServiceTest {
         var purchasedBookDto = purchasedBooksHistory.getBooks().get(0);
 
         assertEquals(book.getTitle(), purchasedBookDto.getTitle());
-        assertEquals(author.getName(), purchasedBookDto.getAuthor());
+        assertEquals(book.getAuthor().getName(), purchasedBookDto.getAuthor());
         assertEquals(book.getPublisher(), purchasedBookDto.getPublisher());
         assertEquals(book.getGenres(), purchasedBookDto.getGenres());
         assertEquals(book.getYear(), purchasedBookDto.getYear());
         assertEquals(purchaseItem.getPrice(), purchasedBookDto.getPrice());
-        assertEquals(purchaseItem.getIsBorrowed(), purchasedBookDto.getIsBorrowed());
+        assertEquals(true, purchasedBookDto.getIsBorrowed());
     }
 }
