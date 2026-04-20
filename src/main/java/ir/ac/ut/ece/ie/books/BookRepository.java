@@ -19,19 +19,28 @@ public class BookRepository {
     }
 
 
-    public List<Book> findByQuery(SearchQuery query) {
+    public List<Book> findByQuery(SearchQuery query, Integer page, Integer size) {
         String title = query.getTitle();
         String author = query.getAuthor();
         String genre = query.getGenre();
         Integer from = query.getFrom();
         Integer to = query.getTo();
 
-        return books.stream()
+        var filteredBooks = books.stream()
                 .filter(book -> title == null || book.getTitle().contains(title))
                 .filter(book -> author == null || book.getAuthor().getName().contains(author))
                 .filter(book -> genre == null || book.getGenres().contains(genre))
                 .filter(book -> (from == null && to == null) || book.publishedInRange(from, to))
                 .toList();
+
+        if (page == null || size == null) {
+            return filteredBooks;
+        }
+
+        int fromPage = page * size;
+        int toPage = Math.min(fromPage + size, filteredBooks.size());
+
+        return filteredBooks.subList(fromPage, toPage);
     }
 
     public List<Book> findByTitleLikes(String title) {

@@ -20,8 +20,12 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public List<BookDto> searchBook(SearchQuery query) {
-        return bookService.getBooks(query);
+    public List<BookDto> searchBook(
+            SearchQuery query,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "size", required = false) Integer size
+    ) {
+        return bookService.getBooks(query, page, size);
     }
 
     @PostMapping("/{title}/content")
