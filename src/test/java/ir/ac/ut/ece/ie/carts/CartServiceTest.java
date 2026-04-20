@@ -378,28 +378,11 @@ public class CartServiceTest {
         assertEquals(0, cartDto.getTotalCost());
     }
 
-    Book getDummyBook() {
-        var author = new Author();
-        author.setName("author's name");
-
-        return Book.builder()
-                .title("title")
-                .author(author)
-                .publisher("publisher")
-                .year(2000)
-                .genres(Set.of("genre"))
-                .price(15)
-                .synopsis("synopsis")
-                .content("content")
-                .reviews(Set.of())
-                .build();
-    }
-
     @Test
     void getCart_buyCartItem_returnsCartDto() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        var book = getDummyBook();
+        var book = TestDataFactory.sampleBook();
         var cartItem = CartItem.BuyCartItem(book);
 
         var cart = new Cart();
@@ -430,7 +413,7 @@ public class CartServiceTest {
     void getCart_borrowCartItem_returnsCartDto() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        var book = getDummyBook();
+        var book = TestDataFactory.sampleBook();
 
         var cartItem = CartItem.BorrowCartItem(book, 5);
 

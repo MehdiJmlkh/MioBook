@@ -8,6 +8,7 @@ import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class TestDataFactory {
     public static User sampleAdminUser() {
@@ -48,5 +49,22 @@ public class TestDataFactory {
         purchase.getItems().add(purchaseItem);
 
         return purchase;
+    }
+
+    public static Book sampleBook() {
+        var author = new Author();
+        author.setName("author's name");
+
+        return Book.builder()
+                .title("title")
+                .author(author)
+                .publisher("publisher")
+                .year(2000)
+                .genres(Set.of("genre"))
+                .price(15)
+                .synopsis("synopsis")
+                .content("content")
+                .reviews(Set.of())
+                .build();
     }
 }
