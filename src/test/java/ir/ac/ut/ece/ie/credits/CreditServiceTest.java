@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.credits;
 
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -34,8 +35,7 @@ public class CreditServiceTest {
     @Test
     void addCredit_notCustomerUser_throwsException() {
         var request = new AddCreditRequest();
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         assertThrows(NotCustomerException.class, () -> creditService.addCredit(request));

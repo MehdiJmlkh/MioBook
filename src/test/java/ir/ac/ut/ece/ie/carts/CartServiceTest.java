@@ -9,6 +9,7 @@ import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -61,8 +62,7 @@ public class CartServiceTest {
     void addItemToCart_notCustomerUser_throwsException() {
         var request = new AddCartRequest();
 
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -74,8 +74,7 @@ public class CartServiceTest {
     void addItemToCart_cartIsFull_throwsException() {
         var request = new AddCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         var cart = new Cart();
         IntStream.range(0, 10)
@@ -98,8 +97,7 @@ public class CartServiceTest {
         var book = new Book();
         book.setPrice(10);
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
@@ -132,8 +130,7 @@ public class CartServiceTest {
     void removeItemFromCart_notCustomerUser_throwsException() {
         var request = new RemoveCartRequest();
 
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -145,8 +142,7 @@ public class CartServiceTest {
     void removeItemFromCart_bookNotInCart_throwsException() {
         var request = new RemoveCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -159,8 +155,7 @@ public class CartServiceTest {
     void removeItemFromCart_cartNotExists_throwsException() {
         var request = new RemoveCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -173,8 +168,7 @@ public class CartServiceTest {
     void removeItemFromCart_validInput_removesCartItem() {
         var request = new RemoveCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         var book = new Book();
 
@@ -204,8 +198,8 @@ public class CartServiceTest {
     void purchaseCart_notCustomerUser_throwsException() {
         var request = new PurchaseCartRequest();
 
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
+
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotCustomerException.class, () -> cartService.purchaseCart(request));
@@ -215,8 +209,7 @@ public class CartServiceTest {
     void purchaseCart_cartNotExists_throwsException() {
         var request = new PurchaseCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
@@ -228,8 +221,7 @@ public class CartServiceTest {
     void purchaseCart_emptyCart_throwsException() {
         var request = new PurchaseCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
@@ -326,8 +318,7 @@ public class CartServiceTest {
     void addBorrowedBookToCart_notCustomerUser_throwsException() {
         var request = new BorrowBookRequest();
 
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -346,8 +337,7 @@ public class CartServiceTest {
         book.setPrice(100);
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         cartService.addBorrowedBookToCart(request);
@@ -369,8 +359,7 @@ public class CartServiceTest {
 
     @Test
     void getCart_notCustomerUser_throwsException() {
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -379,8 +368,7 @@ public class CartServiceTest {
 
     @Test
     void getCart_emptyCart_returnsEmptyCartDto() {
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -409,9 +397,7 @@ public class CartServiceTest {
 
     @Test
     void getCart_buyCartItem_returnsCartDto() {
-        var user = new User();
-        user.setUsername("username");
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         var book = getDummyBook();
         var cartItem = CartItem.BuyCartItem(book);
@@ -442,9 +428,7 @@ public class CartServiceTest {
 
     @Test
     void getCart_borrowCartItem_returnsCartDto() {
-        var user = new User();
-        user.setUsername("username");
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         var book = getDummyBook();
 

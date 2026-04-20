@@ -10,6 +10,7 @@ import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.reviews.Review;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -68,8 +69,8 @@ public class BookServiceTest {
         var request = new AddBookRequest();
         when(authorRepository.findByName(any())).thenReturn(Optional.of(new Author()));
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
+
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotAdminException.class, () -> bookService.addBook(request));
@@ -92,8 +93,8 @@ public class BookServiceTest {
         var author = new Author();
         when(authorRepository.findByName(request.getAuthor())).thenReturn(Optional.of(author));
 
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
+
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         bookService.addBook(request);

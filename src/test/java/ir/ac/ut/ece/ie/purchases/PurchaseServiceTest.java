@@ -4,6 +4,7 @@ import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -19,7 +20,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -38,8 +38,7 @@ public class PurchaseServiceTest {
 
     @Test
     void getAllPurchases_notCustomerUser_throwsException() {
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -48,8 +47,7 @@ public class PurchaseServiceTest {
 
     @Test
     void getAllPurchases_emptyPurchaseHistory_returnsEmptyPurchaseHistoryDto() {
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(any())).thenReturn(List.of());
@@ -61,9 +59,7 @@ public class PurchaseServiceTest {
 
     @Test
     void getAllPurchases_validInput_returnsPurchaseHistoryDto() {
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
-        user.setUsername("username");
+        var user = TestDataFactory.sampleCustomerUser();
 
         var author = new Author();
         author.setName("name");
@@ -118,8 +114,7 @@ public class PurchaseServiceTest {
 
     @Test
     void getPurchasedBooks_notCustomerUser_throwsException() {
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotCustomerException.class, () -> purchaseService.getPurchasedBooks("username"));
@@ -127,9 +122,7 @@ public class PurchaseServiceTest {
 
     @Test
     void getPurchasedBooks_validInput_returnsPurchasedBooksHistory() {
-        var user = new User();
-        user.setUsername("username");
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
 
         var author = new Author();
         author.setName("name");

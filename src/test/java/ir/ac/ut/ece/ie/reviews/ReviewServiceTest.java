@@ -6,6 +6,7 @@ import ir.ac.ut.ece.ie.carts.CartItem;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -43,8 +44,7 @@ public class ReviewServiceTest {
     @Test
     void addReview_notCustomerUser_throwsException() {
         var request = new AddReviewRequest();
-        var user = new User();
-        user.setRole(Role.ADMIN);
+        var user = TestDataFactory.sampleAdminUser();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
@@ -54,8 +54,8 @@ public class ReviewServiceTest {
     @Test
     void addReview_bookNotFound_throwsException() {
         var request = new AddReviewRequest();
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
+
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(BookNotFoundException.class, () -> reviewService.addReview(request));
@@ -69,8 +69,8 @@ public class ReviewServiceTest {
                 .rate(4)
                 .comment("comment").build();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = TestDataFactory.sampleCustomerUser();
+
         var book = new Book();
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
