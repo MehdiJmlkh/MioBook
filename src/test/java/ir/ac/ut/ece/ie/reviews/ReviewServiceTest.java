@@ -105,7 +105,7 @@ public class ReviewServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
-        when(purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())).thenReturn(Optional.of(purchaseItem));
+        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(false);
         when(reviewRepository.findByUserAndBook(user, book)).thenReturn(Optional.of(previousReview));
 
@@ -115,19 +115,25 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void addReview_validInput_addsReview() {
+    void addReview_firstReview_addsReview() {
+        var user = TestDataFactory.sampleCustomerUser();
+        var book = new Book();
+        book.setTitle("title");
+
         var request = AddReviewRequest.builder()
-                .username("username")
-                .title("title")
+                .username(user.getUsername())
+                .title(book.getTitle())
                 .rate(4)
                 .comment("comment").build();
 
-        var user = TestDataFactory.sampleCustomerUser();
 
-        var book = new Book();
+        var purchaseItem = mock(PurchaseItem.class);
+
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
+        when(purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())).thenReturn(Optional.of(purchaseItem));
+        when(purchaseItem.hasExpired()).thenReturn(false);
 
         var before = LocalDate.now();
         reviewService.addReview(request);
