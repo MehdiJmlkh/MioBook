@@ -1,9 +1,11 @@
 package ir.ac.ut.ece.ie.reviews;
 
+import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ public class ReviewService {
     private final UserRepository userRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
+    private final PurchaseRepository purchaseRepository;
     private final ReviewMapper reviewMapper;
 
     public ReviewListDto getAllReviews(String title) {
@@ -35,15 +38,28 @@ public class ReviewService {
     }
 
     public void addReview(AddReviewRequest request) {
-        var user = userRepository.findByUsername(request.getUsername())
+        var username = request.getUsername();
+        var bookTitle = request.getTitle();
+
+        var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
         if (user.getRole() != Role.CUSTOMER) {
             throw new NotCustomerException();
         }
 
-        var book = bookRepository.findByTitle(request.getTitle())
+        var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);
+
+        var purchase = purchaseRepository.findByUsernameAndTitle(username, bookTitle)
+                .orElseThrow(BookNotInStockException::new);
+
+        if (purchase.hasExpired()) {
+            throw new BookNotInStockException();
+        }
+
+        reviewRepository.findByUserAndBook(user, book)
+                .ifPresent(reviewRepository::deleteReview);
 
         var review = Review.builder()
                 .user(user)
