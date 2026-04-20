@@ -22,10 +22,11 @@ public class ReviewService {
     private final PurchaseRepository purchaseRepository;
     private final ReviewMapper reviewMapper;
 
-    public ReviewListDto getAllReviews(String title) {
+    public ReviewListDto getAllReviews(String title, Integer page, Integer size) {
         var book = bookRepository.findByTitle(title)
                 .orElseThrow(BookNotFoundException::new);
-        var reviews = book.getReviews().stream()
+
+        var reviews = reviewRepository.findByBook(book, page, size).stream()
                 .map(reviewMapper::toDto)
                 .toList();
 

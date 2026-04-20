@@ -16,8 +16,11 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/{title}")
-    public ReviewListDto getAllReviews(@PathVariable("title") String title) {
-        return reviewService.getAllReviews(title);
+    public ReviewListDto getAllReviews(
+            @PathVariable("title") String title,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "size", required = false) Integer size) {
+        return reviewService.getAllReviews(title, page , size);
     }
 
     @PostMapping("/add")

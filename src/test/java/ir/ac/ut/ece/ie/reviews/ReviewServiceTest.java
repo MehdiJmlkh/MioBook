@@ -20,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -156,11 +157,11 @@ public class ReviewServiceTest {
 
     @Test
     void getAllReviews_bookNotFound_throwsException() {
-        assertThrows(BookNotFoundException.class, () -> reviewService.getAllReviews("title"));
+        assertThrows(BookNotFoundException.class, () -> reviewService.getAllReviews("title", null, null));
     }
 
     @Test
-    void getAllReviews_validInput_returnsReviewListDto() {
+    void getAllReviews_withoutPagination_returnsReviewListDto() {
         var book = new Book();
 
         var user1 = User.builder().username("user1").build();
@@ -185,12 +186,14 @@ public class ReviewServiceTest {
         book.getReviews().add(review2);
 
         when(bookRepository.findByTitle(book.getTitle())).thenReturn(Optional.of(book));
+        when(reviewRepository.findByBook(any(), any(), any())).thenReturn(List.of(review1, review2));
 
-        var reviewListDto = reviewService.getAllReviews(book.getTitle());
+        var reviewListDto = reviewService.getAllReviews(book.getTitle(), null, null);
 
         assertEquals(book.getTitle(), reviewListDto.getTitle());
         assertEquals(3.5, reviewListDto.getAverageRating());
 
+        assertEquals(2, reviewListDto.getReviews().size());
         var reviewDto1 = reviewListDto.getReviews().get(0);
         assertEquals(review1.getComment(), reviewDto1.getComment());
         assertEquals(review1.getRate(), reviewDto1.getRate());

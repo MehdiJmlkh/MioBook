@@ -5,6 +5,7 @@ import ir.ac.ut.ece.ie.users.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -19,6 +20,21 @@ public class ReviewRepository {
                 .findFirst();
     }
 
+    public List<Review> findByBook(Book book, Integer page, Integer size) {
+        if (page == null || size == null) {
+            return reviews.stream()
+                    .filter(review -> review.getBook().equals(book))
+                    .toList();
+        }
+
+        int from = page * size;
+        int to = Math.min(from + size, reviews.size());
+
+        return reviews.stream()
+                .toList().subList(from, to).stream()
+                .filter(review -> review.getBook().equals(book))
+                .toList();
+    }
     public void addReview(Review review) {
         reviews.add(review);
     }
