@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.reviews;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -37,6 +39,8 @@ public class ReviewServiceTest {
     private ReviewRepository reviewRepository;
     @MockitoBean
     private PurchaseRepository purchaseRepository;
+    @MockitoBean
+    private AuthRepository authRepository;
     @Autowired
     private ReviewService reviewService;
 
@@ -62,6 +66,7 @@ public class ReviewServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         assertThrows(BookNotFoundException.class, () -> reviewService.addReview(request));
     }
@@ -72,6 +77,7 @@ public class ReviewServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
 
         assertThrows(BookNotInStockException.class, () -> reviewService.addReview(request));
@@ -86,6 +92,7 @@ public class ReviewServiceTest {
         var purchaseItem = mock(PurchaseItem.class);
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(true);
@@ -105,6 +112,7 @@ public class ReviewServiceTest {
         var previousReview = new Review();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(false);
@@ -132,6 +140,7 @@ public class ReviewServiceTest {
 
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())).thenReturn(Optional.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(false);
