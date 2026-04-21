@@ -23,4 +23,11 @@ public class AuthService {
 
         authRepository.setAuthenticatedUser(user);
     }
+
+    public void logout() {
+        authRepository.getAuthenticatedUser()
+                .orElseThrow(NotLoggedInException::new);
+
+        authRepository.removeAuthenticatedUser();
+    }
 }
