@@ -61,6 +61,16 @@ public class ReviewServiceTest {
     }
 
     @Test
+    void addReview_userNotLoggedIn_throwsException() {
+        var request = new AddReviewRequest();
+        var user = TestDataFactory.sampleCustomerUser();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotLoggedInException.class, () -> reviewService.addReview(request));
+    }
+
+    @Test
     void addReview_bookNotFound_throwsException() {
         var request = new AddReviewRequest();
         var user = TestDataFactory.sampleCustomerUser();
