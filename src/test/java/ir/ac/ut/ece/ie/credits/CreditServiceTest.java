@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.credits;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -22,7 +24,8 @@ import static org.mockito.Mockito.when;
 public class CreditServiceTest {
     @MockitoBean
     private UserRepository userRepository;
-
+    @MockitoBean
+    private AuthRepository authRepository;
     @Autowired
     private CreditService creditService;
 
@@ -52,6 +55,7 @@ public class CreditServiceTest {
         user.setBalance(10);
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         creditService.addCredit(request);
 
