@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.carts;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
@@ -24,6 +26,7 @@ public class CartService {
     private final CartRepository cartRepository;
     private final PurchaseRepository purchaseRepository;
     private final CartMapper cartMapper;
+    private final AuthRepository authRepository;
 
     public CartDto getCart(String username) {
         var user = userRepository.findByUsername(username)
@@ -123,6 +126,10 @@ public class CartService {
 
         if (cart.isEmpty()) {
             throw new EmptyCartException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
         }
 
         if (cart.getTotalPrice() > user.getBalance()) {

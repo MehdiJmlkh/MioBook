@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.carts;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -41,6 +43,8 @@ public class CartServiceTest {
     private BookRepository bookRepository;
     @MockitoBean
     private PurchaseRepository purchaseRepository;
+    @MockitoBean
+    private AuthRepository authRepository;
 
     @Autowired
     private CartService cartService;
@@ -244,6 +248,7 @@ public class CartServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         assertThrows(NotEnoughCreditException.class, () -> cartService.purchaseCart(request));
     }
@@ -266,6 +271,7 @@ public class CartServiceTest {
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         LocalDateTime before = LocalDateTime.now();
         var purchaseSummary = cartService.purchaseCart(request);
