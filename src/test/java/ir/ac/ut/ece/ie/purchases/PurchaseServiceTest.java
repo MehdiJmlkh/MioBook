@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.purchases;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -23,6 +25,8 @@ public class PurchaseServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private AuthRepository authRepository;
     @Autowired
     private PurchaseService purchaseService;
 
@@ -46,6 +50,7 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(any())).thenReturn(List.of());
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         var purchaseHistoryDto = purchaseService.getAllPurchases("username");
 
@@ -61,6 +66,7 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         var purchaseHistoryDto = purchaseService.getAllPurchases(user.getUsername());
 
@@ -106,6 +112,7 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         var purchasedBooksHistory= purchaseService.getPurchasedBooks(user.getUsername());
 

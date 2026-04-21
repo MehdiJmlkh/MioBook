@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.purchases;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.Role;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
     private final UserRepository userRepository;
+    private final AuthRepository authRepository;
     private final PurchaseMapper purchaseMapper;
 
     public PurchaseHistoryDto getAllPurchases(String username) {
@@ -20,6 +23,10 @@ public class PurchaseService {
 
         if (user.getRole() != Role.CUSTOMER) {
             throw new NotCustomerException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
         }
 
         var purchases = purchaseRepository.findByUsername(username);
@@ -40,6 +47,10 @@ public class PurchaseService {
 
         if (user.getRole() != Role.CUSTOMER) {
             throw new NotCustomerException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
         }
 
         var purchases = purchaseRepository.findByUsername(username);
