@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class AuthorService {
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
+    private final AuthRepository authRepository;
     private final AuthorMapper authorMapper;
 
     public Author getAuthor(String name) {
@@ -32,6 +35,10 @@ public class AuthorService {
 
         if (user.getRole() != Role.ADMIN) {
             throw new NotAdminException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
         }
 
         var author = authorMapper.toAuthor(request);

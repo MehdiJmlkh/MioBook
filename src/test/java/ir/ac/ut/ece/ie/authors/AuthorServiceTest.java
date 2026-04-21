@@ -77,6 +77,7 @@ public class AuthorServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         authorService.addAuthor(request);
 
