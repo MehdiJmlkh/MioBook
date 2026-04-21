@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
@@ -26,10 +28,10 @@ import static org.mockito.Mockito.when;
 public class AuthorServiceTest {
     @MockitoBean
     private AuthorRepository authorRepository;
-
     @MockitoBean
     private UserRepository userRepository;
-
+    @MockitoBean
+    private AuthRepository authRepository;
     @Autowired
     private AuthorService authorService;
 
@@ -62,6 +64,17 @@ public class AuthorServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotAdminException.class, () -> authorService.addAuthor(request));
+    }
+
+    @Test
+    void addAuthor_notLoggedInUser_throwsException() {
+        var request = new AddAuthorRequest();
+
+        var user = TestDataFactory.sampleAdminUser();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotLoggedInException.class, () -> authorService.addAuthor(request));
     }
 
     @Test
