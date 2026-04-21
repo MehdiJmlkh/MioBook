@@ -45,6 +45,15 @@ public class CreditServiceTest {
     }
 
     @Test
+    void addCredit_userNotLoggedIn_throwsException() {
+        var request = new AddCreditRequest();
+        var user = TestDataFactory.sampleCustomerUser();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        assertThrows(NotLoggedInException.class, () -> creditService.addCredit(request));
+    }
+
+    @Test
     void addCredit_validInput_addsCredit() {
         var request = new AddCreditRequest();
         request.setUsername("username");
