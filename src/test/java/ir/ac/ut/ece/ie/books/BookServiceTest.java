@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
@@ -40,6 +42,8 @@ public class BookServiceTest {
     private BookRepository bookRepository;
     @MockitoBean
     private PurchaseRepository purchaseRepository;
+    @MockitoBean
+    private AuthRepository authRepository;
     @Autowired
     private BookService bookService;
 
@@ -96,6 +100,7 @@ public class BookServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         bookService.addBook(request);
 
@@ -166,6 +171,7 @@ public class BookServiceTest {
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.empty());
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
     }
@@ -180,6 +186,7 @@ public class BookServiceTest {
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchase));
+        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
     }
@@ -189,6 +196,7 @@ public class BookServiceTest {
         String username = "username";
         String title = "title";
 
+        var user = new User();
         var purchase = new PurchaseItem();
         var book = new Book();
         purchase.setBook(book);
@@ -198,8 +206,9 @@ public class BookServiceTest {
         book.setTitle(title);
 
         when(bookRepository.findByTitle(title)).thenReturn(Optional.of(book));
-        when(userRepository.findByUsername(username)).thenReturn(Optional.of(new User()));
+        when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsernameAndTitle(username, title)).thenReturn(Optional.of(purchase));
+        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         var bookContentDto = bookService.getBookContent(username, title);
 

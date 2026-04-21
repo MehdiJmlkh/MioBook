@@ -1,5 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
+import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
@@ -22,6 +24,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
+    private final AuthRepository authRepository;
     private final PurchaseRepository purchaseRepository;
     private final BookMapper bookMapper;
 
@@ -35,8 +38,12 @@ public class BookService {
         bookRepository.findByTitle(title)
                 .orElseThrow(BookNotFoundException::new);
 
-        userRepository.findByUsername(username)
+        var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
+        }
 
         var purchase =purchaseRepository.findByUsernameAndTitle(username, title)
                 .orElseThrow(BookNotInStockException::new);
@@ -61,6 +68,10 @@ public class BookService {
 
         if (user.getRole() != Role.ADMIN) {
             throw new NotAdminException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
         }
 
         var book = bookMapper.toBook(request);
