@@ -234,6 +234,22 @@ public class CartServiceTest {
     }
 
     @Test
+    void purchaseCart_userNotLoggedIn_throwsException() {
+        var request = new PurchaseCartRequest();
+
+        var user = TestDataFactory.sampleCustomerUser();
+
+        var cart = new Cart();
+        var cartItem = new CartItem();
+        cart.addItem(cartItem);
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+
+        assertThrows(NotLoggedInException.class, () -> cartService.purchaseCart(request));
+    }
+
+    @Test
     void purchaseCart_notEnoughCredit_throwsException() {
         var request = new PurchaseCartRequest();
 
