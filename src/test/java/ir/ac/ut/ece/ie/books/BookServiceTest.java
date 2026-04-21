@@ -33,7 +33,6 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class BookServiceTest {
-
     @MockitoBean
     private UserRepository userRepository;
     @MockitoBean
@@ -78,6 +77,18 @@ public class BookServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotAdminException.class, () -> bookService.addBook(request));
+    }
+
+    @Test
+    void addBook_notLoggedInAdmin_throwsException() {
+        var request = new AddBookRequest();
+        when(authorRepository.findByName(any())).thenReturn(Optional.of(new Author()));
+
+        var user = TestDataFactory.sampleAdminUser();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
+        assertThrows(NotLoggedInException.class, () -> bookService.addBook(request));
     }
 
     @Test
@@ -164,6 +175,13 @@ public class BookServiceTest {
     void getBookContent_userNotFound_throwsException() {
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         assertThrows(UserNotFoundException.class, () -> bookService.getBookContent("username", "title"));
+    }
+
+    @Test
+    void getBookContent_userNotLoggedIn_throwsException() {
+        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
+        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
+        assertThrows(NotLoggedInException.class, () -> bookService.getBookContent("username", "title"));
     }
 
     @Test
