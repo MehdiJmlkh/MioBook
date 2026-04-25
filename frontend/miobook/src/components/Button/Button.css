@@ -13,6 +13,8 @@
   --bs-btn-active-bg: var(--color-primary-active);
   --bs-btn-active-border-color: var(--color-primary-active);
 
+  --bs-btn-focus-shadow-rgb: 22, 66, 60;
+
   --bs-btn-disabled-color: var(--color-text-dark);
   --bs-btn-disabled-bg: var(--color-secondary);
   --bs-btn-disabled-border-color: var(--color-secondary);
