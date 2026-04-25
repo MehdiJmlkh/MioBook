@@ -1,11 +1,9 @@
-import Button from "./components/Button";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div>
-      <Button className="btn-primary" disabled={false}>
-        Sing Up
-      </Button>
+      <Footer></Footer>
     </div>
   );
 }
