@@ -1,9 +1,11 @@
-import "./Input.css"
+import "./Input.css";
 
-const Input = () => {
-  return (
-    <input className="form-control"></input>
-  )
+interface Props {
+  placeholder?: string;
 }
 
-export default Input
+const Input = ({ placeholder }: Props) => {
+  return <input className="form-control" placeholder={placeholder}></input>;
+};
+
+export default Input;
