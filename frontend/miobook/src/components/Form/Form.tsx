@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Form = ({ type, children }: Props) => {
-  const title = type === FormType.SingIn ? "Sing in" : "Sing Up";
+  const title = type === FormType.SingIn ? "Sign in" : "Sign Up";
   return (
     <div className="form">
       <h1 className="form__heading">{title}</h1>
@@ -31,7 +31,7 @@ const Form = ({ type, children }: Props) => {
             ? "Not a member yet? "
             : "Already have an account? "}
         </span>
-        <Link>{type === FormType.SingIn ? "Sing Up" : "Sing in"}</Link>
+        <Link>{type === FormType.SingIn ? "Sign Up" : "Sign in"}</Link>
       </div>
     </div>
   );
