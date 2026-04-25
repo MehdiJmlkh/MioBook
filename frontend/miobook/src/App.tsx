@@ -1,9 +1,9 @@
-import Footer from "./components/Footer";
+import Input from "./components/Input";
 
 function App() {
   return (
     <div>
-      <Footer></Footer>
+      <Input></Input>
     </div>
   );
 }
