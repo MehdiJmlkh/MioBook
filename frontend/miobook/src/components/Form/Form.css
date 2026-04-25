@@ -1,10 +1,11 @@
 .form {
+  width: 100vw;
+  height: 100vh;
   font-size: 1.5rem;
   background: #fff;
   border-radius: 10px;
   text-align: center;
   justify-content: center;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +14,7 @@
 
 .form__heading {
   font-size: 2.5rem;
-  margin: 4rem 0 1.5rem;
+  margin: 0 0 1.5rem;
 }
 
 .form__sub-heading {
@@ -35,6 +36,23 @@
 }
 
 .form__btn {
-    font-size: 2rem;
+  font-size: 2rem;
   margin: 5.5rem 0 2rem;
+}
+
+@media (min-width: 650px) {
+  .form {
+    width: 60rem;
+    height: fit-content;
+    padding: 5.5rem 15rem 5rem;
+  }
+
+  .form__sub-heading {
+    margin-bottom: 3rem;
+  }
+
+  .form__btn {
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
 }
