@@ -1,0 +1,30 @@
+.form {
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.form__heading {
+  font-size: 2rem;
+  margin-top: 4rem 0 1.5rem;
+}
+
+.form__sub-heading {
+  margin: 0 0 7rem;
+}
+
+.form__sub-heading,
+.form__footer {
+  color: var(--color-text-dark);
+}
+
+.form__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.form__btn {
+  margin: 5.5rem 0 2rem;
+}

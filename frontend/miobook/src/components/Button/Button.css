@@ -1,3 +1,7 @@
+.btn {
+  width: 100%;
+}
+
 .btn-primary {
   --bs-btn-bg: var(--color-primary);
   --bs-btn-border-color: var(--color-primary);
