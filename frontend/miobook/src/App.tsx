@@ -1,13 +1,7 @@
-import Form, { FormType } from "./components/Form";
-import Input from "./components/Input";
+import SignInPage from "./pages/SignInPage";
 
 function App() {
-  return (
-    <Form type={FormType.SingIn}>
-      <Input placeholder="Username"></Input>
-      <Input placeholder="Password"></Input>
-    </Form>
-  );
+  return <SignInPage></SignInPage>;
 }
 
 export default App;
