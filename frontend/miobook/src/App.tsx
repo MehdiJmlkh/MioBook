@@ -1,7 +1,13 @@
+import Button from "./components/button/Button";
+
 function App() {
-  return <div>
-    <h1>Hello World</h1>
-  </div>
+  return (
+    <div>
+      <Button className="btn-primary" disabled={false}>
+        Sing Up
+      </Button>
+    </div>
+  );
 }
 
 export default App;

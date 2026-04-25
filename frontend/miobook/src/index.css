@@ -1,3 +1,14 @@
+:root {
+  --color-primary: #16423c;
+  --color-primary-hover: #0f312e;
+  --color-primary-active: #0c2725;
+
+  --color-text-dark: #d3d3d3;
+  --color-secondary: #f2f2f2;
+  --color-secondary-hover: #e6e6e6;
+  --color-secondary-active: #d9d9d9;
+}
+
 body {
-    padding: 20px;
+  padding: 20px;
 }
