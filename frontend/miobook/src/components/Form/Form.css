@@ -35,9 +35,12 @@
   gap: 2.5rem;
 }
 
+.form__btn-container {
+  margin: 5.5rem 0 2rem;
+}
+
 .form__btn {
   font-size: 2rem;
-  margin: 5.5rem 0 2rem;
 }
 
 @media (min-width: 650px) {
@@ -51,8 +54,11 @@
     margin-bottom: 3rem;
   }
 
+  .form__btn-container {
+    margin-top: 0.5rem;
+  }
+
   .form__btn {
     font-size: 1.8rem;
-    margin-top: 0;
   }
 }

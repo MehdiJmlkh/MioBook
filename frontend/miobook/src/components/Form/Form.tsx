@@ -12,9 +12,11 @@ interface Props {
   type: FormType;
   children?: ReactNode;
   onSubmit?: (event: FormEvent) => void;
+  isValid: boolean;
+  error?: string;
 }
 
-const Form = ({ type, children, onSubmit }: Props) => {
+const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
   const title = type === FormType.SingIn ? "Sign in" : "Sign Up";
   return (
     <div className="form">
@@ -23,6 +25,13 @@ const Form = ({ type, children, onSubmit }: Props) => {
 
       <form onSubmit={onSubmit} className="form__body">
         {children}
+
+        <div className="form__btn-container">
+          {error && <p className="text-danger error">{error}</p>}
+          <Button disabled={!isValid} className="btn-primary form__btn">
+            {title}
+          </Button>
+        </div>
       </form>
 
       <div className="form__footer">

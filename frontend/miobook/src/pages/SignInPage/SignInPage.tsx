@@ -46,13 +46,14 @@ const SignInPage = () => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)} type={FormType.SingIn}>
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        type={FormType.SingIn}
+        isValid={isValid}
+        error={error}
+      >
         <Input {...register("username")} placeholder="Username" />
         <PasswordInput {...register("password")} placeholder="Password" />
-        {error && <span className="text-danger">{error}</span>}
-        <Button disabled={!isValid} className="btn-primary form__btn">
-          Sign in
-        </Button>
       </Form>
       <Footer />
     </>
