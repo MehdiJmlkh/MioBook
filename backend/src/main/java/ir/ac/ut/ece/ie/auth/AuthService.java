@@ -13,7 +13,7 @@ public class AuthService {
 
     public void login(LoginRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(UsernameOrPasswordIncorrectException::new);
 
         var loggedInUser = authRepository.getAuthenticatedUser().orElse(null);
 
