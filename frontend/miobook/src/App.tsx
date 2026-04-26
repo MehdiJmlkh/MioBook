@@ -1,7 +1,7 @@
-import PasswordInput from "./components/PasswordInput";
+import SignInPage from "./pages/SignInPage";
 
 function App() {
-  return <PasswordInput placeholder="Password"></PasswordInput>
+  return <SignInPage></SignInPage>
 }
 
 export default App;
