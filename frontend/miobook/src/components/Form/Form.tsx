@@ -23,7 +23,6 @@ const Form = ({ type, children, onSubmit }: Props) => {
 
       <form onSubmit={onSubmit} className="form__body">
         {children}
-        <Button className="btn-primary form__btn">{title}</Button>
       </form>
 
       <div className="form__footer">
