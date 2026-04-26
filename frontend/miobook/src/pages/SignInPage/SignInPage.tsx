@@ -7,6 +7,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./SignInPage.css";
 import Button from "../../components/Button";
+import authService from "../../services/AuthService";
+import { AxiosError } from "axios";
+import { useState } from "react";
 
 const schema = z.object({
   username: z.string().min(1),
@@ -14,6 +17,10 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
+
+interface ErrorResponse {
+  error: string;
+}
 
 const SignInPage = () => {
   const {
@@ -24,13 +31,25 @@ const SignInPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FieldValues) => console.log(data);
+  const [error, setError] = useState("");
+
+  const onSubmit = (data: FieldValues) => {
+    authService
+      .login(data)
+      .then((data) => console.log(data))
+      .catch((err: AxiosError<ErrorResponse>) => {
+        if (err.response?.data.error) {
+          setError(err.response?.data.error);
+        }
+      });
+  };
 
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)} type={FormType.SingIn}>
         <Input {...register("username")} placeholder="Username" />
         <PasswordInput {...register("password")} placeholder="Password" />
+        {error && <span className="text-danger">{error}</span>}
         <Button disabled={!isValid} className="btn-primary form__btn">
           Sign in
         </Button>
