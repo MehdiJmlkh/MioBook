@@ -5,11 +5,10 @@ import PasswordInput from "../../components/PasswordInput";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import "./SignInPage.css";
-import Button from "../../components/Button";
 import authService from "../../services/AuthService";
 import { AxiosError } from "axios";
 import { useState } from "react";
+import "./SignInPage.css";
 
 const schema = z.object({
   username: z.string().min(1),
