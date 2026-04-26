@@ -35,8 +35,12 @@
   gap: 2.5rem;
 }
 
+.form__footer {
+  margin-top: 2rem;
+}
+
 .form__btn-container {
-  margin: 5.5rem 0 2rem;
+  margin: 5.5rem 0 0;
 }
 
 .form__btn {
@@ -45,7 +49,7 @@
 
 @media (min-width: 650px) {
   .form {
-    width: 60rem;
+    width: 70rem;
     height: fit-content;
     padding: 5.5rem 15rem 5rem;
   }

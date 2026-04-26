@@ -1,6 +1,7 @@
 .form-control {
   font-size: inherit;
   border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
 }
 
 .form-control:focus {
