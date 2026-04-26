@@ -9,7 +9,7 @@ interface Props {
 
 const Button = ({ className, children, disabled }: Props) => {
   return (
-    <button className={`btn ${className}`} disabled={disabled}>
+    <button className={`btn ${className}`} disabled={disabled} type="submit">
       {children}
     </button>
   );
