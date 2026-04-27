@@ -1,7 +1,12 @@
-import SignUpPage from "./pages/SignUpPage";
+import BookCard from "./components/BookCard";
+import FiveStars from "./components/FiveStars";
 
 function App() {
-  return <SignUpPage />
+  return (
+    <>
+      <BookCard />
+    </>
+  );
 }
 
 export default App;
