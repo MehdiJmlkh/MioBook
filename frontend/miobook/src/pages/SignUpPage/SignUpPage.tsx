@@ -48,6 +48,12 @@ const SignUpPage = () => {
 
     userService
       .create(data)
+      .then((data) =>
+        setError({
+          username: "",
+          email: "",
+        }),
+      )
       .catch((err: AxiosError<typeof error>) => {
         if (err.response?.data) {
           setError(err.response?.data);
