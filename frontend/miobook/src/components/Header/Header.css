@@ -1,7 +1,26 @@
 .header {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: space-between;
+  column-gap: 20%;
   padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);    
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 7rem;
+}
+
+.header .search-box {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+  }
+  .header .search-box {
+    display: flex;
+  }
+  .home-page__easy-search {
+    display: none;
+  }
 }
