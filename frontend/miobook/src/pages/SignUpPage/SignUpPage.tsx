@@ -5,19 +5,22 @@ import PasswordInput from "../../components/PasswordInput";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import authService from "../../services/AuthService";
 import { AxiosError } from "axios";
 import { useState } from "react";
 import "./SignUpPage.css";
 import RoleInput from "../../components/RoleInput";
 import { Role } from "../../components/RoleInput/RoleInput";
+import userService from "../../services/UserService";
 
 const schema = z.object({
   username: z.string().min(1),
   password: z.string().min(4),
   email: z.string().email().min(1),
-  country: z.string().min(1),
-  city: z.string().min(1),
+  address: z.object({
+    country: z.string().min(1),
+    city: z.string().min(1),
+  }),
+  role: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -38,8 +41,10 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
 
   const onSubmit = (data: FieldValues) => {
-    authService
-      .login(data)
+    console.log(data);
+
+    userService
+      .create(data)
       .then((data) => console.log(data))
       .catch((err: AxiosError<ErrorResponse>) => {
         if (err.response?.data.error) {
@@ -60,13 +65,13 @@ const SignUpPage = () => {
         <PasswordInput {...register("password")} placeholder="Password" />
         <Input {...register("email")} placeholder="Email" />
         <div className="input-container--1x2">
-          <Input {...register("country")} placeholder="Country" />
-          <Input {...register("city")} placeholder="City" />
+          <Input {...register("address.country")} placeholder="Country" />
+          <Input {...register("address.city")} placeholder="City" />
         </div>
         <span className="role__header">I am</span>
         <div className="input-container--1x2">
-          <RoleInput role={Role.Customer} />
-          <RoleInput role={Role.Manager} />
+          <RoleInput userRole={Role.Customer} {...register("role")} />
+          <RoleInput userRole={Role.Manager} {...register("role")} />
         </div>
       </Form>
       <Footer />

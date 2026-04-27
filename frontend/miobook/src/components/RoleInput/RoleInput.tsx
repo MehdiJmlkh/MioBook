@@ -1,36 +1,42 @@
 import "./RoleInput.css";
 import { LuBriefcase } from "react-icons/lu";
-
 import { HiOutlineUserCircle } from "react-icons/hi2";
+import React from "react";
 
 export enum Role {
-  Customer,
-  Manager,
+  Customer = "customer",
+  Manager = "manager",
 }
 
-interface Props {
-  role?: Role;
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  userRole: Role;
 }
 
-const RoleInput = ({ role }: Props) => {
-  return (
-    <label>
-      <input
-        type="radio"
-        name="role"
-        className="d-none"
-        defaultChecked={role === Role.Customer}
-      />
-      <div className="role-option">
-        {role === Role.Customer ? (
-          <HiOutlineUserCircle className="role__icon" />
-        ) : (
-          <LuBriefcase className="role__icon" />
-        )}
-        {role === Role.Customer ? "Custoemr" : "Manager"}
-      </div>
-    </label>
-  );
-};
+const RoleInput = React.forwardRef<HTMLInputElement, Props>(
+  ({ userRole, ...rest }, ref) => {
+    return (
+      <label>
+        <input
+          type="radio"
+          name="role"
+          ref={ref}
+          value={userRole}
+          className="d-none"
+          defaultChecked={role === Role.Customer}
+          {...rest}
+        />
+        <div className="role-option">
+          {userRole === Role.Customer ? (
+            <HiOutlineUserCircle className="role__icon" />
+          ) : (
+            <LuBriefcase className="role__icon" />
+          )}
+
+          {userRole === Role.Customer ? "Customer" : "Manager"}
+        </div>
+      </label>
+    );
+  },
+);
 
 export default RoleInput;
