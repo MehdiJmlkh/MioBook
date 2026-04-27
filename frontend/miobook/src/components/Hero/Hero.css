@@ -1,0 +1,36 @@
+.hero {
+  background: var(--color-background-dark);
+  display: grid;
+  padding: 10rem 2rem;
+}
+
+.hero__content {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+}
+
+.hero__content p {
+  padding: 1rem;
+}
+
+.hero_image {
+  width: 100%;
+  align-self: center;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr auto;
+    padding-left: 15%;
+    padding-right: 15%;
+    column-gap: 7.5%;
+  }
+
+  .hero__content {
+    order: -1;
+  }
+
+  .hero_image {
+    width: fit-content;
+  }
+}
