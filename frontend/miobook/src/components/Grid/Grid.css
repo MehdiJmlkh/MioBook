@@ -1,0 +1,13 @@
+.grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 530px) {
+  .grid {
+    justify-content: start;
+  }
+}
