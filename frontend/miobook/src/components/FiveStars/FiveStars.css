@@ -1,0 +1,9 @@
+.star {
+    color: var(--color-text-dark);
+    margin: 0 1px;
+    font-size: 2rem;
+}
+
+.star--filled {
+  color: #eba452;
+}
