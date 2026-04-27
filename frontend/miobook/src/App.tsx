@@ -1,10 +1,9 @@
-import BookCard from "./components/BookCard";
-import FiveStars from "./components/FiveStars";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   return (
     <>
-      <BookCard />
+      <SearchBox />
     </>
   );
 }
