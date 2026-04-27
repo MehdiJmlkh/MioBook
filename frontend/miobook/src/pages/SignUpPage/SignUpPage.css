@@ -15,6 +15,12 @@ body {
   font-weight: 500;
 }
 
+.error {
+  font-weight: 300;
+  text-align: left;
+  margin: 1rem 0 0;
+}
+
 @media (min-width: 650px) {
   .role__header {
     text-align: left;

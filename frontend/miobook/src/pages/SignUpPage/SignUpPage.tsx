@@ -38,17 +38,19 @@ const SignUpPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState({
+    username: "",
+    email: "",
+  });
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
 
     userService
       .create(data)
-      .then((data) => console.log(data))
-      .catch((err: AxiosError<ErrorResponse>) => {
-        if (err.response?.data.error) {
-          setError(err.response?.data.error);
+      .catch((err: AxiosError<typeof error>) => {
+        if (err.response?.data) {
+          setError(err.response?.data);
         }
       });
   };
@@ -59,15 +61,34 @@ const SignUpPage = () => {
         onSubmit={handleSubmit(onSubmit)}
         type={FormType.SingUp}
         isValid={isValid}
-        error={error}
       >
-        <Input {...register("username")} placeholder="Username" />
+        <div>
+          <Input
+            {...register("username")}
+            placeholder="Username"
+            className={error.username && "form-control--error"}
+          />
+          {error.username && (
+            <p className="text-danger  error">{error.username}</p>
+          )}
+        </div>
+
         <PasswordInput {...register("password")} placeholder="Password" />
-        <Input {...register("email")} placeholder="Email" />
+
+        <div>
+          <Input
+            {...register("email")}
+            placeholder="Email"
+            className={error.email && "form-control--error"}
+          />
+          {error.email && <p className="text-danger error">{error.email}</p>}
+        </div>
+
         <div className="input-container--1x2">
           <Input {...register("address.country")} placeholder="Country" />
           <Input {...register("address.city")} placeholder="City" />
         </div>
+
         <span className="role__header">I am</span>
         <div className="input-container--1x2">
           <RoleInput userRole={Role.Customer} {...register("role")} />
