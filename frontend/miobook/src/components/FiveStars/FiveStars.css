@@ -1,6 +1,11 @@
+.five-stars {
+    align-items: center;
+    justify-items: center;
+}
+
 .star {
     color: var(--color-text-dark);
-    margin: 0 1px;
+    margin: 0 1px 2px;
     font-size: 2rem;
 }
 
