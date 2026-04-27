@@ -22,7 +22,7 @@ const RoleInput = React.forwardRef<HTMLInputElement, Props>(
           ref={ref}
           value={userRole}
           className="d-none"
-          defaultChecked={role === Role.Customer}
+          defaultChecked={userRole === Role.Customer}
           {...rest}
         />
         <div className="role-option">
