@@ -2,7 +2,7 @@
   display: flex;
   background-color: #f0f2f4;
   color: #808182;
-  border-radius: var(--border-radius);
+  border-radius: 15px;
   padding: 1rem;
   font-size: 1.5rem;
 }
@@ -39,7 +39,6 @@
 }
 
 .filter__option {
-  /* background-color: red; */
   background: #f0f2f4;
   color: #808182;
   border-radius: var(--border-radius);
