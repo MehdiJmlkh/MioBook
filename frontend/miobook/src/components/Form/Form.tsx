@@ -27,7 +27,7 @@ const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
         {children}
 
         <div className={type === FormType.SingIn ? "form__btn-container" : ""}>
-          {error && <p className="text-danger error">{error}</p>}
+          {error && <p className="text-danger">{error}</p>}
           <Button disabled={!isValid} className="btn-primary form__btn">
             {title}
           </Button>
