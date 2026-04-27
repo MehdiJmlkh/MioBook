@@ -35,7 +35,7 @@ const SignInPage = () => {
   const onSubmit = (data: FieldValues) => {
     authService
       .login(data)
-      .then((data) => console.log(data))
+      .then((data) => setError(""))
       .catch((err: AxiosError<ErrorResponse>) => {
         if (err.response?.data.error) {
           setError(err.response?.data.error);
