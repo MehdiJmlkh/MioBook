@@ -1,0 +1,25 @@
+.role-option {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-background);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  text-align: left;
+  padding: 1.2rem;
+  transition: 0.2s;
+}
+
+.role-heading {
+  text-align: left;
+}
+
+input[type="radio"]:checked + .role-option {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-background-dark);
+}
+
+.role__icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
