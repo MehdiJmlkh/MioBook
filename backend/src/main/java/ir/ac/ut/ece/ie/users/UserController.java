@@ -27,12 +27,12 @@ public class UserController {
     }
 
     @ExceptionHandler(UsernameExistsException.class)
-    public ResponseEntity<ErrorDto> handleUsernameExistsException() {
-        return ResponseEntity.badRequest().body(new ErrorDto("A user with this username already exists."));
+    public ResponseEntity<Map<String, String>> handleUsernameExistsException() {
+        return ResponseEntity.badRequest().body(Map.of("username", "Username is already registered."));
     }
 
     @ExceptionHandler(EmailExistsException.class)
-    public ResponseEntity<ErrorDto> handleEmailExistsException() {
-        return ResponseEntity.badRequest().body(new ErrorDto("A user with this email already exists."));
+    public ResponseEntity<Map<String, String>> handleEmailExistsException() {
+        return ResponseEntity.badRequest().body(Map.of("email", "Email is already registered."));
     }
 }
