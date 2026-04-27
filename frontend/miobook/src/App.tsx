@@ -1,9 +1,9 @@
-import SearchBox from "./components/SearchBox";
+import MeowLogo from "./components/MeowLogo";
 
 function App() {
   return (
     <>
-      <SearchBox />
+      <MeowLogo />
     </>
   );
 }
