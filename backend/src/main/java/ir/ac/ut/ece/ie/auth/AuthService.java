@@ -15,6 +15,10 @@ public class AuthService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UsernameOrPasswordIncorrectException::new);
 
+        if (!user.getPassword().equals(request.getPassword())) {
+            throw new UsernameOrPasswordIncorrectException();
+        }
+
         var loggedInUser = authRepository.getAuthenticatedUser().orElse(null);
 
         if (loggedInUser != null && loggedInUser != user) {
