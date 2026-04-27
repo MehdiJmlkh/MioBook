@@ -1,0 +1,22 @@
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container--1x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2.5rem;
+}
+
+.role__header {
+  font-weight: 500;
+}
+
+@media (min-width: 650px) {
+  .role__header {
+    text-align: left;
+  }
+}
