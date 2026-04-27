@@ -1,5 +1,3 @@
-import { HiChevronDown } from "react-icons/hi";
-
 import "./SearchBox.css";
 import FilterSelector from "../FilterSelector";
 import { useState } from "react";

@@ -1,5 +1,5 @@
-import { BsChevronDown } from "react-icons/bs";
 import "./FilterSelector.css";
+import { BsChevronDown } from "react-icons/bs";
 import { useState } from "react";
 
 interface Props {

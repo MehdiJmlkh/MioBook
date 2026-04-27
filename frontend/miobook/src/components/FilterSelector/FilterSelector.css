@@ -1,4 +1,5 @@
 .filter-selector {
+  position: relative;
   white-space: nowrap;
   background: inherit;
   cursor: pointer;
@@ -6,15 +7,15 @@
 }
 
 .filter-selector__icon {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .filter-selector__options {
   padding: 0;
   margin: 0;
   position: absolute;
-  top: 7rem;
-  left: 2rem;
+  top: 4rem;
+  left: -1rem;
   background: inherit;
   border-radius: var(--border-radius);
   overflow: hidden;
