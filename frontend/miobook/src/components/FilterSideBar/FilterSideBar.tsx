@@ -8,11 +8,12 @@ import { MdClose } from "react-icons/md";
 
 interface Props {
   onClose: () => void;
+  className?: string;
 }
 
-const FilterSideBar = ({ onClose }: Props) => {
+const FilterSideBar = ({ onClose, className }: Props) => {
   return (
-    <div className="filter-sidebar">
+    <div className={`filter-sidebar ${className}`}>
       <MdClose className="filter-sidebar__close-icon" onClick={onClose} />
       <div>
         <h1 className="filter-sidebar__title">Filters</h1>
