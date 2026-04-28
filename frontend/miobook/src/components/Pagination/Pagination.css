@@ -1,7 +1,9 @@
-.page-numbers {
+.pagination {
   display: flex;
   font-size: 1.3rem;
   justify-content: space-between;
+  justify-self: center;
+  margin: 5rem 0 10rem;
 }
 
 .page-number,
