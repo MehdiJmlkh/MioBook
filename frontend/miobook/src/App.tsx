@@ -1,10 +1,12 @@
-import Profile from "./components/Profile";
-import HomePage from "./pages/HomePage";
+import { RiFilter2Line } from "react-icons/ri";
+import SearchResultPage from "./pages/SearchResultPage";
+import Pagination from "./components/Pagination";
+
 
 function App() {
   return (
     <>
-      <HomePage />
+      <SearchResultPage />
     </>
   );
 }
