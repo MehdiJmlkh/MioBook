@@ -6,15 +6,28 @@ import BookCard from "../../components/BookCard";
 import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import Pagination from "../../components/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterSideBar from "../../components/FilterSideBar";
 import Backdrop from "../../components/Backdrop";
 
 const SearchResultPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [openSideBar, setOpenSideBar] = useState(false);
+
+  useEffect(() => {
+    if (openSideBar) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [openSideBar]);
+
   return (
-    <body className="no-scroll">
+    <body>
       <Backdrop enabled={openSideBar} />
       <FilterSideBar
         className={openSideBar ? "open" : ""}
