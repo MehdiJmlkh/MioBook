@@ -7,18 +7,29 @@ import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import Pagination from "../../components/Pagination";
 import { useState } from "react";
+import FilterSideBar from "../../components/FilterSideBar";
+import Backdrop from "../../components/Backdrop";
 
 const SearchResultPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [openSideBar, setOpenSideBar] = useState(false);
   return (
-    <body>
+    <body className="no-scroll">
+      <Backdrop enabled={openSideBar} />
+      <FilterSideBar
+        className={openSideBar ? "open" : ""}
+        onClose={() => setOpenSideBar(false)}
+      />
       <Header />
       <main className="search-result__main">
         <div className="search-result__heading">
           <h1 className="search-result__title">
             Results for &lt;Search Parameters&gt;{" "}
           </h1>
-          <Button className="btn-primary search-result__btn">
+          <Button
+            onClick={() => setOpenSideBar(true)}
+            className="btn-primary search-result__btn"
+          >
             <RiFilter2Line /> Filter
           </Button>
         </div>
