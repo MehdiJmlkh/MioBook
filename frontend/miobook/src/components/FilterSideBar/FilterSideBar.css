@@ -1,0 +1,51 @@
+.filter-sidebar {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  padding: 10rem 4rem 0;
+  width: 50rem;
+  font-size: 1.5rem;
+  border-right: 1px solid black;
+  height: 100vh;
+}
+
+.filter-sidebar__title {
+  font-size: 3rem;
+  text-align: center;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid black;
+}
+
+.filter-sidebar__filter__name {
+  white-space: nowrap;
+  min-width: 16rem;
+  font-size: 2rem;
+  font-weight: 400;
+  align-self: center;
+  margin: 0;
+}
+
+.filter-sidebar__filter {
+  display: flex;
+  margin: 2.5rem 0;
+}
+
+.filter-sidebar__btn {
+  font-size: 2rem;
+  margin: 0 8rem 4rem;
+}
+
+.filter-sidebar__close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2.5rem;
+  margin: 2.5rem 2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.filter-sidebar__close-icon:hover {
+  transform: scale(1.2);
+}
