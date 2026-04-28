@@ -4,15 +4,19 @@ import "./SelectInput.css";
 import { FaCaretDown } from "react-icons/fa";
 
 interface Props {
-  options: string[];
+  options?: string[];
+  className: string;
 }
 
-const SelectInput = ({ options }: Props) => {
+const SelectInput = ({ options = [], className }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
   return (
-    <div className="select-input" onClick={() => setOpen(!isOpen)}>
+    <div
+      className={`select-input ${className}`}
+      onClick={() => setOpen(!isOpen)}
+    >
       <Input readOnly={true} value={value} className="select-input__input" />
       {isOpen && (
         <ul className="select-input__dropdown">
