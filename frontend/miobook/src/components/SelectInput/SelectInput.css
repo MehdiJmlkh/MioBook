@@ -1,0 +1,33 @@
+.select-input {
+  position: relative;
+}
+
+.select-input__dropdown {
+  position: absolute;
+  top: 4rem;
+  background: #fff;
+  width: stretch;
+  border-radius: var(--border-radius);
+  padding: 0;
+  overflow: hidden;
+}
+
+.dropdown__item {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.dropdown__item:hover {
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+.select-input__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  font-size: 1.5rem;
+}

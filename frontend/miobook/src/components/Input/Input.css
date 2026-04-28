@@ -25,3 +25,6 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: black;
 }
 
+input[readonly] {
+  cursor: pointer;
+}
