@@ -1,0 +1,34 @@
+.page-numbers {
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-between;
+}
+
+.page-number,
+.pagination__icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--border-radius);
+  margin: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.pagination__icon {
+  padding: 1rem;
+}
+
+.page-number--current-page {
+  background-color: #eaecee;
+}
+
+.page-number:hover {
+  font-weight: 500;
+}
+
+.pagination__icon:hover {
+  transform: scale(1.25);
+}
