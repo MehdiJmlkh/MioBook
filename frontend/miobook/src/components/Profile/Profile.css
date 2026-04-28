@@ -1,0 +1,58 @@
+.profile {
+  position: relative;
+}
+
+.profile-menu {
+  width: 22rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 7.5rem;
+  right: 0;
+}
+
+.profile-menu__header,
+.profile-menu__item,
+.profile-menu__footer {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-menu__header {
+  border-bottom: 1px solid black;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-menu__item {
+  padding: 0.5rem 0;
+}
+
+.profile-menu__footer {
+  border-top: 1px solid var(--color-text-dark);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.profile-menu__icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.profile-menu__header:hover {
+  font-weight: 600;
+}
+
+.profile-menu__item:hover,
+.profile-menu__footer:hover {
+  font-weight: 500;
+}
+
+.profile-menu__item:hover .profile-menu__icon,
+.profile-menu__footer:hover .profile-menu__icon {
+  transform: scale(1.1);
+}
