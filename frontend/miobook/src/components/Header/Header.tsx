@@ -1,5 +1,6 @@
 import Avatar from "../Avatar";
 import MeowIcon from "../MeowLogo/MeowLogo";
+import Profile from "../Profile";
 import SearchBox from "../SearchBox";
 import "./Header.css";
 
@@ -8,7 +9,7 @@ const Header = () => {
     <header className="header">
       <MeowIcon />
       <SearchBox className="search-box" />
-      <Avatar />
+      <Profile />
     </header>
   );
 };
