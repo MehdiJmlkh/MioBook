@@ -60,3 +60,24 @@
 .filter-sidebar__close-icon:hover {
   transform: scale(1.2);
 }
+
+@media (max-width: 500px) {
+  .filter-sidebar {
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .filter-sidebar__filter {
+    display: grid;
+  }
+
+  .filter-sidebar__filter__name {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-sidebar__btn {
+    margin-top: 5rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
