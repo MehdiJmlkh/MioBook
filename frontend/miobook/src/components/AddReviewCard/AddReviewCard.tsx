@@ -1,16 +1,19 @@
-import "./AddReviewCard.css";
 import NoImage from "../../assets/no-image.svg";
-import Input from "../Input";
 import Button from "../Button";
-import Star from "../Star";
 import RatingStars from "../RatingStars";
 import TextArea from "../TextArea";
 import CloseIcon from "../CloseIcon";
+import "./AddReviewCard.css";
 
-const AddReviewCard = () => {
+interface Props {
+  className?: string;
+  onClose: () => void;
+}
+
+const AddReviewCard = ({ className, onClose }: Props) => {
   return (
-    <div className="add-review">
-      <CloseIcon/>
+    <div className={`add-review ${className}`}>
+      <CloseIcon onClose={onClose} />
       <h1 className="add-review__heading">Add Review</h1>
       <img src={NoImage} alt="" className="add-review__img" />
       <h2 className="add-review__book-title">Book Title</h2>
