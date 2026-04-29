@@ -1,0 +1,16 @@
+.header {
+  margin-bottom: 2rem;
+}
+
+main {
+  margin: 0 5%;
+}
+
+@media (min-width: 700px) {
+  .header {
+    margin-bottom: 5.5rem;
+  }
+  main {
+    margin: 0 10%;
+  }
+}
