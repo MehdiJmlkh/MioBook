@@ -9,22 +9,13 @@ import Pagination from "../../components/Pagination";
 import { useEffect, useState } from "react";
 import FilterSideBar from "../../components/FilterSideBar";
 import Backdrop from "../../components/Backdrop";
+import { useNoScroll } from "../../hooks/useNoScroll";
 
 const SearchResultPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [openSideBar, setOpenSideBar] = useState(false);
 
-  useEffect(() => {
-    if (openSideBar) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-
-    return () => {
-      document.body.classList.remove("no-scroll");
-    };
-  }, [openSideBar]);
+  useNoScroll(openSideBar);
 
   return (
     <body>
