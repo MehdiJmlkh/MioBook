@@ -1,0 +1,15 @@
+.form-control {
+  resize: none;
+  font-size: inherit;
+}
+
+.form-control--dark-background {
+  background: var(--color-background);
+  border: none;
+}
+
+.form-control--dark-background:focus,
+.form-control--dark-background:active {
+  background: var(--color-background);
+  box-shadow: none;
+}
