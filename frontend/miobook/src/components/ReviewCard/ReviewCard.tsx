@@ -1,9 +1,13 @@
 import FiveStars from "../FiveStars";
 import "./ReviewCard.css";
 
-const ReviewsCard = () => {
+interface Props {
+  className?: string;
+}
+
+const ReviewsCard = ({ className }: Props) => {
   return (
-    <div className="review">
+    <div className={`review ${className}`}>
       <div className="review__avatar"> TW </div>
       <h3 className="review__heading">The Person</h3>
       <p className="review__content">
