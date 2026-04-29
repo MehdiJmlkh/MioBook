@@ -1,0 +1,19 @@
+.star-container {
+  width: 4rem;
+  height: 4rem;
+  display: inline-flex;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.single-star {
+  color: var(--color-text-dark);
+}
+
+.star--filled {
+  color: #eba452;
+}
