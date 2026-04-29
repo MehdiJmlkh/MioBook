@@ -1,4 +1,5 @@
 import Button from "../Button";
+import CloseIcon from "../CloseIcon";
 import Input from "../Input";
 import RadioInput from "../RadioInput";
 import RadioOptions from "../RadioOptions";
@@ -14,7 +15,7 @@ interface Props {
 const FilterSideBar = ({ onClose, className }: Props) => {
   return (
     <div className={`filter-sidebar ${className}`}>
-      <MdClose className="filter-sidebar__close-icon" onClick={onClose} />
+      <CloseIcon onClose={onClose} />
       <div>
         <h1 className="filter-sidebar__title">Filters</h1>
         <div>

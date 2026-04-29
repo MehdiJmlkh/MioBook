@@ -47,20 +47,6 @@
   margin: 0 8rem 4rem;
 }
 
-.filter-sidebar__close-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2.5rem;
-  margin: 2.5rem 2rem;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.filter-sidebar__close-icon:hover {
-  transform: scale(1.2);
-}
-
 @media (max-width: 500px) {
   .filter-sidebar {
     width: 100%;
@@ -74,7 +60,7 @@
   .filter-sidebar__filter__name {
     margin-bottom: 1rem;
   }
-  
+
   .filter-sidebar__btn {
     margin-top: 5rem;
     margin-left: 0;
