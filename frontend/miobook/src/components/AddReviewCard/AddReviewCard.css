@@ -1,0 +1,53 @@
+.add-review {
+  position: relative;
+  width: 42rem;
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.add-review__img {
+  width: 8rem;
+  border-radius: var(--border-radius);
+  margin: 3rem 0 2rem;
+}
+
+.add-review__heading {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.add-review__book-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.add-review__rating {
+  display: grid;
+  text-align: left;
+  row-gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.add-review__rating__heading {
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.add-review__rating__description {
+  font-size: 1.2rem;
+  color: var(--color-text-dark);
+}
+
+.add-review .form-control {
+  font-size: 1.7rem;
+  margin-bottom: 2.5rem;
+}
+
+.add-review .btn {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
