@@ -4,9 +4,13 @@ import Profile from "../Profile";
 import SearchBox from "../SearchBox";
 import "./Header.css";
 
-const Header = () => {
+interface Props {
+  className?: string;
+}
+
+const Header = ({ className }: Props) => {
   return (
-    <header className="header">
+    <header className={`header ${className}`}>
       <MeowIcon />
       <SearchBox className="search-box" />
       <Profile />
