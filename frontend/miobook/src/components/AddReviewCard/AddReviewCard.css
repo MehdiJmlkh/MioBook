@@ -1,11 +1,22 @@
 .add-review {
-  position: relative;
+  z-index: 2000;
   width: 42rem;
   background: #fff;
   border-radius: var(--border-radius);
   padding: 2.5rem;
   padding-bottom: 2rem;
   text-align: center;
+
+  position: fixed;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-100vw) translateY(50%);
+
+  transition: transform 0.5s ease;
+}
+
+.add-review.open {
+  transform: translateX(-50%) translateY(50%);
 }
 
 .add-review__img {
