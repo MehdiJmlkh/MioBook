@@ -5,7 +5,11 @@ import ReviewsIcon from "../../assets/reviews-icon.svg";
 import Button from "../Button";
 import { useState } from "react";
 
-const ReviewsBlock = () => {
+interface Props {
+  onClickAddReview: () => void;
+}
+
+const ReviewsBlock = ({ onClickAddReview }: Props) => {
   const [pageNumber, setPageNumber] = useState(1);
 
   return (
@@ -15,7 +19,7 @@ const ReviewsBlock = () => {
           <span className="block-review__heading__title"> Reviews </span>
           <span className="block-review__heading__counts">130</span>
         </div>
-        <Button className="btn-secondary">
+        <Button className="btn-secondary" onClick={onClickAddReview}>
           Add reviews
           <img className="review-icon" src={ReviewsIcon} alt="" />
         </Button>
