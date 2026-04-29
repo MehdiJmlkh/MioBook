@@ -1,0 +1,41 @@
+.block-review {
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  border-bottom: 1px solid #804900;
+}
+
+.review-icon {
+  margin-left: 1rem;
+}
+
+.block-review .btn {
+  width: fit-content;
+  padding: 1.5rem;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.block-review__heading {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.block-review__heading__title {
+  font-size: 1.5rem;
+}
+
+.block-review__heading__counts {
+  color: #8f8f8f;
+}
+
+.block-review .review {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid #e6e8ec;
+}
+
+.block-review .pagination {
+  margin-bottom: 3rem;
+}
