@@ -10,7 +10,7 @@
   position: fixed;
   left: 50%;
   bottom: 50%;
-  transform: translateX(-100vw) translateY(50%);
+  transform: translateX(-100%) translateX(-50vw) translateY(50%);
 
   transition: transform 0.5s ease;
 }
@@ -61,4 +61,19 @@
 .add-review .btn {
   font-size: 1.8rem;
   margin-bottom: 1.2rem;
+}
+
+@media (max-width: 420px) {
+  .add-review {
+    width: 100%;
+    overflow-y: auto;
+    height: 100vh;
+    display: grid;
+    row-gap: 3rem;
+    align-content: space-between;
+  }
+  
+  .add-review .form-control {
+    margin-bottom: auto;
+  }
 }
