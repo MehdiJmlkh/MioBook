@@ -22,7 +22,7 @@ const BookPage = () => {
       <main>
         <Backdrop enabled={showReviewModal || showCartModal} />
         <AddToCartModal
-          className={showCartModal ? "open" : ""}
+          className={showCartModal ? "show" : ""}
           onClose={() => setShowCartModal(false)}
         />
         <AddReviewModal

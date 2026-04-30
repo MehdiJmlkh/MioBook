@@ -15,7 +15,7 @@ const AddToCartModal = ({ className, onClose }: Props) => {
   const [showDays, setShowDays] = useState(false);
 
   return (
-    <div className={`add-to-cart modal2 ${className}`}>
+    <div className={`add-to-cart modal-center ${className}`}>
       <CloseIcon onClose={onClose}/>
       <h1 className="add-to-cart__heading">Add to Cart</h1>
       <p className="add-to-cart__description">

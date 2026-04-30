@@ -1,28 +1,9 @@
 .add-to-cart {
   width: 54rem;
-  position: absolute;
-  z-index: 2000;
-  top: 50%;
-  right: 50%;
   background: #fff;
   border-radius: var(--border-radius);
   padding: 2.5rem 4.5rem;
   font-size: 2rem;
-}
-
-.modal2 {
-  transform: translate(50%, -50%) scale(0.9);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 200ms ease,
-    transform 200ms ease;
-}
-
-.modal2.open {
-  transform: translate(50%, -50%) scale(1);
-  opacity: 1;
-  pointer-events: all;
 }
 
 .add-to-cart__heading {
