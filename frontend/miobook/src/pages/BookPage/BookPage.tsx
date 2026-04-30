@@ -7,9 +7,11 @@ import Header from "../../components/Header";
 import ReviewsBlock from "../../components/ReviewsBlock";
 import "./BookPage.css";
 import { useNoScroll } from "../../hooks/useNoScroll";
+import AddToCartModal from "../../components/AddToCartModal";
 
 const BookPage = () => {
-  const [openAddReview, setOpenAddReview] = useState(true);
+  const [openAddReview, setOpenAddReview] = useState(false);
+  const [openAddToCart, setOpenAddToCart] = useState(false);
 
   useNoScroll(openAddReview);
 
@@ -17,12 +19,16 @@ const BookPage = () => {
     <body>
       <Header className="header" />
       <main>
-        <Backdrop enabled={openAddReview} />
+        <Backdrop enabled={openAddReview || openAddToCart} />
+        <AddToCartModal
+          className={openAddToCart ? "open" : ""}
+          onClose={() => setOpenAddToCart(false)}
+        />
         <AddReviewModal
           className={openAddReview ? "open" : ""}
           onClose={() => setOpenAddReview(false)}
         />
-        <BookDetailCard />
+        <BookDetailCard onAddToCart={() => setOpenAddToCart(true)} />
         <ReviewsBlock onClickAddReview={() => setOpenAddReview(true)} />
       </main>
       <Footer />

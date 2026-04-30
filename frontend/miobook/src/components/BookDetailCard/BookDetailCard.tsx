@@ -4,7 +4,11 @@ import FiveStars from "../FiveStars";
 import Price from "../Price";
 import Button from "../Button";
 
-const BookDetailCard = () => {
+interface Props {
+  onAddToCart: () => void;
+}
+
+const BookDetailCard = ({ onAddToCart }: Props) => {
   return (
     <div className="book">
       <ImageWithBadge className="book__img" />
@@ -46,12 +50,14 @@ const BookDetailCard = () => {
             nemo inventore nam laboriosam dicta voluptatum suscipit quisquam
             ullam veritatis nesciunt cum officiis expedita, earum molestias
             sapiente, reiciendis minus blanditiis, nisi eveniet porro totam.
-            Temporibus, sequi? Provident quidem tenetur fuga beatae, 
+            Temporibus, sequi? Provident quidem tenetur fuga beatae,
           </p>
         </div>
 
         <Price className="book__price">18.99</Price>
-        <Button className="btn btn-primary book__btn">Add to Cart</Button>
+        <Button className="btn btn-primary book__btn" onClick={onAddToCart}>
+          Add to Cart
+        </Button>
       </div>
     </div>
   );

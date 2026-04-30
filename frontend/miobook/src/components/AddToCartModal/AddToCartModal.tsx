@@ -6,12 +6,17 @@ import CloseIcon from "../CloseIcon";
 import Price from "../Price";
 import "./AddToCartModal.css";
 
-const AddToCartModal = () => {
+interface Props {
+  className?: string;
+  onClose: () => void;
+}
+
+const AddToCartModal = ({ className, onClose }: Props) => {
   const [showDays, setShowDays] = useState(false);
 
   return (
-    <div className="add-to-cart">
-      <CloseIcon />
+    <div className={`add-to-cart modal2 ${className}`}>
+      <CloseIcon onClose={onClose}/>
       <h1 className="add-to-cart__heading">Add to Cart</h1>
       <p className="add-to-cart__description">
         Would you like to buy or borrow this book?
