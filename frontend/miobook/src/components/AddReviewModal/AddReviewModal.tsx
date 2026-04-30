@@ -3,14 +3,14 @@ import Button from "../Button";
 import RatingStars from "../RatingStars";
 import TextArea from "../TextArea";
 import CloseIcon from "../CloseIcon";
-import "./AddReviewCard.css";
+import "./AddReviewModal.css";
 
 interface Props {
   className?: string;
   onClose: () => void;
 }
 
-const AddReviewCard = ({ className, onClose }: Props) => {
+const AddReviewModal = ({ className, onClose }: Props) => {
   return (
     <div className={`add-review ${className}`}>
       <div>
@@ -37,4 +37,4 @@ const AddReviewCard = ({ className, onClose }: Props) => {
   );
 };
 
-export default AddReviewCard;
+export default AddReviewModal;

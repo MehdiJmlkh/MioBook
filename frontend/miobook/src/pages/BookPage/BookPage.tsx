@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddReviewCard from "../../components/AddReviewCard";
+import AddReviewModal from "../../components/AddReviewModal";
 import Backdrop from "../../components/Backdrop";
 import BookDetailCard from "../../components/BookDetailCard";
 import Footer from "../../components/Footer";
@@ -18,7 +18,7 @@ const BookPage = () => {
       <Header className="header" />
       <main>
         <Backdrop enabled={openAddReview} />
-        <AddReviewCard
+        <AddReviewModal
           className={openAddReview ? "open" : ""}
           onClose={() => setOpenAddReview(false)}
         />
