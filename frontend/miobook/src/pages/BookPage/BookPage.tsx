@@ -26,7 +26,7 @@ const BookPage = () => {
           onClose={() => setShowCartModal(false)}
         />
         <AddReviewModal
-          className={showReviewModal ? "open" : ""}
+          className={showReviewModal ? "show" : ""}
           onClose={() => setShowReviewModal(false)}
         />
         <BookDetailCard onAddToCart={() => setShowCartModal(true)} />
