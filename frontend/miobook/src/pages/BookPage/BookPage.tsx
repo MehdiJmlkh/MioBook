@@ -10,26 +10,26 @@ import { useNoScroll } from "../../hooks/useNoScroll";
 import AddToCartModal from "../../components/AddToCartModal";
 
 const BookPage = () => {
-  const [openAddReview, setOpenAddReview] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
   const [openAddToCart, setOpenAddToCart] = useState(false);
 
-  useNoScroll([openAddReview, openAddToCart]);
+  useNoScroll([showReviewModal, openAddToCart]);
 
   return (
     <body>
       <Header className="header" />
       <main>
-        <Backdrop enabled={openAddReview || openAddToCart} />
+        <Backdrop enabled={showReviewModal || openAddToCart} />
         <AddToCartModal
           className={openAddToCart ? "open" : ""}
           onClose={() => setOpenAddToCart(false)}
         />
         <AddReviewModal
-          className={openAddReview ? "open" : ""}
-          onClose={() => setOpenAddReview(false)}
+          className={showReviewModal ? "open" : ""}
+          onClose={() => setShowReviewModal(false)}
         />
         <BookDetailCard onAddToCart={() => setOpenAddToCart(true)} />
-        <ReviewsBlock onClickAddReview={() => setOpenAddReview(true)} />
+        <ReviewsBlock onClickAddReview={() => setShowReviewModal(true)} />
       </main>
       <Footer />
     </body>
