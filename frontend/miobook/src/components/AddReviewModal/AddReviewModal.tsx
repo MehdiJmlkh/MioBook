@@ -12,7 +12,7 @@ interface Props {
 
 const AddReviewModal = ({ className, onClose }: Props) => {
   return (
-    <div className={`add-review ${className}`}>
+    <div className={`add-review modal-slide-over ${className}`}>
       <div>
         <CloseIcon onClose={onClose} />
         <h1 className="add-review__heading">Add Review</h1>
