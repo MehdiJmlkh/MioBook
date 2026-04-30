@@ -1,28 +1,29 @@
+import { RiFilter2Line } from "react-icons/ri";
+import { useState } from "react";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
-import { RiFilter2Line } from "react-icons/ri";
-import "./SearchResultPage.css";
 import BookCard from "../../components/BookCard";
 import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import Pagination from "../../components/Pagination";
-import { useEffect, useState } from "react";
 import FilterSideBar from "../../components/FilterSideBar";
 import Backdrop from "../../components/Backdrop";
 import { useNoScroll } from "../../hooks/useNoScroll";
 
+import "./SearchResultPage.css";
+
 const SearchResultPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const [openSideBar, setOpenSideBar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  useNoScroll([openSideBar]);
+  useNoScroll([showSidebar]);
 
   return (
     <body>
-      <Backdrop enabled={openSideBar} />
+      <Backdrop enabled={showSidebar} />
       <FilterSideBar
-        className={openSideBar ? "open" : ""}
-        onClose={() => setOpenSideBar(false)}
+        className={showSidebar ? "open" : ""}
+        onClose={() => setShowSidebar(false)}
       />
       <Header />
       <main className="search-result__main">
@@ -31,7 +32,7 @@ const SearchResultPage = () => {
             Results for &lt;Search Parameters&gt;{" "}
           </h1>
           <Button
-            onClick={() => setOpenSideBar(true)}
+            onClick={() => setShowSidebar(true)}
             className="btn-primary search-result__btn"
           >
             <RiFilter2Line /> Filter
