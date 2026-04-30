@@ -1,0 +1,35 @@
+.add-to-cart {
+  width: 54rem;
+  position: relative;
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 2.5rem 4.5rem;
+  font-size: 2rem;
+}
+
+.add-to-cart__heading {
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.add-to-cart__checkbox {
+  margin: 3rem 0;
+}
+
+.add-to-cart .btn {
+  width: 18rem;
+  padding: 1.5rem 0;
+}
+
+.add-to-cart__price {
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.add-to-cart__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+}
