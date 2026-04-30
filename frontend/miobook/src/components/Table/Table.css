@@ -1,0 +1,29 @@
+.table {
+  width: stretch;
+  font-size: 1.5rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.table th {
+  background: var(--color-background);
+  color: #8c8d95;
+  font-weight: 400;
+  padding: 1rem;
+}
+
+.table-image {
+  width: 3rem;
+  padding: 0.3rem 0;
+}
+
+.table th,
+.table td {
+  padding-left: 1.5rem;
+  align-content: center;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--color-secondary);
+}
