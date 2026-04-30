@@ -5,30 +5,31 @@ import BookDetailCard from "../../components/BookDetailCard";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ReviewsBlock from "../../components/ReviewsBlock";
-import "./BookPage.css";
 import { useNoScroll } from "../../hooks/useNoScroll";
 import AddToCartModal from "../../components/AddToCartModal";
 
+import "./BookPage.css";
+
 const BookPage = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
-  const [openAddToCart, setOpenAddToCart] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
-  useNoScroll([showReviewModal, openAddToCart]);
+  useNoScroll([showReviewModal, showCartModal]);
 
   return (
     <body>
       <Header className="header" />
       <main>
-        <Backdrop enabled={showReviewModal || openAddToCart} />
+        <Backdrop enabled={showReviewModal || showCartModal} />
         <AddToCartModal
-          className={openAddToCart ? "open" : ""}
-          onClose={() => setOpenAddToCart(false)}
+          className={showCartModal ? "open" : ""}
+          onClose={() => setShowCartModal(false)}
         />
         <AddReviewModal
           className={showReviewModal ? "open" : ""}
           onClose={() => setShowReviewModal(false)}
         />
-        <BookDetailCard onAddToCart={() => setOpenAddToCart(true)} />
+        <BookDetailCard onAddToCart={() => setShowCartModal(true)} />
         <ReviewsBlock onClickAddReview={() => setShowReviewModal(true)} />
       </main>
       <Footer />
