@@ -15,7 +15,7 @@ const SearchResultPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [openSideBar, setOpenSideBar] = useState(false);
 
-  useNoScroll(openSideBar);
+  useNoScroll([openSideBar]);
 
   return (
     <body>

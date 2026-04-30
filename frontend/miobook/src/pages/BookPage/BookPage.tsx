@@ -13,7 +13,7 @@ const BookPage = () => {
   const [openAddReview, setOpenAddReview] = useState(false);
   const [openAddToCart, setOpenAddToCart] = useState(false);
 
-  useNoScroll(openAddReview);
+  useNoScroll([openAddReview, openAddToCart]);
 
   return (
     <body>
