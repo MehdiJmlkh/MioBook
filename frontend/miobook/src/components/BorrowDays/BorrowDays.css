@@ -1,0 +1,17 @@
+.borrow-days {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.borrow-days {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 200ms ease;
+}
+
+.borrow-days--visible {
+  max-height: 20rem;
+  opacity: 1;
+}
