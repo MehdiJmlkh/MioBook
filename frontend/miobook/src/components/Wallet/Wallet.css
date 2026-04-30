@@ -1,0 +1,21 @@
+.wallet {
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 3rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 18rem;
+  row-gap: 1.5rem;
+  column-gap: 3rem;
+  font-size: 1.5rem;
+}
+
+.wallet__price {
+  font-size: 3rem;
+  font-weight: 500;
+  grid-column: 1 / -1;
+}
+
+.wallet__btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
