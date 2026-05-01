@@ -8,11 +8,11 @@ interface Props {
 }
 
 const ExpandableRow = ({ title, children }: Props) => {
-  const [show, setShow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`expandable-row ${show ? "expandable-row--open" : ""}`}>
-      <div className={`expandable-row__heading`} onClick={() => setShow(!show)}>
+    <div className={`expandable-row ${isOpen ? "expandable-row--open" : ""}`}>
+      <div className={`expandable-row__heading`} onClick={() => setIsOpen(!isOpen)}>
         <span>{title}</span>
         <HiChevronDown className="expandable-row__chevron" />
       </div>
