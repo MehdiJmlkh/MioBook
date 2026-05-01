@@ -1,7 +1,8 @@
 .user-account {
   background: #fff;
   border-radius: var(--border-radius);
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 5rem;
+  padding-left: 3rem;
   font-size: 1.7rem;
   display: grid;
   row-gap: 1.5rem;
