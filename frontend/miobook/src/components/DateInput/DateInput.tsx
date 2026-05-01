@@ -16,6 +16,7 @@ export default function DateInput({ placeholder }: Props) {
       <LuCalendarDays className="date-input__icon" />
       <DatePicker
         selected={date}
+        dateFormat="yyyy-MM-dd"
         onChange={(d: SetStateAction<Date | null>) => setDate(d)}
         placeholderText={placeholder}
         customInput={<Input />}
