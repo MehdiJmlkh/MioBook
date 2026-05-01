@@ -4,10 +4,15 @@ import DateInput from "../DateInput";
 import Input from "../Input";
 import "./AddAuthorModal.css";
 
-const AddAuthorModal = () => {
+interface Props {
+  className?: string;
+  onClose: () => void;
+}
+
+const AddAuthorModal = ({ className, onClose }: Props) => {
   return (
-    <div className="add-author">
-      <CloseIcon />
+    <div className={`add-author modal-pop ${className}`}>
+      <CloseIcon onClose={onClose} />
       <h1 className="add-author__title">Add Author</h1>
       <div className="add-author__inputs">
         <Input placeholder="Name" />

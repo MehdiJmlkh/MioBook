@@ -5,11 +5,16 @@ import Input from "../Input";
 import "./AddBookModal.css";
 import TextArea from "../TextArea";
 
-const AddBookModal = () => {
+interface Props {
+  className?: string;
+  onClose: () => void;
+}
+
+const AddBookModal = ({ className, onClose }: Props) => {
   const [isSecondPage, setIsSecondPage] = useState(false);
   return (
-    <div className="add-book">
-      <CloseIcon />
+    <div className={`add-book modal-pop ${className}`}>
+      <CloseIcon onClose={onClose} />
       <h1 className="add-book__title">Add Book</h1>
       <div className="add-book__inputs">
         {!isSecondPage && (
