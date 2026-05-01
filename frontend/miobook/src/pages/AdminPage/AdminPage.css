@@ -1,0 +1,38 @@
+.admin-page__btns {
+  margin: 3rem 0;
+  display: flex;
+  row-gap: 4rem;
+  flex-direction: column;
+}
+
+.admin-page__btns .btn {
+  padding: 1rem 1.5rem;
+  font-size: 2rem;
+}
+
+.author-page__books {
+  margin-bottom: 4.5rem;
+}
+
+main {
+  padding: 0 5%;
+  margin-bottom: 10rem;
+}
+
+@media (min-width: 425px) {
+  .admin-page__btns {
+    column-gap: 7rem;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .admin-page__btns .btn {
+    width: fit-content;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 0 10%;
+  }
+}
