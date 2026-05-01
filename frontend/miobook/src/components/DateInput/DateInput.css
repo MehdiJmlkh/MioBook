@@ -1,0 +1,22 @@
+.date-input {
+  position: relative;
+  cursor: pointer;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.date-input .form-control {
+  padding-left: 3.5rem;
+  cursor: inherit;
+}
+
+.date-input__icon {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  z-index: 1;
+  transform: translateY(-50%);
+}
