@@ -1,0 +1,14 @@
+.cart-page__header {
+  margin-bottom: 6rem;
+}
+
+main {
+  padding: 0 5%;
+  margin-bottom: 10rem;
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 0 10%;
+  }
+}
