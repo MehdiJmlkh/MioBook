@@ -1,12 +1,11 @@
-import { RiFilter2Line } from "react-icons/ri";
-import SearchResultPage from "./pages/SearchResultPage";
-import Pagination from "./components/Pagination";
+import AuthorPage from "./pages/AuthorPage";
+import UserPage from "./pages/UserPage";
 
 
 function App() {
   return (
     <>
-      <SearchResultPage />
+      <AuthorPage />
     </>
   );
 }

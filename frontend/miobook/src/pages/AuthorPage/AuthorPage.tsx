@@ -1,10 +1,10 @@
-import Header from "../Header";
+import Header from "../../components/Header";
 import AuthorBackground from "../../assets/author-background.svg";
 import AuthorImage from "../../assets/author-image.svg";
 import "./AuthorPage.css";
-import BookCard from "../BookCard";
-import Grid from "../Grid";
-import Footer from "../Footer";
+import BookCard from "../../components/BookCard";
+import Grid from "../../components/Grid";
+import Footer from "../../components/Footer";
 
 const AuthorPage = () => {
   return (
