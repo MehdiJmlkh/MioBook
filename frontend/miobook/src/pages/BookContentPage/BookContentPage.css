@@ -1,0 +1,56 @@
+.book-content__card {
+  background: #fff;
+  border-radius: var(--border-radius);
+  border-bottom: 1px solid #804900;
+  padding: 3rem;
+}
+
+.book-content__heading {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.book-content__title {
+  font-size: 3rem;
+  display: inline;
+  margin: 0;
+}
+
+.book-content__icon {
+  font-size: 4rem;
+  margin-right: 0.8rem;
+}
+
+.book-content__author {
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+.book-content__content {
+  font-size: 2rem;
+  margin-bottom: 10rem;
+}
+
+main {
+  margin: 0 5%;
+}
+
+@media (min-width: 700px) {
+  main {
+    margin: 0 10%;
+  }
+}
+
+@media (max-width: 425px) {
+  .book-content__title {
+    grid-column: 2/-1;
+  }
+  .book-content__author {
+    grid-column: 1/-1;
+    text-align: left;
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+  }
+}
