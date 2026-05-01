@@ -20,7 +20,7 @@ public class AuthorController {
         return authorService.getAuthor(name);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Author> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
         var author = authorService.addAuthor(request);
 
