@@ -21,9 +21,65 @@
 .table th,
 .table td {
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
   align-content: center;
 }
 
 .table tbody tr {
   border-bottom: 1px solid var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tbody tr {
+    border: 1px solid var(--color-secondary);
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 0.8rem 0;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    color: #8c8d95;
+    font-weight: 400;
+    margin-right: 1rem;
+    text-align: left;
+  }
+
+  .table-image {
+    width: 100%;
+    height: 20rem;
+  }
+
+  .table-btn-row {
+    border: 0;
+  }
+
+  .table td.table-image-row::before {
+    content: "";
+    margin: 0;
+  }
+
+  .table td.table-btn-row::before {
+    content: "";
+    margin: 0;
+  }
 }
