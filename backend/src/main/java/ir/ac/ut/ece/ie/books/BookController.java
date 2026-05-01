@@ -35,7 +35,7 @@ public class BookController {
         return bookService.getBookContent(request.getUsername(), title);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody AddBookRequest request) {
         var book = bookService.addBook(request);
         return ResponseEntity.ok(book);
