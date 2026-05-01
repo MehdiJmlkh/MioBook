@@ -18,13 +18,15 @@
   align-self: center;
 }
 
-.user-account--large {
-  grid-template-areas:
-    "username logout"
-    "email logout";
-}
+@media (min-width: 768px) {
+  .user-account--large {
+    grid-template-areas:
+      "username logout"
+      "email logout";
+  }
 
-.user-account--large .user-account__btn {
-  grid-area: logout;
-  justify-self: end;
+  .user-account--large .user-account__btn {
+    grid-area: logout;
+    justify-self: end;
+  }
 }
