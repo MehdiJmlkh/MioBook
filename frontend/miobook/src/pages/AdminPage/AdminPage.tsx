@@ -15,13 +15,13 @@ const AdminPage = () => {
   const [showAuthorModal, setShowAuthorModal] = useState(false);
   const [showBookModal, setShowBookModal] = useState(false);
 
-  useNoScroll([showAuthorModal]);
+  useNoScroll([showAuthorModal, showBookModal]);
 
   return (
     <body>
       <Header />
       <main>
-        <Backdrop enabled={showAuthorModal} />
+        <Backdrop enabled={showAuthorModal || showBookModal} />
         <AddAuthorModal
           className={showAuthorModal ? "show" : ""}
           onClose={() => setShowAuthorModal(false)}
