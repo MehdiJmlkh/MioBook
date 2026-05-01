@@ -1,0 +1,30 @@
+.add-book {
+  position: relative;
+  width: 42rem;
+  background: #fff;
+  border-radius: var(--border-radius);
+  padding: 2.5rem 0 2rem;
+}
+
+.add-book__title {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.add-book__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  font-size: 1.5rem;
+  padding: 0 4rem;
+}
+
+.add-book__btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin: 2rem;
+  font-size: 2rem;
+}
