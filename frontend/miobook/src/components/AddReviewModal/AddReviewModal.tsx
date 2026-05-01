@@ -24,7 +24,11 @@ const AddReviewModal = ({ className, onClose }: Props) => {
           <p className="add-review__rating__description">Tap to Rate</p>
         </div>
 
-        <TextArea className="add-review__review" rows={7} />
+        <TextArea
+          className="add-review__review"
+          rows={7}
+          placeholder="Type your review..."
+        />
       </div>
       <div>
         <Button className="btn-primary" disabled={false}>

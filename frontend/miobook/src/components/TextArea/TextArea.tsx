@@ -4,15 +4,16 @@ import "./TextArea.css";
 interface Props {
   className?: string;
   rows: number;
+  placeholder: string;
 }
 
-const TextArea = ({ className, rows }: Props) => {
+const TextArea = ({ className, rows, placeholder }: Props) => {
   return (
     <textarea
       className={`form-control form-control--dark-background ${className}`}
       id="description"
       rows={rows}
-      placeholder="Type your review..."
+      placeholder={placeholder}
     ></textarea>
   );
 };
