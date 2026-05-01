@@ -23,7 +23,7 @@ public class ReviewController {
         return reviewService.getAllReviews(title, page , size);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Void> addReview(@Valid @RequestBody AddReviewRequest request) {
         reviewService.addReview(request);
         return ResponseEntity.ok().build();
