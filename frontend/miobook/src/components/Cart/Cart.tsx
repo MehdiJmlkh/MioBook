@@ -46,9 +46,9 @@ const Cart = () => {
             <td data-label="Name">The Design of Books</td>
             <td data-label="Author">Debbie Berne</td>
             <td data-label="Price">
-              <Price>18.00</Price>
+              <Price className="line-through">18.00</Price> <Price>3.6</Price>
             </td>
-            <td data-label="Borrow Days">Not Borrowed</td>
+            <td data-label="Borrow Days">2</td>
             <td className="table-btn-row">
               <Button className="btn-secondary">Remove</Button>
             </td>
