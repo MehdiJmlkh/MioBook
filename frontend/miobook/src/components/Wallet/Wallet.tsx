@@ -3,11 +3,15 @@ import Input from "../Input";
 import Price from "../Price";
 import "./Wallet.css";
 
-const Wallet = () => {
+interface Props {
+  className?: string;
+}
+
+const Wallet = ({ className }: Props) => {
   return (
-    <div className="wallet">
+    <div className={`wallet ${className}`}>
       <Price className="wallet__price">1,000</Price>
-      <Input type="number" placeholder="$Amount"/>
+      <Input type="number" placeholder="$Amount" />
       <Button className="btn-primary wallet__btn">Add more credit</Button>
     </div>
   );

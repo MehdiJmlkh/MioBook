@@ -1,0 +1,26 @@
+.user-page__header {
+  margin-bottom: 4.5rem;
+}
+
+main {
+  display: grid;
+  row-gap: 6rem;
+  column-gap: 9rem;
+  padding: 0 5%;
+  margin-bottom: 7rem;
+}
+
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: 1fr auto;
+    padding: 0 10%;
+  }
+
+  .user-page__wallet {
+    order: -1;
+  }
+
+  .user-page__purchased-books {
+    grid-column: 1 / -1;
+  }
+}

@@ -4,9 +4,13 @@ import BookImage from "../../assets/book.svg";
 import BookIcon from "../../assets/book-icon.svg";
 import Button from "../Button";
 
-const PurchasedBooks = () => {
+interface Props {
+  className?: string;
+}
+
+const PurchasedBooks = ({ className }: Props) => {
   return (
-    <div className="purchased-books">
+    <div className={`purchased-books ${className}`}>
       <div className="purchased-books__heading">
         <img src={BookIcon} alt="" className="purchased-books__icon" />
         <h2 className="purchased-books__title">My Books</h2>
