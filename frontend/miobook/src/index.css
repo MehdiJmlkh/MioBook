@@ -60,6 +60,12 @@ body {
   opacity: 1;
 }
 
+@media (max-width: 420px) {
+  .modal-pop {
+    width: 100%;
+    overflow-y: auto;
+  }
+}
 .modal-slide-over {
   position: fixed;
   left: 50%;
