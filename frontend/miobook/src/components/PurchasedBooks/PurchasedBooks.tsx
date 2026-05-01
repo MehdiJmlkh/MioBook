@@ -3,6 +3,7 @@ import "./PurchasedBooks.css";
 import BookImage from "../../assets/book.svg";
 import BookIcon from "../../assets/book-icon.svg";
 import Button from "../Button";
+import Card from "../Card";
 
 interface Props {
   className?: string;
@@ -10,11 +11,11 @@ interface Props {
 
 const PurchasedBooks = ({ className }: Props) => {
   return (
-    <div className={`purchased-books ${className}`}>
-      <div className="purchased-books__heading">
-        <img src={BookIcon} alt="" className="purchased-books__icon" />
-        <h2 className="purchased-books__title">My Books</h2>
-      </div>
+    <Card
+      className={className}
+      title="My Books"
+      icon={<img src={BookIcon} alt="" />}
+    >
       <Table>
         <thead>
           <tr>
@@ -59,7 +60,7 @@ const PurchasedBooks = ({ className }: Props) => {
           </tr>
         </tbody>
       </Table>
-    </div>
+    </Card>
   );
 };
 

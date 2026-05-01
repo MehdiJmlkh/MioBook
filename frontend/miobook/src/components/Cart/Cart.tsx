@@ -5,14 +5,11 @@ import BookImage from "../../assets/book.svg";
 
 import "./Cart.css";
 import Price from "../Price";
+import Card from "../Card";
 
 const Cart = () => {
   return (
-    <div className="cart">
-      <div className="cart__heading">
-        <LuShoppingCart className="cart__icon" />
-        <h2 className="cart__title">Cart</h2>
-      </div>
+    <Card title="Cart" icon={<LuShoppingCart />}>
       <Table>
         <thead>
           <tr>
@@ -58,7 +55,7 @@ const Cart = () => {
       <div className="cart__btn">
         <Button className="btn-primary">Purchase</Button>
       </div>
-    </div>
+    </Card>
   );
 };
 
