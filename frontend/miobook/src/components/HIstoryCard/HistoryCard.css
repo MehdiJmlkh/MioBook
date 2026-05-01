@@ -1,0 +1,11 @@
+.history-table {
+  display: grid;
+  font-size: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-text-dark);
+  overflow: hidden;
+}
+
+.history-table__contnent {
+  margin: 2rem;
+}
