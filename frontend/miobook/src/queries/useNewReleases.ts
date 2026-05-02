@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Book } from "./useTopRatedBooks";
-import BookService from "../services/BookService";
+import BookService, { Book } from "../services/BookService";
 
 export const useNewReleases = () => {
   return useQuery<Book[]>({
