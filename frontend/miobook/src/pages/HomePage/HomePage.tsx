@@ -4,12 +4,12 @@ import Grid from "../../components/Grid";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import SearchBox from "../../components/SearchBox";
-import { useNewReleases } from "../../hooks/useNewReleases";
-import { useTopRatedBooks } from "../../hooks/useTopRatedBooks";
+import { useNewReleases } from "../../queries/useNewReleases";
+import { useTopRatedBooks } from "../../queries/useTopRatedBooks";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const {data: newReleases } = useNewReleases();
+  const { data: newReleases } = useNewReleases();
   const { data: topRatedBooks } = useTopRatedBooks();
 
   return (
@@ -24,14 +24,18 @@ const HomePage = () => {
         <div className="home-page__new-releases">
           <h2 className="home-page__heading">New Releases</h2>
           <Grid>
-            {newReleases?.map(book => <BookCard book={book}/>)}
+            {newReleases?.map((book) => (
+              <BookCard book={book} />
+            ))}
           </Grid>
         </div>
 
         <div className="home-page__top-rated">
           <h2 className="home-page__heading">Top Rated</h2>
           <Grid>
-            {topRatedBooks?.map(book => <BookCard book={book}/>)}
+            {topRatedBooks?.map((book) => (
+              <BookCard book={book} />
+            ))}
           </Grid>
         </div>
       </main>

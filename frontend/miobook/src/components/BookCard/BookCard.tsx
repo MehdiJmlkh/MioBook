@@ -3,7 +3,7 @@ import noImage from "../../assets/no-image.svg";
 import Button from "../Button";
 import FiveStars from "../FiveStars";
 import Price from "../Price";
-import { Book } from "../../hooks/useTopRatedBooks";
+import { Book } from "../../queries/useTopRatedBooks";
 
 interface Props {
   book?: Book;
