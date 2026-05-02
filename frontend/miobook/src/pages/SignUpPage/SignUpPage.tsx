@@ -42,12 +42,7 @@ const SignUpPage = () => {
   const onSubmit = (data: FieldValues) => {
     userService
       .create(data)
-      .then((data) =>
-        setError({
-          username: "",
-          email: "",
-        }),
-      )
+      .then((data) => setError({ username: "", email: "" }))
       .catch((err: AxiosError<typeof error>) => {
         if (err.response?.data) {
           setError(err.response?.data);

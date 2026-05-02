@@ -1,4 +1,4 @@
-import apiClient from "./api-client";
+import apiClient from "./ApiClient";
 
 class AuthService {
   login<T>(loginRequest: T) {

@@ -1,4 +1,4 @@
-import apiClient from "./api-client";
+import apiClient from "./ApiClient";
 
 class UserService {
   create<T>(newUser: T) {
