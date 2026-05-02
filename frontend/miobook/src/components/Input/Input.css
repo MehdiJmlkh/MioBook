@@ -28,3 +28,9 @@ input:-webkit-autofill:active {
 input[readonly] {
   cursor: pointer;
 }
+
+.error {
+  font-weight: 300;
+  text-align: left;
+  margin: 1rem 0 0;
+}

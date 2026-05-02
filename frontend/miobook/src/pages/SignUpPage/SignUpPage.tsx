@@ -68,28 +68,22 @@ const SignUpPage = () => {
         type={FormType.SingUp}
         isValid={isValid}
       >
-        <div>
-          <Input
-            {...register("username")}
-            placeholder="Username"
-            className={error.username && "form-control--error"}
-          />
-          {error.username && (
-            <p className="text-danger  error">{error.username}</p>
-          )}
-        </div>
+        <Input
+          {...register("username")}
+          placeholder="Username"
+          className={error.username && "form-control--error"}
+          error={error.username}
+        />
 
         <PasswordInput {...register("password")} placeholder="Password" />
 
-        <div>
-          <Input
-            {...register("email")}
-            placeholder="Email"
-            className={error.email && "form-control--error"}
-          />
-          {error.email && <p className="text-danger error">{error.email}</p>}
-        </div>
-
+        <Input
+          {...register("email")}
+          placeholder="Email"
+          className={error.email && "form-control--error"}
+          error={error.email}
+        />
+        
         <div className="input-container--1x2">
           <Input {...register("address.country")} placeholder="Country" />
           <Input {...register("address.city")} placeholder="City" />
