@@ -50,6 +50,13 @@ public class BookRepository {
                 .toList();
     }
 
+    public List<Book> getNewReleases(int limit) {
+        return books.stream()
+                .sorted(Comparator.comparing(Book::getYear).reversed())
+                .limit(limit)
+                .toList();
+    }
+
     public List<Book> findByTitleLikes(String title) {
         return books.stream()
                 .filter(book -> book.getTitle().contains(title))

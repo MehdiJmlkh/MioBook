@@ -100,4 +100,10 @@ public class BookService {
                 .map(bookMapper::toDto)
                 .toList();
     }
+
+    public List<BookDto> getNewReleases() {
+        return bookRepository.getNewReleases(5).stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
 }
