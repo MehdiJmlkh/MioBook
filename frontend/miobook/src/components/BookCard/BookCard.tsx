@@ -3,7 +3,7 @@ import noImage from "../../assets/no-image.svg";
 import Button from "../Button";
 import FiveStars from "../FiveStars";
 import Price from "../Price";
-import { Book } from "../../queries/useTopRatedBooks";
+import { Book } from "../../services/bookService";
 
 interface Props {
   book?: Book;
@@ -22,7 +22,7 @@ function BookCard({ book }: Props) {
           <FiveStars className="book-card__stars" rate={4} />
           <Price className="book-card__price">{book?.price || 11.11}</Price>
         </div>
-        <Button className="btn-primary book-card__btn"> Add to Cart</Button>
+        <Button className="btn-primary"> Add to Cart</Button>
       </div>
     </div>
   );
