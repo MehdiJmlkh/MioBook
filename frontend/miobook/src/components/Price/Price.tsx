@@ -1,7 +1,7 @@
 import "./Price.css";
 
 interface Props {
-  children: string;
+  children: string | number;
   className?: string;
 }
 

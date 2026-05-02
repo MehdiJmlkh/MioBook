@@ -4,9 +4,12 @@ import Grid from "../../components/Grid";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import SearchBox from "../../components/SearchBox";
+import { useTopRatedBooks } from "../../hooks/useTopRatedBooks";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const { data: topRatedBooks } = useTopRatedBooks();
+  console.log(topRatedBooks);
   return (
     <body className="home-page">
       <Header />
@@ -30,11 +33,7 @@ const HomePage = () => {
         <div className="home-page__top-rated">
           <h2 className="home-page__heading">Top Rated</h2>
           <Grid>
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
+            {topRatedBooks?.map(book => <BookCard book={book}/>)}
           </Grid>
         </div>
       </main>
