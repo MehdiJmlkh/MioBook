@@ -1,16 +1,16 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
+import { useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
 import Footer from "../../components/Footer";
 import Form, { FormType } from "../../components/Form";
 import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
-import { useState } from "react";
-import "./SignUpPage.css";
 import RoleInput from "../../components/RoleInput";
 import { Role } from "../../components/RoleInput/RoleInput";
 import userService from "../../services/UserService";
+import "./SignUpPage.css";
 
 const schema = z.object({
   username: z.string().min(1),
@@ -25,15 +25,11 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-interface ErrorResponse {
-  error: string;
-}
-
 const SignUpPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -44,8 +40,6 @@ const SignUpPage = () => {
   });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
-
     userService
       .create(data)
       .then((data) =>
@@ -83,7 +77,7 @@ const SignUpPage = () => {
           className={error.email && "form-control--error"}
           error={error.email}
         />
-        
+
         <div className="input-container--1x2">
           <Input {...register("address.country")} placeholder="Country" />
           <Input {...register("address.city")} placeholder="City" />
