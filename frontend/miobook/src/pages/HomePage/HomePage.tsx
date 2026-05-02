@@ -4,12 +4,14 @@ import Grid from "../../components/Grid";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import SearchBox from "../../components/SearchBox";
+import { useNewReleases } from "../../hooks/useNewReleases";
 import { useTopRatedBooks } from "../../hooks/useTopRatedBooks";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const {data: newReleases } = useNewReleases();
   const { data: topRatedBooks } = useTopRatedBooks();
-  console.log(topRatedBooks);
+
   return (
     <body className="home-page">
       <Header />
@@ -22,11 +24,7 @@ const HomePage = () => {
         <div className="home-page__new-releases">
           <h2 className="home-page__heading">New Releases</h2>
           <Grid>
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
+            {newReleases?.map(book => <BookCard book={book}/>)}
           </Grid>
         </div>
 
