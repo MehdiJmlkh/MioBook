@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/ApiClient";
+import bookService  from "../services/BookService";
 
 export interface Book {
   title: string;
@@ -11,6 +12,6 @@ export interface Book {
 export const useTopRatedBooks = () => {
   return useQuery<Book[]>({
     queryKey: ["books", "top-rated"],
-    queryFn: () => ApiClient.get("books/top-rated").then((res) => res.data),
+    queryFn: bookService.getTopRated,
   });
 };
