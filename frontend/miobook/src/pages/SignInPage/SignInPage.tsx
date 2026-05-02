@@ -1,13 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
+import { useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
 import Footer from "../../components/Footer";
 import Form, { FormType } from "../../components/Form";
 import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../../services/AuthService";
-import { AxiosError } from "axios";
-import { useState } from "react";
 import "./SignInPage.css";
 
 const schema = z.object({
@@ -25,7 +25,7 @@ const SignInPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
