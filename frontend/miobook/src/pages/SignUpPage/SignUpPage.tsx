@@ -9,7 +9,7 @@ import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import RoleInput from "../../components/RoleInput";
 import { Role } from "../../components/RoleInput/RoleInput";
-import userService from "../../services/UserService";
+import userService from "../../services/userService";
 import "./SignUpPage.css";
 
 const schema = z.object({
