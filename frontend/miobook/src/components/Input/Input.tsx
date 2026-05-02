@@ -10,7 +10,11 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
   ({ className, error, ...rest }, ref) => {
     return (
       <div>
-        <input className={`form-control ${className}`} {...rest} ref={ref} />
+        <input
+          className={`form-control ${error && "form-control--error"} ${className}`}
+          {...rest}
+          ref={ref}
+        />
         {error && <p className="text-danger  error">{error}</p>}
       </div>
     );

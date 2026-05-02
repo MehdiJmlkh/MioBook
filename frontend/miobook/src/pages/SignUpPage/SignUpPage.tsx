@@ -60,18 +60,12 @@ const SignUpPage = () => {
         <Input
           {...register("username")}
           placeholder="Username"
-          className={error.username && "form-control--error"}
           error={error.username}
         />
 
         <PasswordInput {...register("password")} placeholder="Password" />
 
-        <Input
-          {...register("email")}
-          placeholder="Email"
-          className={error.email && "form-control--error"}
-          error={error.email}
-        />
+        <Input {...register("email")} placeholder="Email" error={error.email} />
 
         <div className="input-container--1x2">
           <Input {...register("address.country")} placeholder="Country" />
