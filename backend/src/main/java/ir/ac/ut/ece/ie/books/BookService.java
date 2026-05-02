@@ -94,4 +94,10 @@ public class BookService {
                 .map(bookMapper::toDto)
                 .toList();
     }
+
+    public List<BookDto> getTopRated() {
+        return bookRepository.getTopRated(5).stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
 }

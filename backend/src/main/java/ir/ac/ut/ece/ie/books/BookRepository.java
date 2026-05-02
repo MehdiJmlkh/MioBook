@@ -43,6 +43,13 @@ public class BookRepository {
         return filteredBooks.subList(fromPage, toPage);
     }
 
+    public List<Book> getTopRated(int limit) {
+        return books.stream()
+                .sorted(Comparator.comparing(Book::getAverageRating).reversed())
+                .limit(limit)
+                .toList();
+    }
+
     public List<Book> findByTitleLikes(String title) {
         return books.stream()
                 .filter(book -> book.getTitle().contains(title))

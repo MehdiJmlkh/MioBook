@@ -41,6 +41,11 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
+    @GetMapping("/top-rated")
+    public  List<BookDto> getTopRated() {
+        return bookService.getTopRated();
+    }
+
     @ExceptionHandler(BookTitleAlreadyExistsException.class)
     public ResponseEntity<ErrorDto> handleBookTitleAlreadyExistsException() {
         return ResponseEntity.badRequest()
