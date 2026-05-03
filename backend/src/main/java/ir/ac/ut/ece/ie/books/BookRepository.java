@@ -36,7 +36,7 @@ public class BookRepository {
             return filteredBooks;
         }
 
-        int fromPage = page * size;
+        int fromPage = Math.min((page - 1) * size, filteredBooks.size());
         int toPage = Math.min(fromPage + size, filteredBooks.size());
 
         return filteredBooks.subList(fromPage, toPage);
