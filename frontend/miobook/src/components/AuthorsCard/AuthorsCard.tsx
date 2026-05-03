@@ -1,12 +1,15 @@
-import Card from "../Card";
-import "./AuthorsCard.css";
-import AuthorImage from "../../assets/author.svg";
 import AuthorIcon from "../../assets/author-icon.svg";
-import Price from "../Price";
+import AuthorImage from "../../assets/author.svg";
+import { useAuthors } from "../../queries/useAuthors";
+import Card from "../Card";
 import Table from "../Table";
+import "./AuthorsCard.css";
+
 const AuthorsCard = () => {
+  const { data: authors } = useAuthors();
+
   return (
-    <Card title="Books" icon={<img src={AuthorIcon} alt="" />}>
+    <Card title="Authors" icon={<img src={AuthorIcon} alt="" />}>
       <Table>
         <thead>
           <tr>
@@ -19,26 +22,18 @@ const AuthorsCard = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="table-image-row">
-              <img className="table-image" src={AuthorImage} alt="" />
-            </td>
-            <td data-label="Name">Stephen King</td>
-            <td data-label="Author">Richard Bachman</td>
-            <td data-label="Nationality">American</td>
-            <td data-label="Born">1947-09-21</td>
-            <td data-label="Died">&mdash;</td>
-          </tr>
-          <tr>
-            <td className="table-image-row">
-              <img className="table-image" src={AuthorImage} alt="" />
-            </td>
-            <td data-label="Name">Stephen King</td>
-            <td data-label="Author">Richard Bachman</td>
-            <td data-label="Nationality">American</td>
-            <td data-label="Born">1947-09-21</td>
-            <td data-label="Died">&mdash;</td>
-          </tr>
+          {authors?.map((author) => (
+            <tr>
+              <td className="table-image-row">
+                <img className="table-image" src={AuthorImage} alt="" />
+              </td>
+              <td data-label="Name">{author.name}</td>
+              <td data-label="Pen Name">{author.penName}</td>
+              <td data-label="Nationality">{author.nationality}</td>
+              <td data-label="Born">{author.born}</td>
+              <td data-label="Died">{author.died || <>&mdash;</>}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Card>
