@@ -5,14 +5,18 @@ import RadioInput from "../RadioInput";
 import RadioOptions from "../RadioOptions";
 import SelectInput from "../SelectInput";
 import "./FilterSideBar.css";
-import { MdClose } from "react-icons/md";
+import { useForm } from "react-hook-form";
+import { SearchQuery } from "../../queries/useBooks";
 
 interface Props {
   onClose: () => void;
   className?: string;
+  onSubmit: (data: SearchQuery) => void;
 }
 
-const FilterSideBar = ({ onClose, className }: Props) => {
+const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
+  const { register, handleSubmit } = useForm<SearchQuery>();
+
   return (
     <div className={`filter-sidebar ${className}`}>
       <CloseIcon onClose={onClose} />
@@ -21,12 +25,18 @@ const FilterSideBar = ({ onClose, className }: Props) => {
         <div>
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Book Name:</h2>
-            <Input className="filter-sidebar__filter__input" />
+            <Input
+              className="filter-sidebar__filter__input"
+              {...register("title")}
+            />
           </div>
 
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Author Name:</h2>
-            <Input className="filter-sidebar__filter__input" />
+            <Input
+              className="filter-sidebar__filter__input"
+              {...register("author")}
+            />
           </div>
 
           <div className="filter-sidebar__filter">
@@ -39,32 +49,38 @@ const FilterSideBar = ({ onClose, className }: Props) => {
 
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Published Year:</h2>
-            <Input className="filter-sidebar__filter__input" type="number" />
+            <Input
+              className="filter-sidebar__filter__input"
+              type="number"
+              {...register("year")}
+            />
           </div>
 
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Sort By:</h2>
             <RadioOptions>
-              <RadioInput name="sort" value="Rating" defaultChecked={true} />
-              <RadioInput name="sort" value="Reviews" />
+              <RadioInput
+                value="Rating"
+                defaultChecked={true}
+                {...register("sortBy")}
+              />
+              <RadioInput value="Reviews" {...register("sortBy")} />
             </RadioOptions>
           </div>
 
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Order:</h2>
             <RadioOptions>
-              <RadioInput name="order" value="Descending" />
-              <RadioInput
-                name="order"
-                value="Ascending"
-                defaultChecked={true}
-              />
+              <RadioInput name="sort" value="Descending" />
+              <RadioInput name="sort" value="Ascending" defaultChecked={true} />
             </RadioOptions>
           </div>
         </div>
       </div>
       <div className="filter-sidebar__btn">
-        <Button className="btn-primary">Apply</Button>
+        <Button className="btn-primary" onClick={handleSubmit(onSubmit)}>
+          Apply
+        </Button>
       </div>
     </div>
   );

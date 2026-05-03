@@ -40,6 +40,7 @@ const SearchResultPage = () => {
     <body>
       <Backdrop enabled={showSidebar} />
       <FilterSideBar
+        onSubmit={(data) => setSearchParams(data)}
         className={showSidebar ? "open" : ""}
         onClose={() => setShowSidebar(false)}
       />
