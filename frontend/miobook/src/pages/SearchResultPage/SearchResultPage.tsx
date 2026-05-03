@@ -11,10 +11,28 @@ import Backdrop from "../../components/Backdrop";
 import { useNoScroll } from "../../hooks/useNoScroll";
 
 import "./SearchResultPage.css";
+import { SearchQuery, useBooks } from "../../queries/useBooks";
+import { FieldValues } from "react-hook-form";
 
 const SearchResultPage = () => {
+  const [searchParams, setSearchParams] = useState<SearchQuery>({
+    title: undefined,
+    author: undefined,
+    genre: undefined,
+    year: undefined,
+    sortBy: "Rating",
+    descending: true,
+  });
+
   const [pageNumber, setPageNumber] = useState(1);
   const [showSidebar, setShowSidebar] = useState(false);
+
+  console.log(pageNumber);
+
+  const { data: books } = useBooks(searchParams, {
+    page: pageNumber,
+    size: 10,
+  });
 
   useNoScroll([showSidebar]);
 
@@ -39,16 +57,9 @@ const SearchResultPage = () => {
           </Button>
         </div>
         <Grid>
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
+          {books?.map((book) => (
+            <BookCard book={book} />
+          ))}
         </Grid>
       </main>
       <Pagination

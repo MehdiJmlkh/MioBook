@@ -1,3 +1,4 @@
+import { SearchQuery } from "../queries/useBooks";
 import apiClient from "./ApiClient";
 
 export interface Book {
@@ -14,6 +15,12 @@ class BookService {
 
   getNewReleases() {
     return apiClient.get("/books/new-releases").then((res) => res.data);
+  }
+
+  search(query: SearchQuery, params: Record<string, number>) {
+    return apiClient
+      .post("books/search", query, { params: params })
+      .then((res) => res.data);
   }
 }
 
