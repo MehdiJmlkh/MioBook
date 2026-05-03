@@ -9,20 +9,14 @@ import Pagination from "../../components/Pagination";
 import FilterSideBar from "../../components/FilterSideBar";
 import Backdrop from "../../components/Backdrop";
 import { useNoScroll } from "../../hooks/useNoScroll";
+import { SearchQuery, useBooks } from "../../queries/useBooks";
 
 import "./SearchResultPage.css";
-import { SearchQuery, useBooks } from "../../queries/useBooks";
-import { FieldValues } from "react-hook-form";
 
 const SearchResultPage = () => {
-  const [searchParams, setSearchParams] = useState<SearchQuery>({
-    title: undefined,
-    author: undefined,
-    genre: undefined,
-    year: undefined,
-    sortBy: "Rating",
-    order: "Ascending",
-  });
+  const [searchParams, setSearchParams] = useState<SearchQuery>(
+    {} as SearchQuery,
+  );
 
   const [pageNumber, setPageNumber] = useState(1);
   const [showSidebar, setShowSidebar] = useState(false);
