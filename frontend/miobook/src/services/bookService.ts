@@ -22,6 +22,10 @@ class BookService {
       .post("books/search", query, { params: params })
       .then((res) => res.data);
   }
+
+  getGenres() {
+    return apiClient.get("/books/genres").then((res) => res.data);
+  }
 }
 
 export default new BookService();
