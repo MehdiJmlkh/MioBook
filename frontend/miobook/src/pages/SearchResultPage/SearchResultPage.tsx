@@ -18,13 +18,11 @@ const SearchResultPage = () => {
     {} as SearchQuery,
   );
 
-  const [pageNumber, setPageNumber] = useState(1);
+  const [page, setPage] = useState(1);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  console.log(pageNumber);
-
   const { data: books } = useBooks(searchParams, {
-    page: pageNumber,
+    page: page,
     size: 10,
   });
 
@@ -34,7 +32,10 @@ const SearchResultPage = () => {
     <body>
       <Backdrop enabled={showSidebar} />
       <FilterSideBar
-        onSubmit={(data) => setSearchParams(data)}
+        onSubmit={(data) => {
+          console.log(data);
+          setSearchParams(data);
+        }}
         className={showSidebar ? "open" : ""}
         onClose={() => setShowSidebar(false)}
       />
@@ -59,8 +60,8 @@ const SearchResultPage = () => {
       </main>
       <Pagination
         totalPages={5}
-        pageNumber={pageNumber}
-        onClick={(page) => setPageNumber(page)}
+        pageNumber={page}
+        onClick={(page) => setPage(page)}
       />
       <Footer />
     </body>
