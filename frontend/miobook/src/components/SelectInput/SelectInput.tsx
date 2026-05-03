@@ -6,9 +6,10 @@ import { FaCaretDown } from "react-icons/fa";
 interface Props {
   options?: string[];
   className: string;
+  onChange: (option: string) => void;
 }
 
-const SelectInput = ({ options = [], className }: Props) => {
+const SelectInput = ({ options = [], className, onChange }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
@@ -24,7 +25,10 @@ const SelectInput = ({ options = [], className }: Props) => {
             <li
               key={option}
               className="dropdown__item"
-              onClick={() => setValue(option)}
+              onClick={() => {
+                setValue(option);
+                onChange(option);
+              }}
             >
               {option}
             </li>

@@ -7,6 +7,7 @@ import SelectInput from "../SelectInput";
 import "./FilterSideBar.css";
 import { useForm } from "react-hook-form";
 import { SearchQuery } from "../../queries/useBooks";
+import { useState } from "react";
 
 interface Props {
   onClose: () => void;
@@ -16,6 +17,7 @@ interface Props {
 
 const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
   const { register, handleSubmit } = useForm<SearchQuery>();
+  const [genre, setGenre] = useState("");
 
   return (
     <div className={`filter-sidebar ${className}`}>
@@ -42,6 +44,7 @@ const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Genre:</h2>
             <SelectInput
+              onChange={(option) => setGenre(option)}
               className="filter-sidebar__filter__input"
               options={["Genre 1", "Genre 2", "Genre 3"]}
             />
@@ -71,14 +74,21 @@ const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Order:</h2>
             <RadioOptions>
-              <RadioInput name="sort" value="Descending" />
-              <RadioInput name="sort" value="Ascending" defaultChecked={true} />
+              <RadioInput value="Descending" {...register("order")} />
+              <RadioInput
+                value="Ascending"
+                {...register("order")}
+                defaultChecked={true}
+              />
             </RadioOptions>
           </div>
         </div>
       </div>
       <div className="filter-sidebar__btn">
-        <Button className="btn-primary" onClick={handleSubmit(onSubmit)}>
+        <Button
+          className="btn-primary"
+          onClick={handleSubmit((data) => onSubmit({ ...data, genre: genre }))}
+        >
           Apply
         </Button>
       </div>
