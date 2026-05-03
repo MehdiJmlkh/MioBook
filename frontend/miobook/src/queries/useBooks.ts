@@ -8,14 +8,15 @@ export interface SearchQuery {
   year?: number;
   sortBy: "Rating" | "Reviews";
   order?: "Descending" | "Ascending";
+  page: number;
+  size: number;
 }
 
 export const useBooks = (
   query: SearchQuery,
-  params: Record<string, number>,
 ) => {
   return useQuery<Book[]>({
-    queryKey: ["books", "search", query, params],
-    queryFn: () => bookService.search(query, params),
+    queryKey: ["books", "search", query],
+    queryFn: () => bookService.search(query),
   });
 };

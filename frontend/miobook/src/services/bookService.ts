@@ -17,9 +17,9 @@ class BookService {
     return apiClient.get("/books/new-releases").then((res) => res.data);
   }
 
-  search(query: SearchQuery, params: Record<string, number>) {
+  search(query: SearchQuery) {
     return apiClient
-      .get("books/search", { params: { ...query, ...params } })
+      .get("books/search", { params: query })
       .then((res) => res.data);
   }
 

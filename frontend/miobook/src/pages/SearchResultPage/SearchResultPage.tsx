@@ -14,18 +14,15 @@ import { SearchQuery, useBooks } from "../../queries/useBooks";
 import "./SearchResultPage.css";
 
 const SearchResultPage = () => {
-  const [searchParams, setSearchParams] = useState<SearchQuery>(
-    {} as SearchQuery,
-  );
-
   const [page, setPage] = useState(1);
-  const [showSidebar, setShowSidebar] = useState(false);
-
-  const { data: books } = useBooks(searchParams, {
+  const [searchParams, setSearchParams] = useState<SearchQuery>({
     page: page,
     size: 10,
-  });
+  } as SearchQuery);
 
+  const { data: books } = useBooks(searchParams);
+
+  const [showSidebar, setShowSidebar] = useState(false);
   useNoScroll([showSidebar]);
 
   return (
