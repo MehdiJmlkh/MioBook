@@ -79,4 +79,12 @@ public class BookRepository {
                 .filter(book -> book.publishedInRange(from, to))
                 .toList();
     }
+
+    public List<String> getAllGenres() {
+        return books.stream()
+                .map(Book::getGenres)
+                .flatMap(Set::stream)
+                .distinct()
+                .toList();
+    }
 }

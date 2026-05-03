@@ -19,6 +19,11 @@ public class BookController {
         return bookService.getBook(title);
     }
 
+    @GetMapping("/genres")
+    public List<String> getAllGenres() {
+        return bookService.getAllGenres();
+    }
+
     @PostMapping("/search")
     public List<BookDto> searchBook(
             @RequestBody SearchQuery query,

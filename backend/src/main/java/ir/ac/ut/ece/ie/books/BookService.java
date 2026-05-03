@@ -99,4 +99,8 @@ public class BookService {
                 .map(bookMapper::toDto)
                 .toList();
     }
+
+    public List<String> getAllGenres() {
+        return bookRepository.getAllGenres();
+    }
 }
