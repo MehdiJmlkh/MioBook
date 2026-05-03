@@ -19,7 +19,7 @@ class BookService {
 
   search(query: SearchQuery, params: Record<string, number>) {
     return apiClient
-      .post("books/search", query, { params: params })
+      .get("books/search", { params: { ...query, ...params } })
       .then((res) => res.data);
   }
 

@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
-import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +23,13 @@ public class BookController {
         return bookService.getAllGenres();
     }
 
-    @PostMapping("/search")
+    @GetMapping("/search")
     public List<BookDto> searchBook(
-            @RequestBody SearchQuery query,
+            @ModelAttribute SearchQuery query,
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "size", required = false) Integer size
     ) {
+        System.out.println(query);
         return bookService.getBooks(query, page, size);
     }
 
