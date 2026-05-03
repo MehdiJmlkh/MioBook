@@ -10,6 +10,8 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class AuthorService {
@@ -44,5 +46,9 @@ public class AuthorService {
         var author = authorMapper.toAuthor(request);
         authorRepository.addAuthor(author);
         return author;
+    }
+
+    public List<Author> getAllAuthors() {
+        return authorRepository.getAll();
     }
 }

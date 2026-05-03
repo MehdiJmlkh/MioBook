@@ -9,11 +9,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
     private final AuthorService authorService;
+
+    @GetMapping
+    public List<Author> getAllAuthors() {
+        return authorService.getAllAuthors();
+    }
 
     @GetMapping("/{name}")
     public Author getAuthor(@PathVariable(name = "name") String name) {
