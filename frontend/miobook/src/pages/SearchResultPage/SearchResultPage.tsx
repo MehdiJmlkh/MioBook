@@ -21,7 +21,7 @@ const SearchResultPage = () => {
     genre: undefined,
     year: undefined,
     sortBy: "Rating",
-    descending: true,
+    order: "Ascending",
   });
 
   const [pageNumber, setPageNumber] = useState(1);

@@ -7,10 +7,13 @@ export interface SearchQuery {
   genre?: string;
   year?: number;
   sortBy: "Rating" | "Reviews";
-  descending?: boolean;
+  order?: "Descending" | "Ascending";
 }
 
-export const useBooks = (query: SearchQuery, params: Record<string, number>) => {
+export const useBooks = (
+  query: SearchQuery,
+  params: Record<string, number>,
+) => {
   return useQuery<Book[]>({
     queryKey: ["books", "search", query, params],
     queryFn: () => bookService.search(query, params),
