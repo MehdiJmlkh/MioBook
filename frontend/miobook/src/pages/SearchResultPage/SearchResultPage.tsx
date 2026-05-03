@@ -9,7 +9,7 @@ import Pagination from "../../components/Pagination";
 import FilterSideBar from "../../components/FilterSideBar";
 import Backdrop from "../../components/Backdrop";
 import { useNoScroll } from "../../hooks/useNoScroll";
-import { SearchQuery, useBooks } from "../../queries/useBooks";
+import { SearchQuery, useFilteredBooks } from "../../queries/useFilteredBooks";
 
 import "./SearchResultPage.css";
 
@@ -20,7 +20,7 @@ const SearchResultPage = () => {
     size: 10,
   } as SearchQuery);
 
-  const { data: books } = useBooks(searchParams);
+  const { data: books } = useFilteredBooks(searchParams);
 
   const [showSidebar, setShowSidebar] = useState(false);
   useNoScroll([showSidebar]);

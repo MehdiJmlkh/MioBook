@@ -1,4 +1,4 @@
-import { SearchQuery } from "../queries/useBooks";
+import { SearchQuery } from "../queries/useFilteredBooks";
 import apiClient from "./ApiClient";
 
 export interface Book {
@@ -9,6 +9,10 @@ export interface Book {
 }
 
 class BookService {
+  getBooks() {
+    return apiClient.get("books").then((res) => res.data);
+  }
+
   getTopRated() {
     return apiClient.get("/books/top-rated").then((res) => res.data);
   }

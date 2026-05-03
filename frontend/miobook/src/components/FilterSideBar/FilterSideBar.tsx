@@ -6,7 +6,7 @@ import RadioOptions from "../RadioOptions";
 import SelectInput from "../SelectInput";
 import "./FilterSideBar.css";
 import { useForm } from "react-hook-form";
-import { SearchQuery } from "../../queries/useBooks";
+import { SearchQuery } from "../../queries/useFilteredBooks";
 import { useState } from "react";
 import { useGenres } from "../../queries/useGenres";
 
@@ -20,7 +20,7 @@ const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
   const { register, handleSubmit } = useForm<SearchQuery>();
   const [selectedGenre, setSelectedGenre] = useState("");
 
-  const {data: genres} = useGenres();
+  const { data: genres } = useGenres();
 
   return (
     <div className={`filter-sidebar ${className}`}>
@@ -90,7 +90,9 @@ const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
       <div className="filter-sidebar__btn">
         <Button
           className="btn-primary"
-          onClick={handleSubmit((data) => onSubmit({ ...data, genre: selectedGenre }))}
+          onClick={handleSubmit((data) =>
+            onSubmit({ ...data, genre: selectedGenre }),
+          )}
         >
           Apply
         </Button>

@@ -12,9 +12,7 @@ export interface SearchQuery {
   size: number;
 }
 
-export const useBooks = (
-  query: SearchQuery,
-) => {
+export const useFilteredBooks = (query: SearchQuery) => {
   return useQuery<Book[]>({
     queryKey: ["books", "search", query],
     queryFn: () => bookService.search(query),
