@@ -23,14 +23,13 @@ public class BookRepository {
         String title = query.getTitle();
         String author = query.getAuthor();
         String genre = query.getGenre();
-        Integer from = query.getFrom();
-        Integer to = query.getTo();
+        Integer year = query.getYear();
 
         var filteredBooks = books.stream()
                 .filter(book -> title == null || book.getTitle().contains(title))
                 .filter(book -> author == null || book.getAuthor().getName().contains(author))
                 .filter(book -> genre == null || book.getGenres().contains(genre))
-                .filter(book -> (from == null && to == null) || book.publishedInRange(from, to))
+                .filter(book -> (year == null) || book.getYear().equals(year))
                 .toList();
 
         if (page == null || size == null) {

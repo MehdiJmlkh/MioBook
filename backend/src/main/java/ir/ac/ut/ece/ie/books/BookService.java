@@ -83,13 +83,6 @@ public class BookService {
     }
 
     public List<BookDto> getBooks(SearchQuery query, Integer page, Integer size) {
-        var from = query.getFrom();
-        var to = query.getTo();
-
-        if (from != null && to != null && from >= to) {
-            throw new InvalidYearRangeException();
-        }
-
         return bookRepository.findByQuery(query, page, size).stream()
                 .map(bookMapper::toDto)
                 .toList();

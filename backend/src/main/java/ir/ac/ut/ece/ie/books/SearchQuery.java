@@ -7,6 +7,5 @@ public class SearchQuery {
     private String title;
     private String author;
     private String genre;
-    private Integer from;
-    private Integer to;
+    private Integer year;
 }
