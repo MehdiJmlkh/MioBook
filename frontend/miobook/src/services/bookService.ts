@@ -6,6 +6,9 @@ export interface Book {
   author: string;
   price: number;
   averageRating: number;
+  year: number;
+  publisher: string;
+  genres: string[];
 }
 
 class BookService {

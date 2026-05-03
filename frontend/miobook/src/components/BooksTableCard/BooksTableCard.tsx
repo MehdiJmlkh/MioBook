@@ -1,16 +1,18 @@
-import Card from "../Card";
-import Table from "../Table";
-import BookImage from "../../assets/book.svg";
 import BookIcon from "../../assets/book-icon.svg";
-
-import "./BooksTableCard.css";
-import Button from "../Button";
+import BookImage from "../../assets/book.svg";
+import { useBooks } from "../../queries/useBooks";
+import Card from "../Card";
 import Price from "../Price";
+import Table from "../Table";
+import "./BooksTableCard.css";
 
 interface Props {
   className?: string;
 }
+
 const BooksTableCard = ({ className }: Props) => {
+  const { data: books } = useBooks();
+
   return (
     <Card
       className={className}
@@ -31,34 +33,22 @@ const BooksTableCard = ({ className }: Props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="table-image-row">
-              <img className="table-image" src={BookImage} alt="" />
-            </td>
-            <td data-label="Name">The Design of Books</td>
-            <td data-label="Author">Debbie Berne</td>
-            <td data-label="Genre">Guide</td>
-            <td data-label="Publisher">The Publishers</td>
-            <td data-label="Published Year">2024</td>
-            <td data-label="Price">
-              <Price>18.00</Price>
-            </td>
-            <td data-label="Total Buys">10</td>
-          </tr>
-          <tr>
-            <td className="table-image-row">
-              <img className="table-image" src={BookImage} alt="" />
-            </td>
-            <td data-label="Name">The Design of Books</td>
-            <td data-label="Author">Debbie Berne</td>
-            <td data-label="Genre">Guide</td>
-            <td data-label="Publisher">The Publishers</td>
-            <td data-label="Published Year">2024</td>
-            <td data-label="Price">
-              <Price>18.00</Price>
-            </td>
-            <td data-label="Total Buys">10</td>
-          </tr>
+          {books?.map((book) => (
+            <tr>
+              <td className="table-image-row">
+                <img className="table-image" src={BookImage} alt="" />
+              </td>
+              <td data-label="Name">{book.title}</td>
+              <td data-label="Author">{book.author}</td>
+              <td data-label="Genre">{book.genres.join(", ")}</td>
+              <td data-label="Publisher">{book.publisher}</td>
+              <td data-label="Published Year">{book.year}</td>
+              <td data-label="Price">
+                <Price>{book.price}</Price>
+              </td>
+              <td data-label="Total Buys">10</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Card>
