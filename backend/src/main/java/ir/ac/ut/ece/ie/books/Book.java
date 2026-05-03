@@ -26,6 +26,10 @@ public class Book {
 
     private Set<Review> reviews = new LinkedHashSet<>();
 
+    public int getReviewsCount() {
+        return reviews.size();
+    }
+
     public float getAverageRating() {
         if (reviews.isEmpty()) {
             return 0;

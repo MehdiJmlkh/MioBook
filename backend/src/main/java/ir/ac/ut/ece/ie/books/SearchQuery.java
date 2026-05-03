@@ -8,4 +8,6 @@ public class SearchQuery {
     private String author;
     private String genre;
     private Integer year;
+    private SortType sortBy;
+    private SortOrder order;
 }

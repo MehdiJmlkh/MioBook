@@ -25,11 +25,20 @@ public class BookRepository {
         String genre = query.getGenre();
         Integer year = query.getYear();
 
+        Comparator<Book> comparator = query.getSortBy() == SortType.Reviews
+                ? Comparator.comparing(Book::getReviewsCount)
+                : Comparator.comparing(Book::getAverageRating);
+
+        if (query.getOrder() == SortOrder.Descending) {
+            comparator = comparator.reversed();
+        }
+
         var filteredBooks = books.stream()
                 .filter(book -> title == null || book.getTitle().contains(title))
                 .filter(book -> author == null || book.getAuthor().getName().contains(author))
                 .filter(book -> genre == null || book.getGenres().contains(genre))
                 .filter(book -> (year == null) || book.getYear().equals(year))
+                .sorted(comparator)
                 .toList();
 
         if (page == null || size == null) {
