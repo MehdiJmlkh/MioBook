@@ -9,19 +9,17 @@ import "./DateInput.css";
 interface Props {
   placeholder?: string;
   onChange: (date: SetStateAction<Date | null>) => void;
+  value: Date | null;
 }
 
-const DateInput = ({ placeholder, onChange }: Props) => {
-  const [date, setDate] = useState<Date | null>(null);
-
+const DateInput = ({ placeholder, onChange, value }: Props) => {
   return (
     <div className="date-input">
       <LuCalendarDays className="date-input__icon" />
       <DatePicker
-        selected={date}
+        selected={value}
         dateFormat="yyyy-MM-dd"
         onChange={(d: SetStateAction<Date | null>) => {
-          setDate(d);
           onChange(d);
         }}
         placeholderText={placeholder}

@@ -17,6 +17,7 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { isValid },
   } = useForm<Author>();
 
@@ -26,7 +27,7 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
   const addAuthor = useAddAuthor();
 
   return (
-    <div className={`add-author modal-pop ${className}`}>
+    <form className={`add-author modal-pop ${className}`}>
       <CloseIcon onClose={onClose} />
       <h1 className="add-author__title">Add Author</h1>
       <div className="add-author__inputs">
@@ -39,8 +40,16 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
           {...register("nationality", { required: true })}
           placeholder="Nationality"
         />
-        <DateInput onChange={(date) => setBornDate(date)} placeholder="Born" />
-        <DateInput onChange={(date) => setDiedDate(date)} placeholder="Dided" />
+        <DateInput
+          value={bornDate}
+          onChange={(date) => setBornDate(date)}
+          placeholder="Born"
+        />
+        <DateInput
+          value={diedDate}
+          onChange={(date) => setDiedDate(date)}
+          placeholder="Dided"
+        />
         <Input placeholder="Image Link" />
       </div>
       <div className="add-author__btns">
@@ -53,18 +62,26 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
               born: bornDate?.toISOString().slice(0, 10),
               died: diedDate?.toISOString().slice(0, 10),
             });
-            console.log({
-              ...data,
-              born: bornDate?.toISOString().slice(0, 10),
-              died: diedDate?.toISOString().slice(0, 10),
-            });
+            reset();
+            setBornDate(null);
+            setDiedDate(null);
+            onClose();
           })}
         >
           Submit
         </Button>
-        <Button className="btn-secondary">Cancel</Button>
+        <Button
+          type="reset"
+          onClick={() => {
+            setBornDate(null);
+            setDiedDate(null);
+          }}
+          className="btn-secondary"
+        >
+          Cancel
+        </Button>
       </div>
-    </div>
+    </form>
   );
 };
 

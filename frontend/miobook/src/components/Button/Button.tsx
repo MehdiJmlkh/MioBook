@@ -6,15 +6,16 @@ interface Props {
   children: ReactNode;
   disabled?: boolean;
   onClick?: () => void;
+  type?: "submit" | "reset" | "button" | undefined;
 }
 
-const Button = ({ className, children, disabled, onClick }: Props) => {
+const Button = ({ className, children, disabled, onClick, type="submit" }: Props) => {
   return (
     <button
       className={`btn ${className}`}
       disabled={disabled}
       onClick={onClick}
-      type="submit"
+      type={type}
     >
       {children}
     </button>
