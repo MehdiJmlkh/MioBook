@@ -12,9 +12,7 @@ import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
-import java.lang.reflect.Parameter;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -102,5 +100,11 @@ public class BookService {
 
     public List<String> getAllGenres() {
         return bookRepository.getAllGenres();
+    }
+
+    public List<BookDto> getAllBooks() {
+        return bookRepository.getAll().stream()
+                .map(bookMapper::toDto)
+                .toList();
     }
 }

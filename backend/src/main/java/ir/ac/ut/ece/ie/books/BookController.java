@@ -13,6 +13,11 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
 
+    @GetMapping
+    public List<BookDto> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
     @GetMapping("/{title}")
     public BookDto getBook(@PathVariable("title") String title) {
         return bookService.getBook(title);

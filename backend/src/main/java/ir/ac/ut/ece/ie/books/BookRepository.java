@@ -96,4 +96,8 @@ public class BookRepository {
                 .distinct()
                 .toList();
     }
+
+    public List<Book> getAll() {
+        return books.stream().toList();
+    }
 }
