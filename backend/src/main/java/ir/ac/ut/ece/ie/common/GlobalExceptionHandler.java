@@ -61,9 +61,9 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(AuthorNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleAuthorNotFoundException() {
+    public ResponseEntity<Map<String, String>> handleAuthorNotFoundException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("The author not found."));
+                .body(Map.of("author","Author not found."));
     }
 
     @ExceptionHandler(AnotherUserAlreadyLoggedInException.class)
