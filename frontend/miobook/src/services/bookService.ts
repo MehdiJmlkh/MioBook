@@ -1,3 +1,4 @@
+import { AddBookRequest } from "../components/AddBookModal/AddBookModal";
 import { SearchQuery } from "../queries/useFilteredBooks";
 import apiClient from "./ApiClient";
 
@@ -32,6 +33,15 @@ class BookService {
 
   getGenres() {
     return apiClient.get("/books/genres").then((res) => res.data);
+  }
+
+  addBook(newBook: AddBookRequest) {
+    return apiClient
+      .post("/books", { ...newBook, username: "admin1" })
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err.response.data;
+      });
   }
 }
 

@@ -4,38 +4,86 @@ import CloseIcon from "../CloseIcon";
 import Input from "../Input";
 import "./AddBookModal.css";
 import TextArea from "../TextArea";
+import { useForm } from "react-hook-form";
+import { Book } from "../../services/bookService";
+import { useAddBook } from "../../queries/useAddBook";
 
 interface Props {
   className?: string;
   onClose: () => void;
 }
 
+export interface AddBookRequest {
+  title: string;
+  author: string;
+  price: number;
+  averageRating: number;
+  year: number;
+  publisher: string;
+  genres: string[];
+  synopsis: string;
+  content: string;
+}
+
 const AddBookModal = ({ className, onClose }: Props) => {
   const [isSecondPage, setIsSecondPage] = useState(false);
+
+  const { register, reset, handleSubmit } = useForm<AddBookRequest>();
+
+  const onSuccess = () => {
+    reset();
+    onClose();
+  };
+
+  const addBook = useAddBook({ onSuccess });
+
+  console.log(addBook.error);
   return (
-    <div className={`add-book modal-pop ${className}`}>
+    <form className={`add-book modal-pop ${className}`}>
       <CloseIcon onClose={onClose} />
       <h1 className="add-book__title">Add Book</h1>
       <div className="add-book__inputs">
         {!isSecondPage && (
           <>
-            <Input placeholder="Name" />
-            <Input placeholder="Author" />
-            <Input placeholder="Publisher" />
-            <Input placeholder="Genres" />
-            <Input placeholder="Published Year" />
-            <Input placeholder="Price" />
+            <Input
+              {...register("title")}
+              placeholder="Name"
+              error={addBook.error?.title}
+            />
+            <Input
+              {...register("author")}
+              placeholder="Author"
+              error={addBook.error?.author}
+            />
+            <Input {...register("publisher")} placeholder="Publisher" />
+            <Input
+              {...register("genres", {
+                setValueAs: (value: string) => {
+                  if (typeof value !== "string") return value;
+                  console.log(value);
+                  return value
+                    .split(",")
+                    .map((v) => v.trim())
+                    .filter(Boolean);
+                },
+              })}
+              placeholder="Genres"
+            />
+            <Input {...register("year")} placeholder="Published Year" />
+            <Input {...register("price")} placeholder="Price" />
             <Input placeholder="Image Link" />
           </>
         )}
         {isSecondPage && (
           <>
             <TextArea
+              {...register("synopsis")}
               className="textarea-primary"
               placeholder="Synopsis"
               rows={6}
             />
             <TextArea
+              {...register("content")}
               className="textarea-primary"
               placeholder="Content"
               rows={9}
@@ -53,12 +101,23 @@ const AddBookModal = ({ className, onClose }: Props) => {
             >
               Next
             </Button>
-            <Button className="btn-secondary">Cancel</Button>
+            <Button
+              type="reset"
+              onClick={() => reset()}
+              className="btn-secondary"
+            >
+              Cancel
+            </Button>
           </>
         )}
         {isSecondPage && (
           <>
-            <Button className="btn-primary">Submit</Button>
+            <Button
+              className="btn-primary"
+              onClick={handleSubmit((data) => addBook.mutate(data))}
+            >
+              Submit
+            </Button>
             <Button
               className="btn-secondary"
               onClick={() => setIsSecondPage(false)}
@@ -68,7 +127,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
           </>
         )}
       </div>
-    </div>
+    </form>
   );
 };
 
