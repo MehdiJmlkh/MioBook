@@ -6,8 +6,13 @@ interface addAuthorError {
   name: string;
 }
 
-export const useAddAuthor = () => {
+interface Props {
+  onSuccess?: (author: Author) => void;
+}
+
+export const useAddAuthor = ({ onSuccess }: Props) => {
   return useMutation<Author, addAuthorError, Author>({
     mutationFn: authorService.addAuthor,
+    onSuccess,
   });
 };

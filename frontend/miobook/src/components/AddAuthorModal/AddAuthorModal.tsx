@@ -24,14 +24,25 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
   const [bornDate, setBornDate] = useState<Date | null>(null);
   const [diedDate, setDiedDate] = useState<Date | null>(null);
 
-  const addAuthor = useAddAuthor();
+  const onSuccess = () => {
+    reset();
+    setBornDate(null);
+    setDiedDate(null);
+    onClose();
+  };
+
+  const addAuthor = useAddAuthor({ onSuccess });
 
   return (
     <form className={`add-author modal-pop ${className}`}>
       <CloseIcon onClose={onClose} />
       <h1 className="add-author__title">Add Author</h1>
       <div className="add-author__inputs">
-        <Input {...register("name", { required: true })} placeholder="Name" error={addAuthor.error?.name}/>
+        <Input
+          {...register("name", { required: true })}
+          placeholder="Name"
+          error={addAuthor.error?.name}
+        />
         <Input
           {...register("penName", { required: true })}
           placeholder="Pen Name"
@@ -62,11 +73,6 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
               born: bornDate?.toISOString().slice(0, 10),
               died: diedDate?.toISOString().slice(0, 10),
             });
-            // reset();
-            setBornDate(null);
-            setDiedDate(null);
-            console.log(addAuthor.error)
-            // onClose();
           })}
         >
           Submit
