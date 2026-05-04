@@ -32,6 +32,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
 
   const onSuccess = () => {
     reset();
+    setIsSecondPage(false);
     onClose();
   };
 
@@ -69,7 +70,11 @@ const AddBookModal = ({ className, onClose }: Props) => {
               })}
               placeholder="Genres"
             />
-            <Input type="number" {...register("year")} placeholder="Published Year" />
+            <Input
+              type="number"
+              {...register("year")}
+              placeholder="Published Year"
+            />
             <Input type="number" {...register("price")} placeholder="Price" />
             <Input placeholder="Image Link" />
           </>
