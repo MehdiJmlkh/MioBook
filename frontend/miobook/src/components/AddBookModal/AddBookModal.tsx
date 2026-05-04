@@ -26,13 +26,13 @@ export interface AddBookRequest {
 }
 
 const AddBookModal = ({ className, onClose }: Props) => {
-  const [isSecondPage, setIsSecondPage] = useState(false);
+  const [page, setPage] = useState<1 | 2>(1);
 
   const { register, reset, handleSubmit } = useForm<AddBookRequest>();
 
   const onSuccess = () => {
     reset();
-    setIsSecondPage(false);
+    setPage(1);
     onClose();
   };
 
@@ -46,13 +46,12 @@ const AddBookModal = ({ className, onClose }: Props) => {
       .filter(Boolean);
   };
 
-  console.log(addBook.error);
   return (
     <form className={`add-book modal-pop ${className}`}>
       <CloseIcon onClose={onClose} />
       <h1 className="add-book__title">Add Book</h1>
       <div className="add-book__inputs">
-        {!isSecondPage && (
+        {page === 1 ? (
           <>
             <Input
               {...register("title")}
@@ -77,8 +76,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
             <Input type="number" {...register("price")} placeholder="Price" />
             <Input placeholder="Image Link" />
           </>
-        )}
-        {isSecondPage && (
+        ) : (
           <>
             <TextArea
               {...register("synopsis")}
@@ -97,34 +95,38 @@ const AddBookModal = ({ className, onClose }: Props) => {
       </div>
 
       <div className="add-book__btns">
-        {!isSecondPage && (
+        {page === 1 ? (
           <>
             <Button
+              key={"next"}
+              type="button"
               className="btn-primary"
-              onClick={() => setIsSecondPage(true)}
+              onClick={() => setPage(2)}
             >
               Next
             </Button>
             <Button
+              key={"reset"}
               type="reset"
-              onClick={() => reset()}
+              onClick={() => reset}
               className="btn-secondary"
             >
               Cancel
             </Button>
           </>
-        )}
-        {isSecondPage && (
+        ) : (
           <>
             <Button
+              key={"submit"}
               className="btn-primary"
               onClick={handleSubmit((data) => addBook.mutate(data))}
             >
               Submit
             </Button>
             <Button
+              key={"back"}
               className="btn-secondary"
-              onClick={() => setIsSecondPage(false)}
+              onClick={() => setPage(1)}
             >
               Back
             </Button>
