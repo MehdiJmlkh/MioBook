@@ -38,6 +38,14 @@ const AddBookModal = ({ className, onClose }: Props) => {
 
   const addBook = useAddBook({ onSuccess });
 
+  const setGenresAs = (value: string) => {
+    if (typeof value !== "string") return value;
+    return value
+      .split(",")
+      .map((v) => v.trim())
+      .filter(Boolean);
+  };
+
   console.log(addBook.error);
   return (
     <form className={`add-book modal-pop ${className}`}>
@@ -58,16 +66,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
             />
             <Input {...register("publisher")} placeholder="Publisher" />
             <Input
-              {...register("genres", {
-                setValueAs: (value: string) => {
-                  if (typeof value !== "string") return value;
-                  console.log(value);
-                  return value
-                    .split(",")
-                    .map((v) => v.trim())
-                    .filter(Boolean);
-                },
-              })}
+              {...register("genres", { setValueAs: setGenresAs })}
               placeholder="Genres"
             />
             <Input
