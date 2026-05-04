@@ -5,12 +5,24 @@ import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import DateInput from "../DateInput";
 import Input from "../Input";
+import { z } from "zod";
 import "./AddAuthorModal.css";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface Props {
   className?: string;
   onClose: () => void;
 }
+
+const schema = z.object({
+  name: z.string().min(1),
+  penName: z.string().min(1),
+  nationality: z.string().min(1),
+  born: z.string().min(1),
+  died: z.string(),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const AddAuthorModal = ({ className, onClose }: Props) => {
   const {
@@ -19,7 +31,9 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
     handleSubmit,
     reset,
     formState: { isValid },
-  } = useForm<Author>();
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
 
   const onSuccess = () => {
     reset();
@@ -34,22 +48,17 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
       <h1 className="add-author__title">Add Author</h1>
       <div className="add-author__inputs">
         <Input
-          {...register("name", { required: true })}
+          {...register("name")}
           placeholder="Name"
           error={addAuthor.error?.name}
         />
-        <Input
-          {...register("penName", { required: true })}
-          placeholder="Pen Name"
-        />
-        <Input
-          {...register("nationality", { required: true })}
-          placeholder="Nationality"
-        />
+        <Input {...register("penName")} placeholder="Pen Name" />
+        <Input {...register("nationality")} placeholder="Nationality" />
         <DateInput control={control} name="born" placeholder="Born" />
         <DateInput control={control} name="died" placeholder="Dided" />
         <Input placeholder="Image Link" />
       </div>
+
       <div className="add-author__btns">
         <Button
           disabled={!isValid}

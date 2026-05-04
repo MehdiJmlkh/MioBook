@@ -25,6 +25,7 @@ const DateInput = <T extends FieldValues>({
         name={name}
         render={({ field }) => (
           <DatePicker
+            onKeyDown={(e) => e.preventDefault()}
             selected={field.value ? new Date(field.value) : null}
             onChange={(date: Date | null) => {
               if (date) {
@@ -36,7 +37,7 @@ const DateInput = <T extends FieldValues>({
             }}
             dateFormat="yyyy-MM-dd"
             placeholderText={placeholder}
-            customInput={<Input />}
+            customInput={<Input/>}
           />
         )}
       />
