@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useAddAuthor } from "../../queries/useAddAuthor";
+import { Author } from "../../services/authorService";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import DateInput from "../DateInput";
 import Input from "../Input";
 import "./AddAuthorModal.css";
-import { Author } from "../../services/authorService";
-import { useState } from "react";
-import { useAddAuthor } from "../../queries/useAddAuthor";
 
 interface Props {
   className?: string;
@@ -15,19 +14,15 @@ interface Props {
 
 const AddAuthorModal = ({ className, onClose }: Props) => {
   const {
+    control,
     register,
     handleSubmit,
     reset,
     formState: { isValid },
   } = useForm<Author>();
 
-  const [bornDate, setBornDate] = useState<Date | null>(null);
-  const [diedDate, setDiedDate] = useState<Date | null>(null);
-
   const onSuccess = () => {
     reset();
-    setBornDate(null);
-    setDiedDate(null);
     onClose();
   };
 
@@ -51,40 +46,19 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
           {...register("nationality", { required: true })}
           placeholder="Nationality"
         />
-        <DateInput
-          value={bornDate}
-          onChange={(date) => setBornDate(date)}
-          placeholder="Born"
-        />
-        <DateInput
-          value={diedDate}
-          onChange={(date) => setDiedDate(date)}
-          placeholder="Dided"
-        />
+        <DateInput control={control} name="born" placeholder="Born" />
+        <DateInput control={control} name="died" placeholder="Dided" />
         <Input placeholder="Image Link" />
       </div>
       <div className="add-author__btns">
         <Button
-          disabled={!(isValid && bornDate)}
+          disabled={!isValid}
           className="btn-primary"
-          onClick={handleSubmit((data) => {
-            addAuthor.mutate({
-              ...data,
-              born: bornDate?.toISOString().slice(0, 10),
-              died: diedDate?.toISOString().slice(0, 10),
-            });
-          })}
+          onClick={handleSubmit((data) => addAuthor.mutate(data))}
         >
           Submit
         </Button>
-        <Button
-          type="reset"
-          onClick={() => {
-            setBornDate(null);
-            setDiedDate(null);
-          }}
-          className="btn-secondary"
-        >
+        <Button type="reset" onClick={reset} className="btn-secondary">
           Cancel
         </Button>
       </div>

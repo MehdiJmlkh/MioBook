@@ -1,29 +1,44 @@
-import { SetStateAction, useState } from "react";
-import { LuCalendarDays } from "react-icons/lu";
-import "react-datepicker/dist/react-datepicker.css";
-
-import Input from "../Input";
+import { format } from "date-fns";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { LuCalendarDays } from "react-icons/lu";
+import Input from "../Input";
 import "./DateInput.css";
 
-interface Props {
+interface Props<T extends FieldValues> {
   placeholder?: string;
-  onChange: (date: SetStateAction<Date | null>) => void;
-  value: Date | null;
+  control: Control<T>;
+  name: Path<T>;
 }
 
-const DateInput = ({ placeholder, onChange, value }: Props) => {
+const DateInput = <T extends FieldValues>({
+  placeholder,
+  control,
+  name,
+}: Props<T>) => {
   return (
     <div className="date-input">
       <LuCalendarDays className="date-input__icon" />
-      <DatePicker
-        selected={value}
-        dateFormat="yyyy-MM-dd"
-        onChange={(d: SetStateAction<Date | null>) => {
-          onChange(d);
-        }}
-        placeholderText={placeholder}
-        customInput={<Input />}
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => (
+          <DatePicker
+            selected={field.value ? new Date(field.value) : null}
+            onChange={(date: Date | null) => {
+              if (date) {
+                const formatted = format(date, "yyyy-MM-dd");
+                field.onChange(formatted);
+              } else {
+                field.onChange("");
+              }
+            }}
+            dateFormat="yyyy-MM-dd"
+            placeholderText={placeholder}
+            customInput={<Input />}
+          />
+        )}
       />
     </div>
   );
