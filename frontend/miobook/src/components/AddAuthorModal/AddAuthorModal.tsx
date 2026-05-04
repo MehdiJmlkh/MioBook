@@ -31,7 +31,7 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
       <CloseIcon onClose={onClose} />
       <h1 className="add-author__title">Add Author</h1>
       <div className="add-author__inputs">
-        <Input {...register("name", { required: true })} placeholder="Name" />
+        <Input {...register("name", { required: true })} placeholder="Name" error={addAuthor.error?.name}/>
         <Input
           {...register("penName", { required: true })}
           placeholder="Pen Name"
@@ -62,10 +62,11 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
               born: bornDate?.toISOString().slice(0, 10),
               died: diedDate?.toISOString().slice(0, 10),
             });
-            reset();
+            // reset();
             setBornDate(null);
             setDiedDate(null);
-            onClose();
+            console.log(addAuthor.error)
+            // onClose();
           })}
         >
           Submit

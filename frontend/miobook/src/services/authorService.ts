@@ -14,7 +14,12 @@ class AuthorService {
   }
 
   addAuthor(author: Author) {
-    return apiClient.post("/authors", {...author, username: "admin1"}).then((res) => res.data);
+    return apiClient
+      .post("/authors", { ...author, username: "admin1" })
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err.response.data;
+      });
   }
 }
 
