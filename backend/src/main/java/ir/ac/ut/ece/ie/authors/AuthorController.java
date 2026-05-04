@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @RestController
@@ -29,14 +30,15 @@ public class AuthorController {
 
     @PostMapping
     public ResponseEntity<Author> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
+        System.out.println(request);
         var author = authorService.addAuthor(request);
 
         return ResponseEntity.ok(author);
     }
 
     @ExceptionHandler(AuthorNameAlreadyExistsException.class)
-    public ResponseEntity<ErrorDto> handleAuthorNameAlreadyExistsException() {
+    public ResponseEntity<Map<String, String>> handleAuthorNameAlreadyExistsException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("An author with this name already exists."));
+                .body(Map.of("name", "Author already exists."));
     }
 }
