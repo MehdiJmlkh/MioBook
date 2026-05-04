@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @RestController
@@ -62,9 +63,9 @@ public class BookController {
     }
 
     @ExceptionHandler(BookTitleAlreadyExistsException.class)
-    public ResponseEntity<ErrorDto> handleBookTitleAlreadyExistsException() {
+    public ResponseEntity<Map<String, String>> handleBookTitleAlreadyExistsException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("A book with this title already exists."));
+                .body(Map.of("title", "Book already exists."));
     }
 
     @ExceptionHandler(InvalidYearRangeException.class)
