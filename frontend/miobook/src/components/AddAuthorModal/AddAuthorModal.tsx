@@ -1,13 +1,12 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { useAddAuthor } from "../../queries/useAddAuthor";
-import { Author } from "../../services/authorService";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import DateInput from "../DateInput";
 import Input from "../Input";
-import { z } from "zod";
 import "./AddAuthorModal.css";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 interface Props {
   className?: string;
