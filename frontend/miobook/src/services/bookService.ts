@@ -1,4 +1,3 @@
-import { AddBookRequest } from "../components/AddBookModal/AddBookModal";
 import { SearchQuery } from "../queries/useFilteredBooks";
 import apiClient from "./ApiClient";
 
@@ -10,6 +9,18 @@ export interface Book {
   year: number;
   publisher: string;
   genres: string[];
+}
+
+export interface AddBookRequest {
+  title: string;
+  author: string;
+  price: number;
+  averageRating: number;
+  year: number;
+  publisher: string;
+  genres: string[];
+  synopsis: string;
+  content: string;
 }
 
 class BookService {

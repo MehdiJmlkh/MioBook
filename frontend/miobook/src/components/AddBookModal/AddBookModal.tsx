@@ -1,42 +1,22 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useAddBook } from "../../queries/useAddBook";
+import { AddBookRequest } from "../../services/bookService";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import Input from "../Input";
-import "./AddBookModal.css";
 import TextArea from "../TextArea";
-import { useForm } from "react-hook-form";
-import { Book } from "../../services/bookService";
-import { useAddBook } from "../../queries/useAddBook";
+import "./AddBookModal.css";
 
 interface Props {
   className?: string;
   onClose: () => void;
 }
 
-export interface AddBookRequest {
-  title: string;
-  author: string;
-  price: number;
-  averageRating: number;
-  year: number;
-  publisher: string;
-  genres: string[];
-  synopsis: string;
-  content: string;
-}
-
 const AddBookModal = ({ className, onClose }: Props) => {
   const [page, setPage] = useState<1 | 2>(1);
 
   const { register, reset, handleSubmit } = useForm<AddBookRequest>();
-
-  const onSuccess = () => {
-    reset();
-    setPage(1);
-    onClose();
-  };
-
-  const addBook = useAddBook({ onSuccess });
 
   const setGenresAs = (value: string) => {
     if (typeof value !== "string") return value;
@@ -45,6 +25,14 @@ const AddBookModal = ({ className, onClose }: Props) => {
       .map((v) => v.trim())
       .filter(Boolean);
   };
+
+  const onSuccess = () => {
+    reset();
+    setPage(1);
+    onClose();
+  };
+
+  const addBook = useAddBook({ onSuccess });
 
   return (
     <form className={`add-book modal-pop ${className}`}>
@@ -69,11 +57,11 @@ const AddBookModal = ({ className, onClose }: Props) => {
               placeholder="Genres"
             />
             <Input
-              type="number"
               {...register("year")}
+              type="number"
               placeholder="Published Year"
             />
-            <Input type="number" {...register("price")} placeholder="Price" />
+            <Input {...register("price")} type="number" placeholder="Price" />
             <Input placeholder="Image Link" />
           </>
         ) : (
@@ -108,8 +96,8 @@ const AddBookModal = ({ className, onClose }: Props) => {
             <Button
               key={"reset"}
               type="reset"
-              onClick={() => reset}
               className="btn-secondary"
+              onClick={() => reset}
             >
               Cancel
             </Button>
