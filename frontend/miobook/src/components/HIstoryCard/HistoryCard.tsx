@@ -30,7 +30,6 @@ const HistoryCard = () => {
                   <th>Author</th>
                   <th>Price</th>
                   <th>Borrow Days</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -53,9 +52,6 @@ const HistoryCard = () => {
                     </td>
                     <td data-label="Borrow Days">
                       {item.isBorrowed ? item.borrowDays : "Not Borrowed"}
-                    </td>
-                    <td className="table-btn-row">
-                      <Button className="btn-secondary">Remove</Button>
                     </td>
                   </tr>
                 ))}
