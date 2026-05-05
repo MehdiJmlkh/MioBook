@@ -17,7 +17,11 @@
 
 .wallet__btn {
   font-size: 1.8rem;
-  padding: 1rem 0;
+}
+
+.wallet__btn,
+.wallet__input {
+  height: 4.5rem;
 }
 
 @media (max-width: 425px) {
