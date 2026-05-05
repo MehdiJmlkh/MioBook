@@ -8,7 +8,7 @@ public interface PurchaseMapper {
 
     @Mapping(target = "items",
             expression = "java(purchase.getItems().stream().map(PurchaseItemDto::fromPurchaseItem).toList())")
-    @Mapping(target = "purchaseDate", source = "purchase.date")
+    @Mapping(target = "purchaseDate", source = "purchase.date", dateFormat = "yyyy-MM-dd HH:mm")
     PurchaseDto toDto(Purchase purchase);
 
     default PurchasedBookDto toDto(PurchaseItem item) {
