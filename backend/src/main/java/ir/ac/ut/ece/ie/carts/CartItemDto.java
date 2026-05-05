@@ -12,10 +12,10 @@ public class CartItemDto {
     private String publisher;
     private Set<String> genres;
     private Integer year;
-    private Integer price;
     private Boolean isBorrowed;
-    private Integer finalPrice;
     private Integer borrowDays;
+    private Integer price;
+    private Integer finalPrice;
 
     public static CartItemDto fromCartItem(CartItem cartItem) {
         var cartItemDto = new CartItemDto();
