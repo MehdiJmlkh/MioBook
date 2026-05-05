@@ -43,7 +43,11 @@ const HistoryCard = () => {
                     <td data-label="Author">{item.author}</td>
                     <td data-label="Price">
                       {item.isBorrowed && (
-                        <Price className="line-through">{item.price}</Price>
+                        <>
+                          <Price className="line-through">
+                            {item.price}
+                          </Price>{" "}
+                        </>
                       )}
                       <Price>{item.finalPrice}</Price>
                     </td>
