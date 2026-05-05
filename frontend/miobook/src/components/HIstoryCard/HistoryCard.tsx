@@ -7,6 +7,7 @@ import ExpandableRow from "../ExpandableRow";
 import Price from "../Price";
 import Table from "../Table";
 import "./HistoryCard.css";
+import BookItemRow from "../BookItemRow";
 
 const HistoryCard = () => {
   const { data: history } = usePurchases("li_wei");
@@ -34,26 +35,7 @@ const HistoryCard = () => {
               </thead>
               <tbody>
                 {purchase.items.map((item, i) => (
-                  <tr>
-                    <td className="table-image-row">
-                      <img className="table-image" src={BookImage} alt="" />
-                    </td>
-                    <td data-label="Name">{item.title}</td>
-                    <td data-label="Author">{item.author}</td>
-                    <td data-label="Price">
-                      {item.isBorrowed && (
-                        <>
-                          <Price className="line-through">
-                            {item.price}
-                          </Price>{" "}
-                        </>
-                      )}
-                      <Price>{item.finalPrice}</Price>
-                    </td>
-                    <td data-label="Borrow Days">
-                      {item.isBorrowed ? item.borrowDays : "Not Borrowed"}
-                    </td>
-                  </tr>
+                  <BookItemRow key={i} item={item} />
                 ))}
               </tbody>
             </Table>

@@ -4,7 +4,7 @@ import cartService from "../services/cartService";
 interface CartItem {
     title: string;
     author: string;
-    isBorrowed: number;
+    isBorrowed: boolean;
     borrowDays: number;
     price: number;
     finalPrice: number;
