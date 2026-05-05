@@ -34,10 +34,12 @@ public class Book {
         if (reviews.isEmpty()) {
             return 0;
         }
-        return (float) reviews.stream()
+        float rating = (float) reviews.stream()
                 .map(Review::getRate)
                 .reduce(Integer::sum)
                 .orElse(0) / reviews.size();
+
+        return (float) (Math.round(rating * 2.0) / 2.0);
     }
 
     public boolean publishedInRange(Integer from, Integer to) {
