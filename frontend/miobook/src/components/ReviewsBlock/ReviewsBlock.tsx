@@ -13,7 +13,7 @@ interface Props {
 const ReviewsBlock = ({ onClickAddReview }: Props) => {
   const [page, setPage] = useState(1);
   const pageSize = 4;
-  const { data: reviewList } = useReviews("Crimson Wake", { page, size: pageSize });
+  const { data: reviewList } = useReviews("Timberline Manual", { page, size: pageSize });
 
   return (
     <div className="block-review">

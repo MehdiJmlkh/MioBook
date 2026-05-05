@@ -1,3 +1,4 @@
+import { AddReviewRequest } from "../queries/useAddReview";
 import { PageParams } from "../queries/useReviews";
 import apiClient from "./ApiClient";
 
@@ -10,7 +11,18 @@ export interface Review {
 
 class ReviewService {
   get(bookTitle: string, params: PageParams) {
-    return apiClient.get(`/reviews/${bookTitle}`, {params}).then((res) => res.data);
+    return apiClient
+      .get(`/reviews/${bookTitle}`, { params })
+      .then((res) => res.data);
+  }
+
+  add(request: AddReviewRequest) {
+    return apiClient
+      .post("/reviews", request)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err.response.data;
+      });
   }
 }
 
