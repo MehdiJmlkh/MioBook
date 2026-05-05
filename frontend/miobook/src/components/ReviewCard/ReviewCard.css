@@ -23,16 +23,17 @@
 }
 
 .review__heading {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 400;
   margin-bottom: 1rem;
   grid-area: heading;
 }
 
 .review__content {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   grid-area: content;
+  color: #464954;
 }
 
 .review__date {

@@ -12,9 +12,9 @@
 
 .block-review .btn {
   width: fit-content;
-  padding: 1.5rem;
+  padding: 1rem;
   padding-left: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .block-review__heading {
@@ -25,11 +25,13 @@
 }
 
 .block-review__heading__title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .block-review__heading__counts {
   color: #8f8f8f;
+  font-size: 1.5rem;
+  margin-left: 0.3rem;
 }
 
 .block-review .review {
