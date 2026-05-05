@@ -6,8 +6,11 @@ import BookImage from "../../assets/book.svg";
 import "./Cart.css";
 import Price from "../Price";
 import Card from "../Card";
+import { useCart } from "../../queries/useCart";
 
 const Cart = () => {
+  const { data: cart } = useCart("li_wei");
+
   return (
     <Card title="Cart" icon={<LuShoppingCart />}>
       <Table>
@@ -22,34 +25,29 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="table-image-row">
-              <img className="table-image" src={BookImage} alt="" />
-            </td>
-            <td data-label="Name">The Design of Books</td>
-            <td data-label="Author">Debbie Berne</td>
-            <td data-label="Price">
-              <Price>18.00</Price>
-            </td>
-            <td data-label="Borrow Days">Not Borrowed</td>
-            <td className="table-btn-row">
-              <Button className="btn-secondary">Remove</Button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img className="table-image" src={BookImage} alt="" />
-            </td>
-            <td data-label="Name">The Design of Books</td>
-            <td data-label="Author">Debbie Berne</td>
-            <td data-label="Price">
-              <Price className="line-through">18.00</Price> <Price>3.6</Price>
-            </td>
-            <td data-label="Borrow Days">2</td>
-            <td className="table-btn-row">
-              <Button className="btn-secondary">Remove</Button>
-            </td>
-          </tr>
+          {cart?.items.map((item) => (
+            <tr>
+              <td className="table-image-row">
+                <img className="table-image" src={BookImage} alt="" />
+              </td>
+              <td data-label="Name">{item.title}</td>
+              <td data-label="Author">{item.author}</td>
+              <td data-label="Price">
+                {item.isBorrowed && (
+                  <>
+                    <Price className="line-through">{item.price}</Price>{" "}
+                  </>
+                )}
+                <Price>{item.finalPrice}</Price>
+              </td>
+              <td data-label="Borrow Days">
+                {item.isBorrowed ? item.borrowDays : "Not Borrowed"}
+              </td>
+              <td className="table-btn-row">
+                <Button className="btn-secondary">Remove</Button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
       <div className="cart__btn">
