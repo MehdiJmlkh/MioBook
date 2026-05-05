@@ -7,4 +7,5 @@ public class ReviewDto {
     private String username;
     private String comment;
     private Integer rate;
+    private String date;
 }
