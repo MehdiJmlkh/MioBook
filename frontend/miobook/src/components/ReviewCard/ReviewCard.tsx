@@ -16,7 +16,7 @@ const ReviewsCard = ({ review, className }: Props) => {
         {review.comment}
       </p>
       <FiveStars className="review__rating" rate={review.rate} />
-      <span className="review__date"> February 20, 2025 </span>
+      <span className="review__date"> {review.date} </span>
     </div>
   );
 };

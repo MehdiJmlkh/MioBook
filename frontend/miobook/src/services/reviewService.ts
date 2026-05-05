@@ -4,6 +4,7 @@ export interface Review {
   username: string;
   comment: string;
   rate: number;
+  date: string;
 }
 
 class ReviewService {
