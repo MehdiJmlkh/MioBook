@@ -37,6 +37,7 @@ public class ReviewService {
         reviewListDto.setTitle(title);
         reviewListDto.setReviews(reviews);
         reviewListDto.setAverageRating(book.getAverageRating());
+        reviewListDto.setTotalReviews(reviewRepository.getCountByBook(book));
 
         return reviewListDto;
     }

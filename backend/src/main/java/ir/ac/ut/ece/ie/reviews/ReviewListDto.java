@@ -9,4 +9,5 @@ public class ReviewListDto {
     private String title;
     private List<ReviewDto> reviews;
     private float averageRating;
+    private int totalReviews;
 }

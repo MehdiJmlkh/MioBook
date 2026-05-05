@@ -20,6 +20,13 @@ public class ReviewRepository {
                 .findFirst();
     }
 
+    public int getCountByBook(Book book) {
+        var filteredReviews = reviews.stream()
+                .filter(review -> review.getBook().equals(book))
+                .toList();
+        return filteredReviews.size();
+    }
+
     public List<Review> findByBook(Book book, Integer page, Integer size) {
         var filteredReviews =  reviews.stream()
                 .filter(review -> review.getBook().equals(book))
@@ -29,7 +36,7 @@ public class ReviewRepository {
             return filteredReviews;
         }
 
-        int from = page * size;
+        int from = Math.min((page - 1) * size, filteredReviews.size());
         int to = Math.min(from + size, filteredReviews.size());
 
         return filteredReviews.subList(from, to);
