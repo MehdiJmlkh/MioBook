@@ -13,4 +13,5 @@ public class PurchasedBookDto {
     private Integer year;
     private Integer price;
     private Boolean isBorrowed;
+    private String expiredDate;
 }

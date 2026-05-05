@@ -3,6 +3,8 @@ package ir.ac.ut.ece.ie.purchases;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.time.format.DateTimeFormatter;
+
 @Mapper(componentModel = "spring")
 public interface PurchaseMapper {
 
@@ -21,6 +23,13 @@ public interface PurchaseMapper {
         dto.setYear(book.getYear());
         dto.setPrice(item.getPrice());
         dto.setIsBorrowed(item.getIsBorrowed());
+        if (item.getIsBorrowed()) {
+            dto.setExpiredDate(
+                item.getDate()
+                        .plusDays(item.getBorrowDays())
+                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+            );
+        }
         return dto;
     }
 }
