@@ -4,27 +4,29 @@ import Input from "../Input";
 import Price from "../Price";
 import "./Wallet.css";
 import { useAddCredit } from "../../queries/useAddCredit";
+import { useCredit } from "../../queries/useCredit";
 
 interface Props {
   className?: string;
 }
 
 interface FormData {
-  credit: number;
+  credit: number | null;
 }
 
 const Wallet = ({ className }: Props) => {
   const { register, reset, handleSubmit } = useForm<FormData>();
 
   const onSuccess = () => {
-    reset();
+    reset({ credit: null });
   };
 
+  const { data: balance } = useCredit("li_wei");
   const addCredit = useAddCredit({ onSuccess });
 
   return (
     <div className={`wallet ${className}`}>
-      <Price className="wallet__price">1,000</Price>
+      <Price className="wallet__price">{balance?.toLocaleString() || "0"}</Price>
       <Input
         {...register("credit")}
         type="number"
@@ -34,7 +36,9 @@ const Wallet = ({ className }: Props) => {
       />
       <Button
         className="btn-primary wallet__btn"
-        onClick={handleSubmit((data) => addCredit.mutate(data.credit))}
+        onClick={handleSubmit((data) => {
+          if (data.credit) addCredit.mutate(data.credit);
+        })}
       >
         Add more credit
       </Button>
