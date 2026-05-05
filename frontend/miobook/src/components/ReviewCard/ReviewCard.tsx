@@ -1,4 +1,4 @@
-import { Review } from "../../queries/useReviews";
+import { Review } from "../../services/reviewService";
 import FiveStars from "../FiveStars";
 import "./ReviewCard.css";
 
