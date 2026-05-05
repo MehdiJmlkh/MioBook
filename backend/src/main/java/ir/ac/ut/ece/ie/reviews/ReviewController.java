@@ -32,6 +32,6 @@ public class ReviewController {
     @ExceptionHandler(BookNotInStockException.class)
     public ResponseEntity<ErrorDto> handleBookNotInStockException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("You don’t have this book in stock right now."));
+                .body(new ErrorDto("You can't review this book."));
     }
 }
