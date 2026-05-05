@@ -9,6 +9,7 @@ export interface Book {
   year: number;
   publisher: string;
   genres: string[];
+  synopsis: string;
 }
 
 export interface AddBookRequest {
@@ -24,6 +25,10 @@ export interface AddBookRequest {
 }
 
 class BookService {
+  getBook(title: string) {
+    return apiClient.get(`/books/${title}`).then((res) => res.data);
+  }
+
   getBooks() {
     return apiClient.get("books").then((res) => res.data);
   }
