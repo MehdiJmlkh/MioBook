@@ -17,7 +17,7 @@ public class CartController {
         return cartService.getCart(username);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public Cart addItemToCart(@RequestBody AddCartRequest request) {
         return cartService.addItemToCart(request);
     }
