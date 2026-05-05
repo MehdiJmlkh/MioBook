@@ -12,11 +12,9 @@ const ReviewsCard = ({ review, className }: Props) => {
     <div className={`review ${className}`}>
       <div className="review__avatar"> TW </div>
       <h3 className="review__heading">{review.username}</h3>
-      <p className="review__content">
-        {review.comment}
-      </p>
+      <p className="review__content">{review.comment}</p>
       <FiveStars className="review__rating" rate={review.rate} />
-      <span className="review__date"> {review.date} </span>
+      <span className="review__date">{review.date}</span>
     </div>
   );
 };

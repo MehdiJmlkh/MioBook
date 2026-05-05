@@ -1,3 +1,4 @@
+import { PageParams } from "../queries/useReviews";
 import apiClient from "./ApiClient";
 
 export interface Review {
@@ -8,8 +9,8 @@ export interface Review {
 }
 
 class ReviewService {
-  get(bookTitle: string) {
-    return apiClient.get(`/reviews/${bookTitle}`).then((res) => res.data);
+  get(bookTitle: string, params: PageParams) {
+    return apiClient.get(`/reviews/${bookTitle}`, {params}).then((res) => res.data);
   }
 }
 

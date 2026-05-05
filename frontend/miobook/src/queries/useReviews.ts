@@ -3,11 +3,17 @@ import reviewService, { Review } from "../services/reviewService";
 
 interface ReviewList {
   reviews: Review[];
+  totalReviews: number;
 }
 
-export const useReviews = (bookTitle: string) => {
+export interface PageParams {
+  page: number;
+  size: number;
+}
+
+export const useReviews = (bookTitle: string, params: PageParams) => {
   return useQuery<ReviewList>({
-    queryKey: ["reviews", bookTitle],
-    queryFn: () => reviewService.get(bookTitle),
+    queryKey: ["reviews", bookTitle, params],
+    queryFn: () => reviewService.get(bookTitle, params),
   });
 };

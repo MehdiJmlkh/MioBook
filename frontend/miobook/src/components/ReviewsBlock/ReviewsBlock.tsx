@@ -11,16 +11,18 @@ interface Props {
 }
 
 const ReviewsBlock = ({ onClickAddReview }: Props) => {
-  const [pageNumber, setPageNumber] = useState(1);
-
-  const { data: reviewList } = useReviews("Crimson Wake");
+  const [page, setPage] = useState(1);
+  const pageSize = 4;
+  const { data: reviewList } = useReviews("Crimson Wake", { page, size: pageSize });
 
   return (
     <div className="block-review">
       <div className="block-review__heading">
         <div>
           <span className="block-review__heading__title"> Reviews </span>
-          <span className="block-review__heading__counts">130</span>
+          <span className="block-review__heading__counts">
+            {reviewList?.totalReviews}
+          </span>
         </div>
         <Button className="btn-secondary" onClick={onClickAddReview}>
           Add reviews
@@ -31,9 +33,12 @@ const ReviewsBlock = ({ onClickAddReview }: Props) => {
         <ReviewCard review={review} />
       ))}
       <Pagination
-        pageNumber={pageNumber}
-        totalPages={5}
-        onClick={(page) => setPageNumber(page)}
+        pageNumber={page}
+        totalPages={Math.ceil((reviewList?.totalReviews || 1) / pageSize)}
+        onClick={(page) => {
+          console.log(page);
+          setPage(page);
+        }}
       />
     </div>
   );
