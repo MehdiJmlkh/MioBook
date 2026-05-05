@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import bookService, { Book } from "../services/bookService";
-import { AddBookRequest } from "../components/AddBookModal/AddBookModal";
+import bookService, { AddBookRequest, Book } from "../services/bookService";
 
 interface addBookError {
   title: string;
