@@ -29,4 +29,11 @@ public class CreditService {
 
         user.addCredit(request.getCredit());
     }
+
+    public Integer getBalance(String username) {
+        var user = userRepository.findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
+
+        return  user.getBalance();
+    }
 }
