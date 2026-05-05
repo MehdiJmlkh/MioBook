@@ -8,6 +8,7 @@ interface PurchasedBook {
   genres: string[];
   year: number;
   isBorrowed: boolean;
+  expiredDate: string;
 }
 
 interface PurchasedBooksHistory {

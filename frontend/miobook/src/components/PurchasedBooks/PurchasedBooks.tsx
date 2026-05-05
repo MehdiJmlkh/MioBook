@@ -44,7 +44,7 @@ const PurchasedBooks = ({ className }: Props) => {
               <td data-label="Genre">{book.genres.join(", ")}</td>
               <td data-label="Publisher">{book.publisher}</td>
               <td data-label="Published Year">{book.year}</td>
-              <td data-label="Status">{book.isBorrowed ? <BorrowedBadge /> : "Owned"}</td>
+              <td data-label="Status">{book.isBorrowed ? <BorrowedBadge expiredDate={book.expiredDate} /> : "Owned"}</td>
               <td className="table-btn-row">
                 <Button className="btn-secondary">Read</Button>
               </td>
