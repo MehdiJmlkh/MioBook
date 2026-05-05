@@ -4,6 +4,7 @@ import "./ReviewsBlock.css";
 import ReviewsIcon from "../../assets/reviews-icon.svg";
 import Button from "../Button";
 import { useState } from "react";
+import { useReviews } from "../../queries/useReviews";
 
 interface Props {
   onClickAddReview: () => void;
@@ -11,6 +12,8 @@ interface Props {
 
 const ReviewsBlock = ({ onClickAddReview }: Props) => {
   const [pageNumber, setPageNumber] = useState(1);
+
+  const { data: reviewList } = useReviews("Crimson Wake");
 
   return (
     <div className="block-review">
@@ -24,10 +27,9 @@ const ReviewsBlock = ({ onClickAddReview }: Props) => {
           <img className="review-icon" src={ReviewsIcon} alt="" />
         </Button>
       </div>
-      <ReviewCard />
-      <ReviewCard />
-      <ReviewCard />
-      <ReviewCard />
+      {reviewList?.reviews.map((review) => (
+        <ReviewCard review={review} />
+      ))}
       <Pagination
         pageNumber={pageNumber}
         totalPages={5}

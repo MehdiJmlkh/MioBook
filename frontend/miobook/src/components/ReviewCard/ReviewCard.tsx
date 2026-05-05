@@ -1,20 +1,21 @@
+import { Review } from "../../queries/useReviews";
 import FiveStars from "../FiveStars";
 import "./ReviewCard.css";
 
 interface Props {
+  review: Review;
   className?: string;
 }
 
-const ReviewsCard = ({ className }: Props) => {
+const ReviewsCard = ({ review, className }: Props) => {
   return (
     <div className={`review ${className}`}>
       <div className="review__avatar"> TW </div>
-      <h3 className="review__heading">The Person</h3>
+      <h3 className="review__heading">{review.username}</h3>
       <p className="review__content">
-        I bought it 3 weeks ago and now come back just to say "Awesome". I realy
-        enjoy it.
+        {review.comment}
       </p>
-      <FiveStars className="review__rating" rate={4} />
+      <FiveStars className="review__rating" rate={review.rate} />
       <span className="review__date"> February 20, 2025 </span>
     </div>
   );
