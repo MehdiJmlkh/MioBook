@@ -5,6 +5,7 @@ import BookIcon from "../../assets/book-icon.svg";
 import Button from "../Button";
 import Card from "../Card";
 import { usePurchasedBooks } from "../../queries/usePurchasedBooks";
+import BorrowedBadge from "../BorrowedBadge";
 
 interface Props {
   className?: string;
@@ -43,7 +44,7 @@ const PurchasedBooks = ({ className }: Props) => {
               <td data-label="Genre">{book.genres.join(", ")}</td>
               <td data-label="Publisher">{book.publisher}</td>
               <td data-label="Published Year">{book.year}</td>
-              <td data-label="Status">{book.isBorrowed ? "Borrowed" : "Owned"}</td>
+              <td data-label="Status">{book.isBorrowed ? <BorrowedBadge /> : "Owned"}</td>
               <td className="table-btn-row">
                 <Button className="btn-secondary">Read</Button>
               </td>
