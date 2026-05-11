@@ -44,7 +44,7 @@ const SignInPage = () => {
   };
 
   return (
-    <>
+    <div className="sign-in-page-container">
       <div className="sing-in-page">
         <Form
           onSubmit={handleSubmit(onSubmit)}
@@ -57,7 +57,7 @@ const SignInPage = () => {
         </Form>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
