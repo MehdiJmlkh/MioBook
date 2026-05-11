@@ -18,7 +18,7 @@ const HomePage = () => {
         <SearchBox />
       </div>
       <Hero />
-      <main className="home-page__main">
+      <div className="home-page__main">
         <div className="home-page__new-releases">
           <h2 className="home-page__heading">New Releases</h2>
           <Grid>
@@ -36,7 +36,7 @@ const HomePage = () => {
             ))}
           </Grid>
         </div>
-      </main>
+      </div>
     </body>
   );
 };

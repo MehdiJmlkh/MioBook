@@ -1,0 +1,10 @@
+.page-container {
+  padding: 5.5rem;
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}

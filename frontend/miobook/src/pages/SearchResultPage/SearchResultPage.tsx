@@ -26,7 +26,7 @@ const SearchResultPage = () => {
   useNoScroll([showSidebar]);
 
   return (
-    <body>
+    <div>
       <Backdrop enabled={showSidebar} />
       <FilterSideBar
         onSubmit={(data) => {
@@ -36,7 +36,7 @@ const SearchResultPage = () => {
         className={showSidebar ? "open" : ""}
         onClose={() => setShowSidebar(false)}
       />
-      <main className="search-result__main">
+      <div className="page-container search-result__main ">
         <div className="search-result__heading">
           <h1 className="search-result__title">
             Results for &lt;Search Parameters&gt;{" "}
@@ -53,13 +53,13 @@ const SearchResultPage = () => {
             <BookCard book={book} />
           ))}
         </Grid>
-      </main>
+      </div>
       <Pagination
         totalPages={5}
         pageNumber={page}
         onClick={(page) => setPage(page)}
       />
-    </body>
+    </div>
   );
 };
 
