@@ -16,36 +16,31 @@ const AdminPage = () => {
   useNoScroll([showAuthorModal, showBookModal]);
 
   return (
-    <body>
-      <main>
-        <Backdrop enabled={showAuthorModal || showBookModal} />
-        <AddAuthorModal
-          className={showAuthorModal ? "show" : ""}
-          onClose={() => setShowAuthorModal(false)}
-        />
-        <AddBookModal
-          className={showBookModal ? "show" : ""}
-          onClose={() => setShowBookModal(false)}
-        />
-        <UserAccount className="user-account--large" />
-        <span className="admin-page__btns">
-          <Button
-            className="btn-primary"
-            onClick={() => setShowAuthorModal(true)}
-          >
-            Add Author
-          </Button>
-          <Button
-            className="btn-primary"
-            onClick={() => setShowBookModal(true)}
-          >
-            Add Book
-          </Button>
-        </span>
-        <BooksTableCard className="author-page__books" />
-        <AuthorsCard />
-      </main>
-    </body>
+    <div className="page-container">
+      <Backdrop enabled={showAuthorModal || showBookModal} />
+      <AddAuthorModal
+        className={showAuthorModal ? "show" : ""}
+        onClose={() => setShowAuthorModal(false)}
+      />
+      <AddBookModal
+        className={showBookModal ? "show" : ""}
+        onClose={() => setShowBookModal(false)}
+      />
+      <UserAccount className="user-account--large" />
+      <span className="admin-page__btns">
+        <Button
+          className="btn-primary"
+          onClick={() => setShowAuthorModal(true)}
+        >
+          Add Author
+        </Button>
+        <Button className="btn-primary" onClick={() => setShowBookModal(true)}>
+          Add Book
+        </Button>
+      </span>
+      <BooksTableCard className="author-page__books" />
+      <AuthorsCard />
+    </div>
   );
 };
 

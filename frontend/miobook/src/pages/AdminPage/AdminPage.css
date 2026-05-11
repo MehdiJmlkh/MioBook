@@ -14,12 +14,6 @@
   margin-bottom: 4.5rem;
 }
 
-main {
-  padding: 0 5%;
-  margin-bottom: 10rem;
-  display: block;
-}
-
 @media (min-width: 425px) {
   .admin-page__btns {
     column-gap: 7rem;
@@ -29,11 +23,5 @@ main {
 
   .admin-page__btns .btn {
     width: fit-content;
-  }
-}
-
-@media (min-width: 1024px) {
-  main {
-    padding: 0 10%;
   }
 }
