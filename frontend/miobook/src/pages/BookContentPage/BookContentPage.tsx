@@ -6,7 +6,6 @@ import "./BookContentPage.css";
 const BookContentPage = () => {
   return (
     <body>
-      <Header />
       <main>
         <div className="book-content__card book-content__heading">
             <MdOutlineArticle className="book-content__icon" />
@@ -39,7 +38,6 @@ const BookContentPage = () => {
           praesentium ducimus aperiam ex.
         </div>
       </main>
-      <Footer />
     </body>
   );
 };
