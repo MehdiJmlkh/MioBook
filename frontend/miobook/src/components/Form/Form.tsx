@@ -40,7 +40,9 @@ const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
             ? "Not a member yet? "
             : "Already have an account? "}
         </span>
-        <Link>{type === FormType.SingIn ? "Sign Up" : "Sign in"}</Link>
+        <Link to={type === FormType.SingIn ? "/sign-up" : "/sign-in"}>
+          {type === FormType.SingIn ? "Sign Up" : "Sign in"}
+        </Link>
       </div>
     </div>
   );

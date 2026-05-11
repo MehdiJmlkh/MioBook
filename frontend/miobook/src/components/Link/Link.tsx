@@ -1,15 +1,17 @@
 import { ReactNode } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import "./Link.css";
 
 interface Props {
   children: ReactNode;
+  to?: string;
 }
 
-const Link = ({ children }: Props) => {
+const Link = ({ children, to = "" }: Props) => {
   return (
-    <a href="#" className="link">
+    <RouterLink to={to} className="link">
       {children}
-    </a>
+    </RouterLink>
   );
 };
 
