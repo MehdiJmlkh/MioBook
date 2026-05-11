@@ -18,7 +18,6 @@ const BookPage = () => {
 
   return (
     <body>
-      <Header className="header" />
       <main>
         <Backdrop enabled={showReviewModal || showCartModal} />
         <AddToCartModal
@@ -32,7 +31,6 @@ const BookPage = () => {
         <BookDetailCard onAddToCart={() => setShowCartModal(true)} />
         <ReviewsBlock onClickAddReview={() => setShowReviewModal(true)} />
       </main>
-      <Footer />
     </body>
   );
 };
