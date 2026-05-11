@@ -7,6 +7,7 @@ import BookContentPage from "./pages/BookContentPage";
 import UserPage from "./pages/UserPage";
 import CartPage from "./pages/CartPage";
 import PurchaseHistoryPage from "./pages/PurchaseHistoryPage";
+import AdminPage from "./pages/AdminPage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "user", element: <UserPage /> },
       { path: "user/cart", element: <CartPage /> },
       { path: "user/history", element: <PurchaseHistoryPage /> },
+      { path: "admin", element: <AdminPage />}
     ],
   },
 ]);

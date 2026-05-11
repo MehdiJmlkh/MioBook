@@ -17,6 +17,7 @@
 main {
   padding: 0 5%;
   margin-bottom: 10rem;
+  display: block;
 }
 
 @media (min-width: 425px) {

@@ -1,15 +1,13 @@
 import { useState } from "react";
 import AddAuthorModal from "../../components/AddAuthorModal";
+import AddBookModal from "../../components/AddBookModal";
 import AuthorsCard from "../../components/AuthorsCard";
 import Backdrop from "../../components/Backdrop";
 import BooksTableCard from "../../components/BooksTableCard";
 import Button from "../../components/Button";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import UserAccount from "../../components/UserAccount";
-import "./AdminPage.css";
 import { useNoScroll } from "../../hooks/useNoScroll";
-import AddBookModal from "../../components/AddBookModal/AddBookModal";
+import "./AdminPage.css";
 
 const AdminPage = () => {
   const [showAuthorModal, setShowAuthorModal] = useState(false);
@@ -19,7 +17,6 @@ const AdminPage = () => {
 
   return (
     <body>
-      <Header />
       <main>
         <Backdrop enabled={showAuthorModal || showBookModal} />
         <AddAuthorModal
@@ -48,7 +45,6 @@ const AdminPage = () => {
         <BooksTableCard className="author-page__books" />
         <AuthorsCard />
       </main>
-      <Footer />
     </body>
   );
 };
