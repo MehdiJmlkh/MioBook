@@ -1,8 +1,24 @@
 import apiClient from "./ApiClient";
 
+export interface User {
+  username: string;
+  password: string;
+  email: string;
+  address: {
+    country: string;
+    city: string;
+  };
+  role: string;
+}
+
 class UserService {
-  create<T>(newUser: T) {
-    return apiClient.post("/users", newUser);
+  create(newUser: User) {
+    return apiClient
+      .post("/users", newUser)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err.response.data;
+      });
   }
 }
 

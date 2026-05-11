@@ -9,7 +9,7 @@ import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import RoleInput from "../../components/RoleInput";
 import { Role } from "../../components/RoleInput/RoleInput";
-import userService from "../../services/userService";
+import { useAddUser } from "../../queries/useAddUser";
 import "./SignUpPage.css";
 
 const schema = z.object({
@@ -34,34 +34,22 @@ const SignUpPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const [error, setError] = useState({
-    username: "",
-    email: "",
-  });
-
-  const onSubmit = (data: FieldValues) => {
-    userService
-      .create(data)
-      .then((data) => setError({ username: "", email: "" }))
-      .catch((err: AxiosError<typeof error>) => {
-        if (err.response?.data) {
-          setError(err.response?.data);
-        }
-      });
-  };
+  const addUser = useAddUser();
 
   return (
     <div className="sign-up-container">
       <div className="sign-up-page">
         <Form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit((data) => {
+            addUser.mutate(data);
+          })}
           type={FormType.SingUp}
           isValid={isValid}
         >
           <Input
             {...register("username")}
             placeholder="Username"
-            error={error.username}
+            error={addUser.error?.username}
           />
 
           <PasswordInput {...register("password")} placeholder="Password" />
@@ -69,7 +57,7 @@ const SignUpPage = () => {
           <Input
             {...register("email")}
             placeholder="Email"
-            error={error.email}
+            error={addUser.error?.email}
           />
 
           <div className="input-container--1x2">
