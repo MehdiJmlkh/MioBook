@@ -1,15 +1,12 @@
-import Header from "../../components/Header";
 import AuthorBackground from "../../assets/author-background.svg";
 import AuthorImage from "../../assets/author-image.svg";
-import "./AuthorPage.css";
 import BookCard from "../../components/BookCard";
 import Grid from "../../components/Grid";
-import Footer from "../../components/Footer";
+import "./AuthorPage.css";
 
 const AuthorPage = () => {
   return (
     <body className="author-page">
-      <Header className="author-page__header" />
       <div className="author-page__heading">
         <img
           className="author-page__background"
@@ -61,7 +58,6 @@ const AuthorPage = () => {
           <BookCard />
         </Grid>
       </main>
-      <Footer />
     </body>
   );
 };
