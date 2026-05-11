@@ -36,7 +36,6 @@ const SearchResultPage = () => {
         className={showSidebar ? "open" : ""}
         onClose={() => setShowSidebar(false)}
       />
-      <Header />
       <main className="search-result__main">
         <div className="search-result__heading">
           <h1 className="search-result__title">
@@ -60,7 +59,6 @@ const SearchResultPage = () => {
         pageNumber={page}
         onClick={(page) => setPage(page)}
       />
-      <Footer />
     </body>
   );
 };
