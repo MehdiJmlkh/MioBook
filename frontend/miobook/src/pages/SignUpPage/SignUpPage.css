@@ -1,5 +1,4 @@
 .sign-up-page {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,4 +18,10 @@
   .role__header {
     text-align: left;
   }
+}
+
+.sign-up-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }

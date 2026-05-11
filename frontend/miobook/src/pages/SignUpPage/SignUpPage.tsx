@@ -51,7 +51,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <>
+    <div className="sign-up-container">
       <div className="sign-up-page">
         <Form
           onSubmit={handleSubmit(onSubmit)}
@@ -85,7 +85,7 @@ const SignUpPage = () => {
         </Form>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
