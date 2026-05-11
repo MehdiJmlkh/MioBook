@@ -11,6 +11,7 @@ import RoleInput from "../../components/RoleInput";
 import { Role } from "../../components/RoleInput/RoleInput";
 import { useAddUser } from "../../queries/useAddUser";
 import "./SignUpPage.css";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   username: z.string().min(1),
@@ -35,13 +36,14 @@ const SignUpPage = () => {
   });
 
   const addUser = useAddUser();
+  const navigate = useNavigate();
 
   return (
     <div className="sign-up-container">
       <div className="sign-up-page">
         <Form
           onSubmit={handleSubmit((data) => {
-            addUser.mutate(data);
+            addUser.mutate(data, { onSuccess: () => navigate("/") });
           })}
           type={FormType.SingUp}
           isValid={isValid}
