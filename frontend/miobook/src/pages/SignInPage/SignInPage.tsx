@@ -45,7 +45,7 @@ const SignInPage = () => {
 
   return (
     <>
-      <main className="sing-in-page">
+      <div className="sing-in-page">
         <Form
           onSubmit={handleSubmit(onSubmit)}
           type={FormType.SingIn}
@@ -55,7 +55,7 @@ const SignInPage = () => {
           <Input {...register("username")} placeholder="Username" />
           <PasswordInput {...register("password")} placeholder="Password" />
         </Form>
-      </main>
+      </div>
       <Footer />
     </>
   );
