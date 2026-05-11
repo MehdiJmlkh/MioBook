@@ -1,5 +1,6 @@
 .form {
   width: 100vw;
+  height: 100%;
   font-size: 1.5rem;
   background: #fff;
   border-radius: 10px;
@@ -49,6 +50,7 @@
 @media (min-width: 650px) {
   .form {
     width: 70rem;
+    height: fit-content;
     padding: 5.5rem 15rem 5rem;
   }
 
