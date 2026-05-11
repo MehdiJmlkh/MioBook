@@ -1,15 +1,14 @@
-main {
+.user-page {
   display: grid;
   row-gap: 6rem;
   column-gap: 9rem;
-  padding: 0 5%;
   margin-bottom: 7rem;
+  padding-top: 0;
 }
 
 @media (min-width: 1024px) {
-  main {
+  .user-page {
     grid-template-columns: 1fr auto;
-    padding: 0 10%;
   }
 
   .user-page__wallet {

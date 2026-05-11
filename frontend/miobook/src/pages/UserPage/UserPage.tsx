@@ -7,13 +7,11 @@ import "./UserPage.css";
 
 const UserPage = () => {
   return (
-    <body>
-      <main>
-        <UserAccount className="user-page__aacount"/>
-        <Wallet className="user-page__wallet" />
-        <PurchasedBooks className="user-page__purchased-books"/>
-      </main>
-    </body>
+    <div className="page-container user-page">
+      <UserAccount className="user-page__aacount" />
+      <Wallet className="user-page__wallet" />
+      <PurchasedBooks className="user-page__purchased-books" />
+    </div>
   );
 };
 
