@@ -1,7 +1,6 @@
 import BookCard from "../../components/BookCard";
 import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
-import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import SearchBox from "../../components/SearchBox";
 import { useNewReleases } from "../../queries/useNewReleases";
@@ -14,7 +13,6 @@ const HomePage = () => {
 
   return (
     <body className="home-page">
-      <Header />
       <div className="home-page__easy-search">
         <h2 className="home-page__easy-search__heading">Easy search...</h2>
         <SearchBox />
