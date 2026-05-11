@@ -1,14 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
-import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Footer from "../../components/Footer";
 import Form, { FormType } from "../../components/Form";
 import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
-import authService from "../../services/authService";
+import { useLogin } from "../../queries/useLogin";
 import "./SignInPage.css";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   username: z.string().min(1),
@@ -16,10 +15,6 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
-
-interface ErrorResponse {
-  error: string;
-}
 
 const SignInPage = () => {
   const {
@@ -30,27 +25,19 @@ const SignInPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const [error, setError] = useState("");
-
-  const onSubmit = (data: FieldValues) => {
-    authService
-      .login(data)
-      .then((data) => setError(""))
-      .catch((err: AxiosError<ErrorResponse>) => {
-        if (err.response?.data.error) {
-          setError(err.response?.data.error);
-        }
-      });
-  };
+  const login = useLogin();
+  const navigate = useNavigate();
 
   return (
     <div className="sign-in-page-container">
       <div className="sing-in-page">
         <Form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit((data) => {
+            login.mutate(data, { onSuccess: () => navigate("/") });
+          })}
           type={FormType.SingIn}
           isValid={isValid}
-          error={error}
+          error={login.error?.error}
         >
           <Input {...register("username")} placeholder="Username" />
           <PasswordInput {...register("password")} placeholder="Password" />
