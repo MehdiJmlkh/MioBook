@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import PurchaseHistoryPage from "./pages/PurchaseHistoryPage";
 import AdminPage from "./pages/AdminPage";
 import AuthorPage from "./pages/AuthorPage";
+import SignInPage from "./pages/SignInPage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "authors/:id", element: <AuthorPage /> },
     ],
   },
+  { path: "/login", element: <SignInPage /> },
 ]);
 
 export default router;

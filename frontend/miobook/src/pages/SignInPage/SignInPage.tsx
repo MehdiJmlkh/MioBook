@@ -45,15 +45,17 @@ const SignInPage = () => {
 
   return (
     <>
-      <Form
-        onSubmit={handleSubmit(onSubmit)}
-        type={FormType.SingIn}
-        isValid={isValid}
-        error={error}
-      >
-        <Input {...register("username")} placeholder="Username" />
-        <PasswordInput {...register("password")} placeholder="Password" />
-      </Form>
+      <main className="sing-in-page">
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          type={FormType.SingIn}
+          isValid={isValid}
+          error={error}
+        >
+          <Input {...register("username")} placeholder="Username" />
+          <PasswordInput {...register("password")} placeholder="Password" />
+        </Form>
+      </main>
       <Footer />
     </>
   );
