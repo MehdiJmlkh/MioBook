@@ -52,6 +52,7 @@ const SignUpPage = () => {
 
   return (
     <>
+    <main className="sign-up-page">
       <Form
         onSubmit={handleSubmit(onSubmit)}
         type={FormType.SingUp}
@@ -78,6 +79,7 @@ const SignUpPage = () => {
           <RoleInput userRole={Role.Manager} {...register("role")} />
         </div>
       </Form>
+      </main>
       <Footer />
     </>
   );

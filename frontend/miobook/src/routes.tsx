@@ -10,6 +10,7 @@ import PurchaseHistoryPage from "./pages/PurchaseHistoryPage";
 import AdminPage from "./pages/AdminPage";
 import AuthorPage from "./pages/AuthorPage";
 import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/login", element: <SignInPage /> },
+  { path: "/sign-up", element: <SignUpPage /> },
 ]);
 
 export default router;
