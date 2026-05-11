@@ -6,11 +6,9 @@ import "./CartPage.css";
 const CartPage = () => {
   return (
     <body>
-      <Header className="cart-page__header" />
       <main>
         <Cart />
       </main>
-      <Footer />
     </body>
   );
 };

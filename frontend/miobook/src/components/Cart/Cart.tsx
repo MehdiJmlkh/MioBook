@@ -10,7 +10,7 @@ const Cart = () => {
   const { data: cart } = useCart("li_wei");
 
   return (
-    <Card title="Cart" icon={<LuShoppingCart />}>
+    <Card title="Cart" className="cart" icon={<LuShoppingCart />}>
       <Table>
         <thead>
           <tr>

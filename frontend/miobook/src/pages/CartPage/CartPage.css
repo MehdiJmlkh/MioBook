@@ -1,10 +1,7 @@
-.cart-page__header {
-  margin-bottom: 6rem;
-}
-
 main {
   padding: 0 5%;
   margin-bottom: 10rem;
+  min-height: 100vh;
 }
 
 @media (min-width: 1024px) {
