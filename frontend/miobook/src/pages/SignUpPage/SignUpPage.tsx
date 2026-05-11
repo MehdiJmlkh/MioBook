@@ -52,34 +52,38 @@ const SignUpPage = () => {
 
   return (
     <>
-    <main className="sign-up-page">
-      <Form
-        onSubmit={handleSubmit(onSubmit)}
-        type={FormType.SingUp}
-        isValid={isValid}
-      >
-        <Input
-          {...register("username")}
-          placeholder="Username"
-          error={error.username}
-        />
+      <div className="sign-up-page">
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          type={FormType.SingUp}
+          isValid={isValid}
+        >
+          <Input
+            {...register("username")}
+            placeholder="Username"
+            error={error.username}
+          />
 
-        <PasswordInput {...register("password")} placeholder="Password" />
+          <PasswordInput {...register("password")} placeholder="Password" />
 
-        <Input {...register("email")} placeholder="Email" error={error.email} />
+          <Input
+            {...register("email")}
+            placeholder="Email"
+            error={error.email}
+          />
 
-        <div className="input-container--1x2">
-          <Input {...register("address.country")} placeholder="Country" />
-          <Input {...register("address.city")} placeholder="City" />
-        </div>
+          <div className="input-container--1x2">
+            <Input {...register("address.country")} placeholder="Country" />
+            <Input {...register("address.city")} placeholder="City" />
+          </div>
 
-        <span className="role__header">I am</span>
-        <div className="input-container--1x2">
-          <RoleInput userRole={Role.Customer} {...register("role")} />
-          <RoleInput userRole={Role.Manager} {...register("role")} />
-        </div>
-      </Form>
-      </main>
+          <span className="role__header">I am</span>
+          <div className="input-container--1x2">
+            <RoleInput userRole={Role.Customer} {...register("role")} />
+            <RoleInput userRole={Role.Manager} {...register("role")} />
+          </div>
+        </Form>
+      </div>
       <Footer />
     </>
   );
