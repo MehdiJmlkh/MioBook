@@ -8,13 +8,11 @@ import "./UserPage.css";
 const UserPage = () => {
   return (
     <body>
-      <Header className="user-page__header" />
       <main>
         <UserAccount className="user-page__aacount"/>
         <Wallet className="user-page__wallet" />
         <PurchasedBooks className="user-page__purchased-books"/>
       </main>
-      <Footer />
     </body>
   );
 };

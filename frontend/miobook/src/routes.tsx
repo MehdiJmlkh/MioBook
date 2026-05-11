@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import SearchResultPage from "./pages/SearchResultPage";
 import BookPage from "./pages/BookPage";
 import BookContentPage from "./pages/BookContentPage";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       { path: "books/:id", element: <BookPage /> },
       { path: "books/:id", element: <BookPage /> },
       { path: "books/:id/content", element: <BookContentPage /> },
-      
+      { path: "user", element: <UserPage /> },
     ],
   },
 ]);
