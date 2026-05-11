@@ -3,11 +3,9 @@ import "./PurchaseHistoryPage.css";
 
 const PurchaseHistoryPage = () => {
   return (
-    <body>
-      <main>
-        <HistoryCard />
-      </main>
-    </body>
+    <div className="page-container history-page">
+      <HistoryCard />
+    </div>
   );
 };
 
