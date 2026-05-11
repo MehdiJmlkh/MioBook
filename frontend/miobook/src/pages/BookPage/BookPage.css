@@ -1,9 +1,0 @@
-main {
-  margin: 0 5%;
-}
-
-@media (min-width: 700px) {
-  main {
-    margin: 0 10%;
-  }
-}
