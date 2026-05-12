@@ -14,6 +14,10 @@ class AuthService {
         throw err.response.data;
       });
   }
+
+  get() {
+    return apiClient.get("/auth").then((res) => res.data);
+  }
 }
 
 export default new AuthService();

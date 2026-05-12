@@ -11,13 +11,13 @@ import AdminPage from "./pages/AdminPage";
 import AuthorPage from "./pages/AuthorPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import PrivateRoutes from "./pages/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <HomePage /> },
       { path: "books", element: <SearchResultPage /> },
       { path: "books/:id", element: <BookPage /> },
       { path: "books/:id", element: <BookPage /> },
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
       { path: "admin", element: <AdminPage /> },
       { path: "authors/:id", element: <AuthorPage /> },
     ],
+  },
+  {
+    element: <PrivateRoutes />,
+    children: [{ index: true, element: <HomePage /> }],
   },
   { path: "/sign-in", element: <SignInPage /> },
   { path: "/sign-up", element: <SignUpPage /> },
