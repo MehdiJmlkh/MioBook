@@ -6,6 +6,7 @@
   width: 8.5rem;
   border-radius: 4.25rem;
   padding: 0.2rem 0;
+  cursor: pointer;
 }
 
 .meow-icon img {
