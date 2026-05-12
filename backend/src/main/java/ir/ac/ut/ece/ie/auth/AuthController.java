@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
 
+    @GetMapping
+    public ResponseEntity<UserDto> getCurrentUser() {
+        var userDto = authService.getLoggedInUser();
+
+        return ResponseEntity.ok(userDto);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<Void> login(@RequestBody LoginRequest request) {
         authService.login(request);
