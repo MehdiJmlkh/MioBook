@@ -9,21 +9,30 @@ interface Props {
 }
 
 const FilterSelector = ({ filters, selectedFilter, onClickFilter }: Props) => {
-  const [isOpen, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleSelect = (option: string) => {
+    onClickFilter(option);
+    setOpen(false);
+  };
+
   return (
-    <div onClick={() => setOpen(!isOpen)} className="filter-selector">
-      <span>{selectedFilter} </span> <BsChevronDown className="filter-selector__icon"/>
-      
+    <div
+      className={`filter-selector ${open ? "open" : ""}`}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <span>{selectedFilter} </span>{" "}
+      <BsChevronDown className="filter-selector__icon" />
       <ul className="filter-selector__options">
-        {isOpen &&
-          filters.map((option) => (
-            <li
-              onClick={() => onClickFilter(option)}
-              className="filter-selector__option"
-            >
-              {option}
-            </li>
-          ))}
+        {filters.map((option) => (
+          <li
+            onClick={() => handleSelect(option)}
+            className="filter-selector__option"
+          >
+            {option}
+          </li>
+        ))}
       </ul>
     </div>
   );
