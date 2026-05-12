@@ -1,7 +1,7 @@
 package ir.ac.ut.ece.ie.users;
 
 
-import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.auth.UserDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest addUserRequest) {
+    public ResponseEntity<UserDto> addUser(@Valid @RequestBody AddUserRequest addUserRequest) {
         var user = userService.addUser(addUserRequest);
         return ResponseEntity.ok(user);
     }
