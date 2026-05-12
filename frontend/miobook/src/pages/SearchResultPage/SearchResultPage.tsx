@@ -1,16 +1,14 @@
-import { RiFilter2Line } from "react-icons/ri";
 import { useState } from "react";
-import Button from "../../components/Button";
-import Header from "../../components/Header";
+import { RiFilter2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import Backdrop from "../../components/Backdrop";
 import BookCard from "../../components/BookCard";
-import Footer from "../../components/Footer";
+import Button from "../../components/Button";
+import FilterSideBar from "../../components/FilterSideBar";
 import Grid from "../../components/Grid";
 import Pagination from "../../components/Pagination";
-import FilterSideBar from "../../components/FilterSideBar";
-import Backdrop from "../../components/Backdrop";
 import { useNoScroll } from "../../hooks/useNoScroll";
 import { SearchQuery, useFilteredBooks } from "../../queries/useFilteredBooks";
-
 import "./SearchResultPage.css";
 
 const SearchResultPage = () => {
@@ -29,10 +27,6 @@ const SearchResultPage = () => {
     <div>
       <Backdrop enabled={showSidebar} />
       <FilterSideBar
-        onSubmit={(data) => {
-          console.log(data);
-          setSearchParams(data);
-        }}
         className={showSidebar ? "open" : ""}
         onClose={() => setShowSidebar(false)}
       />

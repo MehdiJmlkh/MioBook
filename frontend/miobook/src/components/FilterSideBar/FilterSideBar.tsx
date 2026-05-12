@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { SearchQuery } from "../../queries/useFilteredBooks";
+import { useGenres } from "../../queries/useGenres";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import Input from "../Input";
@@ -5,25 +10,38 @@ import RadioInput from "../RadioInput";
 import RadioOptions from "../RadioOptions";
 import SelectInput from "../SelectInput";
 import "./FilterSideBar.css";
-import { useForm } from "react-hook-form";
-import { SearchQuery } from "../../queries/useFilteredBooks";
-import { useState } from "react";
-import { useGenres } from "../../queries/useGenres";
 
 interface Props {
   onClose: () => void;
   className?: string;
-  onSubmit: (data: SearchQuery) => void;
 }
 
-const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
+const FilterSideBar = ({ onClose, className}: Props) => {
+  const { data: genres } = useGenres();
+
   const { register, handleSubmit } = useForm<SearchQuery>();
   const [selectedGenre, setSelectedGenre] = useState("");
 
-  const { data: genres } = useGenres();
+  const navigate = useNavigate();
 
   return (
-    <div className={`filter-sidebar ${className}`}>
+    <form
+      className={`filter-sidebar ${className}`}
+      onSubmit={handleSubmit((data) => {
+        const params = new URLSearchParams();
+
+        Object.entries({ ...data, genre: selectedGenre }).forEach(
+          ([key, value]) => {
+            if (value !== undefined && value !== null && value !== "") {
+              params.set(key, String(value));
+            }
+          },
+        );
+
+        navigate({ pathname: "/books", search: params.toString() });
+        onClose();
+      })}
+    >
       <CloseIcon onClose={onClose} />
       <div>
         <h1 className="filter-sidebar__title">Filters</h1>
@@ -88,16 +106,9 @@ const FilterSideBar = ({ onClose, className, onSubmit }: Props) => {
         </div>
       </div>
       <div className="filter-sidebar__btn">
-        <Button
-          className="btn-primary"
-          onClick={handleSubmit((data) =>
-            onSubmit({ ...data, genre: selectedGenre }),
-          )}
-        >
-          Apply
-        </Button>
+        <Button className="btn-primary">Apply</Button>
       </div>
-    </div>
+    </form>
   );
 };
 
