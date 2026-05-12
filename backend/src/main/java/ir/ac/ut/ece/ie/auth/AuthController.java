@@ -20,9 +20,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@RequestBody LoginRequest request) {
-        authService.login(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserDto> login(@RequestBody LoginRequest request) {
+        var userDto = authService.login(request);
+        return ResponseEntity.ok(userDto);
     }
 
     @PostMapping("/logout")

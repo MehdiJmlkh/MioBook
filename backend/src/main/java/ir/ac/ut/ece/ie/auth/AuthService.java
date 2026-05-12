@@ -11,7 +11,7 @@ public class AuthService {
     private final AuthRepository authRepository;
     private final AuthMapper authMapper;
 
-    public void login(LoginRequest request) {
+    public UserDto login(LoginRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UsernameOrPasswordIncorrectException::new);
 
@@ -26,6 +26,8 @@ public class AuthService {
         }
 
         authRepository.setAuthenticatedUser(user);
+
+        return authMapper.toDto(user);
     }
 
     public void logout() {
