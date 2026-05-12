@@ -7,7 +7,6 @@ import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import { useLogin } from "../../queries/useLogin";
 import "./SignInPage.css";
-import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   username: z.string().min(1),
@@ -26,14 +25,13 @@ const SignInPage = () => {
   });
 
   const login = useLogin();
-  const navigate = useNavigate();
 
   return (
     <div className="sign-in-page-container">
       <div className="sing-in-page">
         <Form
           onSubmit={handleSubmit((data) => {
-            login.mutate(data, { onSuccess: () => navigate("/") });
+            login.mutate(data);
           })}
           type={FormType.SingIn}
           isValid={isValid}

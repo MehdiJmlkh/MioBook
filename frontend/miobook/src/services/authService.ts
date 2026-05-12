@@ -1,4 +1,5 @@
 import apiClient from "./ApiClient";
+import { User } from "./userService";
 
 export interface LoginRequest {
   username: string;
@@ -8,7 +9,7 @@ export interface LoginRequest {
 class AuthService {
   login(loginRequest: LoginRequest) {
     return apiClient
-      .post("/auth/login", loginRequest)
+      .post<User>("/auth/login", loginRequest)
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;
