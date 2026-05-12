@@ -34,9 +34,11 @@ public class BookRepository {
         }
 
         var filteredBooks = books.stream()
-                .filter(book -> title == null || book.getTitle().contains(title))
-                .filter(book -> author == null || book.getAuthor().getName().contains(author))
-                .filter(book -> genre == null || book.getGenres().contains(genre))
+                .filter(book -> title == null || book.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .filter(book -> author == null || book.getAuthor().getName().toLowerCase().contains(author.toLowerCase()))
+                .filter(book -> genre == null || book.getGenres().stream()
+                                        .anyMatch(g -> g.toLowerCase().contains(genre.toLowerCase()))
+                )
                 .filter(book -> (year == null) || book.getYear().equals(year))
                 .sorted(comparator)
                 .toList();
