@@ -1,6 +1,6 @@
 import apiClient from "./ApiClient";
 
-export interface User {
+export interface AddUserRequest {
   username: string;
   password: string;
   email: string;
@@ -11,8 +11,14 @@ export interface User {
   role: string;
 }
 
+export interface User {
+  username: string;
+  email: string;
+  role: "CUSTOMER" | "ADMIN";
+}
+
 class UserService {
-  create(newUser: User) {
+  create(newUser: AddUserRequest) {
     return apiClient
       .post("/users", newUser)
       .then((res) => res.data)

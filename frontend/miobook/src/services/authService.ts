@@ -1,5 +1,5 @@
 import apiClient from "./ApiClient";
-import { User } from "./userService";
+import { AddUserRequest, User } from "./userService";
 
 export interface LoginRequest {
   username: string;

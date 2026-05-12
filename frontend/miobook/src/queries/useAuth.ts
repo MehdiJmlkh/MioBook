@@ -1,11 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import authService from "../services/authService";
-
-interface User {
-  username: string;
-  email: string;
-  role: "CUSTOMER" | "ADMIN";
-}
+import { User } from "../services/userService";
 
 export const useAuth = () => {
   return useQuery<User>({

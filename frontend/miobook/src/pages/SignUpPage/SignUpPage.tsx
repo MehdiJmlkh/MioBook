@@ -43,7 +43,7 @@ const SignUpPage = () => {
       <div className="sign-up-page">
         <Form
           onSubmit={handleSubmit((data) => {
-            addUser.mutate(data, { onSuccess: () => navigate("/") });
+            addUser.mutate(data);
           })}
           type={FormType.SingUp}
           isValid={isValid}
