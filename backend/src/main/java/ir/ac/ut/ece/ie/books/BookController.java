@@ -30,7 +30,7 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public List<BookDto> searchBook(
+    public BookPageDto searchBook(
             @ModelAttribute SearchQuery query,
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "size", required = false) Integer size

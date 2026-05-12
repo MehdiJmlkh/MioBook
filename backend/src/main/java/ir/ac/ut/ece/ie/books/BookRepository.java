@@ -19,7 +19,7 @@ public class BookRepository {
     }
 
 
-    public List<Book> findByQuery(SearchQuery query, Integer page, Integer size) {
+    public BookPage findByQuery(SearchQuery query, Integer page, Integer size) {
         String title = query.getTitle();
         String author = query.getAuthor();
         String genre = query.getGenre();
@@ -44,13 +44,13 @@ public class BookRepository {
                 .toList();
 
         if (page == null || size == null) {
-            return filteredBooks;
+            return new BookPage(filteredBooks, filteredBooks.size());
         }
 
         int fromPage = Math.min((page - 1) * size, filteredBooks.size());
         int toPage = Math.min(fromPage + size, filteredBooks.size());
 
-        return filteredBooks.subList(fromPage, toPage);
+        return new BookPage(filteredBooks.subList(fromPage, toPage), filteredBooks.size());
     }
 
     public List<Book> getTopRated(int limit) {

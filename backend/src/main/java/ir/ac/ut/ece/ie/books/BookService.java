@@ -80,10 +80,18 @@ public class BookService {
         return book;
     }
 
-    public List<BookDto> getBooks(SearchQuery query, Integer page, Integer size) {
-        return bookRepository.findByQuery(query, page, size).stream()
+    public BookPageDto getBooks(SearchQuery query, Integer page, Integer size) {
+        var bookPage = bookRepository.findByQuery(query, page, size);
+
+        var books = bookPage.getBooks().stream()
                 .map(bookMapper::toDto)
                 .toList();
+
+        var response = new BookPageDto();
+        response.setBooks(books);
+        response.setTotalBooks(bookPage.getTotalBooks());
+
+        return response;
     }
 
     public List<BookDto> getTopRated() {
