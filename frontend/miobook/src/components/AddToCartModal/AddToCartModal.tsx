@@ -9,14 +9,17 @@ import "./AddToCartModal.css";
 interface Props {
   className?: string;
   onClose: () => void;
+  price?: number;
 }
 
-const AddToCartModal = ({ className, onClose }: Props) => {
+const AddToCartModal = ({ className, onClose, price = 0 }: Props) => {
   const [showDays, setShowDays] = useState(false);
+  const maxBorrowDays = 10;
+  const [borrowDays, setBorrowDays] = useState(maxBorrowDays);
 
   return (
     <div className={`add-to-cart modal-pop ${className}`}>
-      <CloseIcon onClose={onClose}/>
+      <CloseIcon onClose={onClose} />
       <h1 className="add-to-cart__heading">Add to Cart</h1>
       <p className="add-to-cart__description">
         Would you like to buy or borrow this book?
@@ -25,11 +28,16 @@ const AddToCartModal = ({ className, onClose }: Props) => {
         className="add-to-cart__checkbox"
         onClick={() => setShowDays(!showDays)}
       />
-      <BorrowDays className={showDays ? "borrow-days--visible" : ""} />
+      <BorrowDays
+        className={showDays ? "borrow-days--visible" : ""}
+        onSelectDay={(days) => setBorrowDays(days)}
+      />
       <div className="add-to-cart__footer">
         <span>
           <span>Final Price:</span>
-          <Price className="add-to-cart__price">1.28</Price>
+          <Price className="add-to-cart__price">
+            {(price * (borrowDays / maxBorrowDays)).toFixed(2)}
+          </Price>
         </span>
         <Button className="btn-primary">Add</Button>
       </div>

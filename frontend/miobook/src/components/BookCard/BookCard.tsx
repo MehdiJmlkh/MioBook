@@ -24,6 +24,7 @@ function BookCard({ book }: Props) {
       <AddToCartModal
         className={showCartModal ? "show" : ""}
         onClose={() => setShowCartModal(false)}
+        price={book?.price}
       />
       <a href="#">
         <img className="book-card__img" src={noImage} alt="Image of the book" />
