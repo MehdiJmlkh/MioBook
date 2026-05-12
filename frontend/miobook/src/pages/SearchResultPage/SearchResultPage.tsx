@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { RiFilter2Line } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
 import Backdrop from "../../components/Backdrop";
 import BookCard from "../../components/BookCard";
 import Button from "../../components/Button";
@@ -10,15 +9,17 @@ import Pagination from "../../components/Pagination";
 import { useNoScroll } from "../../hooks/useNoScroll";
 import { SearchQuery, useFilteredBooks } from "../../queries/useFilteredBooks";
 import "./SearchResultPage.css";
+import { useSearchParams } from "react-router-dom";
 
 const SearchResultPage = () => {
   const [page, setPage] = useState(1);
-  const [searchParams, setSearchParams] = useState<SearchQuery>({
+  const [searchParams] = useSearchParams();
+
+  const { data: books } = useFilteredBooks({
+    ...Object.fromEntries(searchParams),
     page: page,
     size: 10,
   } as SearchQuery);
-
-  const { data: books } = useFilteredBooks(searchParams);
 
   const [showSidebar, setShowSidebar] = useState(false);
   useNoScroll([showSidebar]);
