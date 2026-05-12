@@ -32,6 +32,7 @@
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: block;
 }
 
 .profile-menu__header {
@@ -54,6 +55,7 @@
 .profile-menu__icon {
   font-size: 2rem;
   margin-right: 1rem;
+  transition: all 0.2s ease;
 }
 
 .profile-menu__header:hover {

@@ -1,9 +1,13 @@
 .link {
   text-decoration: none;
-  color: var(--color-primary);
-  font-weight: 500;
+  color: var(--bs-body-color);
 }
 
-.link:focus {
+.link--primary {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.link--primary:focus {
   outline-color: var(--color-primary);
 }

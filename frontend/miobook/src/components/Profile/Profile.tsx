@@ -6,31 +6,33 @@ import { LuLogOut } from "react-icons/lu";
 import { RiHistoryLine } from "react-icons/ri";
 import { MdOutlineArticle } from "react-icons/md";
 import { useState } from "react";
+import Link from "../Link";
 
 const Profile = () => {
   const [visible, setVisible] = useState(false);
+
   return (
     <div className="profile">
       <Avatar onClick={() => setVisible(!visible)} />
       {visible && (
         <div className="profile-menu">
           <div className="profile-menu__header">Sample Name</div>
-          <div className="profile-menu__item">
+          <Link to="/user" className="profile-menu__item">
             <HiOutlineUserCircle className="profile-menu__icon" />
             Profile
-          </div>
-          <div className="profile-menu__item">
+          </Link>
+          <Link to="/user" className="profile-menu__item">
             <MdOutlineArticle className="profile-menu__icon" />
             My Books
-          </div>
-          <div className="profile-menu__item">
+          </Link>
+          <Link to="/user/cart" className="profile-menu__item">
             <LuShoppingCart className="profile-menu__icon" />
             Buy Cart
-          </div>
-          <div className="profile-menu__item">
+          </Link>
+          <Link to="/user/history" className="profile-menu__item">
             <RiHistoryLine className="profile-menu__icon" />
             Purchase History
-          </div>
+          </Link>
           <div className="profile-menu__footer">
             <LuLogOut className="profile-menu__icon" />
             Logout
