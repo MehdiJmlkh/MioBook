@@ -16,6 +16,10 @@ class AuthService {
       });
   }
 
+  logout() {
+    return apiClient.post("/auth/logout").then((res) => res.data);
+  }
+
   get() {
     return apiClient.get("/auth").then((res) => res.data);
   }

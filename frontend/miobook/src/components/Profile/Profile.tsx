@@ -1,15 +1,17 @@
-import Avatar from "../Avatar";
-import "./Profile.css";
-import { HiOutlineUserCircle } from "react-icons/hi2";
-import { LuShoppingCart } from "react-icons/lu";
-import { LuLogOut } from "react-icons/lu";
-import { RiHistoryLine } from "react-icons/ri";
-import { MdOutlineArticle } from "react-icons/md";
 import { useState } from "react";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+import { LuLogOut, LuShoppingCart } from "react-icons/lu";
+import { MdOutlineArticle } from "react-icons/md";
+import { RiHistoryLine } from "react-icons/ri";
+import Avatar from "../Avatar";
 import Link from "../Link";
+import "./Profile.css";
+import { useLogout } from "../../queries/useLogout";
 
 const Profile = () => {
   const [visible, setVisible] = useState(false);
+
+  const logout = useLogout();
 
   return (
     <div className="profile">
@@ -33,7 +35,7 @@ const Profile = () => {
             <RiHistoryLine className="profile-menu__icon" />
             Purchase History
           </Link>
-          <div className="profile-menu__footer">
+          <div className="profile-menu__footer" onClick={() => logout.mutate()}>
             <LuLogOut className="profile-menu__icon" />
             Logout
           </div>
