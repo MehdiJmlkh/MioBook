@@ -19,7 +19,7 @@ function BookCard({ book }: Props) {
         <h2 className="book-card__title">{book?.title || "Book title"}</h2>
         <h3 className="book-card__author">{book?.author || "Author McName"}</h3>
         <div className="book-card__badges">
-          <FiveStars className="book-card__stars" rate={4} />
+          <FiveStars className="book-card__stars" rate={book?.averageRating || 0} />
           <Price className="book-card__price">{book?.price || 11.11}</Price>
         </div>
         <Button className="btn-primary"> Add to Cart</Button>
