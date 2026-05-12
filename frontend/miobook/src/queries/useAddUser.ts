@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import userService, { AddUserRequest, User } from "../services/userService";
-import { useNavigate } from "react-router-dom";
+import { useLogin } from "./useLogin";
 
 interface AddUserError {
   username: string;
@@ -8,16 +8,12 @@ interface AddUserError {
 }
 
 export const useAddUser = () => {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  const login = useLogin();
 
   return useMutation<User, AddUserError, AddUserRequest>({
     mutationFn: userService.create,
-    onSuccess: (user) => {
-      console.log(user);
-      queryClient.setQueryData(["auth"], user);
-      console.log(queryClient.getQueryData(["auth"]));
-      navigate("/");
+    onSuccess: (user, newUser) => {
+      login.mutate({ username: newUser.username, password: newUser.password });
     },
   });
 };
