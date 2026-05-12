@@ -12,8 +12,13 @@ export interface SearchQuery {
   size: number;
 }
 
+interface BookPage {
+  books: Book[];
+  totalBooks: number;
+}
+
 export const useFilteredBooks = (query: SearchQuery) => {
-  return useQuery<Book[]>({
+  return useQuery<BookPage>({
     queryKey: ["books", "search", query],
     queryFn: () => bookService.search(query),
   });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiFilter2Line } from "react-icons/ri";
 import Backdrop from "../../components/Backdrop";
 import BookCard from "../../components/BookCard";
@@ -13,12 +13,19 @@ import { useSearchParams } from "react-router-dom";
 
 const SearchResultPage = () => {
   const [page, setPage] = useState(1);
+
   const [searchParams] = useSearchParams();
 
-  const { data: books } = useFilteredBooks({
+  const pageSize = 10;
+
+  useEffect(() => {
+    setPage(1);
+  }, [searchParams]);
+
+  const { data: bookPage } = useFilteredBooks({
     ...Object.fromEntries(searchParams),
     page: page,
-    size: 10,
+    size: pageSize,
   } as SearchQuery);
 
   const [showSidebar, setShowSidebar] = useState(false);
@@ -44,13 +51,13 @@ const SearchResultPage = () => {
           </Button>
         </div>
         <Grid>
-          {books?.map((book) => (
+          {bookPage?.books.map((book) => (
             <BookCard book={book} />
           ))}
         </Grid>
       </div>
       <Pagination
-        totalPages={5}
+        totalPages={Math.ceil((bookPage?.totalBooks || 1) / pageSize)}
         pageNumber={page}
         onClick={(page) => setPage(page)}
       />
