@@ -14,6 +14,7 @@ interface Props {
   className?: string;
   onClose: () => void;
   bookTitle?: string;
+  bookId?: number;
 }
 
 const schema = z.object({
@@ -23,7 +24,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const AddReviewModal = ({ className, onClose, bookTitle }: Props) => {
+const AddReviewModal = ({ className, onClose, bookTitle, bookId }: Props) => {
   const {
     register,
     control,
@@ -34,7 +35,7 @@ const AddReviewModal = ({ className, onClose, bookTitle }: Props) => {
     resolver: zodResolver(schema),
   });
 
-  const addReview = useAddReview();
+  const addReview = useAddReview(bookId);
   const { data: user } = useAuth();
 
   const handleSubmitReview = handleSubmit((data) => {

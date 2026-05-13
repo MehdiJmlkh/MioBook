@@ -12,17 +12,16 @@ interface AddReviewError {
   error: string;
 }
 
-export const useAddReview = () => {
+export const useAddReview = (bookId?: number) => {
   const queryClient = useQueryClient();
   return useMutation<Review, AddReviewError, AddReviewRequest>({
     mutationFn: reviewService.add,
     onSuccess: () => {
-      console.log("I am running")
       queryClient.invalidateQueries({
         queryKey: ["reviews"],
       });
       queryClient.invalidateQueries({
-        queryKey: ["books"],
+        queryKey: ["books", bookId],
       });
     },
   });

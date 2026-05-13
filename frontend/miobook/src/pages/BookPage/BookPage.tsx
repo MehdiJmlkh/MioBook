@@ -31,9 +31,13 @@ const BookPage = () => {
         className={showReviewModal ? "show" : ""}
         onClose={() => setShowReviewModal(false)}
         bookTitle={book?.title}
+        bookId={book?.id}
       />
       <BookDetailCard book={book} onAddToCart={() => setShowCartModal(true)} />
-      <ReviewsBlock bookId={book?.id || 0} onClickAddReview={() => setShowReviewModal(true)} />
+      <ReviewsBlock
+        bookId={book?.id || 0}
+        onClickAddReview={() => setShowReviewModal(true)}
+      />
     </div>
   );
 };
