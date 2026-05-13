@@ -8,10 +8,12 @@ import CloseIcon from "../CloseIcon";
 import RatingStars from "../RatingStars";
 import TextArea from "../TextArea";
 import "./AddReviewModal.css";
+import { useAuth } from "../../queries/useAuth";
 
 interface Props {
   className?: string;
   onClose: () => void;
+  bookTitle?: string;
 }
 
 const schema = z.object({
@@ -21,7 +23,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const AddReviewModal = ({ className, onClose }: Props) => {
+const AddReviewModal = ({ className, onClose, bookTitle }: Props) => {
   const {
     register,
     control,
@@ -33,6 +35,18 @@ const AddReviewModal = ({ className, onClose }: Props) => {
   });
 
   const addReview = useAddReview();
+  const { data: user } = useAuth();
+
+  const handleSubmitReview = handleSubmit((data) => {
+    addReview.mutate(
+      {
+        ...data,
+        username: user?.username,
+        title: bookTitle,
+      },
+      { onSuccess: () => onClose() },
+    );
+  });
 
   return (
     <form className={`add-review modal-pop ${className}`}>
@@ -40,7 +54,7 @@ const AddReviewModal = ({ className, onClose }: Props) => {
         <CloseIcon onClose={onClose} />
         <h1 className="add-review__heading">Add Review</h1>
         <img src={NoImage} alt="" className="add-review__img" />
-        <h2 className="add-review__book-title">Book Title</h2>
+        <h2 className="add-review__book-title">{bookTitle}</h2>
         <div className="add-review__rating">
           <h3 className="add-review__rating__heading">Rating</h3>
 
@@ -69,14 +83,7 @@ const AddReviewModal = ({ className, onClose }: Props) => {
         <Button
           className="btn-primary"
           disabled={!isValid}
-          onClick={handleSubmit((data) => {
-            addReview.mutate({
-              ...data,
-              username: "li_wei",
-              title: "Timberline Manual",
-            });
-            onClose();
-          })}
+          onClick={handleSubmitReview}
         >
           Submit Reviews
         </Button>

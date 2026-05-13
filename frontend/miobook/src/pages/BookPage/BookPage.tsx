@@ -30,6 +30,7 @@ const BookPage = () => {
       <AddReviewModal
         className={showReviewModal ? "show" : ""}
         onClose={() => setShowReviewModal(false)}
+        bookTitle={book?.title}
       />
       <BookDetailCard book={book} onAddToCart={() => setShowCartModal(true)} />
       <ReviewsBlock bookId={book?.id || 0} onClickAddReview={() => setShowReviewModal(true)} />
