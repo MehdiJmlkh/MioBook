@@ -22,6 +22,12 @@ public class CartController {
         return cartService.addItemToCart(request);
     }
 
+    @PostMapping("/borrowed-items")
+    public ResponseEntity<Void> addBorrowedItemToCart(@RequestBody BorrowBookRequest request) {
+        cartService.addBorrowedBookToCart(request);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping
     public ResponseEntity<Void> removeItemFromCart(@RequestBody RemoveCartRequest request) {
         cartService.removeItemFromCart(request);
@@ -35,16 +41,10 @@ public class CartController {
         return ResponseEntity.ok(purchase);
     }
 
-    @PostMapping("/borrowed-items")
-    public ResponseEntity<Void> addBorrowedItemToCart(@RequestBody BorrowBookRequest request) {
-        cartService.addBorrowedBookToCart(request);
-        return ResponseEntity.ok().build();
-    }
-
     @ExceptionHandler(CartIsFullException.class)
     public ResponseEntity<ErrorDto> handleCartIsFullException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("Cart is full."));
+                .body(new ErrorDto("Cart is full"));
     }
 
     @ExceptionHandler(BookNotInCartException.class)
