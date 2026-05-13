@@ -67,4 +67,34 @@ public class PurchaseService {
 
         return purchasedBooksHistory;
     }
+
+    public PurchasedBookStatus getPurchasedBookStatus(String username, Long id) {
+        var user = userRepository.findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        if (!authRepository.isLoggedIn(user)) {
+            throw new NotLoggedInException();
+        }
+
+        var purchases = purchaseRepository.findByUsername(username);
+
+        var purchaseBook = purchases.stream()
+                .flatMap(purchase -> purchase.getItems().stream())
+                .filter(purchaseItem -> !purchaseItem.hasExpired())
+                .filter(purchaseItem -> purchaseItem.getBook().getId().equals(id))
+                .findFirst()
+                .orElse(null);
+
+        if (purchaseBook == null) {
+            return PurchasedBookStatus.Available;
+        }
+        if (purchaseBook.getIsBorrowed()) {
+            return PurchasedBookStatus.Borrowed;
+        }
+        return PurchasedBookStatus.Owned;
+   }
 }

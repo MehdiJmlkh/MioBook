@@ -21,4 +21,10 @@ public class PurchaseController {
     public PurchasedBooksHistory getPurchasedBooks(@PathVariable("username") String username) {
         return purchaseService.getPurchasedBooks(username);
     }
+
+    @GetMapping("/{username}/books/{id}/status")
+    public PurchasedBookStatus getPurchasedBookStatus(@PathVariable("username") String username,
+                                                  @PathVariable("id") Long id) {
+        return purchaseService.getPurchasedBookStatus(username, id);
+    }
 }
