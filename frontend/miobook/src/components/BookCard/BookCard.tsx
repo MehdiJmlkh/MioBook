@@ -8,6 +8,7 @@ import Button from "../Button";
 import FiveStars from "../FiveStars";
 import Price from "../Price";
 import "./BookCard.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   book?: Book;
@@ -27,9 +28,9 @@ function BookCard({ book }: Props) {
         price={book?.price}
         bookTitle={book?.title}
       />
-      <a href="#">
+      <Link to={`/books/${book?.id}`}>
         <img className="book-card__img" src={noImage} alt="Image of the book" />
-      </a>
+      </Link>
       <div className="book-card__body">
         <h2 className="book-card__title">{book?.title || "Book title"}</h2>
         <h3 className="book-card__author">{book?.author || "Author McName"}</h3>
