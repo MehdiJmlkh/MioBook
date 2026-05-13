@@ -7,8 +7,10 @@ import java.util.*;
 @Repository
 public class BookRepository {
     private Set<Book> books = new LinkedHashSet<>();
+    private Long lastId = 0L;
 
     public void addBook(Book book) {
+        book.setId(lastId++);
         books.add(book);
     }
 

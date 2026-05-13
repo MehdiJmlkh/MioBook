@@ -15,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 public class Book {
+    private Long id;
     private String title;
     private Author author;
     private String publisher;
