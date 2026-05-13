@@ -46,6 +46,7 @@ const AddToCartModal = ({
         days: borrowDays,
       });
     }
+    onClose();
   };
 
   return (
