@@ -28,7 +28,10 @@ class CartService {
   addBorrowedItem(request: AddBorrowedItemRequest) {
     return apiClient
       .post("/carts/borrowed-items", request)
-      .then((res) => res.data);
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err.response.data.error);
+      });
   }
 }
 
