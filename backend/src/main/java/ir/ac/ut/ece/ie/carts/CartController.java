@@ -17,7 +17,7 @@ public class CartController {
         return cartService.getCart(username);
     }
 
-    @PostMapping
+    @PostMapping("/items")
     public Cart addItemToCart(@RequestBody AddCartRequest request) {
         return cartService.addItemToCart(request);
     }
@@ -35,8 +35,8 @@ public class CartController {
         return ResponseEntity.ok(purchase);
     }
 
-    @PostMapping("/borrow")
-    public ResponseEntity<Void> borrowBook(@RequestBody BorrowBookRequest request) {
+    @PostMapping("/borrowed-items")
+    public ResponseEntity<Void> addBorrowedItemToCart(@RequestBody BorrowBookRequest request) {
         cartService.addBorrowedBookToCart(request);
         return ResponseEntity.ok().build();
     }
