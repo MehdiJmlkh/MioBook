@@ -26,8 +26,8 @@ public class BookService {
     private final PurchaseRepository purchaseRepository;
     private final BookMapper bookMapper;
 
-    public BookDto getBook(String title) {
-        var book = bookRepository.findByTitle(title)
+    public BookDto getBook(Long id) {
+        var book = bookRepository.findById(id)
                 .orElseThrow(BookNotFoundException::new);
         return bookMapper.toDto(book);
     }

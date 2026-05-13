@@ -14,6 +14,12 @@ public class BookRepository {
         books.add(book);
     }
 
+    public Optional<Book> findById(Long id) {
+        return books.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst();
+    }
+
     public Optional<Book> findByTitle(String title) {
         return books.stream()
                 .filter(book -> book.getTitle().equals(title))

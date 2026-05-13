@@ -19,9 +19,9 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/{title}")
-    public BookDto getBook(@PathVariable("title") String title) {
-        return bookService.getBook(title);
+    @GetMapping("/{id}")
+    public BookDto getBook(@PathVariable("id") Long id) {
+        return bookService.getBook(id);
     }
 
     @GetMapping("/genres")
