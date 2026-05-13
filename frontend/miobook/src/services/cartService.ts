@@ -2,12 +2,12 @@ import apiClient from "./ApiClient";
 
 interface AddItemRequest {
   username?: string;
-  title: string;
+  title?: string;
 }
 
 interface AddBorrowedItemRequest {
   username?: string;
-  title: string;
+  title?: string;
   days: number;
 }
 
@@ -17,7 +17,12 @@ class CartService {
   }
 
   addItem(request: AddItemRequest) {
-    return apiClient.post("/carts/items", request).then((res) => res.data);
+    return apiClient
+      .post("/carts/items", request)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err.response.data.error);
+      });
   }
 
   addBorrowedItem(request: AddBorrowedItemRequest) {
