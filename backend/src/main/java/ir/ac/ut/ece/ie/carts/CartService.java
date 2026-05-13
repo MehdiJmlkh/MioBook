@@ -76,6 +76,30 @@ public class CartService {
         return cartRepository.findByUser(user).orElseThrow();
     }
 
+    public void addBorrowedBookToCart(BorrowBookRequest request) {
+        var book = bookRepository.findByTitle(request.getTitle())
+                .orElseThrow(BookNotFoundException::new);
+
+        var user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
+
+        if (user.getRole() != Role.CUSTOMER) {
+            throw new NotCustomerException();
+        }
+
+        cartRepository.findByUser(user).ifPresent(
+                cart -> {
+                    if (cart.getItems().size() >= 10) {
+                        throw new CartIsFullException();
+                    }
+                }
+        );
+
+        var cartItem = CartItem.BorrowCartItem(book, request.getDays());
+
+        cartRepository.addItemToCart(user, cartItem);
+    }
+
     public void removeItemFromCart(RemoveCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
@@ -95,22 +119,6 @@ public class CartService {
         }
 
         cart.removeBook(book);
-    }
-
-    public void addBorrowedBookToCart(BorrowBookRequest request) {
-        var book = bookRepository.findByTitle(request.getTitle())
-                .orElseThrow(BookNotFoundException::new);
-
-        var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
-
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
-
-        var cartItem = CartItem.BorrowCartItem(book, request.getDays());
-
-        cartRepository.addItemToCart(user, cartItem);
     }
 
     public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
