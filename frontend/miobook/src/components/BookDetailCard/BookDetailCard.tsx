@@ -1,3 +1,6 @@
+import { useParams } from "react-router-dom";
+import { useAuth } from "../../queries/useAuth";
+import { BookStatus, useBookStatus } from "../../queries/useBookStatus";
 import { Book } from "../../services/bookService";
 import Button from "../Button";
 import FiveStars from "../FiveStars";
@@ -11,9 +14,17 @@ interface Props {
 }
 
 const BookDetailCard = ({ onAddToCart, book }: Props) => {
+  const { data: user } = useAuth();
+  const { id } = useParams();
+  const { data: status } = useBookStatus(user?.username, parseInt(id || ""));
+
+  if (status === undefined) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="book">
-      <ImageWithBadge className="book__img" />
+      <ImageWithBadge label={status?.toString()} className="book__img" />
 
       <div className="book__content">
         <div className="book__details">
@@ -61,7 +72,13 @@ const BookDetailCard = ({ onAddToCart, book }: Props) => {
         </div>
 
         <Price className="book__price">{book?.price || 0}</Price>
-        <Button className="btn btn-primary book__btn" onClick={onAddToCart}>
+        <Button
+          className="btn btn-primary book__btn"
+          onClick={onAddToCart}
+          disabled={
+            status === BookStatus.Owned || status === BookStatus.Borrowed
+          }
+        >
           Add to Cart
         </Button>
       </div>

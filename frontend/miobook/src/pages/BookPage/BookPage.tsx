@@ -8,15 +8,20 @@ import ReviewsBlock from "../../components/ReviewsBlock";
 import { useNoScroll } from "../../hooks/useNoScroll";
 import { useBook } from "../../queries/useBook";
 import "./BookPage.css";
+import { useBookStatus } from "../../queries/useBookStatus";
 
 const BookPage = () => {
   const { id } = useParams();
-  const { data: book } = useBook(parseInt(id || ""));
+  const { data: book, isLoading } = useBook(parseInt(id || ""));  
 
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
 
   useNoScroll([showReviewModal, showCartModal]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="page-container">
