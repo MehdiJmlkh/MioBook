@@ -25,6 +25,11 @@ public class AuthorService {
                 .orElseThrow(AuthorNotFoundException::new);
     }
 
+    public Author getAuthor(Long id) {
+        return authorRepository.findById(id)
+                .orElseThrow(AuthorNotFoundException::new);
+    }
+
     public Author addAuthor(AddAuthorRequest request) {
         if (authorRepository.findByName(request.getName()).isPresent()) {
             throw new AuthorNameAlreadyExistsException();
