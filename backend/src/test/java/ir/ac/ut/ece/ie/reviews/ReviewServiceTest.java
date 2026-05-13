@@ -176,7 +176,7 @@ public class ReviewServiceTest {
 
     @Test
     void getAllReviews_bookNotFound_throwsException() {
-        assertThrows(BookNotFoundException.class, () -> reviewService.getAllReviews("title", null, null));
+        assertThrows(BookNotFoundException.class, () -> reviewService.getAllReviews(1L, null, null));
     }
 
     @Test
@@ -204,10 +204,10 @@ public class ReviewServiceTest {
         book.getReviews().add(review1);
         book.getReviews().add(review2);
 
-        when(bookRepository.findByTitle(book.getTitle())).thenReturn(Optional.of(book));
+        when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
         when(reviewRepository.findByBook(any(), any(), any())).thenReturn(List.of(review1, review2));
 
-        var reviewListDto = reviewService.getAllReviews(book.getTitle(), null, null);
+        var reviewListDto = reviewService.getAllReviews(book.getId(), null, null);
 
         assertEquals(book.getTitle(), reviewListDto.getTitle());
         assertEquals(3.5, reviewListDto.getAverageRating());
@@ -249,11 +249,11 @@ public class ReviewServiceTest {
         book.getReviews().add(review1);
         book.getReviews().add(review2);
 
-        when(bookRepository.findByTitle(book.getTitle())).thenReturn(Optional.of(book));
+        when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
         when(reviewRepository.findByBook(book, 1, 1)).thenReturn(List.of(review2));
 
 
-        var reviewListDto = reviewService.getAllReviews(book.getTitle(), 1, 1);
+        var reviewListDto = reviewService.getAllReviews(book.getId(), 1, 1);
 
         assertEquals(book.getTitle(), reviewListDto.getTitle());
         assertEquals(3.5, reviewListDto.getAverageRating());

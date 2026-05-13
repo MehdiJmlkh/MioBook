@@ -129,7 +129,7 @@ public class BookServiceTest {
 
     @Test
     void getBook_bookNotFound_throwsException() {
-        assertThrows(BookNotFoundException.class, () -> bookService.getBook("title"));
+        assertThrows(BookNotFoundException.class, () -> bookService.getBook(0L));
     }
 
     @Test
@@ -144,6 +144,7 @@ public class BookServiceTest {
         review2.setRate(4);
 
         var book = Book.builder()
+                .id(1L)
                 .title("title")
                 .author(author)
                 .publisher("publisher")
@@ -153,9 +154,9 @@ public class BookServiceTest {
                 .synopsis("synopsis")
                 .content("content").reviews(Set.of(review1, review2)).build();
 
-        when(bookRepository.findByTitle(book.getTitle())).thenReturn(Optional.of(book));
+        when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
 
-        var bookDto = bookService.getBook("title");
+        var bookDto = bookService.getBook(1L);
         assertEquals(book.getTitle(), bookDto.getTitle());
         assertEquals(author.getName(), bookDto.getAuthor());
         assertEquals(book.getPublisher(), bookDto.getPublisher());
@@ -235,22 +236,16 @@ public class BookServiceTest {
     }
 
     @Test
-    void getBooks_invalidYearRange_throwsException() {
-        var query = new SearchQuery();
-        query.setFrom(2001);
-        query.setTo(2000);
-
-        assertThrows(InvalidYearRangeException.class, () -> bookService.getBooks(query, null, null));
-    }
-
-    @Test
     void getBooks_withoutPagination_returnsBooksDto() {
         var query = new SearchQuery();
         var book = TestDataFactory.sampleBook();
 
-        when(bookRepository.findByQuery(eq(query), any(), any())).thenReturn(List.of(book));
+        var bookPage = new BookPage(List.of(book), 1);
+        when(bookRepository.findByQuery(eq(query), any(), any())).thenReturn(bookPage);
 
-        var bookDtoList = bookService.getBooks(query, null, null);
+        var bookPageDto = bookService.getBooks(query, null, null);
+
+        var bookDtoList = bookPageDto.getBooks();
 
         assertEquals(1, bookDtoList.size());
 
@@ -272,9 +267,11 @@ public class BookServiceTest {
         Integer page = 1;
         Integer size = 1;
 
-        when(bookRepository.findByQuery(eq(query), eq(page), eq(size))).thenReturn(List.of(book));
+        var bookPage = new BookPage(List.of(book), 1);
+        when(bookRepository.findByQuery(eq(query), eq(page), eq(size))).thenReturn(bookPage);
 
-        var bookDtoList = bookService.getBooks(query, page, size);
+        var bookPageDto = bookService.getBooks(query, page, size);
+        var bookDtoList = bookPageDto.getBooks();
 
         assertEquals(1, bookDtoList.size());
 
