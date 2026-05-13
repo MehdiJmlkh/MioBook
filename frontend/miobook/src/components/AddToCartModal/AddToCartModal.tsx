@@ -5,21 +5,48 @@ import CheckBox from "../CheckBox";
 import CloseIcon from "../CloseIcon";
 import Price from "../Price";
 import "./AddToCartModal.css";
+import { useAddItemToCart } from "../../queries/useAddItemToCart";
+import { useAddBorrowedItemToCart } from "../../queries/useAddBorrowedItemToCart";
+import { useAuth } from "../../queries/useAuth";
 
 interface Props {
   className?: string;
   onClose: () => void;
   price?: number;
+  bookTitle?: string;
 }
 
-const AddToCartModal = ({ className, onClose, price = 0 }: Props) => {
+const AddToCartModal = ({
+  className,
+  onClose,
+  price = 0,
+  bookTitle,
+}: Props) => {
   const [showDays, setShowDays] = useState(false);
+
   const maxBorrowDays = 10;
   const [borrowDays, setBorrowDays] = useState(maxBorrowDays);
 
   useEffect(() => {
     setBorrowDays(maxBorrowDays);
   }, [showDays]);
+
+  const addItemToCart = useAddItemToCart();
+  const addBorrowedItemToCart = useAddBorrowedItemToCart();
+
+  const { data: user } = useAuth();
+
+  const handleAddToCart = () => {
+    if (borrowDays === maxBorrowDays) {
+      addItemToCart.mutate({ username: user?.username, title: bookTitle });
+    } else {
+      addBorrowedItemToCart.mutate({
+        username: user?.username,
+        title: bookTitle,
+        days: borrowDays,
+      });
+    }
+  };
 
   return (
     <div className={`add-to-cart modal-pop ${className}`}>
@@ -44,7 +71,9 @@ const AddToCartModal = ({ className, onClose, price = 0 }: Props) => {
             {(price * (borrowDays / maxBorrowDays)).toFixed(2)}
           </Price>
         </span>
-        <Button className="btn-primary">Add</Button>
+        <Button className="btn-primary" onClick={handleAddToCart}>
+          Add
+        </Button>
       </div>
     </div>
   );
