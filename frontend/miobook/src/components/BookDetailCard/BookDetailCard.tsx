@@ -1,19 +1,16 @@
-import "./BookDetailCard.css";
-import ImageWithBadge from "../ImageWithBadge";
-import FiveStars from "../FiveStars";
-import Price from "../Price";
+import { Book } from "../../services/bookService";
 import Button from "../Button";
-import { useBook } from "../../queries/useBook";
+import FiveStars from "../FiveStars";
+import ImageWithBadge from "../ImageWithBadge";
+import Price from "../Price";
+import "./BookDetailCard.css";
 
 interface Props {
+  book?: Book;
   onAddToCart: () => void;
 }
 
-const BookDetailCard = ({ onAddToCart }: Props) => {
-  const { data: book } = useBook("Timberline Manual");
-
-  console.log(book);
-
+const BookDetailCard = ({ onAddToCart, book }: Props) => {
   return (
     <div className="book">
       <ImageWithBadge className="book__img" />
@@ -53,7 +50,14 @@ const BookDetailCard = ({ onAddToCart }: Props) => {
 
         <div className="book__about">
           <h2 className="book-detail__title">About</h2>
-          <p className="book-detail__value">{book?.synopsis} Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia hic aut nobis sunt architecto quisquam qui, harum sit totam debitis repellendus ut molestiae autem itaque! Deleniti ratione repellendus ipsa maiores. Esse sequi dolore beatae minima enim, ducimus dignissimos placeat non omnis maiores repellendus, laborum inventore! Iusto ducimus beatae tempora voluptas.</p>
+          <p className="book-detail__value">
+            {book?.synopsis} Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Mollitia hic aut nobis sunt architecto quisquam qui, harum sit
+            totam debitis repellendus ut molestiae autem itaque! Deleniti
+            ratione repellendus ipsa maiores. Esse sequi dolore beatae minima
+            enim, ducimus dignissimos placeat non omnis maiores repellendus,
+            laborum inventore! Iusto ducimus beatae tempora voluptas.
+          </p>
         </div>
 
         <Price className="book__price">{book?.price || 0}</Price>

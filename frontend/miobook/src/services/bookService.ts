@@ -26,8 +26,8 @@ export interface AddBookRequest {
 }
 
 class BookService {
-  getBook(title: string) {
-    return apiClient.get(`/books/${title}`).then((res) => res.data);
+  getBook(id: number) {
+    return apiClient.get(`/books/${id}`).then((res) => res.data);
   }
 
   getBooks() {
