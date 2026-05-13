@@ -25,8 +25,8 @@ public class ReviewService {
     private final AuthRepository authRepository;
     private final ReviewMapper reviewMapper;
 
-    public ReviewListDto getAllReviews(String title, Integer page, Integer size) {
-        var book = bookRepository.findByTitle(title)
+    public ReviewListDto getAllReviews(Long bookId, Integer page, Integer size) {
+        var book = bookRepository.findById(bookId)
                 .orElseThrow(BookNotFoundException::new);
 
         var reviews = reviewRepository.findByBook(book, page, size).stream()
@@ -34,7 +34,7 @@ public class ReviewService {
                 .toList();
 
         var reviewListDto = new ReviewListDto();
-        reviewListDto.setTitle(title);
+        reviewListDto.setTitle(book.getTitle());
         reviewListDto.setReviews(reviews);
         reviewListDto.setAverageRating(book.getAverageRating());
         reviewListDto.setTotalReviews(reviewRepository.getCountByBook(book));

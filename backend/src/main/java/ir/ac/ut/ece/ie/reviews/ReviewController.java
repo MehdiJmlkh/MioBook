@@ -15,12 +15,12 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @GetMapping("/{title}")
+    @GetMapping("/{id}")
     public ReviewListDto getAllReviews(
-            @PathVariable("title") String title,
+            @PathVariable("id") Long bookId,
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "size", required = false) Integer size) {
-        return reviewService.getAllReviews(title, page , size);
+        return reviewService.getAllReviews(bookId, page , size);
     }
 
     @PostMapping
