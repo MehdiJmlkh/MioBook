@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BorrowDays from "../BorrowDays";
 import Button from "../Button";
 import CheckBox from "../CheckBox";
@@ -17,6 +17,10 @@ const AddToCartModal = ({ className, onClose, price = 0 }: Props) => {
   const maxBorrowDays = 10;
   const [borrowDays, setBorrowDays] = useState(maxBorrowDays);
 
+  useEffect(() => {
+    setBorrowDays(maxBorrowDays);
+  }, [showDays]);
+
   return (
     <div className={`add-to-cart modal-pop ${className}`}>
       <CloseIcon onClose={onClose} />
@@ -31,6 +35,7 @@ const AddToCartModal = ({ className, onClose, price = 0 }: Props) => {
       <BorrowDays
         className={showDays ? "borrow-days--visible" : ""}
         onSelectDay={(days) => setBorrowDays(days)}
+        selectedDay={borrowDays}
       />
       <div className="add-to-cart__footer">
         <span>
