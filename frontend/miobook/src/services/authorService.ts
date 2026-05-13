@@ -13,6 +13,10 @@ class AuthorService {
     return apiClient.get("/authors").then((res) => res.data);
   }
 
+  getAuthor(id: number) {
+    return apiClient.get<Author>(`/authors/${id}`).then((res) => res.data);
+  }
+
   addAuthor(author: Author) {
     return apiClient
       .post("/authors", { ...author, username: "admin1" })

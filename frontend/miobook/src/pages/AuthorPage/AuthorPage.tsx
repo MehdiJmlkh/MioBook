@@ -1,10 +1,16 @@
+import { useParams } from "react-router-dom";
 import AuthorBackground from "../../assets/author-background.svg";
 import AuthorImage from "../../assets/author-image.svg";
 import BookCard from "../../components/BookCard";
 import Grid from "../../components/Grid";
+import { useAuthor } from "../../queries/useAuthor";
 import "./AuthorPage.css";
 
 const AuthorPage = () => {
+  const { id } = useParams();
+  const { data: author } = useAuthor(parseInt(id || ""));
+  console.log(author)
+
   return (
     <body className="author-page">
       <div className="author-page__heading">
@@ -17,26 +23,26 @@ const AuthorPage = () => {
       </div>
       <main>
         <div className="author-page__author">
-          <h1 className="author-page__name">Author Name</h1>
+          <h1 className="author-page__name">{author?.name}</h1>
           <div className="author-details">
             <span className="author-detail">
               <h2 className="author-detail__title">Pen Name</h2>
-              <p className="author-detail__value">Authorica</p>
+              <p className="author-detail__value">{author?.penName}</p>
             </span>
 
             <span className="author-detail">
               <h2 className="author-detail__title">Nationality</h2>
-              <p className="author-detail__value">German</p>
+              <p className="author-detail__value">{author?.nationality}</p>
             </span>
 
             <span className="author-detail">
               <h2 className="author-detail__title">Born</h2>
-              <p className="author-detail__value">1998-02-01</p>
+              <p className="author-detail__value">{author?.born}</p>
             </span>
 
             <span className="author-detail">
               <h2 className="author-detail__title">Died</h2>
-              <p className="author-detail__value">2024-10-24</p>
+              <p className="author-detail__value">{author?.died}</p>
             </span>
 
             <span className="author-detail">

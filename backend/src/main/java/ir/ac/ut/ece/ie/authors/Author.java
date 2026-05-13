@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Author {
+    private Long id;
     private String name;
     private String penName;
     private String nationality;
