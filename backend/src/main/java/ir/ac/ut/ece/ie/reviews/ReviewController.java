@@ -24,9 +24,9 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addReview(@Valid @RequestBody AddReviewRequest request) {
-        reviewService.addReview(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<ReviewDto> addReview(@Valid @RequestBody AddReviewRequest request) {
+        var review = reviewService.addReview(request);
+        return ResponseEntity.ok(review);
     }
 
     @ExceptionHandler(BookNotInStockException.class)

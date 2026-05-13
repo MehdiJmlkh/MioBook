@@ -42,7 +42,7 @@ public class ReviewService {
         return reviewListDto;
     }
 
-    public void addReview(AddReviewRequest request) {
+    public ReviewDto addReview(AddReviewRequest request) {
         var username = request.getUsername();
         var bookTitle = request.getTitle();
 
@@ -80,5 +80,7 @@ public class ReviewService {
 
         book.getReviews().add(review);
         reviewRepository.addReview(review);
+
+        return reviewMapper.toDto(review);
     }
 }
