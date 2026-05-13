@@ -8,12 +8,13 @@ import { useReviews } from "../../queries/useReviews";
 
 interface Props {
   onClickAddReview: () => void;
+  bookId: number;
 }
 
-const ReviewsBlock = ({ onClickAddReview }: Props) => {
+const ReviewsBlock = ({ onClickAddReview, bookId }: Props) => {
   const [page, setPage] = useState(1);
   const pageSize = 4;
-  const { data: reviewList } = useReviews("Timberline Manual", { page, size: pageSize });
+  const { data: reviewList } = useReviews(bookId, { page, size: pageSize });
 
   return (
     <div className="block-review">

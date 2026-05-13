@@ -11,9 +11,9 @@ export interface PageParams {
   size: number;
 }
 
-export const useReviews = (bookTitle: string, params: PageParams) => {
+export const useReviews = (bookId: number, params: PageParams) => {
   return useQuery<ReviewList>({
-    queryKey: ["reviews", bookTitle, params],
-    queryFn: () => reviewService.get(bookTitle, params),
+    queryKey: ["reviews", bookId, params],
+    queryFn: () => reviewService.get(bookId, params),
   });
 };

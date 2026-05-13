@@ -10,9 +10,9 @@ export interface Review {
 }
 
 class ReviewService {
-  get(bookTitle: string, params: PageParams) {
+  get(bookId: number, params: PageParams) {
     return apiClient
-      .get(`/reviews/${bookTitle}`, { params })
+      .get(`/reviews/${bookId}`, { params })
       .then((res) => res.data);
   }
 
