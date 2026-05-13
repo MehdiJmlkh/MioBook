@@ -24,7 +24,7 @@ public class CartController {
 
     @PostMapping("/borrowed-items")
     public ResponseEntity<Void> addBorrowedItemToCart(@RequestBody BorrowBookRequest request) {
-        cartService.addBorrowedBookToCart(request);
+        cartService.addBorrowedItemToCart(request);
         return ResponseEntity.ok().build();
     }
 

@@ -76,7 +76,7 @@ public class CartService {
         return cartRepository.findByUser(user).orElseThrow();
     }
 
-    public void addBorrowedBookToCart(BorrowBookRequest request) {
+    public void addBorrowedItemToCart(BorrowBookRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 

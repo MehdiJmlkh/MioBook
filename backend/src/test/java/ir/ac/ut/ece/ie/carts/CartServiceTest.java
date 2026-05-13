@@ -2,7 +2,6 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
-import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -25,7 +24,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -322,22 +320,22 @@ public class CartServiceTest {
     }
 
     @Test
-    void addBorrowedBookToCart_bookNotFound_throwsException() {
+    void addBorrowedItemToCart_itemNotFound_throwsException() {
         var request = new BorrowBookRequest();
-        assertThrows(BookNotFoundException.class, () -> cartService.addBorrowedBookToCart(request));
+        assertThrows(BookNotFoundException.class, () -> cartService.addBorrowedItemToCart(request));
     }
 
     @Test
-    void addBorrowedBookToCart_userNotFound_throwsException() {
+    void addBorrowedItemToCart_userNotFound_throwsException() {
         var request = new BorrowBookRequest();
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
 
-        assertThrows(UserNotFoundException.class, () -> cartService.addBorrowedBookToCart(request));
+        assertThrows(UserNotFoundException.class, () -> cartService.addBorrowedItemToCart(request));
     }
 
     @Test
-    void addBorrowedBookToCart_notCustomerUser_throwsException() {
+    void addBorrowedItemToCart_notCustomerUser_throwsException() {
         var request = new BorrowBookRequest();
 
         var user = TestDataFactory.sampleAdminUser();
@@ -345,11 +343,11 @@ public class CartServiceTest {
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
-        assertThrows(NotCustomerException.class, () -> cartService.addBorrowedBookToCart(request));
+        assertThrows(NotCustomerException.class, () -> cartService.addBorrowedItemToCart(request));
     }
 
     @Test
-    void addBorrowedBookToCart_validInput_addsCartItem() {
+    void addBorrowedItemToCart_validInput_addsCartItem() {
         var request = new BorrowBookRequest();
         request.setUsername("username");
         request.setTitle("title");
@@ -362,7 +360,7 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
-        cartService.addBorrowedBookToCart(request);
+        cartService.addBorrowedItemToCart(request);
 
         var captor = ArgumentCaptor.forClass(CartItem.class);
         verify(cartRepository).addItemToCart(eq(user), captor.capture());
