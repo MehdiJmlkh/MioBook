@@ -1,5 +1,6 @@
 .page-container {
   padding: 5.5rem;
+  padding-top: 0;
 }
 
 @media (min-width: 1024px) {
