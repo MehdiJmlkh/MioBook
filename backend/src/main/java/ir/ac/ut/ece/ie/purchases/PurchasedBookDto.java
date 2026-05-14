@@ -7,6 +7,7 @@ import java.util.Set;
 @Data
 public class PurchasedBookDto {
     private Long id;
+    private Long authorId;
     private String title;
     private String author;
     private String publisher;
