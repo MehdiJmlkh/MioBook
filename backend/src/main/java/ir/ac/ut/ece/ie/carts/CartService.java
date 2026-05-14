@@ -100,12 +100,12 @@ public class CartService {
         cartRepository.addItemToCart(user, cartItem);
     }
 
-    public void removeItemFromCart(RemoveCartRequest request) {
-        var book = bookRepository.findByTitle(request.getTitle())
+    public void removeItemFromCart(Long bookId) {
+        var book = bookRepository.findById(bookId)
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
+        var user = authRepository.getAuthenticatedUser()
+                .orElseThrow(NotLoggedInException::new);
 
         if (user.getRole() != Role.CUSTOMER) {
             throw new NotCustomerException();
