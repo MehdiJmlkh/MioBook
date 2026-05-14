@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Link from "../Link";
 import NoResult from "../../assets/no-result.svg";
 import { useAuth } from "../../queries/auth/useAuth";
+import EmptyIcon from "../EmptyIcon";
 
 interface Props {
   className?: string;
@@ -28,10 +29,7 @@ const PurchasedBooks = ({ className }: Props) => {
       icon={<img src={BookIcon} alt="" />}
     >
       {purchasedBooksHistory?.books.length === 0 ? (
-        <div className="empty-list__content">
-          <img className="my-book__no-result" src={NoResult} alt="" />
-          <p>No Book</p>
-        </div>
+        <EmptyIcon src={NoResult} description="No Book"/>
       ) : (
         <Table>
           <thead>

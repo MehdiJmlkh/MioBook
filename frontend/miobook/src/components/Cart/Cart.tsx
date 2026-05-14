@@ -8,6 +8,7 @@ import "./Cart.css";
 import { useRemoveCartItem } from "../../queries/carts/useRemoveCartItem";
 import { useAuth } from "../../queries/auth/useAuth";
 import NoProduct from "../../assets/no-product.svg";
+import EmptyIcon from "../EmptyIcon";
 
 const Cart = () => {
   const { data: user } = useAuth();
@@ -20,10 +21,8 @@ const Cart = () => {
   return (
     <Card title="Cart" className="cart" icon={<LuShoppingCart />}>
       {cart?.items.length === 0 ? (
-        <div className="empty-list__content">
-          <img className="my-book__no-result" src={NoProduct} alt="" />
-          <p>No Product</p>
-        </div>      ) : (
+        <EmptyIcon src={NoProduct} description="No Product" />
+      ) : (
         <>
           <Table>
             <thead>

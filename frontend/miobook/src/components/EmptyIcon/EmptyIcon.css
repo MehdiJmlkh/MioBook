@@ -1,0 +1,8 @@
+.empty-card {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  color: #9e9b9b;
+  font-size: 1.5rem;
+  row-gap: 3rem;
+}
