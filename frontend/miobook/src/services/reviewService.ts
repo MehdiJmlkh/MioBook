@@ -1,5 +1,5 @@
-import { AddReviewRequest } from "../queries/useAddReview";
-import { PageParams } from "../queries/useReviews";
+import { AddReviewRequest } from "../queries/reviews/useAddReview";
+import { PageParams } from "../queries/reviews/useReviews";
 import apiClient from "./ApiClient";
 
 export interface Review {

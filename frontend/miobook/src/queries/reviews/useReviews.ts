@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import reviewService, { Review } from "../services/reviewService";
+import reviewService, { Review } from "../../services/reviewService";
 
 interface ReviewList {
   reviews: Review[];

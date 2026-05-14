@@ -4,7 +4,7 @@ import "./ReviewsBlock.css";
 import ReviewsIcon from "../../assets/reviews-icon.svg";
 import Button from "../Button";
 import { useState } from "react";
-import { useReviews } from "../../queries/useReviews";
+import { useReviews } from "../../queries/reviews/useReviews";
 
 interface Props {
   onClickAddReview: () => void;

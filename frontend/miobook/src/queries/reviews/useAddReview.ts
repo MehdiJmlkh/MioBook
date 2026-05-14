@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import reviewService, { Review } from "../services/reviewService";
+import reviewService, { Review } from "../../services/reviewService";
 
 export interface AddReviewRequest {
   title?: string;

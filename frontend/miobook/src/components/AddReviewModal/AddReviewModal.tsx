@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import NoImage from "../../assets/no-image.svg";
-import { useAddReview } from "../../queries/useAddReview";
+import { useAddReview } from "../../queries/reviews/useAddReview";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import RatingStars from "../RatingStars";
