@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import SearchResultPage from "./pages/SearchResultPage";
 import BookPage from "./pages/BookPage";
@@ -15,23 +14,24 @@ import PrivateRoutes from "./pages/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { path: "books", element: <SearchResultPage /> },
-      { path: "books/:id", element: <BookPage /> },
-      { path: "books/:id", element: <BookPage /> },
-      { path: "books/:id/content", element: <BookContentPage /> },
-      { path: "user", element: <UserPage /> },
-      { path: "user/cart", element: <CartPage /> },
-      { path: "user/history", element: <PurchaseHistoryPage /> },
-      { path: "admin", element: <AdminPage /> },
-      { path: "authors/:id", element: <AuthorPage /> },
-    ],
-  },
-  {
     element: <PrivateRoutes />,
-    children: [{ index: true, element: <HomePage /> }],
+    children: [
+      {
+        path: "/",
+        children: [
+          { index: true, element: <HomePage /> },
+          { path: "books", element: <SearchResultPage /> },
+          { path: "books/:id", element: <BookPage /> },
+          { path: "books/:id", element: <BookPage /> },
+          { path: "books/:id/content", element: <BookContentPage /> },
+          { path: "user", element: <UserPage /> },
+          { path: "user/cart", element: <CartPage /> },
+          { path: "user/history", element: <PurchaseHistoryPage /> },
+          { path: "admin", element: <AdminPage /> },
+          { path: "authors/:id", element: <AuthorPage /> },
+        ],
+      },
+    ],
   },
   { path: "/sign-in", element: <SignInPage /> },
   { path: "/sign-up", element: <SignUpPage /> },
