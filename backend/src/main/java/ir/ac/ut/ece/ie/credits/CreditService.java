@@ -15,7 +15,7 @@ public class CreditService {
     private final UserRepository userRepository;
     private final AuthRepository authRepository;
 
-    public void addCredit(AddCreditRequest request) {
+    public Integer addCredit(AddCreditRequest request) {
         var user = userRepository.findById(request.getId())
                 .orElseThrow(UserNotFoundException::new);
 
@@ -28,6 +28,7 @@ public class CreditService {
         }
 
         user.addCredit(request.getCredit());
+        return user.getBalance();
     }
 
     public Integer getBalance(String username) {

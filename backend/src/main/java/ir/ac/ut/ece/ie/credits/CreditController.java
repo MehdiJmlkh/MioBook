@@ -18,8 +18,8 @@ public class CreditController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addCredit(@Valid @RequestBody AddCreditRequest request) {
-        creditService.addCredit(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Integer> addCredit(@Valid @RequestBody AddCreditRequest request) {
+        var newBalance = creditService.addCredit(request);
+        return ResponseEntity.ok(newBalance);
     }
 }
