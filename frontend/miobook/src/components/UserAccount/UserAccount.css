@@ -6,6 +6,7 @@
   font-size: 1.7rem;
   display: grid;
   row-gap: 1.5rem;
+  min-width: 31rem;
 }
 
 .user-account__icon {
