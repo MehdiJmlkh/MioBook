@@ -6,13 +6,13 @@ import Backdrop from "../../components/Backdrop";
 import BookDetailCard from "../../components/BookDetailCard";
 import ReviewsBlock from "../../components/ReviewsBlock";
 import { useNoScroll } from "../../hooks/useNoScroll";
-import { useBook } from "../../queries/useBook";
+import { useBook } from "../../queries/books/useBook";
 import "./BookPage.css";
 import { useBookStatus } from "../../queries/useBookStatus";
 
 const BookPage = () => {
   const { id } = useParams();
-  const { data: book, isLoading } = useBook(parseInt(id || ""));  
+  const { data: book, isLoading } = useBook(parseInt(id || ""));
 
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);

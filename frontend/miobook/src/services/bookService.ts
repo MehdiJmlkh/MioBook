@@ -1,4 +1,4 @@
-import { SearchQuery } from "../queries/useFilteredBooks";
+import { SearchQuery } from "../queries/books/useFilteredBooks";
 import apiClient from "./ApiClient";
 
 export interface Book {
@@ -42,7 +42,9 @@ class BookService {
   }
 
   getBookContent(id: number) {
-    return apiClient.get<BookContent>(`books/${id}/content`).then((res) => res.data);
+    return apiClient
+      .get<BookContent>(`books/${id}/content`)
+      .then((res) => res.data);
   }
 
   getTopRated() {

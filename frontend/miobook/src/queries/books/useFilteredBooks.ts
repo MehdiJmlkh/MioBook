@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import bookService, { Book } from "../services/bookService";
+import bookService, { Book } from "../../services/bookService";
 
 export interface SearchQuery {
   title?: string;

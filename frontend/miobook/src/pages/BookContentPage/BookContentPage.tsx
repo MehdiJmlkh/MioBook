@@ -1,7 +1,7 @@
 import { MdOutlineArticle } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import "./BookContentPage.css";
-import { useBookContent } from "../../queries/useBookContent";
+import { useBookContent } from "../../queries/books/useBookContent";
 
 const BookContentPage = () => {
   const { id } = useParams();

@@ -7,7 +7,10 @@ import FilterSideBar from "../../components/FilterSideBar";
 import Grid from "../../components/Grid";
 import Pagination from "../../components/Pagination";
 import { useNoScroll } from "../../hooks/useNoScroll";
-import { SearchQuery, useFilteredBooks } from "../../queries/useFilteredBooks";
+import {
+  SearchQuery,
+  useFilteredBooks,
+} from "../../queries/books/useFilteredBooks";
 import "./SearchResultPage.css";
 import { useSearchParams } from "react-router-dom";
 

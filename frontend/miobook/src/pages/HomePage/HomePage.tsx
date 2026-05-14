@@ -3,8 +3,8 @@ import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import Hero from "../../components/Hero";
 import SearchBox from "../../components/SearchBox";
-import { useNewReleases } from "../../queries/useNewReleases";
-import { useTopRatedBooks } from "../../queries/useTopRatedBooks";
+import { useNewReleases } from "../../queries/books/useNewReleases";
+import { useTopRatedBooks } from "../../queries/books/useTopRatedBooks";
 import "./HomePage.css";
 
 const HomePage = () => {

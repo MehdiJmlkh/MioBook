@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { SearchQuery } from "../../queries/useFilteredBooks";
+import { SearchQuery } from "../../queries/books/useFilteredBooks";
 import { useGenres } from "../../queries/useGenres";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
@@ -16,7 +16,7 @@ interface Props {
   className?: string;
 }
 
-const FilterSideBar = ({ onClose, className}: Props) => {
+const FilterSideBar = ({ onClose, className }: Props) => {
   const { data: genres } = useGenres();
 
   const { register, handleSubmit } = useForm<SearchQuery>();

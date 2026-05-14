@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAddBook } from "../../queries/useAddBook";
+import { useAddBook } from "../../queries/books/useAddBook";
 import { AddBookRequest } from "../../services/bookService";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";

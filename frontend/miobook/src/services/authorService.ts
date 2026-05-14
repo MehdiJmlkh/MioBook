@@ -1,5 +1,5 @@
 import { PaginationParams } from "../queries/useBooksByAuthor";
-import { BookPage } from "../queries/useFilteredBooks";
+import { BookPage } from "../queries/books/useFilteredBooks";
 import apiClient from "./ApiClient";
 
 export interface Author {
