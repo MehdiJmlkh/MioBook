@@ -16,6 +16,7 @@ public interface PurchaseMapper {
     default PurchasedBookDto toDto(PurchaseItem item) {
         var dto = new PurchasedBookDto();
         var book = item.getBook();
+        dto.setId(book.getId());
         dto.setTitle(book.getTitle());
         dto.setAuthor(book.getAuthor().getName());
         dto.setPublisher(book.getPublisher());
