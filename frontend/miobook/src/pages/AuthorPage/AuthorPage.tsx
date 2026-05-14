@@ -3,7 +3,7 @@ import AuthorBackground from "../../assets/author-background.svg";
 import AuthorImage from "../../assets/author-image.svg";
 import BookCard from "../../components/BookCard";
 import Grid from "../../components/Grid";
-import { useAuthor } from "../../queries/useAuthor";
+import { useAuthor } from "../../queries/authors/useAuthor";
 import "./AuthorPage.css";
 import { useBooksByAuthor } from "../../queries/useBooksByAuthor";
 import Pagination from "../../components/Pagination";
@@ -53,7 +53,9 @@ const AuthorPage = () => {
 
             <span className="author-detail">
               <h2 className="author-detail__title">Died</h2>
-              <p className="author-detail__value">{author?.died || <>&mdash;</>}</p>
+              <p className="author-detail__value">
+                {author?.died || <>&mdash;</>}
+              </p>
             </span>
 
             <span className="author-detail">

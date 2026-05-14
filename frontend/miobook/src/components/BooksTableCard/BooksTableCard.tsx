@@ -1,6 +1,6 @@
 import BookIcon from "../../assets/book-icon.svg";
 import BookImage from "../../assets/book.svg";
-import { useBooks } from "../../queries/useBooks";
+import { useBooks } from "../../queries/books/useBooks";
 import Card from "../Card";
 import Price from "../Price";
 import Table from "../Table";

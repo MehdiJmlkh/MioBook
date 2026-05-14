@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import authService from "../services/authService";
-import authorService, { Author } from "../services/authorService";
+import authService from "../../services/authService";
+import authorService, { Author } from "../../services/authorService";
 
 interface addAuthorError {
   name: string;

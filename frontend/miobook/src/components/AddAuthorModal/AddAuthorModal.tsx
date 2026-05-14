@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useAddAuthor } from "../../queries/useAddAuthor";
+import { useAddAuthor } from "../../queries/authors/useAddAuthor";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import DateInput from "../DateInput";

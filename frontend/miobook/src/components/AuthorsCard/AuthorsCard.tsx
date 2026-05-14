@@ -1,6 +1,6 @@
 import AuthorIcon from "../../assets/author-icon.svg";
 import AuthorImage from "../../assets/author.svg";
-import { useAuthors } from "../../queries/useAuthors";
+import { useAuthors } from "../../queries/authors/useAuthors";
 import Card from "../Card";
 import Table from "../Table";
 import "./AuthorsCard.css";
