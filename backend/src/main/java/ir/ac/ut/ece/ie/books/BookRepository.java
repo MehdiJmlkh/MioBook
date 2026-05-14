@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.books;
 
+import ir.ac.ut.ece.ie.authors.Author;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -109,5 +110,11 @@ public class BookRepository {
 
     public List<Book> getAll() {
         return books.stream().toList();
+    }
+
+    public List<Book> findByAuthor(Author author) {
+        return books.stream()
+                .filter(book -> book.getAuthor().equals(author))
+                .toList();
     }
 }

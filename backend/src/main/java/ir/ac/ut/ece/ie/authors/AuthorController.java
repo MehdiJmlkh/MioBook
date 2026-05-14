@@ -1,11 +1,8 @@
 package ir.ac.ut.ece.ie.authors;
 
-import ir.ac.ut.ece.ie.common.ErrorDto;
-import ir.ac.ut.ece.ie.common.NotAdminException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.books.BookDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +23,11 @@ public class AuthorController {
     @GetMapping("/{id}")
     public Author getAuthor(@PathVariable(name = "id") Long id) {
         return authorService.getAuthor(id);
+    }
+
+    @GetMapping("/{id}/books")
+    public List<BookDto> getBooksByAuthor(@PathVariable(name = "id") Long id) {
+        return authorService.getBooksByAuthor(id);
     }
 
     @PostMapping
