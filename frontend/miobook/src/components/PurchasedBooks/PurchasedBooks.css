@@ -2,3 +2,12 @@
 .purchased-book__author {
   padding: 10px 0;
 }
+
+.empty-list__content {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  row-gap: 3rem;
+  color: #9e9b9b;
+  font-size: 1.5rem;
+}

@@ -16,7 +16,7 @@ interface PurchasedBook {
 interface PurchasedBooksHistory {
   books: PurchasedBook[];
 }
-export const usePurchasedBooks = (username: string) => {
+export const usePurchasedBooks = (username?: string) => {
   return useQuery<PurchasedBooksHistory>({
     queryKey: ["purchases", username, "books"],
     queryFn: () => purchaseService.getPurchasedBooks(username),
