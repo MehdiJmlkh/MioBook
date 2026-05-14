@@ -53,7 +53,7 @@ const AuthorPage = () => {
 
             <span className="author-detail">
               <h2 className="author-detail__title">Died</h2>
-              <p className="author-detail__value">{author?.died}</p>
+              <p className="author-detail__value">{author?.died || <>&mdash;</>}</p>
             </span>
 
             <span className="author-detail">

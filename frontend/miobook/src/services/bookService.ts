@@ -3,6 +3,7 @@ import apiClient from "./ApiClient";
 
 export interface Book {
   id: number;
+  authorId: number;
   title: string;
   author: string;
   price: number;

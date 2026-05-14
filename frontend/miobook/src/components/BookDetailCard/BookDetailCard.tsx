@@ -7,6 +7,7 @@ import FiveStars from "../FiveStars";
 import ImageWithBadge from "../ImageWithBadge";
 import Price from "../Price";
 import "./BookDetailCard.css";
+import Link from "../Link";
 
 interface Props {
   book?: Book;
@@ -38,10 +39,14 @@ const BookDetailCard = ({ onAddToCart, book }: Props) => {
             <span className="book__rate">{book?.averageRating}</span>
           </div>
 
-          <div className="book-detail">
+          <Link to={`/authors/${book?.authorId}`} className="book-detail">
             <h2 className="book-detail__title">Author</h2>
-            <p className="book-detail__value">{book?.author}</p>
-          </div>
+            <p
+              className="book-detail__value"
+            >
+              {book?.author}
+            </p>
+          </Link>
 
           <div className="book-detail">
             <h2 className="book-detail__title">Publisher</h2>
