@@ -1,5 +1,5 @@
 .expandable-row {
-  transition: all 200ms ease;
+  transition: all 220ms ease;
 }
 
 .expandable-row__heading {
@@ -21,10 +21,16 @@
 }
 
 .expandable-row__content {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
+  transition:
+    grid-template-rows 220ms ease,
+    opacity 180ms ease;
+}
+
+.expandable-row__content-inner {
   overflow: hidden;
-  transition: inherit;
 }
 
 .expandable-row--open .expandable-row__heading,
@@ -37,7 +43,7 @@
 }
 
 .expandable-row--open .expandable-row__content {
-  max-height: 20rem;
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
