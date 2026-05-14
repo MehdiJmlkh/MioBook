@@ -9,6 +9,7 @@ import { useRemoveCartItem } from "../../queries/carts/useRemoveCartItem";
 import { useAuth } from "../../queries/auth/useAuth";
 import NoProduct from "../../assets/no-product.svg";
 import EmptyIcon from "../EmptyIcon";
+import { usePurchaseCart } from "../../queries/carts/usePurchaseCart";
 
 const Cart = () => {
   const { data: user } = useAuth();
@@ -18,13 +19,15 @@ const Cart = () => {
   const { data: cart } = useCart(user.username);
   const removeCartItem = useRemoveCartItem(user.username);
 
+  const purchase = usePurchaseCart();
+
   return (
     <Card title="Cart" className="cart" icon={<LuShoppingCart />}>
       {cart?.items.length === 0 ? (
         <EmptyIcon src={NoProduct} description="No Product" />
       ) : (
         <>
-          <Table>
+          <Table className="cart__table">
             <thead>
               <tr>
                 <th>Image</th>
@@ -46,9 +49,16 @@ const Cart = () => {
               ))}
             </tbody>
           </Table>
-
+          {purchase.error && (
+            <p className="text-danger cart__error">{purchase.error.message}</p>
+          )}
           <div className="cart__btn">
-            <Button className="btn-primary">Purchase</Button>
+            <Button
+              className="btn-primary"
+              onClick={() => purchase.mutate(user.username)}
+            >
+              Purchase
+            </Button>
           </div>
         </>
       )}

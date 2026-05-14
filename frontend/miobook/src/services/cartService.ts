@@ -37,6 +37,15 @@ class CartService {
   removeItem(bookId: number) {
     return apiClient.delete(`/carts/items/${bookId}`).then((res) => res.data);
   }
+
+  purchase(username: string) {
+    return apiClient
+      .post("/carts/purchase", { username })
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err.response.data.error);
+      });
+  }
 }
 
 export default new CartService();
