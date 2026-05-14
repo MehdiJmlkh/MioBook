@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../queries/useAuth";
+import { useAuth } from "../../queries/auth/useAuth";
 import { BookStatus, useBookStatus } from "../../queries/useBookStatus";
 import { Book } from "../../services/bookService";
 import Button from "../Button";
@@ -41,11 +41,7 @@ const BookDetailCard = ({ onAddToCart, book }: Props) => {
 
           <Link to={`/authors/${book?.authorId}`} className="book-detail">
             <h2 className="book-detail__title">Author</h2>
-            <p
-              className="book-detail__value"
-            >
-              {book?.author}
-            </p>
+            <p className="book-detail__value">{book?.author}</p>
           </Link>
 
           <div className="book-detail">

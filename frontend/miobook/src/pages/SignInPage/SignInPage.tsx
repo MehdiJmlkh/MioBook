@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import Form, { FormType } from "../../components/Form";
 import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
-import { useLogin } from "../../queries/useLogin";
+import { useLogin } from "../../queries/auth/useLogin";
 import "./SignInPage.css";
 
 const schema = z.object({

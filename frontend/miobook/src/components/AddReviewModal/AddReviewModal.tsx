@@ -8,7 +8,7 @@ import CloseIcon from "../CloseIcon";
 import RatingStars from "../RatingStars";
 import TextArea from "../TextArea";
 import "./AddReviewModal.css";
-import { useAuth } from "../../queries/useAuth";
+import { useAuth } from "../../queries/auth/useAuth";
 
 interface Props {
   className?: string;

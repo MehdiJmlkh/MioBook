@@ -7,7 +7,7 @@ import Price from "../Price";
 import "./AddToCartModal.css";
 import { useAddItemToCart } from "../../queries/carts/useAddItemToCart";
 import { useAddBorrowedItemToCart } from "../../queries/carts/useAddBorrowedItemToCart";
-import { useAuth } from "../../queries/useAuth";
+import { useAuth } from "../../queries/auth/useAuth";
 
 interface Props {
   className?: string;

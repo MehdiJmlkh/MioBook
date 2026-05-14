@@ -6,7 +6,7 @@ import { RiHistoryLine } from "react-icons/ri";
 import Avatar from "../Avatar";
 import Link from "../Link";
 import "./Profile.css";
-import { useLogout } from "../../queries/useLogout";
+import { useLogout } from "../../queries/auth/useLogout";
 
 const Profile = () => {
   const [visible, setVisible] = useState(false);

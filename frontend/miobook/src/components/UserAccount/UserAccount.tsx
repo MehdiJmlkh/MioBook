@@ -2,7 +2,7 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import "./UserAccount.css";
 import { LuMail } from "react-icons/lu";
 import Button from "../Button";
-import { useLogout } from "../../queries/useLogout";
+import { useLogout } from "../../queries/auth/useLogout";
 
 interface Props {
   className?: string;

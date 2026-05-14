@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import userService, { AddUserRequest, User } from "../../services/userService";
-import { useLogin } from "../useLogin";
+import { useLogin } from "../auth/useLogin";
 
 interface AddUserError {
   username: string;

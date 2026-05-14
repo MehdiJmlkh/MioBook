@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import authService, { LoginRequest } from "../services/authService";
+import authService, { LoginRequest } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
-import { User } from "../services/userService";
+import { User } from "../../services/userService";
 
 interface LoginRequestError {
   error: string;

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../queries/useAuth";
+import { useAuth } from "../queries/auth/useAuth";
 import Layout from "./Layout";
 
 const PrivateRoutes = () => {
