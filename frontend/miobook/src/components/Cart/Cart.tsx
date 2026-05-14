@@ -27,7 +27,7 @@ const Cart = () => {
         <EmptyIcon src={NoProduct} description="No Product" />
       ) : (
         <>
-          <Table className="cart__table">
+          <Table>
             <thead>
               <tr>
                 <th>Image</th>
@@ -49,9 +49,6 @@ const Cart = () => {
               ))}
             </tbody>
           </Table>
-          {purchase.error && (
-            <p className="text-danger cart__error">{purchase.error.message}</p>
-          )}
           <div className="cart__btn">
             <Button
               className="btn-primary"

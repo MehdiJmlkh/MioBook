@@ -2,24 +2,15 @@
   height: fit-content;
 }
 
-.cart__table {
-  margin-bottom: 2.5rem;
-}
-
 .cart__btn {
   font-size: 1.8rem;
+  margin-top: 2.5rem;
   width: 32rem;
   justify-self: center;
 }
 
 .cart__btn .btn {
   padding: 1rem 0;
-}
-
-.cart__error {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
