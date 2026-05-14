@@ -5,6 +5,7 @@ import Price from "../Price";
 import "./Wallet.css";
 import { useAddCredit } from "../../queries/credits/useAddCredit";
 import { useCredit } from "../../queries/credits/useCredit";
+import { useAuth } from "../../queries/auth/useAuth";
 
 interface Props {
   className?: string;
@@ -17,8 +18,18 @@ interface FormData {
 const Wallet = ({ className }: Props) => {
   const { register, reset, handleSubmit } = useForm<FormData>();
 
-  const { data: balance } = useCredit("li_wei");
+  const { data: user } = useAuth();
+
+  const { data: balance } = useCredit(user?.username);
   const addCredit = useAddCredit();
+
+  const handleAddCredit = handleSubmit((data) => {
+    if (data.credit)
+      addCredit.mutate(
+        { credit: data.credit, username: user?.username },
+        { onSuccess: () => reset({ credit: null }) },
+      );
+  });
 
   return (
     <div className={`wallet ${className}`}>
@@ -32,15 +43,7 @@ const Wallet = ({ className }: Props) => {
         className="wallet__input"
         error={addCredit.error?.credit}
       />
-      <Button
-        className="btn-primary wallet__btn"
-        onClick={handleSubmit((data) => {
-          if (data.credit)
-            addCredit.mutate(data.credit, {
-              onSuccess: () => reset({ credit: null }),
-            });
-        })}
-      >
+      <Button className="btn-primary wallet__btn" onClick={handleAddCredit}>
         Add more credit
       </Button>
     </div>

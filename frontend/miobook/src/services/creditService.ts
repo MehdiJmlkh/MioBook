@@ -1,13 +1,18 @@
 import apiClient from "./apiClient";
 
+export interface AddCreditRequest {
+  username?: string;
+  credit: number;
+}
+
 class CreditService {
-  get(username: string) {
+  get(username?: string) {
     return apiClient.get(`/credits/${username}`).then((res) => res.data);
   }
 
-  addCredit(credit: number) {
+  addCredit(request: AddCreditRequest) {
     return apiClient
-      .post("/credits", { username: "li_wei", credit })
+      .post("/credits", request)
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;
