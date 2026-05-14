@@ -6,6 +6,8 @@ import java.util.Set;
 
 @Data
 public class PurchaseItemDto {
+    private Long bookId;
+    private Long authorId;
     private String title;
     private String author;
     private String publisher;
@@ -19,6 +21,8 @@ public class PurchaseItemDto {
     public static PurchaseItemDto fromPurchaseItem(PurchaseItem item) {
         var dto = new PurchaseItemDto();
         var book = item.getBook();
+        dto.bookId = book.getId();
+        dto.authorId = book.getAuthor().getId();
         dto.title = book.getTitle();
         dto.author = book.getAuthor().getName();
         dto.publisher = book.getPublisher();
