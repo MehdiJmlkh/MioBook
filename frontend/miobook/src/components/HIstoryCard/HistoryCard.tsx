@@ -8,9 +8,15 @@ import Price from "../Price";
 import Table from "../Table";
 import "./HistoryCard.css";
 import BookItemRow from "../BookItemRow";
+import { useAuth } from "../../queries/auth/useAuth";
 
 const HistoryCard = () => {
-  const { data: history } = usePurchases("li_wei");
+  const { data: user } = useAuth();
+  if (!user) {
+    return <p>Loading...</p>;
+  }
+
+  const { data: history } = usePurchases(user.username);
   return (
     <Card title="History" icon={<RiHistoryLine />}>
       <div className="history-table">
