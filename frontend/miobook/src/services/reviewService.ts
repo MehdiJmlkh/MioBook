@@ -1,6 +1,6 @@
 import { AddReviewRequest } from "../queries/reviews/useAddReview";
 import { PageParams } from "../queries/reviews/useReviews";
-import apiClient from "./ApiClient";
+import apiClient from "./apiClient";
 
 export interface Review {
   username: string;

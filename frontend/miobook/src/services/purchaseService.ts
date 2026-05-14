@@ -1,5 +1,5 @@
 import { BookStatus } from "../queries/purchases/useBookStatus";
-import apiClient from "./ApiClient";
+import apiClient from "./apiClient";
 
 class PurchaseService {
   getAll(username: string) {

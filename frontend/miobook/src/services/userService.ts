@@ -1,4 +1,4 @@
-import apiClient from "./ApiClient";
+import apiClient from "./apiClient";
 
 export interface AddUserRequest {
   username: string;

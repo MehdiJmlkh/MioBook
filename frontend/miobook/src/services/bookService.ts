@@ -1,5 +1,5 @@
 import { SearchQuery } from "../queries/books/useFilteredBooks";
-import apiClient from "./ApiClient";
+import apiClient from "./apiClient";
 
 export interface Book {
   id: number;
