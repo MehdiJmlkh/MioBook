@@ -12,7 +12,7 @@ export interface SearchQuery {
   size: number;
 }
 
-interface BookPage {
+export interface BookPage {
   books: Book[];
   totalBooks: number;
 }

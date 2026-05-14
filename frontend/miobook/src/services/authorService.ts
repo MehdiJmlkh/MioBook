@@ -1,5 +1,6 @@
+import { PaginationParams } from "../queries/useBooksByAuthor";
+import { BookPage } from "../queries/useFilteredBooks";
 import apiClient from "./ApiClient";
-import { Book } from "./bookService";
 
 export interface Author {
   name: string;
@@ -18,8 +19,10 @@ class AuthorService {
     return apiClient.get<Author>(`/authors/${id}`).then((res) => res.data);
   }
 
-  getBooksByAuthor(id: number) {
-    return apiClient.get<Book[]>(`/authors/${id}/books`).then((res) => res.data);
+  getBooksByAuthor(id: number, params: PaginationParams) {
+    return apiClient
+      .get<BookPage>(`/authors/${id}/books`, { params })
+      .then((res) => res.data);
   }
 
   addAuthor(author: Author) {

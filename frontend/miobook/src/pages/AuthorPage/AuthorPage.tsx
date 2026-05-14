@@ -6,12 +6,21 @@ import Grid from "../../components/Grid";
 import { useAuthor } from "../../queries/useAuthor";
 import "./AuthorPage.css";
 import { useBooksByAuthor } from "../../queries/useBooksByAuthor";
+import Pagination from "../../components/Pagination";
+import { useState } from "react";
 
 const AuthorPage = () => {
   const { id } = useParams();
   const idNumber = parseInt(id || "");
   const { data: author } = useAuthor(idNumber);
-  const { data: books } = useBooksByAuthor(idNumber);
+
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
+
+  const { data: bookPage } = useBooksByAuthor(idNumber, {
+    page: page,
+    size: pageSize,
+  });
 
   return (
     <body className="author-page">
@@ -49,13 +58,20 @@ const AuthorPage = () => {
 
             <span className="author-detail">
               <h2 className="author-detail__title">Books</h2>
-              <p className="author-detail__value">{books?.length}</p>
+              <p className="author-detail__value">{bookPage?.totalBooks}</p>
             </span>
           </div>
         </div>
         <Grid>
-          {books?.map(book => <BookCard book={book}/>)}
+          {bookPage?.books.map((book) => (
+            <BookCard book={book} />
+          ))}
         </Grid>
+        <Pagination
+          totalPages={Math.ceil((bookPage?.totalBooks || 1) / pageSize)}
+          pageNumber={page}
+          onClick={(page) => setPage(page)}
+        />
       </main>
     </body>
   );
