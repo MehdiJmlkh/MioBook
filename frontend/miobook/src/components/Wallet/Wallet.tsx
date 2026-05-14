@@ -17,16 +17,15 @@ interface FormData {
 const Wallet = ({ className }: Props) => {
   const { register, reset, handleSubmit } = useForm<FormData>();
 
-  const onSuccess = () => {
-    reset({ credit: null });
-  };
 
   const { data: balance } = useCredit("li_wei");
-  const addCredit = useAddCredit({ onSuccess });
+  const addCredit = useAddCredit();
 
   return (
     <div className={`wallet ${className}`}>
-      <Price className="wallet__price">{balance?.toLocaleString() || "0"}</Price>
+      <Price className="wallet__price">
+        {balance?.toLocaleString() || "0"}
+      </Price>
       <Input
         {...register("credit")}
         type="number"
@@ -37,7 +36,10 @@ const Wallet = ({ className }: Props) => {
       <Button
         className="btn-primary wallet__btn"
         onClick={handleSubmit((data) => {
-          if (data.credit) addCredit.mutate(data.credit);
+          if (data.credit)
+            addCredit.mutate(data.credit, {
+              onSuccess: () => reset({ credit: null }),
+            });
         })}
       >
         Add more credit

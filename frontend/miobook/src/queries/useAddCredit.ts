@@ -5,13 +5,8 @@ interface AddCreditError {
   credit: string;
 }
 
-interface Props {
-  onSuccess?: () => void;
-}
-
-export const useAddCredit = ({ onSuccess }: Props) => {
+export const useAddCredit = () => {
   return useMutation<any, AddCreditError, number>({
     mutationFn: creditService.addCredit,
-    onSuccess,
   });
 };
