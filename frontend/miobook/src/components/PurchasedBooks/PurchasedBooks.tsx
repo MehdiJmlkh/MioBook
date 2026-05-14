@@ -7,6 +7,7 @@ import Card from "../Card";
 import { usePurchasedBooks } from "../../queries/usePurchasedBooks";
 import BorrowedBadge from "../BorrowedBadge";
 import { useNavigate, useParams } from "react-router-dom";
+import Link from "../Link";
 
 interface Props {
   className?: string;
@@ -40,10 +41,26 @@ const PurchasedBooks = ({ className }: Props) => {
           {purchasedBooksHistory?.books.map((book) => (
             <tr>
               <td className="table-image-row">
-                <img className="table-image" src={BookImage} alt="" />
+                <Link to={`/books/${book.id}`}>
+                  <img className="table-image" src={BookImage} alt="" />
+                </Link>
               </td>
-              <td data-label="Name">{book.title}</td>
-              <td data-label="Author">{book.author}</td>
+              <td data-label="Name">
+                <Link
+                  to={`/books/${book.id}`}
+                  className="purchased-book__title"
+                >
+                  {book.title}
+                </Link>
+              </td>
+              <td data-label="Author">
+                <Link
+                  to={`/authors/${book.authorId}`}
+                  className="purchased-book__author"
+                >
+                  {book.author}
+                </Link>
+              </td>
               <td data-label="Genre">{book.genres.join(", ")}</td>
               <td data-label="Publisher">{book.publisher}</td>
               <td data-label="Published Year">{book.year}</td>

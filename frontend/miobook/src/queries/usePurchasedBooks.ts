@@ -3,6 +3,7 @@ import purchaseService from "../services/purchaseService";
 
 interface PurchasedBook {
   id: number;
+  authorId: number;
   title: string;
   author: string;
   publisher: string;
