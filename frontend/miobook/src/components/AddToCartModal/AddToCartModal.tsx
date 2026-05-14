@@ -5,8 +5,8 @@ import CheckBox from "../CheckBox";
 import CloseIcon from "../CloseIcon";
 import Price from "../Price";
 import "./AddToCartModal.css";
-import { useAddItemToCart } from "../../queries/useAddItemToCart";
-import { useAddBorrowedItemToCart } from "../../queries/useAddBorrowedItemToCart";
+import { useAddItemToCart } from "../../queries/carts/useAddItemToCart";
+import { useAddBorrowedItemToCart } from "../../queries/carts/useAddBorrowedItemToCart";
 import { useAuth } from "../../queries/useAuth";
 
 interface Props {

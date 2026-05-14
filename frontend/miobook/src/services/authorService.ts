@@ -1,4 +1,4 @@
-import { PaginationParams } from "../queries/useBooksByAuthor";
+import { PaginationParams } from "../queries/authors/useBooksByAuthor";
 import { BookPage } from "../queries/books/useFilteredBooks";
 import apiClient from "./ApiClient";
 

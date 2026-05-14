@@ -5,7 +5,7 @@ import BookCard from "../../components/BookCard";
 import Grid from "../../components/Grid";
 import { useAuthor } from "../../queries/authors/useAuthor";
 import "./AuthorPage.css";
-import { useBooksByAuthor } from "../../queries/useBooksByAuthor";
+import { useBooksByAuthor } from "../../queries/authors/useBooksByAuthor";
 import Pagination from "../../components/Pagination";
 import { useState } from "react";
 

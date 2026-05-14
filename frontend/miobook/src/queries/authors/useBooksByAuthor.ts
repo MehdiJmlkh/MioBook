@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import authorService from "../services/authorService";
+import authorService from "../../services/authorService";
 
 export interface PaginationParams {
   page: number;

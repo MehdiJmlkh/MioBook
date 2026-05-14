@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import cartService from "../services/cartService";
+import cartService from "../../services/cartService";
 
 interface CartItem {
-    title: string;
-    author: string;
-    isBorrowed: boolean;
-    borrowDays: number;
-    price: number;
-    finalPrice: number;
+  title: string;
+  author: string;
+  isBorrowed: boolean;
+  borrowDays: number;
+  price: number;
+  finalPrice: number;
 }
 
 interface Cart {
-    items: CartItem[];
+  items: CartItem[];
 }
 
 export const useCart = (username: string) => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { SearchQuery } from "../../queries/books/useFilteredBooks";
-import { useGenres } from "../../queries/useGenres";
+import { useGenres } from "../../queries/books/useGenres";
 import Button from "../Button";
 import CloseIcon from "../CloseIcon";
 import Input from "../Input";

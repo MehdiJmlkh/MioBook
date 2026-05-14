@@ -1,5 +1,5 @@
 import { LuShoppingCart } from "react-icons/lu";
-import { useCart } from "../../queries/useCart";
+import { useCart } from "../../queries/carts/useCart";
 import BookItemRow from "../BookItemRow";
 import Button from "../Button";
 import Card from "../Card";
