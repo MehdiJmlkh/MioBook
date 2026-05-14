@@ -16,7 +16,7 @@ public class CreditService {
     private final AuthRepository authRepository;
 
     public void addCredit(AddCreditRequest request) {
-        var user = userRepository.findByUsername(request.getUsername())
+        var user = userRepository.findById(request.getId())
                 .orElseThrow(UserNotFoundException::new);
 
         if (user.getRole() != Role.CUSTOMER) {

@@ -9,14 +9,22 @@ import java.util.Set;
 @Repository
 public class UserRepository {
     private final Set<User> users = new LinkedHashSet<>();
+    private Long lastId = 0L;
 
     public void addUser(User user) {
+        user.setId(lastId++);
         users.add(user);
     }
 
     public Optional<User> findByUsername(String username) {
         return users.stream()
                 .filter(user -> user.getUsername().equals(username))
+                .findFirst();
+    }
+
+    public Optional<User> findById(Long id) {
+        return users.stream()
+                .filter(user -> user.getId().equals(id))
                 .findFirst();
     }
 
