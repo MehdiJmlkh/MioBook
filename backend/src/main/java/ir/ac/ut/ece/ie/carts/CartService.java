@@ -141,7 +141,7 @@ public class CartService {
         }
 
         if (cart.getTotalPrice() > user.getBalance()) {
-            throw new NotEnoughCreditException();
+            throw new NotEnoughCreditException(cart.getTotalPrice() - user.getBalance());
         }
 
         var purchase = new Purchase();
