@@ -5,9 +5,16 @@ import Button from "../Button";
 import Card from "../Card";
 import Table from "../Table";
 import "./Cart.css";
+import { useRemoveCartItem } from "../../queries/carts/useRemoveCartItem";
+import { useAuth } from "../../queries/auth/useAuth";
 
 const Cart = () => {
-  const { data: cart } = useCart("li_wei");
+  const { data: user } = useAuth();
+  if (!user) {
+    return <p>Loading...</p>;
+  }
+  const { data: cart } = useCart(user.username);
+  const removeCartItem = useRemoveCartItem();
 
   return (
     <Card title="Cart" className="cart" icon={<LuShoppingCart />}>
@@ -24,7 +31,12 @@ const Cart = () => {
         </thead>
         <tbody>
           {cart?.items.map((item, i) => (
-            <BookItemRow key={i} item={item} addBtn={true} />
+            <BookItemRow
+              key={i}
+              item={item}
+              addBtn={true}
+              onClick={() => removeCartItem.mutate(item.bookId)}
+            />
           ))}
         </tbody>
       </Table>

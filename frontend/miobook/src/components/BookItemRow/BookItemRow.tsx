@@ -1,4 +1,5 @@
 import BookImage from "../../assets/book.svg";
+import { useRemoveCartItem } from "../../queries/carts/useRemoveCartItem";
 import Button from "../Button";
 import Price from "../Price";
 import "./BookItemRow.css";
@@ -15,9 +16,10 @@ interface Item {
 interface Props<T> {
   item: T;
   addBtn?: boolean;
+  onClick?: () => void;
 }
 
-const BookItemRow = <T extends Item>({ item, addBtn }: Props<T>) => {
+const BookItemRow = <T extends Item>({ item, addBtn, onClick }: Props<T>) => {
   return (
     <tr>
       <td className="table-image-row">
@@ -40,7 +42,9 @@ const BookItemRow = <T extends Item>({ item, addBtn }: Props<T>) => {
       </td>
       {addBtn && (
         <td className="table-btn-row">
-          <Button className="btn-secondary">Remove</Button>
+          <Button className="btn-secondary" onClick={onClick}>
+            Remove
+          </Button>
         </td>
       )}
     </tr>

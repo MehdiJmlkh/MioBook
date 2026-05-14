@@ -33,6 +33,10 @@ class CartService {
         throw new Error(err.response.data.error);
       });
   }
+
+  removeItem(bookId: number) {
+    return apiClient.delete(`/carts/items/${bookId}`).then((res) => res.data);
+  }
 }
 
 export default new CartService();
