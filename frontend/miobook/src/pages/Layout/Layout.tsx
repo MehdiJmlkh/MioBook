@@ -5,13 +5,13 @@ import "./Layout.css";
 
 const Layout = () => {
   return (
-    <>
+    <body className="page">
       <Header />
       <div>
         <Outlet />
       </div>
       <Footer />
-    </>
+    </body>
   );
 };
 
