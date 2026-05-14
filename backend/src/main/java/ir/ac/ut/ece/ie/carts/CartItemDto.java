@@ -2,11 +2,11 @@ package ir.ac.ut.ece.ie.carts;
 
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data
 public class CartItemDto {
+    private Long bookId;
     private String title;
     private String author;
     private String publisher;
@@ -21,6 +21,7 @@ public class CartItemDto {
         var cartItemDto = new CartItemDto();
         var book = cartItem.getBook();
 
+        cartItemDto.bookId = book.getId();
         cartItemDto.title = book.getTitle();
         cartItemDto.author = book.getAuthor().getName();
         cartItemDto.publisher = book.getPublisher();
