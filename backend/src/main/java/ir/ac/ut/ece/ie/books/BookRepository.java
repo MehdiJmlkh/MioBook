@@ -112,9 +112,18 @@ public class BookRepository {
         return books.stream().toList();
     }
 
-    public List<Book> findByAuthor(Author author) {
-        return books.stream()
+    public BookPage findByAuthor(Author author, Integer page, Integer size) {
+        var filteredBooks = books.stream()
                 .filter(book -> book.getAuthor().equals(author))
                 .toList();
+
+        if (page == null || size == null) {
+            return new BookPage(filteredBooks, filteredBooks.size());
+        }
+
+        int fromPage = Math.min((page - 1) * size, filteredBooks.size());
+        int toPage = Math.min(fromPage + size, filteredBooks.size());
+
+        return new BookPage(filteredBooks.subList(fromPage, toPage), filteredBooks.size());
     }
 }

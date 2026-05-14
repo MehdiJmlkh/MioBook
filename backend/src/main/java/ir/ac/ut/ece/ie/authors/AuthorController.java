@@ -1,6 +1,6 @@
 package ir.ac.ut.ece.ie.authors;
 
-import ir.ac.ut.ece.ie.books.BookDto;
+import ir.ac.ut.ece.ie.books.BookPageDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +26,10 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}/books")
-    public List<BookDto> getBooksByAuthor(@PathVariable(name = "id") Long id) {
-        return authorService.getBooksByAuthor(id);
+    public BookPageDto getBooksByAuthor(@PathVariable(name = "id") Long id,
+                                        @RequestParam(name = "page") Integer page,
+                                        @RequestParam(name = "size") Integer size) {
+        return authorService.getBooksByAuthor(id, page, size);
     }
 
     @PostMapping

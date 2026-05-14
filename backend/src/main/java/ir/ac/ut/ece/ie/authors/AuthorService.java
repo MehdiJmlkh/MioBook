@@ -2,8 +2,8 @@ package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
-import ir.ac.ut.ece.ie.books.BookDto;
 import ir.ac.ut.ece.ie.books.BookMapper;
+import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
@@ -62,12 +62,15 @@ public class AuthorService {
         return authorRepository.getAll();
     }
 
-    public List<BookDto> getBooksByAuthor(Long id) {
+    public BookPageDto getBooksByAuthor(Long id, Integer page, Integer size) {
         var author = authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
 
-        return bookRepository.findByAuthor(author).stream()
+        var bookPage = bookRepository.findByAuthor(author, page, size);
+        var bookDtoList = bookPage.getBooks().stream()
                 .map(bookMapper::toDto)
                 .toList();
+
+        return new BookPageDto(bookDtoList, bookPage.getTotalBooks());
     }
 }
