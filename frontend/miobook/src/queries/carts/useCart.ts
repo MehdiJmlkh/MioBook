@@ -11,7 +11,7 @@ interface CartItem {
   finalPrice: number;
 }
 
-interface Cart {
+export interface Cart {
   items: CartItem[];
 }
 

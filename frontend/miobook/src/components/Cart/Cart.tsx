@@ -14,7 +14,7 @@ const Cart = () => {
     return <p>Loading...</p>;
   }
   const { data: cart } = useCart(user.username);
-  const removeCartItem = useRemoveCartItem();
+  const removeCartItem = useRemoveCartItem(user.username);
 
   return (
     <Card title="Cart" className="cart" icon={<LuShoppingCart />}>
