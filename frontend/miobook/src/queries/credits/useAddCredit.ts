@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import creditService from "../services/creditService";
+import creditService from "../../services/creditService";
 
 interface AddCreditError {
   credit: string;

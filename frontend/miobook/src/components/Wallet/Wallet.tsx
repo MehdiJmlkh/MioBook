@@ -3,8 +3,8 @@ import Button from "../Button";
 import Input from "../Input";
 import Price from "../Price";
 import "./Wallet.css";
-import { useAddCredit } from "../../queries/useAddCredit";
-import { useCredit } from "../../queries/useCredit";
+import { useAddCredit } from "../../queries/credits/useAddCredit";
+import { useCredit } from "../../queries/credits/useCredit";
 
 interface Props {
   className?: string;
@@ -16,7 +16,6 @@ interface FormData {
 
 const Wallet = ({ className }: Props) => {
   const { register, reset, handleSubmit } = useForm<FormData>();
-
 
   const { data: balance } = useCredit("li_wei");
   const addCredit = useAddCredit();

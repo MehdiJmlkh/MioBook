@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import creditService from "../services/creditService";
+import creditService from "../../services/creditService";
 
 export const useCredit = (username: string) => {
   return useQuery<number>({
