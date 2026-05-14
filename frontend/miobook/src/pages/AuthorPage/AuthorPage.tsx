@@ -5,11 +5,13 @@ import BookCard from "../../components/BookCard";
 import Grid from "../../components/Grid";
 import { useAuthor } from "../../queries/useAuthor";
 import "./AuthorPage.css";
+import { useBooksByAuthor } from "../../queries/useBooksByAuthor";
 
 const AuthorPage = () => {
   const { id } = useParams();
-  const { data: author } = useAuthor(parseInt(id || ""));
-  console.log(author)
+  const idNumber = parseInt(id || "");
+  const { data: author } = useAuthor(idNumber);
+  const { data: books } = useBooksByAuthor(idNumber);
 
   return (
     <body className="author-page">
@@ -47,21 +49,12 @@ const AuthorPage = () => {
 
             <span className="author-detail">
               <h2 className="author-detail__title">Books</h2>
-              <p className="author-detail__value">16</p>
+              <p className="author-detail__value">{books?.length}</p>
             </span>
           </div>
         </div>
         <Grid>
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
+          {books?.map(book => <BookCard book={book}/>)}
         </Grid>
       </main>
     </body>

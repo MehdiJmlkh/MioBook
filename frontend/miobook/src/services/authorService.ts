@@ -1,4 +1,5 @@
 import apiClient from "./ApiClient";
+import { Book } from "./bookService";
 
 export interface Author {
   name: string;
@@ -15,6 +16,10 @@ class AuthorService {
 
   getAuthor(id: number) {
     return apiClient.get<Author>(`/authors/${id}`).then((res) => res.data);
+  }
+
+  getBooksByAuthor(id: number) {
+    return apiClient.get<Book[]>(`/authors/${id}/books`).then((res) => res.data);
   }
 
   addAuthor(author: Author) {
