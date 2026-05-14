@@ -3,6 +3,7 @@ import cartService from "../../services/cartService";
 
 interface CartItem {
   bookId: number;
+  authorId: number;
   title: string;
   author: string;
   isBorrowed: boolean;

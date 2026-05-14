@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import purchaseService from "../../services/purchaseService";
 
 interface PurchaseItem {
+  bookId: number;
+  authorId: number;
   title: string;
   author: string;
   isBorrowed: boolean;

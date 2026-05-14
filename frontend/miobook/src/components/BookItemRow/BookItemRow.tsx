@@ -1,10 +1,12 @@
 import BookImage from "../../assets/book.svg";
-import { useRemoveCartItem } from "../../queries/carts/useRemoveCartItem";
 import Button from "../Button";
+import Link from "../Link";
 import Price from "../Price";
 import "./BookItemRow.css";
 
 interface Item {
+  bookId: number;
+  authorId: number;
   title: string;
   author: string;
   isBorrowed: boolean;
@@ -23,10 +25,16 @@ const BookItemRow = <T extends Item>({ item, addBtn, onClick }: Props<T>) => {
   return (
     <tr>
       <td className="table-image-row">
-        <img className="table-image" src={BookImage} alt="" />
+        <Link to={`/books/${item.bookId}`}>
+          <img className="table-image" src={BookImage} alt="" />
+        </Link>
       </td>
-      <td data-label="Name">{item.title}</td>
-      <td data-label="Author">{item.author}</td>
+      <td data-label="Name">
+        <Link className="book-row__title" to={`/books/${item.bookId}`}>{item.title}</Link>
+      </td>
+      <td data-label="Author">
+        <Link className="book-row__author" to={`/authors/${item.authorId}`}>{item.author}</Link>
+      </td>
       <td data-label="Price">
         <span>
           {item.isBorrowed && (
