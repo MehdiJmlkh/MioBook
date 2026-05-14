@@ -32,25 +32,21 @@ public class BookService {
         return bookMapper.toDto(book);
     }
 
-    public BookContentDto getBookContent(String username, String title) {
-        bookRepository.findByTitle(title)
+    public BookContentDto getBookContent(Long id) {
+        var book = bookRepository.findById(id)
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
+        var user = authRepository.getAuthenticatedUser()
+                .orElseThrow(NotLoggedInException::new);
 
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
-
-        var purchase =purchaseRepository.findByUsernameAndTitle(username, title)
+        var purchase =purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())
                 .orElseThrow(BookNotInStockException::new);
 
         if (purchase.getIsBorrowed() && purchase.hasExpired()) {
             throw new BookNotInStockException();
         }
 
-        return bookMapper.toContentDto(purchase.getBook());
+        return bookMapper.toContentDto(book);
     }
 
     public Book addBook(AddBookRequest request) {

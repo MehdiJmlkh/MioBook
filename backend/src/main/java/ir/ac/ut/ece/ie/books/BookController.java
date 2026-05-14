@@ -39,11 +39,9 @@ public class BookController {
         return bookService.getBooks(query, page, size);
     }
 
-    @PostMapping("/{title}/content")
-    public BookContentDto getBookContent(
-            @PathVariable("title") String title,
-            @RequestBody GetBookContentRequest request) {
-        return bookService.getBookContent(request.getUsername(), title);
+    @GetMapping("/{id}/content")
+    public BookContentDto getBookContent(@PathVariable("id") Long id) {
+        return bookService.getBookContent(id);
     }
 
     @PostMapping
