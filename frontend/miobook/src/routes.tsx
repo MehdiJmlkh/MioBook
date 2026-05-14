@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SearchResultPage from "./pages/SearchResultPage";
-import BookPage from "./pages/BookPage";
-import BookContentPage from "./pages/BookContentPage";
-import UserPage from "./pages/UserPage";
-import CartPage from "./pages/CartPage";
-import PurchaseHistoryPage from "./pages/PurchaseHistoryPage";
 import AdminPage from "./pages/AdminPage";
 import AuthorPage from "./pages/AuthorPage";
+import BookContentPage from "./pages/BookContentPage";
+import BookPage from "./pages/BookPage";
+import CartPage from "./pages/CartPage";
+import HomePage from "./pages/HomePage";
+import PrivateRoutes from "./pages/PrivateRoutes";
+import PurchaseHistoryPage from "./pages/PurchaseHistoryPage";
+import SearchResultPage from "./pages/SearchResultPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import PrivateRoutes from "./pages/PrivateRoutes";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,6 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <HomePage /> },
           { path: "books", element: <SearchResultPage /> },
-          { path: "books/:id", element: <BookPage /> },
           { path: "books/:id", element: <BookPage /> },
           { path: "books/:id/content", element: <BookContentPage /> },
           { path: "user", element: <UserPage /> },

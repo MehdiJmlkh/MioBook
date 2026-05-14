@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import purchaseService from "../services/purchaseService";
 
 interface PurchasedBook {
+  id: number;
   title: string;
   author: string;
   publisher: string;

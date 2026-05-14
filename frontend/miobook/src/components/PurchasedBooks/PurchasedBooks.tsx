@@ -6,6 +6,7 @@ import Button from "../Button";
 import Card from "../Card";
 import { usePurchasedBooks } from "../../queries/usePurchasedBooks";
 import BorrowedBadge from "../BorrowedBadge";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Props {
   className?: string;
@@ -13,6 +14,8 @@ interface Props {
 
 const PurchasedBooks = ({ className }: Props) => {
   const { data: purchasedBooksHistory } = usePurchasedBooks("li_wei");
+
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -44,9 +47,20 @@ const PurchasedBooks = ({ className }: Props) => {
               <td data-label="Genre">{book.genres.join(", ")}</td>
               <td data-label="Publisher">{book.publisher}</td>
               <td data-label="Published Year">{book.year}</td>
-              <td data-label="Status">{book.isBorrowed ? <BorrowedBadge expiredDate={book.expiredDate} /> : "Owned"}</td>
+              <td data-label="Status">
+                {book.isBorrowed ? (
+                  <BorrowedBadge expiredDate={book.expiredDate} />
+                ) : (
+                  "Owned"
+                )}
+              </td>
               <td className="table-btn-row">
-                <Button className="btn-secondary">Read</Button>
+                <Button
+                  className="btn-secondary"
+                  onClick={() => navigate(`/books/${book?.id}/content`)}
+                >
+                  Read
+                </Button>
               </td>
             </tr>
           ))}

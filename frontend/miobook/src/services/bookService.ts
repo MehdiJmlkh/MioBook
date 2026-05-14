@@ -14,6 +14,12 @@ export interface Book {
   synopsis: string;
 }
 
+interface BookContent {
+  title: string;
+  author: string;
+  content: string;
+}
+
 export interface AddBookRequest {
   title: string;
   author: string;
@@ -33,6 +39,10 @@ class BookService {
 
   getBooks() {
     return apiClient.get("books").then((res) => res.data);
+  }
+
+  getBookContent(id: number) {
+    return apiClient.get<BookContent>(`books/${id}/content`).then((res) => res.data);
   }
 
   getTopRated() {
