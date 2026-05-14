@@ -30,10 +30,10 @@ const BookItemRow = <T extends Item>({ item, addBtn, onClick }: Props<T>) => {
         </Link>
       </td>
       <td data-label="Name">
-        <Link className="book-row__title" to={`/books/${item.bookId}`}>{item.title}</Link>
+        <Link className="link--padded" to={`/books/${item.bookId}`}>{item.title}</Link>
       </td>
       <td data-label="Author">
-        <Link className="book-row__author" to={`/authors/${item.authorId}`}>{item.author}</Link>
+        <Link className="link--padded" to={`/authors/${item.authorId}`}>{item.author}</Link>
       </td>
       <td data-label="Price">
         <span>

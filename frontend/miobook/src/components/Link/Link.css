@@ -11,3 +11,7 @@
 .link--primary:focus {
   outline-color: var(--color-primary);
 }
+
+.link--padded {
+  padding: 10px 0;
+}

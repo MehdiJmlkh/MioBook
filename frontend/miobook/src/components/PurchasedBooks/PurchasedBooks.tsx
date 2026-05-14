@@ -17,7 +17,7 @@ interface Props {
 }
 
 const PurchasedBooks = ({ className }: Props) => {
-  const {data: user} = useAuth()
+  const { data: user } = useAuth();
   const { data: purchasedBooksHistory } = usePurchasedBooks(user?.username);
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const PurchasedBooks = ({ className }: Props) => {
       icon={<img src={BookIcon} alt="" />}
     >
       {purchasedBooksHistory?.books.length === 0 ? (
-        <EmptyIcon src={NoResult} description="No Book"/>
+        <EmptyIcon src={NoResult} description="No Book" />
       ) : (
         <Table>
           <thead>
@@ -53,17 +53,14 @@ const PurchasedBooks = ({ className }: Props) => {
                   </Link>
                 </td>
                 <td data-label="Name">
-                  <Link
-                    to={`/books/${book.id}`}
-                    className="purchased-book__title"
-                  >
+                  <Link className="link--padded" to={`/books/${book.id}`}>
                     {book.title}
                   </Link>
                 </td>
                 <td data-label="Author">
                   <Link
+                    className="link--padded"
                     to={`/authors/${book.authorId}`}
-                    className="purchased-book__author"
                   >
                     {book.author}
                   </Link>
