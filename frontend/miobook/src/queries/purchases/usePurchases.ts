@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import purchaseService from "../services/purchaseService";
+import purchaseService from "../../services/purchaseService";
 
 interface PurchaseItem {
   title: string;

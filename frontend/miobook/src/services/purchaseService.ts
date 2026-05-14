@@ -1,4 +1,4 @@
-import { BookStatus } from "../queries/useBookStatus";
+import { BookStatus } from "../queries/purchases/useBookStatus";
 import apiClient from "./ApiClient";
 
 class PurchaseService {

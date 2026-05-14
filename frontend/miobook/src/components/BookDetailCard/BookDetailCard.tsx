@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../queries/auth/useAuth";
-import { BookStatus, useBookStatus } from "../../queries/useBookStatus";
+import {
+  BookStatus,
+  useBookStatus,
+} from "../../queries/purchases/useBookStatus";
 import { Book } from "../../services/bookService";
 import Button from "../Button";
 import FiveStars from "../FiveStars";

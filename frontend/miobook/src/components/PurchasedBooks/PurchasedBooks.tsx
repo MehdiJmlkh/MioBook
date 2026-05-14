@@ -4,7 +4,7 @@ import BookImage from "../../assets/book.svg";
 import BookIcon from "../../assets/book-icon.svg";
 import Button from "../Button";
 import Card from "../Card";
-import { usePurchasedBooks } from "../../queries/usePurchasedBooks";
+import { usePurchasedBooks } from "../../queries/purchases/usePurchasedBooks";
 import BorrowedBadge from "../BorrowedBadge";
 import { useNavigate, useParams } from "react-router-dom";
 import Link from "../Link";

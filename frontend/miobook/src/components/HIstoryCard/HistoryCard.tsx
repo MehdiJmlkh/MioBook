@@ -1,6 +1,6 @@
 import { RiHistoryLine } from "react-icons/ri";
 import BookImage from "../../assets/book.svg";
-import { usePurchases } from "../../queries/usePurchases";
+import { usePurchases } from "../../queries/purchases/usePurchases";
 import Button from "../Button";
 import Card from "../Card";
 import ExpandableRow from "../ExpandableRow";

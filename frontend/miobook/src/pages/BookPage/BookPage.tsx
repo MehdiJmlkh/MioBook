@@ -8,7 +8,7 @@ import ReviewsBlock from "../../components/ReviewsBlock";
 import { useNoScroll } from "../../hooks/useNoScroll";
 import { useBook } from "../../queries/books/useBook";
 import "./BookPage.css";
-import { useBookStatus } from "../../queries/useBookStatus";
+import { useBookStatus } from "../../queries/purchases/useBookStatus";
 
 const BookPage = () => {
   const { id } = useParams();
