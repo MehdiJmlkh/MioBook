@@ -47,10 +47,11 @@ const PurchasedBooks = ({ className }: Props) => {
           <tbody>
             {purchasedBooksHistory?.books.map((book) => (
               <tr>
-                <td className="table-image-row">
-                  <Link to={`/books/${book.id}`}>
-                    <img className="table-image" src={BookImage} alt="" />
-                  </Link>
+                <td
+                  className="table-image-row"
+                  onClick={() => navigate(`/books/${book.id}`)}
+                >
+                  <img className="table-image" src={BookImage} alt="" />
                 </td>
                 <td data-label="Name">
                   <Link className="link--padded" to={`/books/${book.id}`}>
