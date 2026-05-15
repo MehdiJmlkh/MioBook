@@ -11,13 +11,15 @@ import SearchResultPage from "./pages/SearchResultPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
-    element: <PrivateRoutes />,
+    path: "/",
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        element: <PrivateRoutes />,
         children: [
           { index: true, element: <HomePage /> },
           { path: "books", element: <SearchResultPage /> },
@@ -30,10 +32,10 @@ const router = createBrowserRouter([
           { path: "authors/:id", element: <AuthorPage /> },
         ],
       },
+      { path: "sign-in", element: <SignInPage /> },
+      { path: "sign-up", element: <SignUpPage /> },
     ],
   },
-  { path: "/sign-in", element: <SignInPage /> },
-  { path: "/sign-up", element: <SignUpPage /> },
 ]);
 
 export default router;

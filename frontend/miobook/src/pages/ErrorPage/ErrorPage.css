@@ -1,0 +1,41 @@
+.error-page-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
+}
+
+.error-page {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.08);
+  max-width: 420px;
+  width: 100%;
+}
+
+.error-page__heading {
+  font-size: 6rem;
+  font-weight: 800;
+  color: #b5b6bc;
+  margin-bottom: 0.5rem;
+}
+
+.error-page__sub-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.error-page__content {
+  font-size: 1.5rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.error-page__home-btn {
+  font-size: 1.2rem;
+}
