@@ -3,13 +3,15 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { LuLogOut, LuShoppingCart } from "react-icons/lu";
 import { MdOutlineArticle } from "react-icons/md";
 import { RiHistoryLine } from "react-icons/ri";
+import { useAuth } from "../../queries/auth/useAuth";
+import { useLogout } from "../../queries/auth/useLogout";
 import Avatar from "../Avatar";
 import Link from "../Link";
 import "./Profile.css";
-import { useLogout } from "../../queries/auth/useLogout";
 
 const Profile = () => {
   const [visible, setVisible] = useState(false);
+  const { data: user } = useAuth();
 
   const logout = useLogout();
 
@@ -18,8 +20,13 @@ const Profile = () => {
       <Avatar onClick={() => setVisible(!visible)} />
       {visible && (
         <div className="profile-menu">
-          <div className="profile-menu__header">Sample Name</div>
-          <Link to="/user" className="profile-menu__item">
+          <div className="profile-menu__header">
+            {user?.username.toLocaleUpperCase()}
+          </div>
+          <Link
+            to={user?.role === "ADMIN" ? "/admin" : "/user"}
+            className="profile-menu__item"
+          >
             <HiOutlineUserCircle className="profile-menu__icon" />
             Profile
           </Link>
