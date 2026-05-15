@@ -51,7 +51,7 @@ const BooksTableCard = ({ className }: Props) => {
                 <td data-label="Price">
                   <Price>{book.price}</Price>
                 </td>
-                <td data-label="Total Buys">10</td>
+                <td data-label="Total Buys">{book.totalBuys}</td>
               </tr>
             ))}
           </tbody>

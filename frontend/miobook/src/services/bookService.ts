@@ -13,6 +13,7 @@ export interface Book {
   genres: string[];
   synopsis: string;
   imageLink: string;
+  totalBuys: number;
 }
 
 interface BookContent {
