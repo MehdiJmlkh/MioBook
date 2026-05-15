@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddBook } from "../../queries/books/useAddBook";
 import { AddBookRequest } from "../../services/bookService";
@@ -42,6 +42,10 @@ const AddBookModal = ({ className, onClose }: Props) => {
 
   const requiredRegister = (name: keyof AddBookRequest) =>
     register(name, { required: true });
+
+  useEffect(() => {
+    setPage(1);
+  }, [addBook.error]);
 
   return (
     <form className={`add-book modal-pop ${className}`}>
