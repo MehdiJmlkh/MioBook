@@ -16,7 +16,12 @@ interface Props {
 const AddBookModal = ({ className, onClose }: Props) => {
   const [page, setPage] = useState<1 | 2>(1);
 
-  const { register, reset, handleSubmit } = useForm<AddBookRequest>();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<AddBookRequest>();
 
   const setGenresAs = (value: string) => {
     if (typeof value !== "string") return value;
@@ -26,13 +31,10 @@ const AddBookModal = ({ className, onClose }: Props) => {
       .filter(Boolean);
   };
 
-  const onSuccess = () => {
-    reset();
-    setPage(1);
-    onClose();
-  };
+  const addBook = useAddBook();
 
-  const addBook = useAddBook({ onSuccess });
+  const requiredRegister = (name: keyof AddBookRequest) =>
+    register(name, { required: true });
 
   return (
     <form className={`add-book modal-pop ${className}`}>
@@ -42,38 +44,48 @@ const AddBookModal = ({ className, onClose }: Props) => {
         {page === 1 ? (
           <>
             <Input
-              {...register("title")}
+              {...requiredRegister("title")}
               placeholder="Name"
               error={addBook.error?.title}
             />
             <Input
-              {...register("author")}
+              {...requiredRegister("author")}
               placeholder="Author"
               error={addBook.error?.author}
             />
-            <Input {...register("publisher")} placeholder="Publisher" />
+            <Input {...requiredRegister("publisher")} placeholder="Publisher" />
             <Input
-              {...register("genres", { setValueAs: setGenresAs })}
+              {...register("genres", {
+                setValueAs: setGenresAs,
+                required: true,
+              })}
               placeholder="Genres"
             />
             <Input
-              {...register("year")}
+              {...requiredRegister("year")}
               type="number"
               placeholder="Published Year"
             />
-            <Input {...register("price")} type="number" placeholder="Price" />
-            <Input placeholder="Image Link" />
+            <Input
+              {...requiredRegister("price")}
+              type="number"
+              placeholder="Price"
+            />
+            <Input
+              {...requiredRegister("imageLink")}
+              placeholder="Image Link"
+            />
           </>
         ) : (
           <>
             <TextArea
-              {...register("synopsis")}
+              {...requiredRegister("synopsis")}
               className="textarea-primary"
               placeholder="Synopsis"
               rows={6}
             />
             <TextArea
-              {...register("content")}
+              {...requiredRegister("content")}
               className="textarea-primary"
               placeholder="Content"
               rows={9}
@@ -90,6 +102,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
               type="button"
               className="btn-primary"
               onClick={() => setPage(2)}
+              disabled={!isValid}
             >
               Next
             </Button>
@@ -107,7 +120,16 @@ const AddBookModal = ({ className, onClose }: Props) => {
             <Button
               key={"submit"}
               className="btn-primary"
-              onClick={handleSubmit((data) => addBook.mutate(data))}
+              onClick={handleSubmit((data) =>
+                addBook.mutate(data, {
+                  onSuccess: () => {
+                    reset();
+                    setPage(1);
+                    onClose();
+                  },
+                }),
+              )}
+              disabled={!isValid}
             >
               Submit
             </Button>

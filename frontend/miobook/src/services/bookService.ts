@@ -12,6 +12,7 @@ export interface Book {
   publisher: string;
   genres: string[];
   synopsis: string;
+  imageLink: string;
 }
 
 interface BookContent {
@@ -30,6 +31,7 @@ export interface AddBookRequest {
   genres: string[];
   synopsis: string;
   content: string;
+  imageLink: string;
 }
 
 class BookService {
