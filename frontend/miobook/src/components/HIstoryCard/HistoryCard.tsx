@@ -9,6 +9,8 @@ import Table from "../Table";
 import "./HistoryCard.css";
 import BookItemRow from "../BookItemRow";
 import { useAuth } from "../../queries/auth/useAuth";
+import EmptyIcon from "../EmptyIcon";
+import NoResult from "../../assets/no-result.svg";
 
 const HistoryCard = () => {
   const { data: user } = useAuth();
@@ -17,37 +19,42 @@ const HistoryCard = () => {
   }
 
   const { data: history } = usePurchases(user.username);
+
   return (
     <Card title="History" icon={<RiHistoryLine />}>
-      <div className="history-table">
-        {history?.purchaseHistory.map((purchase, i) => (
-          <ExpandableRow
-            key={i}
-            title={
-              <span>
-                {purchase.purchaseDate} | <Price>{purchase.totalCost}</Price>
-              </span>
-            }
-          >
-            <Table className="history-table__contnent">
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Author</th>
-                  <th>Price</th>
-                  <th>Borrow Days</th>
-                </tr>
-              </thead>
-              <tbody>
-                {purchase.items.map((item, i) => (
-                  <BookItemRow key={i} item={item} />
-                ))}
-              </tbody>
-            </Table>
-          </ExpandableRow>
-        ))}
-      </div>
+      {!history || history?.purchaseHistory.length === 0 ? (
+        <EmptyIcon src={NoResult} description="No Result" />
+      ) : (
+        <div className="history-table">
+          {history?.purchaseHistory.map((purchase, i) => (
+            <ExpandableRow
+              key={i}
+              title={
+                <span>
+                  {purchase.purchaseDate} | <Price>{purchase.totalCost}</Price>
+                </span>
+              }
+            >
+              <Table className="history-table__contnent">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Borrow Days</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {purchase.items.map((item, i) => (
+                    <BookItemRow key={i} item={item} />
+                  ))}
+                </tbody>
+              </Table>
+            </ExpandableRow>
+          ))}
+        </div>
+      )}
     </Card>
   );
 };
