@@ -16,4 +16,5 @@ public class AddAuthorRequest {
     private String born;
     private String died;
     private String nationality;
+    private String imageLink;
 }

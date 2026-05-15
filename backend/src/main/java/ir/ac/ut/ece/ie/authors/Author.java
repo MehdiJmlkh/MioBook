@@ -15,4 +15,5 @@ public class Author {
     private String nationality;
     private LocalDate born;
     private LocalDate died;
+    private String imageLink;
 }
