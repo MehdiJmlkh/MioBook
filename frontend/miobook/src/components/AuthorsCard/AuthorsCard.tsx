@@ -1,7 +1,9 @@
 import AuthorIcon from "../../assets/author-icon.svg";
 import { useAuthors } from "../../queries/authors/useAuthors";
 import Card from "../Card";
+import EmptyIcon from "../EmptyIcon";
 import Table from "../Table";
+import NoResult from "../../assets/no-result.svg";
 import "./AuthorsCard.css";
 
 const AuthorsCard = () => {
@@ -9,32 +11,36 @@ const AuthorsCard = () => {
 
   return (
     <Card title="Authors" icon={<img src={AuthorIcon} alt="" />}>
-      <Table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Pen Name</th>
-            <th>Nationality</th>
-            <th>Born</th>
-            <th>Died</th>
-          </tr>
-        </thead>
-        <tbody>
-          {authors?.map((author) => (
+      {authors?.length === 0 ? (
+        <EmptyIcon src={NoResult} description="No Author" />
+      ) : (
+        <Table>
+          <thead>
             <tr>
-              <td className="table-image-row">
-                <img className="table-image" src={author.imageLink} alt="" />
-              </td>
-              <td data-label="Name">{author.name}</td>
-              <td data-label="Pen Name">{author.penName}</td>
-              <td data-label="Nationality">{author.nationality}</td>
-              <td data-label="Born">{author.born}</td>
-              <td data-label="Died">{author.died || <>&mdash;</>}</td>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Pen Name</th>
+              <th>Nationality</th>
+              <th>Born</th>
+              <th>Died</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {authors?.map((author) => (
+              <tr>
+                <td className="table-image-row">
+                  <img className="table-image" src={author.imageLink} alt="" />
+                </td>
+                <td data-label="Name">{author.name}</td>
+                <td data-label="Pen Name">{author.penName}</td>
+                <td data-label="Nationality">{author.nationality}</td>
+                <td data-label="Born">{author.born}</td>
+                <td data-label="Died">{author.died || <>&mdash;</>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
     </Card>
   );
 };
