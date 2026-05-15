@@ -22,6 +22,7 @@ interface BookContent {
 }
 
 export interface AddBookRequest {
+  username: string;
   title: string;
   author: string;
   price: number;
@@ -67,9 +68,9 @@ class BookService {
     return apiClient.get("/books/genres").then((res) => res.data);
   }
 
-  addBook(newBook: AddBookRequest) {
+  addBook(request: AddBookRequest) {
     return apiClient
-      .post("/books", { ...newBook, username: "admin1" })
+      .post("/books", request)
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;

@@ -7,6 +7,7 @@ import CloseIcon from "../CloseIcon";
 import Input from "../Input";
 import TextArea from "../TextArea";
 import "./AddBookModal.css";
+import { useAuth } from "../../queries/auth/useAuth";
 
 interface Props {
   className?: string;
@@ -15,6 +16,12 @@ interface Props {
 
 const AddBookModal = ({ className, onClose }: Props) => {
   const [page, setPage] = useState<1 | 2>(1);
+
+  const { data: user } = useAuth();
+
+  if (!user) {
+    return <p>Loading...</p>;
+  }
 
   const {
     register,
@@ -110,7 +117,7 @@ const AddBookModal = ({ className, onClose }: Props) => {
               key={"reset"}
               type="reset"
               className="btn-secondary"
-              onClick={() => reset}
+              onClick={() => reset()}
             >
               Cancel
             </Button>
@@ -121,13 +128,16 @@ const AddBookModal = ({ className, onClose }: Props) => {
               key={"submit"}
               className="btn-primary"
               onClick={handleSubmit((data) =>
-                addBook.mutate(data, {
-                  onSuccess: () => {
-                    reset();
-                    setPage(1);
-                    onClose();
+                addBook.mutate(
+                  { ...data, username: user?.username },
+                  {
+                    onSuccess: () => {
+                      reset();
+                      setPage(1);
+                      onClose();
+                    },
                   },
-                }),
+                ),
               )}
               disabled={!isValid}
             >
