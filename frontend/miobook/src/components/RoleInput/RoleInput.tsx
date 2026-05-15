@@ -5,7 +5,7 @@ import React from "react";
 
 export enum Role {
   Customer = "customer",
-  Manager = "manager",
+  Manager = "admin",
 }
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -20,7 +20,7 @@ const RoleInput = React.forwardRef<HTMLInputElement, Props>(
           type="radio"
           name="role"
           ref={ref}
-          value={userRole}
+          value={userRole.toString()}
           className="d-none"
           defaultChecked={userRole === Role.Customer}
           {...rest}
