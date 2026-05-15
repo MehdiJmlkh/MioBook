@@ -1,5 +1,4 @@
 import AuthorIcon from "../../assets/author-icon.svg";
-import AuthorImage from "../../assets/author.svg";
 import { useAuthors } from "../../queries/authors/useAuthors";
 import Card from "../Card";
 import Table from "../Table";
@@ -25,7 +24,7 @@ const AuthorsCard = () => {
           {authors?.map((author) => (
             <tr>
               <td className="table-image-row">
-                <img className="table-image" src={AuthorImage} alt="" />
+                <img className="table-image" src={author.imageLink} alt="" />
               </td>
               <td data-label="Name">{author.name}</td>
               <td data-label="Pen Name">{author.penName}</td>
