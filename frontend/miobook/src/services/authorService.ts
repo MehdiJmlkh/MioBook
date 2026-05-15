@@ -8,6 +8,17 @@ export interface Author {
   nationality: string;
   born?: string;
   died?: string;
+  imageLink: string;
+}
+
+export interface AddAuthorRequest {
+  username?: string;
+  name: string;
+  penName: string;
+  nationality: string;
+  born?: string;
+  died?: string;
+  imageLink: string;
 }
 
 class AuthorService {
@@ -25,9 +36,9 @@ class AuthorService {
       .then((res) => res.data);
   }
 
-  addAuthor(author: Author) {
+  addAuthor(request: AddAuthorRequest) {
     return apiClient
-      .post("/authors", { ...author, username: "admin1" })
+      .post<Author>("/authors", request)
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;

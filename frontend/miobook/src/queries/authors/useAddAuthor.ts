@@ -1,18 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import authService from "../../services/authService";
-import authorService, { Author } from "../../services/authorService";
+import authorService, {
+  AddAuthorRequest,
+  Author,
+} from "../../services/authorService";
 
 interface addAuthorError {
   name: string;
 }
 
-interface Props {
-  onSuccess?: (author: Author) => void;
-}
-
-export const useAddAuthor = ({ onSuccess }: Props) => {
-  return useMutation<Author, addAuthorError, Author>({
+export const useAddAuthor = () => {
+  return useMutation<Author, addAuthorError, AddAuthorRequest>({
     mutationFn: authorService.addAuthor,
-    onSuccess,
   });
 };
