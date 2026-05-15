@@ -49,7 +49,7 @@ public class BookService {
         return bookMapper.toContentDto(book);
     }
 
-    public Book addBook(AddBookRequest request) {
+    public BookDto addBook(AddBookRequest request) {
         if (bookRepository.findByTitle(request.getTitle()).isPresent()) {
             throw new BookTitleAlreadyExistsException();
         }
@@ -73,7 +73,7 @@ public class BookService {
         book.setReviews(new LinkedHashSet<>());
 
         bookRepository.addBook(book);
-        return book;
+        return bookMapper.toDto(book);
     }
 
     public BookPageDto getBooks(SearchQuery query, Integer page, Integer size) {
