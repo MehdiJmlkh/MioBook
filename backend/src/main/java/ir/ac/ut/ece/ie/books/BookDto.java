@@ -17,4 +17,5 @@ public class BookDto {
     private Integer price;
     private String synopsis;
     private float averageRating;
+    private Integer totalBuys;
 }

@@ -24,8 +24,12 @@ public class Book {
     private Integer price;
     private String synopsis;
     private String content;
-
+    private int totalBuys = 0;
     private Set<Review> reviews = new LinkedHashSet<>();
+
+    public void IncrementBuys() {
+        totalBuys++;
+    }
 
     public int getReviewsCount() {
         return reviews.size();

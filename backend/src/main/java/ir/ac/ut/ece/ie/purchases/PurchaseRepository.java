@@ -12,6 +12,7 @@ public class PurchaseRepository {
     private final Set<Purchase> purchases = new LinkedHashSet<>();
 
     public void addPurchase(Purchase purchase) {
+        purchase.getItems().forEach(purchaseItem -> purchaseItem.getBook().IncrementBuys());
         purchases.add(purchase);
     }
 
