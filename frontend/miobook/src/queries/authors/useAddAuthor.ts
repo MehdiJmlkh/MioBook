@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import authorService, {
   AddAuthorRequest,
   Author,
@@ -9,7 +9,13 @@ interface addAuthorError {
 }
 
 export const useAddAuthor = () => {
+  const queryClient = useQueryClient();
   return useMutation<Author, addAuthorError, AddAuthorRequest>({
     mutationFn: authorService.addAuthor,
+    onSuccess: (savedAuthor) => {
+      queryClient.setQueryData<Author[]>(["authors"], (oldAuthors) => {
+        return [...(oldAuthors || []), savedAuthor];
+      });
+    },
   });
 };
