@@ -1,3 +1,7 @@
-#server:
-#  servlet:
-#    context-path: /api
+spring:
+  application:
+    name: MioBook
+  datasource:
+    url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
+    username: root
+    password: NewPassword123!
