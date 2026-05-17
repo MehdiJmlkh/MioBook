@@ -27,7 +27,7 @@ public class CartItemDto {
         cartItemDto.title = book.getTitle();
         cartItemDto.author = book.getAuthor().getName();
         cartItemDto.publisher = book.getPublisher();
-        cartItemDto.genres = book.getGenres();
+        cartItemDto.genres = book.getGenreNames();
         cartItemDto.year = book.getYear();
         cartItemDto.price = book.getPrice();
         cartItemDto.isBorrowed = cartItem.getIsBorrowed();

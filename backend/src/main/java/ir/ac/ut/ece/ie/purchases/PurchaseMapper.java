@@ -21,7 +21,7 @@ public interface PurchaseMapper {
         dto.setTitle(book.getTitle());
         dto.setAuthor(book.getAuthor().getName());
         dto.setPublisher(book.getPublisher());
-        dto.setGenres(book.getGenres());
+        dto.setGenres(book.getGenreNames());
         dto.setYear(book.getYear());
         dto.setPrice(item.getPrice());
         dto.setIsBorrowed(item.getIsBorrowed());

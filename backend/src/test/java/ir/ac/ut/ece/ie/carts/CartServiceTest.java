@@ -409,7 +409,7 @@ public class CartServiceTest {
         assertEquals(book.getTitle(), cartItemDto.getTitle());
         assertEquals(book.getAuthor().getName(), cartItemDto.getAuthor());
         assertEquals(book.getPublisher(), cartItemDto.getPublisher());
-        assertEquals(book.getGenres(), cartItemDto.getGenres());
+        assertEquals(book.getGenreNames(), cartItemDto.getGenres());
         assertEquals(book.getYear(), cartItemDto.getYear());
         assertEquals(book.getPrice(), cartItemDto.getPrice());
         assertEquals(false, cartItemDto.getIsBorrowed());
@@ -441,7 +441,7 @@ public class CartServiceTest {
         assertEquals(book.getTitle(), cartItemDto.getTitle());
         assertEquals(book.getAuthor().getName(), cartItemDto.getAuthor());
         assertEquals(book.getPublisher(), cartItemDto.getPublisher());
-        assertEquals(book.getGenres(), cartItemDto.getGenres());
+        assertEquals(book.getGenreNames(), cartItemDto.getGenres());
         assertEquals(book.getYear(), cartItemDto.getYear());
         assertEquals(book.getPrice(), cartItemDto.getPrice());
         assertEquals(true, cartItemDto.getIsBorrowed());

@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.testdata;
 
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.books.Book;
+import ir.ac.ut.ece.ie.books.Genre;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.users.Role;
@@ -60,7 +61,7 @@ public class TestDataFactory {
                 .author(author)
                 .publisher("publisher")
                 .year(2000)
-                .genres(Set.of("genre"))
+                .genres(Set.of(new Genre("genre")))
                 .price(15)
                 .synopsis("synopsis")
                 .content("content")

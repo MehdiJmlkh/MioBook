@@ -26,7 +26,7 @@ public class PurchaseItemDto {
         dto.title = book.getTitle();
         dto.author = book.getAuthor().getName();
         dto.publisher = book.getPublisher();
-        dto.genres = book.getGenres();
+        dto.genres = book.getGenreNames();
         dto.year = book.getYear();
         dto.isBorrowed = item.getIsBorrowed();
         dto.borrowDays = item.getBorrowDays();

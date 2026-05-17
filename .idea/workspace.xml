@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a19a1cec-bf5b-4f41-aa59-6d733eb5243c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/V1__intial_migtation.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/Genre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/GenreRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/books/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/carts/CartItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/carts/CartItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/purchases/PurchaseItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/purchases/PurchaseItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/purchases/PurchaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/ir/ac/ut/ece/ie/purchases/PurchaseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/books/BookServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/books/BookServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/carts/CartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/carts/CartServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/testdata/TestDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/ir/ac/ut/ece/ie/testdata/TestDataFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,26 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.MioBook [org.flywaydb:flyway-maven-plugin:11.14.1:clean].executor": "Run",
-    "Maven.MioBook [org.flywaydb:flyway-maven-plugin:11.14.1:migrate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Main.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.MioBook [org.flywaydb:flyway-maven-plugin:11.14.1:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MioBook [org.flywaydb:flyway-maven-plugin:11.14.1:migrate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql_aurora"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />

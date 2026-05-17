@@ -120,7 +120,7 @@ public class BookServiceTest {
                 book.getAuthor().equals(author) &&
                 book.getPublisher().equals(request.getPublisher()) &&
                 book.getYear().equals(request.getYear()) &&
-                book.getGenres().equals(request.getGenres()) &&
+                book.getGenreNames().equals(request.getGenres()) &&
                 book.getPrice().equals(request.getPrice()) &&
                 book.getSynopsis().equals(request.getSynopsis()) &&
                 book.getContent().equals(request.getContent())
@@ -149,7 +149,7 @@ public class BookServiceTest {
                 .author(author)
                 .publisher("publisher")
                 .year(2000)
-                .genres(Set.of("genres"))
+                .genres(Set.of(new Genre("genres")))
                 .price(100)
                 .synopsis("synopsis")
                 .content("content").reviews(Set.of(review1, review2)).build();
@@ -161,7 +161,7 @@ public class BookServiceTest {
         assertEquals(author.getName(), bookDto.getAuthor());
         assertEquals(book.getPublisher(), bookDto.getPublisher());
         assertEquals(book.getYear(), bookDto.getYear());
-        assertEquals(book.getGenres(), bookDto.getGenres());
+        assertEquals(book.getGenreNames(), bookDto.getGenres());
         assertEquals(book.getPrice(), bookDto.getPrice());
         assertEquals(book.getSynopsis(), bookDto.getSynopsis());
         assertEquals(3.5, bookDto.getAverageRating());
@@ -246,7 +246,7 @@ public class BookServiceTest {
         assertEquals(book.getTitle(), bookDto.getTitle());
         assertEquals(book.getAuthor().getName(), bookDto.getAuthor());
         assertEquals(book.getPublisher(), bookDto.getPublisher());
-        assertEquals(book.getGenres(), bookDto.getGenres());
+        assertEquals(book.getGenreNames(), bookDto.getGenres());
         assertEquals(book.getYear(), bookDto.getYear());
         assertEquals(book.getPrice(), bookDto.getPrice());
         assertEquals(book.getSynopsis(), bookDto.getSynopsis());
@@ -272,7 +272,7 @@ public class BookServiceTest {
         assertEquals(book.getTitle(), bookDto.getTitle());
         assertEquals(book.getAuthor().getName(), bookDto.getAuthor());
         assertEquals(book.getPublisher(), bookDto.getPublisher());
-        assertEquals(book.getGenres(), bookDto.getGenres());
+        assertEquals(book.getGenreNames(), bookDto.getGenres());
         assertEquals(book.getYear(), bookDto.getYear());
         assertEquals(book.getPrice(), bookDto.getPrice());
         assertEquals(book.getSynopsis(), bookDto.getSynopsis());

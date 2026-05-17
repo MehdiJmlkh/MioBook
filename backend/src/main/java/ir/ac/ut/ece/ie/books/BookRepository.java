@@ -45,7 +45,7 @@ public class BookRepository {
         var filteredBooks = books.stream()
                 .filter(book -> title == null || book.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .filter(book -> author == null || book.getAuthor().getName().toLowerCase().contains(author.toLowerCase()))
-                .filter(book -> genre == null || book.getGenres().stream()
+                .filter(book -> genre == null || book.getGenreNames().stream()
                                         .anyMatch(g -> g.toLowerCase().contains(genre.toLowerCase()))
                 )
                 .filter(book -> (year == null) || book.getYear().equals(year))
@@ -102,7 +102,7 @@ public class BookRepository {
 
     public List<String> getAllGenres() {
         return books.stream()
-                .map(Book::getGenres)
+                .map(Book::getGenreNames)
                 .flatMap(Set::stream)
                 .distinct()
                 .toList();

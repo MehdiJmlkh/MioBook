@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Builder
 @NoArgsConstructor
@@ -20,12 +21,19 @@ public class Book {
     private Author author;
     private String publisher;
     private Integer year;
-    private Set<String> genres;
     private Integer price;
     private String synopsis;
     private String content;
     private int totalBuys = 0;
+
+    private Set<Genre> genres = new LinkedHashSet<>();
     private Set<Review> reviews = new LinkedHashSet<>();
+
+    public Set<String> getGenreNames() {
+        return genres.stream()
+                .map(Genre::getName)
+                .collect(Collectors.toSet());
+    }
 
     public void IncrementBuys() {
         totalBuys++;

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -24,6 +25,7 @@ public class BookService {
     private final UserRepository userRepository;
     private final AuthRepository authRepository;
     private final PurchaseRepository purchaseRepository;
+    private final GenreRepository genreRepository;
     private final BookMapper bookMapper;
 
     public BookDto getBook(Long id) {
@@ -68,8 +70,12 @@ public class BookService {
             throw new NotLoggedInException();
         }
 
+        var genres = request.getGenres().stream()
+                        .map(genreRepository::getGenreByName)
+                        .collect(Collectors.toSet());
         var book = bookMapper.toBook(request);
         book.setAuthor(author);
+        book.setGenres(genres);
         book.setReviews(new LinkedHashSet<>());
 
         bookRepository.addBook(book);
