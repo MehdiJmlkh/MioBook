@@ -118,61 +118,48 @@ public class CartServiceTest {
     @Test
     void removeItemFromCart_bookNotFound_throwsException() {
         var request = new RemoveCartRequest();
-        assertThrows(BookNotFoundException.class, () -> cartService.removeItemFromCart(request));
-    }
-
-    @Test
-    void removeItemFromCart_userNotFound_throwsException() {
-        var request = new RemoveCartRequest();
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        assertThrows(UserNotFoundException.class, () -> cartService.removeItemFromCart(request));
+        assertThrows(BookNotFoundException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_notCustomerUser_throwsException() {
-        var request = new RemoveCartRequest();
-
         var user = TestDataFactory.sampleAdminUser();
 
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
 
-        assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(request));
+        assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_bookNotInCart_throwsException() {
-        var request = new RemoveCartRequest();
-
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
 
-        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(request));
+        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_cartNotExists_throwsException() {
-        var request = new RemoveCartRequest();
-
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
 
-        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(request));
+        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_validInput_removesCartItem() {
-        var request = new RemoveCartRequest();
-
         var user = TestDataFactory.sampleCustomerUser();
 
         var book = new Book();
+        Long id = 2L;
+        book.setId(id);
 
         var cartItem = new CartItem();
         cartItem.setBook(book);
@@ -180,11 +167,11 @@ public class CartServiceTest {
         var cart = new Cart();
         cart.getItems().add(cartItem);
 
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+        when(bookRepository.findById(id)).thenReturn(Optional.of(book));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
 
-        cartService.removeItemFromCart(request);
+        cartService.removeItemFromCart(id);
 
         assertFalse(cart.contains(book));
     }
