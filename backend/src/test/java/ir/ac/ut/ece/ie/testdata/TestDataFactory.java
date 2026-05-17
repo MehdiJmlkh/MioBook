@@ -5,23 +5,22 @@ import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.Genre;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.Admin;
+import ir.ac.ut.ece.ie.users.Customer;
 import ir.ac.ut.ece.ie.users.User;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 public class TestDataFactory {
-    public static User sampleAdminUser() {
-        var user = new User();
-        user.setRole(Role.ADMIN);
+    public static Admin sampleAdminUser() {
+        var user = new Admin();
         user.setUsername("username");
         return user;
     }
 
-    public static User sampleCustomerUser() {
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+    public static Customer sampleCustomerUser() {
+        var user = new Customer();
         user.setUsername("username");
         return user;
     }

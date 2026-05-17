@@ -54,7 +54,6 @@ public class UserServiceTest {
         userService.addUser(request);
 
         verify(userRepository).addUser(argThat(user ->
-                user.getRole().equals(Role.CUSTOMER) &&
                 user.getUsername().equals(request.getUsername()) &&
                 user.getPassword().equals(request.getPassword()) &&
                 user.getEmail().equals(request.getEmail()) &&

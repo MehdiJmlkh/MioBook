@@ -8,7 +8,7 @@ import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,7 @@ import java.time.LocalDate;
 @Service
 public class ReviewService {
     private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
     private final PurchaseRepository purchaseRepository;
@@ -49,9 +50,8 @@ public class ReviewService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(username)
+                .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();

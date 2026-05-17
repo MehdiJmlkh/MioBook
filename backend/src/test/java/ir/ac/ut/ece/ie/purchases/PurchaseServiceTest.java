@@ -5,6 +5,7 @@ import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class PurchaseServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private CustomerRepository customerRepository;
     @MockitoBean
     private AuthRepository authRepository;
     @Autowired
@@ -49,6 +52,7 @@ public class PurchaseServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotLoggedInException.class, () -> purchaseService.getAllPurchases("username"));
     }
@@ -60,6 +64,7 @@ public class PurchaseServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(any())).thenReturn(List.of());
         when(authRepository.isLoggedIn(any())).thenReturn(true);
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchaseHistoryDto = purchaseService.getAllPurchases("username");
 
@@ -76,6 +81,7 @@ public class PurchaseServiceTest {
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchaseHistoryDto = purchaseService.getAllPurchases(user.getUsername());
 
@@ -115,6 +121,7 @@ public class PurchaseServiceTest {
     void getPurchasedBooks_userNotLoggedIn_throwsException() {
         var user = TestDataFactory.sampleCustomerUser();
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotLoggedInException.class, () -> purchaseService.getPurchasedBooks("username"));
     }
@@ -130,6 +137,7 @@ public class PurchaseServiceTest {
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchasedBooksHistory= purchaseService.getPurchasedBooks(user.getUsername());
 

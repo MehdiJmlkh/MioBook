@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
+    private final AdminRepository adminRepository;
     private final UserMapper userMapper;
     private final AuthMapper authMapper;
 
@@ -27,9 +29,19 @@ public class UserService {
             throw new EmailExistsException();
         }
 
-        var user = userMapper.toUser(request);
-        user.setBalance(0);
+        User user;
+        if (request.getRole().equals("customer")) {
+            var customer = userMapper.toCustomer(request);
+            customerRepository.addCustomer(customer);
+            user = customer;
+        }
+        else {
+            var admin = userMapper.toAdmin(request);
+            adminRepository.addAdmin(admin);
+            user = admin;
+        }
 
+        user.setBalance(0);
         userRepository.addUser(user);
         return authMapper.toDto(user);
     }

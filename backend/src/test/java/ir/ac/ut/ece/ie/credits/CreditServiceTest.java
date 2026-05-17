@@ -5,9 +5,7 @@ import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
-import ir.ac.ut.ece.ie.users.Role;
-import ir.ac.ut.ece.ie.users.User;
-import ir.ac.ut.ece.ie.users.UserRepository;
+import ir.ac.ut.ece.ie.users.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +22,8 @@ import static org.mockito.Mockito.when;
 public class CreditServiceTest {
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private CustomerRepository customerRepository;
     @MockitoBean
     private AuthRepository authRepository;
     @Autowired
@@ -50,6 +50,7 @@ public class CreditServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         assertThrows(NotLoggedInException.class, () -> creditService.addCredit(request));
     }
 
@@ -59,11 +60,11 @@ public class CreditServiceTest {
         request.setUsername("username");
         request.setCredit(100);
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = new Customer();
         user.setBalance(10);
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         creditService.addCredit(request);

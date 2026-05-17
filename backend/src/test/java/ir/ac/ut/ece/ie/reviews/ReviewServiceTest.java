@@ -12,6 +12,7 @@ import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -33,6 +34,8 @@ import static org.mockito.Mockito.*;
 public class ReviewServiceTest {
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private CustomerRepository customerRepository;
     @MockitoBean
     private BookRepository bookRepository;
     @MockitoBean
@@ -66,6 +69,7 @@ public class ReviewServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotLoggedInException.class, () -> reviewService.addReview(request));
     }
@@ -77,6 +81,7 @@ public class ReviewServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(BookNotFoundException.class, () -> reviewService.addReview(request));
     }
@@ -87,6 +92,7 @@ public class ReviewServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
 
@@ -102,6 +108,7 @@ public class ReviewServiceTest {
         var purchaseItem = mock(PurchaseItem.class);
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
@@ -122,6 +129,7 @@ public class ReviewServiceTest {
         var previousReview = new Review();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchaseItem));
@@ -150,6 +158,7 @@ public class ReviewServiceTest {
 
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
         when(purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())).thenReturn(Optional.of(purchaseItem));

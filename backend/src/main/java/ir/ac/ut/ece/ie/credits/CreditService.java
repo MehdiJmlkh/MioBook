@@ -4,7 +4,7 @@ import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
 public class CreditService {
     private final UserRepository userRepository;
     private final AuthRepository authRepository;
+    private final CustomerRepository customerRepository;
 
     public Integer addCredit(AddCreditRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(request.getUsername())
+                .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();

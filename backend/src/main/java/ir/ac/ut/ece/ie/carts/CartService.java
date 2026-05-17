@@ -9,7 +9,7 @@ import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseSummaryDto;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class CartService {
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private final CartRepository cartRepository;
     private final PurchaseRepository purchaseRepository;
     private final CartMapper cartMapper;
@@ -32,9 +33,8 @@ public class CartService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(username)
+                .orElseThrow(NotCustomerException::new);
 
         var cart = cartRepository.findByUser(user)
                 .orElse(new Cart());
@@ -58,9 +58,8 @@ public class CartService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(request.getUsername())
+                .orElseThrow(NotCustomerException::new);
 
         cartRepository.findByUser(user).ifPresent(
             cart -> {
@@ -83,9 +82,8 @@ public class CartService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(request.getUsername())
+                .orElseThrow(NotCustomerException::new);
 
         cartRepository.findByUser(user).ifPresent(
                 cart -> {
@@ -107,9 +105,8 @@ public class CartService {
         var user = authRepository.getAuthenticatedUser()
                 .orElseThrow(NotLoggedInException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(user.getUsername())
+                .orElseThrow(NotCustomerException::new);
 
         var cart = cartRepository.findByUser(user)
                 .orElseThrow(BookNotInCartException::new);
@@ -125,9 +122,8 @@ public class CartService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(request.getUsername())
+                .orElseThrow(NotCustomerException::new);
 
         var cart = cartRepository.findByUser(user)
                 .orElseThrow(EmptyCartException::new);

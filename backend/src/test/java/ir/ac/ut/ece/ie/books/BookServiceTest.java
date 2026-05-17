@@ -13,6 +13,7 @@ import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.reviews.Review;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
+import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -35,6 +36,8 @@ import static org.mockito.Mockito.*;
 public class BookServiceTest {
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private AdminRepository adminRepository;
     @MockitoBean
     private AuthorRepository authorRepository;
     @MockitoBean
@@ -87,6 +90,8 @@ public class BookServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(adminRepository.findByUsername(any())).thenReturn(Optional.of(user));
+
 
         assertThrows(NotLoggedInException.class, () -> bookService.addBook(request));
     }
@@ -111,6 +116,7 @@ public class BookServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(adminRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         bookService.addBook(request);

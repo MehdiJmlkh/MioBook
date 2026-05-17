@@ -8,7 +8,7 @@ import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +23,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
+    private final AdminRepository adminRepository;
     private final AuthRepository authRepository;
     private final PurchaseRepository purchaseRepository;
     private final GenreRepository genreRepository;
@@ -62,9 +63,8 @@ public class BookService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.ADMIN) {
-            throw new NotAdminException();
-        }
+        adminRepository.findByUsername(request.getUsername())
+                .orElseThrow(NotAdminException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();

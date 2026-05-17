@@ -5,6 +5,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mapping(target = "role", expression = "java(Role.valueOf(request.getRole().toUpperCase()))")
-    User toUser(AddUserRequest request);
+    Admin toAdmin(AddUserRequest request);
+    Customer toCustomer(AddUserRequest request);
 }

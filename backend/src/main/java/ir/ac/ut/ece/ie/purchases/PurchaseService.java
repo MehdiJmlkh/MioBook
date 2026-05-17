@@ -4,7 +4,7 @@ import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.Role;
+import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
     private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private final AuthRepository authRepository;
     private final PurchaseMapper purchaseMapper;
 
@@ -21,9 +22,8 @@ public class PurchaseService {
         var user = userRepository.findByUsername(username)
                         .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(username)
+                .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();
@@ -45,9 +45,8 @@ public class PurchaseService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(username)
+                .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();
@@ -72,9 +71,8 @@ public class PurchaseService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        if (user.getRole() != Role.CUSTOMER) {
-            throw new NotCustomerException();
-        }
+        customerRepository.findByUsername(username)
+                .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
             throw new NotLoggedInException();

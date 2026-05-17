@@ -6,8 +6,7 @@ import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
-import ir.ac.ut.ece.ie.users.Role;
-import ir.ac.ut.ece.ie.users.User;
+import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,8 @@ import static org.mockito.Mockito.when;
 public class AuthorServiceTest {
     @MockitoBean
     private AuthorRepository authorRepository;
+    @MockitoBean
+    private AdminRepository adminRepository;
     @MockitoBean
     private UserRepository userRepository;
     @MockitoBean
@@ -73,6 +74,7 @@ public class AuthorServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(adminRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotLoggedInException.class, () -> authorService.addAuthor(request));
     }
@@ -90,6 +92,7 @@ public class AuthorServiceTest {
         var user = TestDataFactory.sampleAdminUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(adminRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         authorService.addAuthor(request);

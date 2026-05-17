@@ -11,9 +11,7 @@ import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
-import ir.ac.ut.ece.ie.users.Role;
-import ir.ac.ut.ece.ie.users.User;
-import ir.ac.ut.ece.ie.users.UserRepository;
+import ir.ac.ut.ece.ie.users.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +35,8 @@ public class CartServiceTest {
     private CartRepository cartRepository;
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private CustomerRepository customerRepository;
     @MockitoBean
     private BookRepository bookRepository;
     @MockitoBean
@@ -84,6 +84,7 @@ public class CartServiceTest {
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
 
         assertThrows(CartIsFullException.class, () -> cartService.addItemToCart(request));
@@ -103,6 +104,8 @@ public class CartServiceTest {
 
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(new Cart()));
 
 
@@ -137,6 +140,7 @@ public class CartServiceTest {
 
         when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
 
         assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
@@ -148,6 +152,7 @@ public class CartServiceTest {
 
         when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
 
         assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
@@ -169,6 +174,7 @@ public class CartServiceTest {
 
         when(bookRepository.findById(id)).thenReturn(Optional.of(book));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
 
         cartService.removeItemFromCart(id);
@@ -201,6 +207,7 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
 
         assertThrows(EmptyCartException.class, () -> cartService.purchaseCart(request));
@@ -213,6 +220,7 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
 
         assertThrows(EmptyCartException.class, () -> cartService.purchaseCart(request));
@@ -229,6 +237,7 @@ public class CartServiceTest {
         cart.addItem(cartItem);
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
 
         assertThrows(NotLoggedInException.class, () -> cartService.purchaseCart(request));
@@ -238,8 +247,7 @@ public class CartServiceTest {
     void purchaseCart_notEnoughCredit_throwsException() {
         var request = new PurchaseCartRequest();
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = new Customer();
         user.setBalance(50);
 
         var cart = new Cart();
@@ -248,6 +256,7 @@ public class CartServiceTest {
         cart.addItem(cartItem);
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
 
@@ -259,8 +268,7 @@ public class CartServiceTest {
         var request = new PurchaseCartRequest();
         request.setUsername("username");
 
-        var user = new User();
-        user.setRole(Role.CUSTOMER);
+        var user = new Customer();
         user.setBalance(110);
 
         var book = new Book();
@@ -271,6 +279,7 @@ public class CartServiceTest {
         cart.addItem(cartItem);
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
 
@@ -346,6 +355,7 @@ public class CartServiceTest {
 
         var user = TestDataFactory.sampleCustomerUser();
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         cartService.addBorrowedItemToCart(request);
 
@@ -378,6 +388,7 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var cartDto = cartService.getCart("username");
 
@@ -397,6 +408,7 @@ public class CartServiceTest {
         cart.setItems(List.of(cartItem));
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
 
         var cartDto = cartService.getCart("username");
@@ -429,6 +441,7 @@ public class CartServiceTest {
         cart.setItems(List.of(cartItem));
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
 
         var cartDto = cartService.getCart("username");
