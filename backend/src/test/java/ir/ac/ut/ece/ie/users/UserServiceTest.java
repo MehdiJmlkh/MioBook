@@ -58,8 +58,7 @@ public class UserServiceTest {
                 user.getPassword().equals(request.getPassword()) &&
                 user.getEmail().equals(request.getEmail()) &&
                 user.getAddress().getCountry().equals(request.getAddress().getCountry()) &&
-                user.getAddress().getCity().equals(request.getAddress().getCity()) &&
-                user.getBalance().equals(0)
+                user.getAddress().getCity().equals(request.getAddress().getCity())
         ));
     }
 

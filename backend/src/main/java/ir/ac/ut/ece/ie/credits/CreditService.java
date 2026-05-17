@@ -17,10 +17,10 @@ public class CreditService {
     private final CustomerRepository customerRepository;
 
     public Integer addCredit(AddCreditRequest request) {
-        var user = userRepository.findByUsername(request.getUsername())
+        userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        customerRepository.findByUsername(request.getUsername())
+        var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
         if (!authRepository.isLoggedIn(user)) {
@@ -32,7 +32,7 @@ public class CreditService {
     }
 
     public Integer getBalance(String username) {
-        var user = userRepository.findByUsername(username)
+        var user = customerRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
         return  user.getBalance();

@@ -12,13 +12,4 @@ public class User {
     private String password;
     private String email;
     private Address address;
-    private Integer balance;
-
-    public void addCredit(Integer amount) {
-        balance += amount;
-    }
-
-    public void withdrawCredit(Integer amount) {
-        balance -= amount;
-    }
 }

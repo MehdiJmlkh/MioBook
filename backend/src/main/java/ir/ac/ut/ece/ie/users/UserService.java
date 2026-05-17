@@ -33,6 +33,7 @@ public class UserService {
         if (request.getRole().equals("customer")) {
             var customer = userMapper.toCustomer(request);
             customerRepository.addCustomer(customer);
+            customer.setBalance(0);
             user = customer;
         }
         else {
@@ -41,7 +42,6 @@ public class UserService {
             user = admin;
         }
 
-        user.setBalance(0);
         userRepository.addUser(user);
         return authMapper.toDto(user);
     }

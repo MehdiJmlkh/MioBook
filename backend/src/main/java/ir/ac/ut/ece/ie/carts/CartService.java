@@ -119,10 +119,10 @@ public class CartService {
     }
 
     public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
-        var user = userRepository.findByUsername(request.getUsername())
+        userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        customerRepository.findByUsername(request.getUsername())
+        var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
         var cart = cartRepository.findByUser(user)
