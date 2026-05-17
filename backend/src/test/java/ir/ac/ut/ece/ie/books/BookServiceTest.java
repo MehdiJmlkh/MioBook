@@ -169,30 +169,22 @@ public class BookServiceTest {
 
     @Test
     void getBookContent_bookNotFound_throwsException() {
-        assertThrows(BookNotFoundException.class, () -> bookService.getBookContent("username", "title"));
-    }
-
-    @Test
-    void getBookContent_userNotFound_throwsException() {
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        assertThrows(UserNotFoundException.class, () -> bookService.getBookContent("username", "title"));
+        assertThrows(BookNotFoundException.class, () -> bookService.getBookContent(1L));
     }
 
     @Test
     void getBookContent_userNotLoggedIn_throwsException() {
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
-        assertThrows(NotLoggedInException.class, () -> bookService.getBookContent("username", "title"));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        assertThrows(NotLoggedInException.class, () -> bookService.getBookContent(1L));
     }
 
     @Test
     void getBookContent_notPurchasedBook_throwsException() {
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.empty());
-        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
-        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
+        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent(1L));
     }
 
     @Test
@@ -202,34 +194,35 @@ public class BookServiceTest {
         when(purchase.hasExpired()).thenReturn(true);
         when(purchase.getIsBorrowed()).thenReturn(true);
 
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(new User()));
+        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
         when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchase));
-        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
-        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent("username", "title"));
+        assertThrows(BookNotInStockException.class, () -> bookService.getBookContent(1L));
     }
 
     @Test
     void getBookContent_validInput_returnsContent() {
         String username = "username";
         String title = "title";
+        Long id = 2L;
 
         var user = new User();
+        user.setUsername(username);
         var purchase = new PurchaseItem();
         var book = new Book();
         purchase.setBook(book);
         purchase.setIsBorrowed(false);
 
         book.setContent("content");
+        book.setId(id);
         book.setTitle(title);
 
-        when(bookRepository.findByTitle(title)).thenReturn(Optional.of(book));
-        when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
+        when(bookRepository.findById(id)).thenReturn(Optional.of(book));
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsernameAndTitle(username, title)).thenReturn(Optional.of(purchase));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
-        var bookContentDto = bookService.getBookContent(username, title);
+        var bookContentDto = bookService.getBookContent(id);
 
         assertEquals(title, bookContentDto.getTitle());
         assertEquals(book.getContent(), bookContentDto.getContent());
