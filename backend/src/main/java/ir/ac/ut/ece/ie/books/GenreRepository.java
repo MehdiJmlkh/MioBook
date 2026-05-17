@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.books;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -29,4 +30,9 @@ public class GenreRepository {
         return addGenreByName(name);
     }
 
+    public List<String> getAllGenreNames() {
+        return genres.stream()
+                .map(Genre::getName)
+                .toList();
+    }
 }

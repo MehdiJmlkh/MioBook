@@ -109,7 +109,7 @@ public class BookService {
     }
 
     public List<String> getAllGenres() {
-        return bookRepository.getAllGenres();
+        return genreRepository.getAllGenreNames();
     }
 
     public List<BookDto> getAllBooks() {

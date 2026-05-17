@@ -100,14 +100,6 @@ public class BookRepository {
                 .toList();
     }
 
-    public List<String> getAllGenres() {
-        return books.stream()
-                .map(Book::getGenreNames)
-                .flatMap(Set::stream)
-                .distinct()
-                .toList();
-    }
-
     public List<Book> getAll() {
         return books.stream().toList();
     }
