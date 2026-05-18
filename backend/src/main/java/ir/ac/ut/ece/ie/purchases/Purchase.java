@@ -30,5 +30,6 @@ public class Purchase {
     @JoinColumn(name = "customer_id")
     private User user;
 
+    @OneToMany(mappedBy = "purchase")
     private Set<PurchaseItem> items = new LinkedHashSet<>();
 }

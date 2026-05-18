@@ -37,6 +37,10 @@ public class PurchaseItem {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @ManyToOne
+    @JoinColumn(name = "purchase_id")
+    private Purchase purchase;
+
     public boolean hasExpired() {
         if (!isBorrowed) {
             return false;
