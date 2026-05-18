@@ -1,16 +1,33 @@
 package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.books.Book;
+import jakarta.persistence.*;
 import lombok.*;
 
 
 @Getter
 @Setter
+@Entity
+@Table(name = "cart_items")
 public class CartItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "is_borrowed")
     private Boolean isBorrowed;
+
+    @Column(name = "borrow_days")
     private Integer borrowDays;
-    private Book book;
+
+    @Column(name = "price")
     private Integer price;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
 
     public static CartItem BuyCartItem(Book book) {
         var cartItem = new CartItem();
