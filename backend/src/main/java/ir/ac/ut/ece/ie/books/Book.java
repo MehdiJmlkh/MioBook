@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.reviews.Review;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,16 +16,38 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
-    private Author author;
+
+    @Column(name = "publisher")
     private String publisher;
+
+    @Column(name = "year")
     private Integer year;
+
+    @Column(name = "price")
     private Integer price;
+
+    @Column(name = "synopsis")
     private String synopsis;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "total_buys")
     private int totalBuys = 0;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     private Set<Genre> genres = new LinkedHashSet<>();
     private Set<Review> reviews = new LinkedHashSet<>();
