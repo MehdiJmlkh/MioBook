@@ -23,7 +23,7 @@ public class Cart {
     @MapsId
     private User user;
 
-
+    @OneToMany(mappedBy = "cart")
     private List<CartItem> items = new ArrayList<>();
 
     public boolean contains(Book book) {

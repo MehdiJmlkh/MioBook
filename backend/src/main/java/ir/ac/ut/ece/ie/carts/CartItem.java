@@ -28,6 +28,9 @@ public class CartItem {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     public static CartItem BuyCartItem(Book book) {
         var cartItem = new CartItem();

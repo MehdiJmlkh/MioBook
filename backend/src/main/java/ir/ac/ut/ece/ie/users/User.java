@@ -26,7 +26,6 @@ public class User {
     @Column(name = "email")
     private String email;
 
-
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
