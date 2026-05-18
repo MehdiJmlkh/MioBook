@@ -49,6 +49,12 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
+    @ManyToMany
+    @JoinTable(
+        name = "book_genres",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private Set<Genre> genres = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "book")
