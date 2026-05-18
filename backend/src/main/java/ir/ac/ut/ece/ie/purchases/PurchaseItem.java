@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.purchases;
 
 import ir.ac.ut.ece.ie.books.Book;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,13 +13,29 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "purchased_items")
 public class PurchaseItem {
-    private Book book;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "is_borrowed")
     private Boolean isBorrowed;
+
+    @Column(name = "borrow_days")
     private Integer borrowDays;
+
+    @Column(name = "price")
     private Integer price;
+
+    @Column(name = "date")
     private LocalDateTime date;
 
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     public boolean hasExpired() {
         if (!isBorrowed) {
