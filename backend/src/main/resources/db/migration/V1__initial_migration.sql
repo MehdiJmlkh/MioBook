@@ -10,17 +10,20 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     address_id BIGINT NOT NULL,
-    FOREIGN KEY (address_id) REFERENCES addresses(id)
+    CONSTRAINT fk_users_address
+        FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 
 CREATE TABLE admins (
     id BIGINT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES users(id)
+    CONSTRAINT fk_admins_user
+        FOREIGN KEY (id) REFERENCES users(id)
 );
 
 CREATE TABLE customers (
     id BIGINT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES users(id)
+    CONSTRAINT fk_customers_user
+        FOREIGN KEY (id) REFERENCES users(id)
 );
 
 CREATE TABLE authors (
@@ -32,7 +35,8 @@ CREATE TABLE authors (
     died DATE,
     image_link VARCHAR(255) NOT NULL,
     admin_id BIGINT NOT NULL,
-    FOREIGN KEY (admin_id) REFERENCES admins(id)
+    CONSTRAINT fk_authors_admin
+        FOREIGN KEY (admin_id) REFERENCES admins(id)
 );
 
 CREATE TABLE books (
@@ -46,8 +50,10 @@ CREATE TABLE books (
     total_buys BIGINT DEFAULT 0,
     author_id BIGINT NOT NULL,
     admin_id BIGINT NOT NULL,
-    FOREIGN KEY (author_id) REFERENCES authors(id),
-    FOREIGN KEY (admin_id) REFERENCES admins(id)
+    CONSTRAINT fk_books_author
+        FOREIGN KEY (author_id) REFERENCES authors(id),
+    CONSTRAINT fk_books_admin
+        FOREIGN KEY (admin_id) REFERENCES admins(id)
 );
 
 CREATE TABLE genres (
@@ -59,14 +65,17 @@ CREATE TABLE book_genres (
     book_id BIGINT NOT NULL,
     genre_id TINYINT NOT NULL,
     PRIMARY KEY (book_id, genre_id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
-    FOREIGN KEY (genre_id) REFERENCES genres(id)
+    CONSTRAINT fk_book_genres_book
+        FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+    CONSTRAINT fk_book_genres_genre
+        FOREIGN KEY (genre_id) REFERENCES genres(id)
 );
 
 CREATE TABLE wallets (
     customer_id BIGINT PRIMARY KEY,
     balance DECIMAL(10,2) DEFAULT 0,
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    CONSTRAINT fk_wallets_customer
+        FOREIGN KEY (customer_id) REFERENCES customers(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -78,8 +87,10 @@ CREATE TABLE reviews (
     date DATE NOT NULL,
     customer_id BIGINT NOT NULL,
     book_id BIGINT NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+    CONSTRAINT fk_reviews_customer
+        FOREIGN KEY (customer_id) REFERENCES customers(id),
+    CONSTRAINT fk_reviews_book
+        FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
 );
 
 CREATE TABLE purchased_books (
@@ -90,8 +101,10 @@ CREATE TABLE purchased_books (
     date DATETIME NOT NULL,
     book_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE RESTRICT,
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    CONSTRAINT fk_purchased_books_book
+        FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE RESTRICT,
+    CONSTRAINT fk_purchased_books_customer
+        FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
 CREATE TABLE cart_items (
@@ -101,7 +114,8 @@ CREATE TABLE cart_items (
     price DECIMAL(10,2) NOT NULL,
     book_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
-    FOREIGN KEY (book_id) REFERENCES books(id),
-    CONSTRAINT fk_cart_items_customers
+    CONSTRAINT fk_cart_items_book
+        FOREIGN KEY (book_id) REFERENCES books(id),
+    CONSTRAINT fk_cart_items_customer
         FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
