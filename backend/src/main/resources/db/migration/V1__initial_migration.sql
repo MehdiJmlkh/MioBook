@@ -102,5 +102,6 @@ CREATE TABLE cart_items (
     book_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
     FOREIGN KEY (book_id) REFERENCES books(id),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    CONSTRAINT fk_cart_items_customers
+        FOREIGN KEY (customer_id) REFERENCES customers(id)
 );

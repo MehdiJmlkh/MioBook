@@ -4,6 +4,6 @@ CREATE TABLE carts (
 );
 
 ALTER TABLE cart_items
-DROP FOREIGN KEY cart_items_ibfk_2,
+DROP FOREIGN KEY fk_cart_items_customers,
     CHANGE COLUMN customer_id cart_id BIGINT NOT NULL,
     ADD FOREIGN KEY (cart_id) REFERENCES carts(customer_id) ON DELETE CASCADE;
