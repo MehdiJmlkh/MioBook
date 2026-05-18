@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.users.User;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,19 @@ import java.util.List;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "carts")
 public class Cart {
+    @Id
+    @Column(name = "customer_id")
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "customer_id")
+    @MapsId
     private User user;
+
+
     private List<CartItem> items = new ArrayList<>();
 
     public boolean contains(Book book) {
