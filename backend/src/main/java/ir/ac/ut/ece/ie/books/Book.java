@@ -50,6 +50,8 @@ public class Book {
     private Author author;
 
     private Set<Genre> genres = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "book")
     private Set<Review> reviews = new LinkedHashSet<>();
 
     public Set<String> getGenreNames() {
