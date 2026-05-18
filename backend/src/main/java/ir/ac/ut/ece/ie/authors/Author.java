@@ -1,11 +1,13 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.books.Book;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -34,4 +36,7 @@ public class Author {
 
     @Column(name = "image_link")
     private String imageLink;
+
+    @OneToMany(mappedBy = "author")
+    private Set<Book> books = new LinkedHashSet<>();
 }
