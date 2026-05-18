@@ -55,10 +55,10 @@ public class CartService {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = userRepository.findByUsername(request.getUsername())
+        userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        customerRepository.findByUsername(request.getUsername())
+        var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
         cartRepository.findByUser(user).ifPresent(
@@ -79,10 +79,10 @@ public class CartService {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = userRepository.findByUsername(request.getUsername())
+        userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        customerRepository.findByUsername(request.getUsername())
+        var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
         cartRepository.findByUser(user).ifPresent(
