@@ -4,8 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring",
-        builder = @org.mapstruct.Builder(disableBuilder = true))
+        builder = @org.mapstruct.Builder(disableBuilder = true),
+        uses = AddressMapper.class)
 public interface UserMapper {
     Admin toAdmin(AddUserRequest request);
+
     Customer toCustomer(AddUserRequest request);
 }
