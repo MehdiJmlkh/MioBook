@@ -97,7 +97,7 @@ public class AuthorServiceTest {
 
         authorService.addAuthor(request);
 
-        verify(authorRepository).addAuthor(argThat(author ->
+        verify(authorRepository).save(argThat(author ->
                 author.getName().equals(request.getName()) &&
                 author.getPenName().equals(request.getPenName()) &&
                 author.getBorn().equals(LocalDate.of(2020, 1, 1)) &&
