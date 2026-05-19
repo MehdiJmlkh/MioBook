@@ -13,14 +13,20 @@ import java.util.Set;
 @Table(name = "customers")
 @PrimaryKeyJoinColumn(name = "id")
 public class Customer extends User {
-    @OneToOne(mappedBy = "customer")
-    private Wallet wallet = new Wallet();
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    private Wallet wallet;
 
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
     @OneToMany(mappedBy = "user")
     private Set<Purchase> purchases;
+
+    public void addEmptyWallet() {
+        wallet = new Wallet();
+        wallet.setBalance(0);
+        wallet.setCustomer(this);
+    }
 
     public void addCredit(Integer amount) {
         wallet.addCredit(amount);

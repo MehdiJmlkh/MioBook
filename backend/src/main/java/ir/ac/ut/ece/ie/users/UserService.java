@@ -33,7 +33,7 @@ public class UserService {
         if (request.getRole().equals("customer")) {
             var customer = userMapper.toCustomer(request);
             customerRepository.save(customer);
-            customer.setBalance(0);
+            customer.addEmptyWallet();
             user = customer;
         }
         else {
