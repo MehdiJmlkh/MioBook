@@ -111,11 +111,16 @@ public class CartServiceTest {
 
         cartService.addItemToCart(request);
 
-        verify(cartRepository).addItemToCart(eq(user), argThat( item ->
-                item.getIsBorrowed().equals(false) &&
-                item.getBook().equals(book) &&
-                item.getPrice().equals(book.getPrice())
-        ));
+        var captor = ArgumentCaptor.forClass(Cart.class);
+        verify(cartRepository).save(captor.capture());
+        var newCart = captor.getValue();
+
+        assertEquals(1, newCart.getItems().size());
+
+        var cartItem = newCart.getItems().get(0);
+        assertEquals(false, cartItem.getIsBorrowed());
+        assertEquals(book, cartItem.getBook());
+        assertEquals(book.getPrice(), cartItem.getPrice());
     }
 
     @Test
@@ -306,7 +311,7 @@ public class CartServiceTest {
 
         assertEquals(10, user.getBalance());
 
-        verify(cartRepository).removeCart(eq(cart));
+        verify(cartRepository).delete(eq(cart));
 
         assertEquals(1, purchaseSummary.getBookCount());
         assertEquals(100, purchaseSummary.getTotalCost());
@@ -356,13 +361,17 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(cartRepository.findByUser(user)).thenReturn(Optional.of(new Cart()));
 
         cartService.addBorrowedItemToCart(request);
 
-        var captor = ArgumentCaptor.forClass(CartItem.class);
-        verify(cartRepository).addItemToCart(eq(user), captor.capture());
-        var cartItem = captor.getValue();
+        var captor = ArgumentCaptor.forClass(Cart.class);
+        verify(cartRepository).save(captor.capture());
+        var cart = captor.getValue();
 
+        assertEquals(1, cart.getItems().size());
+
+        var cartItem = cart.getItems().get(0);
         assertTrue(cartItem.getIsBorrowed());
         assertEquals(5, cartItem.getBorrowDays());
         assertEquals(book, cartItem.getBook());

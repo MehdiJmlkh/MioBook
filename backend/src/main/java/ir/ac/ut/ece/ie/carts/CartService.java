@@ -70,9 +70,11 @@ public class CartService {
         );
 
         var cartItem = CartItem.BuyCartItem(book);
-        cartRepository.addItemToCart(user, cartItem);
+        var cart = cartRepository.findByUser(user).orElseThrow();
+        cart.addItem(cartItem);
+        cartRepository.save(cart);
 
-        return cartRepository.findByUser(user).orElseThrow();
+        return cart;
     }
 
     public void addBorrowedItemToCart(BorrowBookRequest request) {
@@ -95,7 +97,9 @@ public class CartService {
 
         var cartItem = CartItem.BorrowCartItem(book, request.getDays());
 
-        cartRepository.addItemToCart(user, cartItem);
+        var cart = cartRepository.findByUser(user).orElseThrow();
+        cart.addItem(cartItem);
+        cartRepository.save(cart);
     }
 
     public void removeItemFromCart(Long bookId) {
@@ -151,7 +155,7 @@ public class CartService {
         purchase.setTotalCost(cart.getTotalPrice());
 
         user.withdrawCredit(cart.getTotalPrice());
-        cartRepository.removeCart(cart);
+        cartRepository.delete(cart);
         purchaseRepository.addPurchase(purchase);
 
         return PurchaseSummaryDto.builder()

@@ -1,42 +1,10 @@
 package ir.ac.ut.ece.ie.carts;
 
-import ir.ac.ut.ece.ie.users.Customer;
 import ir.ac.ut.ece.ie.users.User;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Set;
 
-@Repository
-public class CartRepository {
-    private final Set<Cart> carts = new LinkedHashSet<>();
-
-    public void addItemToCart(Customer user, CartItem item) {
-        var cart = getCart(user);
-        cart.addItem(item);
-    }
-
-    public Optional<Cart> findByUser(User user) {
-        return carts.stream()
-                .filter(cart -> cart.getUser() == user)
-                .findFirst();
-    }
-
-    public void removeCart(Cart cart) {
-        carts.remove(cart);
-    }
-
-    private Cart getCart(Customer user) {
-        var cart =  carts.stream()
-                .filter(c -> c.getUser() == user)
-                .findFirst().orElse(null);
-        if (cart == null) {
-            cart = new Cart();
-            cart.setUser(user);
-            user.setCart(cart);
-            carts.add(cart);
-        }
-        return cart;
-    }
+public interface CartRepository extends CrudRepository<Cart, Long> {
+    Optional<Cart> findByUser(User user);
 }
