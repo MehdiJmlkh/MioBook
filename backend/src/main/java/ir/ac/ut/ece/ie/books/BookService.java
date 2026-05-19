@@ -71,8 +71,10 @@ public class BookService {
         }
 
         var genres = request.getGenres().stream()
-                        .map(genreRepository::getGenreByName)
-                        .collect(Collectors.toSet());
+                .map(name -> genreRepository.findByName(name)
+                        .orElseGet(() -> new Genre(name)))
+                .collect(Collectors.toSet());
+
         var book = bookMapper.toBook(request);
         book.setAuthor(author);
         book.setGenres(genres);
