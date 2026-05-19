@@ -53,7 +53,7 @@ public class UserServiceTest {
 
         userService.addUser(request);
 
-        verify(userRepository).addUser(argThat(user ->
+        verify(userRepository).save(argThat(user ->
                 user.getUsername().equals(request.getUsername()) &&
                 user.getPassword().equals(request.getPassword()) &&
                 user.getEmail().equals(request.getEmail()) &&

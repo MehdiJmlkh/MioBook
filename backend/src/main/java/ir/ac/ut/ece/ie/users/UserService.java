@@ -42,7 +42,7 @@ public class UserService {
             user = admin;
         }
 
-        userRepository.addUser(user);
+        userRepository.save(user);
         return authMapper.toDto(user);
     }
 }
