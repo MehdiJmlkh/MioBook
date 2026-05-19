@@ -17,6 +17,8 @@ import static org.mockito.Mockito.when;
 public class UserServiceTest {
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private CustomerRepository customerRepository;
 
     @Autowired
     private UserService userService;
@@ -53,7 +55,7 @@ public class UserServiceTest {
 
         userService.addUser(request);
 
-        verify(userRepository).save(argThat(user ->
+        verify(customerRepository).save(argThat(user ->
                 user.getUsername().equals(request.getUsername()) &&
                 user.getPassword().equals(request.getPassword()) &&
                 user.getEmail().equals(request.getEmail()) &&
