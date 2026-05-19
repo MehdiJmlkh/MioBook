@@ -1,34 +1,17 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
-public class BookRepository {
-    private Set<Book> books = new LinkedHashSet<>();
-    private Long lastId = 0L;
-
-    public void addBook(Book book) {
-        book.setId(lastId++);
-        books.add(book);
-    }
-
-    public Optional<Book> findById(Long id) {
-        return books.stream()
-                .filter(book -> book.getId().equals(id))
-                .findFirst();
-    }
-
-    public Optional<Book> findByTitle(String title) {
-        return books.stream()
-                .filter(book -> book.getTitle().equals(title))
-                .findFirst();
-    }
+public interface BookRepository extends JpaRepository<Book, Long> {
+    Optional<Book> findByTitle(String title);
 
 
-    public BookPage findByQuery(SearchQuery query, Integer page, Integer size) {
+    default BookPage findByQuery(SearchQuery query, Integer page, Integer size) {
         String title = query.getTitle();
         String author = query.getAuthor();
         String genre = query.getGenre();
@@ -41,7 +24,7 @@ public class BookRepository {
         if (query.getOrder() == SortOrder.Descending) {
             comparator = comparator.reversed();
         }
-
+        var books = findAll();
         var filteredBooks = books.stream()
                 .filter(book -> title == null || book.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .filter(book -> author == null || book.getAuthor().getName().toLowerCase().contains(author.toLowerCase()))
@@ -62,49 +45,52 @@ public class BookRepository {
         return new BookPage(filteredBooks.subList(fromPage, toPage), filteredBooks.size());
     }
 
-    public List<Book> getTopRated(int limit) {
+    default List<Book> getTopRated(int limit) {
+        var books = findAll();
         return books.stream()
                 .sorted(Comparator.comparing(Book::getAverageRating).reversed())
                 .limit(limit)
                 .toList();
     }
 
-    public List<Book> getNewReleases(int limit) {
+    default List<Book> getNewReleases(int limit) {
+        var books = findAll();
         return books.stream()
                 .sorted(Comparator.comparing(Book::getYear).reversed())
                 .limit(limit)
                 .toList();
     }
 
-    public List<Book> findByTitleLikes(String title) {
+    default List<Book> findByTitleLikes(String title) {
+        var books = findAll();
         return books.stream()
                 .filter(book -> book.getTitle().contains(title))
                 .toList();
     }
 
-    public List<Book> findByAuthorLikes(String author) {
+    default List<Book> findByAuthorLikes(String author) {
+        var books = findAll();
         return books.stream()
                 .filter(book -> book.getAuthor().getName().contains(author))
                 .toList();
     }
 
-    public List<Book> findByGenre(String genre) {
+    default List<Book> findByGenre(String genre) {
+        var books = findAll();
         return books.stream()
                 .filter(book -> book.getGenres().contains(genre))
                 .toList();
     }
 
-    public List<Book> findByYear(Integer from, Integer to) {
+    default List<Book> findByYear(Integer from, Integer to) {
+        var books = findAll();
         return books.stream()
                 .filter(book -> book.publishedInRange(from, to))
                 .toList();
     }
 
-    public List<Book> getAll() {
-        return books.stream().toList();
-    }
-
-    public BookPage findByAuthor(Author author, Integer page, Integer size) {
+    default BookPage findByAuthor(Author author, Integer page, Integer size) {
+        var books = findAll();
         var filteredBooks = books.stream()
                 .filter(book -> book.getAuthor().equals(author))
                 .toList();

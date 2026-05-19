@@ -78,7 +78,7 @@ public class BookService {
         book.setGenres(genres);
         book.setReviews(new LinkedHashSet<>());
 
-        bookRepository.addBook(book);
+        bookRepository.save(book);
         return bookMapper.toDto(book);
     }
 
@@ -113,7 +113,7 @@ public class BookService {
     }
 
     public List<BookDto> getAllBooks() {
-        return bookRepository.getAll().stream()
+        return bookRepository.findAll().stream()
                 .map(bookMapper::toDto)
                 .toList();
     }
