@@ -54,7 +54,7 @@ public class Book {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
         name = "book_genres",
         joinColumns = @JoinColumn(name = "book_id"),
