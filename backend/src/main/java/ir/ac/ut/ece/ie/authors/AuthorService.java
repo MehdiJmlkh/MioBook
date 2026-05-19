@@ -41,12 +41,10 @@ public class AuthorService {
             throw new AuthorNameAlreadyExistsException();
         }
 
-        var user = userRepository.findByUsername(request.getUsername()).orElse(null);
-        if (user == null) {
-            throw new UserNotFoundException();
-        }
+        userRepository.findByUsername(request.getUsername())
+                .orElseThrow(UserNotFoundException::new);
 
-        adminRepository.findByUsername(request.getUsername())
+        var user = adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotAdminException::new);
 
         if (!authRepository.isLoggedIn(user)) {
@@ -54,12 +52,13 @@ public class AuthorService {
         }
 
         var author = authorMapper.toAuthor(request);
-        authorRepository.addAuthor(author);
+        author.setAdmin(user);
+        authorRepository.save(author);
         return author;
     }
 
     public List<Author> getAllAuthors() {
-        return authorRepository.getAll();
+        return authorRepository.findAll();
     }
 
     public BookPageDto getBooksByAuthor(Long id, Integer page, Integer size) {

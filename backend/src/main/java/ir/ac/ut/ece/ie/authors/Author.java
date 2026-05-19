@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.books.Book;
+import ir.ac.ut.ece.ie.users.Admin;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,4 +40,8 @@ public class Author {
 
     @OneToMany(mappedBy = "author")
     private Set<Book> books = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
 }
