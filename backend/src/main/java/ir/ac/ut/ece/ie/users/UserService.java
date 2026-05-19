@@ -38,7 +38,7 @@ public class UserService {
         }
         else {
             var admin = userMapper.toAdmin(request);
-            adminRepository.addAdmin(admin);
+            adminRepository.save(admin);
             user = admin;
         }
 
