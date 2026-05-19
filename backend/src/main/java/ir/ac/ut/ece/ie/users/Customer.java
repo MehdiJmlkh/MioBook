@@ -22,6 +22,11 @@ public class Customer extends User {
     @OneToMany(mappedBy = "user")
     private Set<Purchase> purchases;
 
+    public Customer() {
+        addEmptyWallet();
+        addEmptyCart();
+    }
+
     public void addEmptyWallet() {
         wallet = new Wallet();
         wallet.setBalance(0);
