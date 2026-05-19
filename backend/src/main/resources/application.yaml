@@ -5,3 +5,5 @@ spring:
     url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
     username: root
     password: NewPassword123!
+  jpa:
+    show-sql: true
