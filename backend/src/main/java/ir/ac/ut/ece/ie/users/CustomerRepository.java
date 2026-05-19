@@ -1,23 +1,10 @@
 package ir.ac.ut.ece.ie.users;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 
-import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Set;
 
-@Repository
-public class CustomerRepository {
-    private final Set<Customer> customers = new LinkedHashSet<>();
-
-    public void addCustomer(Customer customer) {
-        customers.add(customer);
-    }
-
-    public Optional<Customer> findByUsername(String username) {
-        return customers.stream()
-                .filter(customer -> customer.getUsername().equals(username))
-                .findFirst();
-    }
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
+    Optional<Customer> findByUsername(String username);
 }
