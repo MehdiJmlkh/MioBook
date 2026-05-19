@@ -29,6 +29,6 @@ public class AuthRepository {
         if (this.user == null) {
             return false;
         }
-        return this.user == user;
+        return this.user.equals(user);
     }
 }
