@@ -61,34 +61,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
                 .toList();
     }
 
-    default List<Book> findByTitleLikes(String title) {
-        var books = findAll();
-        return books.stream()
-                .filter(book -> book.getTitle().contains(title))
-                .toList();
-    }
-
-    default List<Book> findByAuthorLikes(String author) {
-        var books = findAll();
-        return books.stream()
-                .filter(book -> book.getAuthor().getName().contains(author))
-                .toList();
-    }
-
-    default List<Book> findByGenre(String genre) {
-        var books = findAll();
-        return books.stream()
-                .filter(book -> book.getGenres().contains(genre))
-                .toList();
-    }
-
-    default List<Book> findByYear(Integer from, Integer to) {
-        var books = findAll();
-        return books.stream()
-                .filter(book -> book.publishedInRange(from, to))
-                .toList();
-    }
-
     default BookPage findByAuthor(Author author, Integer page, Integer size) {
         var books = findAll();
         var filteredBooks = books.stream()
