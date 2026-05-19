@@ -60,10 +60,10 @@ public class BookService {
         var author = authorRepository.findByName(request.getAuthor())
                 .orElseThrow(AuthorNotFoundException::new);
 
-        var user = userRepository.findByUsername(request.getUsername())
+        userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        adminRepository.findByUsername(request.getUsername())
+        var user = adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotAdminException::new);
 
         if (!authRepository.isLoggedIn(user)) {
@@ -77,6 +77,7 @@ public class BookService {
         book.setAuthor(author);
         book.setGenres(genres);
         book.setReviews(new LinkedHashSet<>());
+        book.setAdmin(user);
 
         bookRepository.save(book);
         return bookMapper.toDto(book);

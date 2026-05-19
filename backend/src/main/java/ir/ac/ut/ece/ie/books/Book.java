@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.reviews.Review;
+import ir.ac.ut.ece.ie.users.Admin;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,6 +49,10 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
 
     @ManyToMany
     @JoinTable(
