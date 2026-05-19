@@ -16,7 +16,7 @@ public class Customer extends User {
     @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST)
     private Wallet wallet;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Cart cart;
 
     @OneToMany(mappedBy = "user")
@@ -26,6 +26,11 @@ public class Customer extends User {
         wallet = new Wallet();
         wallet.setBalance(0);
         wallet.setCustomer(this);
+    }
+
+    public void addEmptyCart() {
+        cart = new Cart();
+        cart.setUser(this);
     }
 
     public void addCredit(Integer amount) {

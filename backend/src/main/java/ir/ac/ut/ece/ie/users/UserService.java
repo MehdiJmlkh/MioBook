@@ -32,8 +32,9 @@ public class UserService {
         User user;
         if (request.getRole().equals("customer")) {
             var customer = userMapper.toCustomer(request);
-            customerRepository.save(customer);
             customer.addEmptyWallet();
+            customer.addEmptyCart();
+            customerRepository.save(customer);
             user = customer;
         }
         else {
