@@ -32,6 +32,10 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    Role getRole() {
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;

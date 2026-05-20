@@ -53,4 +53,9 @@ public class Customer extends User {
     public void setBalance(Integer balance) {
         wallet.setBalance(balance);
     }
+
+    @Override
+    public Role getRole(){
+        return Role.CUSTOMER;
+    }
 }

@@ -19,7 +19,7 @@ public class UserService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        return authMapper.toDto(user);
+        return userMapper.toDto(user);
     }
 
     public UserDto addUser(AddUserRequest request) {
@@ -43,6 +43,6 @@ public class UserService {
             user = admin;
         }
 
-        return authMapper.toDto(user);
+        return userMapper.toDto(user);
     }
 }
