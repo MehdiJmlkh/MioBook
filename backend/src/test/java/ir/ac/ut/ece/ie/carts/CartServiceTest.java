@@ -99,6 +99,7 @@ public class CartServiceTest {
 
         var book = new Book();
         book.setPrice(10);
+        book.setAuthor(TestDataFactory.sampleAuthor());
 
         var user = TestDataFactory.sampleCustomerUser();
 

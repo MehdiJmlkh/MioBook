@@ -67,4 +67,11 @@ public class TestDataFactory {
                 .reviews(Set.of())
                 .build();
     }
+
+    public static Author sampleAuthor() {
+        var author = new Author();
+        author.setId(1L);
+        author.setName("author's name");
+        return author;
+    }
 }
