@@ -28,7 +28,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
     private Address address;
 
