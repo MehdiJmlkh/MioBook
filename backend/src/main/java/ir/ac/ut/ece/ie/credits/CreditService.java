@@ -28,6 +28,7 @@ public class CreditService {
         }
 
         user.addCredit(request.getCredit());
+        customerRepository.save(user);
         return user.getBalance();
     }
 

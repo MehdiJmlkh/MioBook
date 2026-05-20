@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "customers")
 @PrimaryKeyJoinColumn(name = "id")
 public class Customer extends User {
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Wallet wallet;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
