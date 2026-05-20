@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.auth;
 
+import ir.ac.ut.ece.ie.users.UserMapper;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     private final UserRepository userRepository;
     private final AuthRepository authRepository;
-    private final AuthMapper authMapper;
+    private final UserMapper userMapper;
 
     public UserDto login(LoginRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
@@ -19,15 +20,15 @@ public class AuthService {
             throw new UsernameOrPasswordIncorrectException();
         }
 
-        var loggedInUser = authRepository.getAuthenticatedUser().orElse(null);
-
-        if (loggedInUser != null && loggedInUser != user) {
-            throw new AnotherUserAlreadyLoggedInException();
-        }
+        authRepository.getAuthenticatedUser().ifPresent(loggedInUser -> {
+            if (loggedInUser != user) {
+                throw new AnotherUserAlreadyLoggedInException();
+            }
+        });
 
         authRepository.setAuthenticatedUser(user);
 
-        return authMapper.toDto(user);
+        return userMapper.toDto(user);
     }
 
     public void logout() {
@@ -45,6 +46,6 @@ public class AuthService {
             return null;
         }
 
-        return authMapper.toDto(user);
+        return userMapper.toDto(user);
     }
 }

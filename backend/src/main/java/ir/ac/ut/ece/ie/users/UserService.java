@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.users;
 
-import ir.ac.ut.ece.ie.auth.AuthMapper;
 import ir.ac.ut.ece.ie.auth.UserDto;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,6 @@ public class UserService {
     private final CustomerRepository customerRepository;
     private final AdminRepository adminRepository;
     private final UserMapper userMapper;
-    private final AuthMapper authMapper;
 
     public UserDto getUser(String username) {
         var user = userRepository.findByUsername(username)
