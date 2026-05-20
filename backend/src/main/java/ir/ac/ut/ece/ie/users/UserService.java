@@ -15,9 +15,11 @@ public class UserService {
     private final UserMapper userMapper;
     private final AuthMapper authMapper;
 
-    public User getUser(String username) {
-        return userRepository.findByUsername(username)
+    public UserDto getUser(String username) {
+        var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
+
+        return authMapper.toDto(user);
     }
 
     public UserDto addUser(AddUserRequest request) {
