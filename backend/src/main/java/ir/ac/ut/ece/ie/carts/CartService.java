@@ -51,7 +51,7 @@ public class CartService {
         return cartDto;
     }
 
-    public Cart addItemToCart(AddCartRequest request) {
+    public CartItemDto addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
@@ -74,7 +74,7 @@ public class CartService {
         cart.addItem(cartItem);
         cartRepository.save(cart);
 
-        return cart;
+        return CartItemDto.fromCartItem(cartItem);
     }
 
     public void addBorrowedItemToCart(BorrowBookRequest request) {

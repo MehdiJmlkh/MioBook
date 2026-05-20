@@ -18,7 +18,7 @@ public class CartController {
     }
 
     @PostMapping("/items")
-    public Cart addItemToCart(@RequestBody AddCartRequest request) {
+    public CartItemDto addItemToCart(@RequestBody AddCartRequest request) {
         return cartService.addItemToCart(request);
     }
 
