@@ -19,6 +19,8 @@ public class UserServiceTest {
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
+    @MockitoBean
+    private AdminRepository adminRepository;
 
     @Autowired
     private UserService userService;
@@ -44,7 +46,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void addUser_ValidInput_AddsUser() {
+    void addUser_ValidCustomer_SavesCustomer() {
         var request = AddUserRequest.builder()
                 .role("customer")
                 .username("username")
@@ -65,6 +67,27 @@ public class UserServiceTest {
     }
 
     @Test
+    void addUser_ValidAdmin_SavesAdmin() {
+        var request = AddUserRequest.builder()
+                .role("admin")
+                .username("username")
+                .password("1234")
+                .email("email@domain.com")
+                .address(new AddressDto("country", "city"))
+                .build();
+
+        userService.addUser(request);
+
+        verify(adminRepository).save(argThat(user ->
+                user.getUsername().equals(request.getUsername()) &&
+                        user.getPassword().equals(request.getPassword()) &&
+                        user.getEmail().equals(request.getEmail()) &&
+                        user.getAddress().getCountry().equals(request.getAddress().getCountry()) &&
+                        user.getAddress().getCity().equals(request.getAddress().getCity())
+        ));
+    }
+
+    @Test
     void getUser_userNotFound_throwsException() {
         assertThrows(UserNotFoundException.class, () -> userService.getUser("username"));
     }
@@ -76,7 +99,4 @@ public class UserServiceTest {
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         assertEquals(user, userService.getUser(user.getUsername()));
     }
-
 }
-
-
