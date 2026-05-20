@@ -61,16 +61,13 @@ public class CartService {
         var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
-        cartRepository.findByUser(user).ifPresent(
-            cart -> {
-                if (cart.getItems().size() >= 10) {
-                    throw new CartIsFullException();
-                }
-            }
-        );
+        var cart = cartRepository.findByUser(user).orElseThrow();
+
+        if (cart.getItems().size() >= 10) {
+            throw new CartIsFullException();
+        }
 
         var cartItem = CartItem.BuyCartItem(book);
-        var cart = cartRepository.findByUser(user).orElseThrow();
         cart.addItem(cartItem);
         cartRepository.save(cart);
 
