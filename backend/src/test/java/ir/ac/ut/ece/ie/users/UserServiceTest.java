@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.users;
 
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void addUser_ValidCustomer_SavesCustomer() {
+    void addUser_validCustomer_savesCustomer() {
         var request = AddUserRequest.builder()
                 .role("customer")
                 .username("username")
@@ -76,7 +77,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void addUser_ValidAdmin_SavesAdmin() {
+    void addUser_validAdmin_savesAdmin() {
         var request = AddUserRequest.builder()
                 .role("admin")
                 .username("username")
@@ -109,15 +110,26 @@ public class UserServiceTest {
     }
 
     @Test
-    void getUser_validInput_returnsUser() {
-        var user = new User();
-        user.setUsername("username");
-        user.setEmail("email@domain.com");
+    void getUser_validCustomer_returnsCustomer() {
+        var user = TestDataFactory.sampleCustomerUser();
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         var userDto = userService.getUser(user.getUsername());
 
         assertEquals(userDto.getUsername(), user.getUsername());
         assertEquals(userDto.getEmail(), user.getEmail());
+        assertEquals(userDto.getRole(), Role.CUSTOMER.toString());
+    }
+
+    @Test
+    void getUser_validAdmin_returnsAdmin() {
+        var user = TestDataFactory.sampleAdminUser();
+
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        var userDto = userService.getUser(user.getUsername());
+
+        assertEquals(userDto.getUsername(), user.getUsername());
+        assertEquals(userDto.getEmail(), user.getEmail());
+        assertEquals(userDto.getRole(), Role.ADMIN.toString());
     }
 }

@@ -16,12 +16,14 @@ public class TestDataFactory {
     public static Admin sampleAdminUser() {
         var user = new Admin();
         user.setUsername("username");
+        user.setEmail("username@domain.com");
         return user;
     }
 
     public static Customer sampleCustomerUser() {
         var user = new Customer();
         user.setUsername("username");
+        user.setEmail("username@domain.com");
         return user;
     }
 
