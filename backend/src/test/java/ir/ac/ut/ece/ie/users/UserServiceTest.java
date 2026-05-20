@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.users;
 
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -9,7 +10,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -55,15 +55,24 @@ public class UserServiceTest {
                 .address(new AddressDto("country", "city"))
                 .build();
 
-        userService.addUser(request);
+        var userDto = userService.addUser(request);
 
-        verify(customerRepository).save(argThat(user ->
-                user.getUsername().equals(request.getUsername()) &&
-                user.getPassword().equals(request.getPassword()) &&
-                user.getEmail().equals(request.getEmail()) &&
-                user.getAddress().getCountry().equals(request.getAddress().getCountry()) &&
-                user.getAddress().getCity().equals(request.getAddress().getCity())
-        ));
+        var captor = ArgumentCaptor.forClass(Customer.class);
+        verify(customerRepository).save(captor.capture());
+        var savedUser = captor.getValue();
+
+        assertEquals(request.getUsername(), savedUser.getUsername());
+        assertEquals(request.getPassword(), savedUser.getPassword());
+        assertEquals(request.getEmail(), savedUser.getEmail());
+        assertEquals(request.getAddress().getCountry(), savedUser.getAddress().getCountry());
+        assertEquals(request.getAddress().getCity(), savedUser.getAddress().getCity());
+        assertEquals(Role.CUSTOMER, savedUser.getRole());
+        assertNotNull(savedUser.getCart());
+        assertNotNull(savedUser.getWallet());
+
+        assertEquals(userDto.getUsername(), request.getUsername());
+        assertEquals(userDto.getEmail(), request.getEmail());
+        assertEquals(userDto.getRole(), Role.CUSTOMER.toString());
     }
 
     @Test
@@ -76,15 +85,22 @@ public class UserServiceTest {
                 .address(new AddressDto("country", "city"))
                 .build();
 
-        userService.addUser(request);
+        var userDto = userService.addUser(request);
 
-        verify(adminRepository).save(argThat(user ->
-                user.getUsername().equals(request.getUsername()) &&
-                        user.getPassword().equals(request.getPassword()) &&
-                        user.getEmail().equals(request.getEmail()) &&
-                        user.getAddress().getCountry().equals(request.getAddress().getCountry()) &&
-                        user.getAddress().getCity().equals(request.getAddress().getCity())
-        ));
+        var captor = ArgumentCaptor.forClass(Admin.class);
+        verify(adminRepository).save(captor.capture());
+        var savedUser = captor.getValue();
+
+        assertEquals(request.getUsername(), savedUser.getUsername());
+        assertEquals(request.getPassword(), savedUser.getPassword());
+        assertEquals(request.getEmail(), savedUser.getEmail());
+        assertEquals(request.getAddress().getCountry(), savedUser.getAddress().getCountry());
+        assertEquals(request.getAddress().getCity(), savedUser.getAddress().getCity());
+        assertEquals(Role.ADMIN, savedUser.getRole());
+
+        assertEquals(userDto.getUsername(), request.getUsername());
+        assertEquals(userDto.getEmail(), request.getEmail());
+        assertEquals(userDto.getRole(), Role.ADMIN.toString());
     }
 
     @Test
