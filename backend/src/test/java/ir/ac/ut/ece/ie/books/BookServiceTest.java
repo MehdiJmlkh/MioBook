@@ -121,7 +121,7 @@ public class BookServiceTest {
 
         bookService.addBook(request);
 
-        verify(bookRepository).addBook(argThat(book ->
+        verify(bookRepository).save(argThat(book ->
                 book.getTitle().equals(request.getTitle()) &&
                 book.getAuthor().equals(author) &&
                 book.getPublisher().equals(request.getPublisher()) &&
