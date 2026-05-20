@@ -36,7 +36,7 @@ public class AuthorService {
                 .orElseThrow(AuthorNotFoundException::new);
     }
 
-    public Author addAuthor(AddAuthorRequest request) {
+    public AuthorDto addAuthor(AddAuthorRequest request) {
         if (authorRepository.findByName(request.getName()).isPresent()) {
             throw new AuthorNameAlreadyExistsException();
         }
@@ -54,7 +54,7 @@ public class AuthorService {
         var author = authorMapper.toAuthor(request);
         author.setAdmin(user);
         authorRepository.save(author);
-        return author;
+        return authorMapper.toDto(author);
     }
 
     public List<Author> getAllAuthors() {

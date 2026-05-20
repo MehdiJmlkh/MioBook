@@ -33,7 +33,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public ResponseEntity<Author> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
+    public ResponseEntity<AuthorDto> addAuthor(@Valid @RequestBody AddAuthorRequest request) {
         System.out.println(request);
         var author = authorService.addAuthor(request);
 
