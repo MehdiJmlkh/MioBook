@@ -10,8 +10,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -108,5 +107,22 @@ public class AuthServiceTest {
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
         authService.logout();
         verify(authRepository).removeAuthenticatedUser();
+    }
+
+    @Test
+    void getLoggedInUser_notLoggedIn_returnsNull() {
+        var user = authService.getLoggedInUser();
+        assertNull(user);
+    }
+
+    @Test
+    void getLoggedInUser_loggedIn_returnsUserDto() {
+        var user = TestDataFactory.sampleCustomerUser();
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+
+        var userDto = authService.getLoggedInUser();
+        assertEquals(user.getUsername(), userDto.getUsername());
+        assertEquals(user.getEmail(), userDto.getEmail());
+        assertEquals(user.getRole().toString(), userDto.getRole());
     }
 }
