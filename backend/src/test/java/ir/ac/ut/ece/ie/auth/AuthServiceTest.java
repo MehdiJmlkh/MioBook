@@ -13,6 +13,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -89,11 +90,23 @@ public class AuthServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
         user.setPassword("correct");
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         var userDto = authService.login(request);
         assertEquals(user.getUsername(), userDto.getUsername());
         assertEquals(user.getEmail(), userDto.getEmail());
         assertEquals(user.getRole().toString(), userDto.getRole());
+    }
+
+    @Test
+    void logout_notLoggedIn_throwsException() {
+        assertThrows(NotLoggedInException.class, () -> authService.logout());
+    }
+
+    @Test
+    void logout_validInput_removesAuthenticatedUser() {
+        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
+        authService.logout();
+        verify(authRepository).removeAuthenticatedUser();
     }
 }
