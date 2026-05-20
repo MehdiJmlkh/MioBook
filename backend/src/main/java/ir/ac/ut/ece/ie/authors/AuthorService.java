@@ -26,11 +26,6 @@ public class AuthorService {
     private final AuthorMapper authorMapper;
     private final BookMapper bookMapper;
 
-    public Author getAuthor(String name) {
-        return authorRepository.findByName(name)
-                .orElseThrow(AuthorNotFoundException::new);
-    }
-
     public AuthorDto getAuthor(Long id) {
         var author =  authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
