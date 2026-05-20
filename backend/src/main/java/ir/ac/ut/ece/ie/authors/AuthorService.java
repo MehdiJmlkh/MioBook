@@ -31,9 +31,11 @@ public class AuthorService {
                 .orElseThrow(AuthorNotFoundException::new);
     }
 
-    public Author getAuthor(Long id) {
-        return authorRepository.findById(id)
+    public AuthorDto getAuthor(Long id) {
+        var author =  authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
+
+        return authorMapper.toDto(author);
     }
 
     public AuthorDto addAuthor(AddAuthorRequest request) {

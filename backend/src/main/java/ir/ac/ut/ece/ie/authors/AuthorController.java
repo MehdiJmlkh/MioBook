@@ -21,7 +21,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public Author getAuthor(@PathVariable(name = "id") Long id) {
+    public AuthorDto getAuthor(@PathVariable(name = "id") Long id) {
         return authorService.getAuthor(id);
     }
 
