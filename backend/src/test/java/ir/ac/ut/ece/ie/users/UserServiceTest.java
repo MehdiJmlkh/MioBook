@@ -96,7 +96,12 @@ public class UserServiceTest {
     void getUser_validInput_returnsUser() {
         var user = new User();
         user.setUsername("username");
+        user.setEmail("email@domain.com");
+
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
-        assertEquals(user, userService.getUser(user.getUsername()));
+        var userDto = userService.getUser(user.getUsername());
+
+        assertEquals(userDto.getUsername(), user.getUsername());
+        assertEquals(userDto.getEmail(), user.getEmail());
     }
 }
