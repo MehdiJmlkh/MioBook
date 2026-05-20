@@ -59,8 +59,10 @@ public class AuthorService {
         return authorMapper.toDto(author);
     }
 
-    public List<Author> getAllAuthors() {
-        return authorRepository.findAll();
+    public List<AuthorDto> getAllAuthors() {
+        return authorRepository.findAll().stream()
+                .map(authorMapper::toDto)
+                .toList();
     }
 
     public BookPageDto getBooksByAuthor(Long id, Integer page, Integer size) {
