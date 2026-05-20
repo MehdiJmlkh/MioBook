@@ -46,15 +46,15 @@ public class AuthorService {
         userRepository.findByUsername(request.getUsername())
                 .orElseThrow(UserNotFoundException::new);
 
-        var user = adminRepository.findByUsername(request.getUsername())
+        var admin = adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotAdminException::new);
 
-        if (!authRepository.isLoggedIn(user)) {
+        if (!authRepository.isLoggedIn(admin)) {
             throw new NotLoggedInException();
         }
 
         var author = authorMapper.toAuthor(request);
-        author.setAdmin(user);
+        author.setAdmin(admin);
         authorRepository.save(author);
         return authorMapper.toDto(author);
     }
