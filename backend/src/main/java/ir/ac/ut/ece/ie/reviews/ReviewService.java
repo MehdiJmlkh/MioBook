@@ -7,6 +7,7 @@ import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -22,7 +23,7 @@ public class ReviewService {
     private final CustomerRepository customerRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
-    private final PurchaseRepository purchaseRepository;
+    private final PurchaseItemRepository purchaseItemRepository;
     private final AuthRepository authRepository;
     private final ReviewMapper reviewMapper;
 
@@ -60,12 +61,15 @@ public class ReviewService {
         var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);
 
-        var purchase = purchaseRepository.findByUsernameAndTitle(username, bookTitle)
-                .orElseThrow(BookNotInStockException::new);
-
-        if (purchase.hasExpired()) {
+        var purchaseItems = purchaseItemRepository.findPurchaseItems(username, bookTitle);
+        if (purchaseItems.isEmpty()) {
             throw new BookNotInStockException();
         }
+        purchaseItems.forEach(purchaseItem -> {
+            if (purchaseItem.hasExpired()) {
+                throw new BookNotInStockException();
+            }
+        });
 
         reviewRepository.findByUserAndBook(user, book)
                 .ifPresent(reviewRepository::deleteReview);

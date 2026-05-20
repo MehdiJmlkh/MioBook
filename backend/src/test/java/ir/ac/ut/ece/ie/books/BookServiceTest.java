@@ -8,13 +8,12 @@ import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
+import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.reviews.Review;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.AdminRepository;
-import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -22,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -44,6 +44,8 @@ public class BookServiceTest {
     private BookRepository bookRepository;
     @MockitoBean
     private PurchaseRepository purchaseRepository;
+    @MockitoBean
+    private PurchaseItemRepository purchaseItemRepository;
     @MockitoBean
     private AuthRepository authRepository;
     @Autowired
@@ -188,7 +190,7 @@ public class BookServiceTest {
     void getBookContent_notPurchasedBook_throwsException() {
         when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
-        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.empty());
+        when(purchaseItemRepository.findPurchaseItems(any(), any())).thenReturn(Collections.emptyList());
 
         assertThrows(BookNotInStockException.class, () -> bookService.getBookContent(1L));
     }
@@ -202,7 +204,7 @@ public class BookServiceTest {
 
         when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
-        when(purchaseRepository.findByUsernameAndTitle(any(), any())).thenReturn(Optional.of(purchase));
+        when(purchaseItemRepository.findPurchaseItems(any(), any())).thenReturn(List.of(purchase));
 
         assertThrows(BookNotInStockException.class, () -> bookService.getBookContent(1L));
     }
@@ -226,7 +228,7 @@ public class BookServiceTest {
 
         when(bookRepository.findById(id)).thenReturn(Optional.of(book));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
-        when(purchaseRepository.findByUsernameAndTitle(username, title)).thenReturn(Optional.of(purchase));
+        when(purchaseItemRepository.findPurchaseItems(username, title)).thenReturn(List.of(purchase));
 
         var bookContentDto = bookService.getBookContent(id);
 

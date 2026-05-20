@@ -294,7 +294,7 @@ public class CartServiceTest {
         LocalDateTime after = LocalDateTime.now();
 
         var captor = ArgumentCaptor.forClass(Purchase.class);
-        verify(purchaseRepository).addPurchase(captor.capture());
+        verify(purchaseRepository).save(captor.capture());
 
         Purchase purchase = captor.getValue();
         PurchaseItem purchaseItem = purchase.getItems().iterator().next();

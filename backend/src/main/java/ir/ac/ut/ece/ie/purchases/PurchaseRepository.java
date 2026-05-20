@@ -1,32 +1,12 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
-@Repository
-public class PurchaseRepository {
-    private final Set<Purchase> purchases = new LinkedHashSet<>();
-
-    public void addPurchase(Purchase purchase) {
-        purchase.getItems().forEach(purchaseItem -> purchaseItem.getBook().IncrementBuys());
-        purchases.add(purchase);
-    }
-
-    public List<Purchase> findByUsername(String username) {
-        return purchases.stream()
-                .filter(purchase -> purchase.getUser().getUsername().equals(username))
-                .toList();
-    }
-
-    public Optional<PurchaseItem> findByUsernameAndTitle(String username, String title) {
-        return purchases.stream()
-                .filter(purchase -> purchase.getUser().getUsername().equals(username))
-                .flatMap(purchase -> purchase.getItems().stream())
-                .filter(purchaseItem -> purchaseItem.getBook().getTitle().equals(title))
-                .findFirst();
-    }
+public interface PurchaseRepository extends CrudRepository<Purchase, Long> {
+    @Query("select p from Purchase p where p.user.username = :username")
+    List<Purchase> findByUsername(@Param("username") String username);
 }

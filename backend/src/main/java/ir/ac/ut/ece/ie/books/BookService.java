@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.books;
 import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
+import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -25,7 +26,7 @@ public class BookService {
     private final UserRepository userRepository;
     private final AdminRepository adminRepository;
     private final AuthRepository authRepository;
-    private final PurchaseRepository purchaseRepository;
+    private final PurchaseItemRepository purchaseItemRepository;
     private final GenreRepository genreRepository;
     private final BookMapper bookMapper;
 
@@ -42,12 +43,15 @@ public class BookService {
         var user = authRepository.getAuthenticatedUser()
                 .orElseThrow(NotLoggedInException::new);
 
-        var purchase =purchaseRepository.findByUsernameAndTitle(user.getUsername(), book.getTitle())
-                .orElseThrow(BookNotInStockException::new);
-
-        if (purchase.getIsBorrowed() && purchase.hasExpired()) {
+        var purchaseItems = purchaseItemRepository.findPurchaseItems(user.getUsername(), book.getTitle());
+        if (purchaseItems.isEmpty()) {
             throw new BookNotInStockException();
         }
+        purchaseItems.forEach(purchaseItem -> {
+            if (purchaseItem.hasExpired()) {
+                throw new BookNotInStockException();
+            }
+        });
 
         return bookMapper.toContentDto(book);
     }

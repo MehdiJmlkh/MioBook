@@ -153,7 +153,7 @@ public class CartService {
 
         user.withdrawCredit(cart.getTotalPrice());
         cartRepository.delete(cart);
-        purchaseRepository.addPurchase(purchase);
+        purchaseRepository.save(purchase);
 
         return PurchaseSummaryDto.builder()
                 .bookCount(purchase.getItems().size())
