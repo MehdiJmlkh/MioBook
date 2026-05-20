@@ -9,6 +9,7 @@ import ir.ac.ut.ece.ie.users.Admin;
 import ir.ac.ut.ece.ie.users.Customer;
 import ir.ac.ut.ece.ie.users.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -74,6 +75,10 @@ public class TestDataFactory {
         var author = new Author();
         author.setId(1L);
         author.setName("author's name");
+        author.setPenName("pen name");
+        author.setBorn(LocalDate.of(2020, 1, 1));
+        author.setNationality("nationality");
+        author.setImageLink("http://sample-link");
         return author;
     }
 }

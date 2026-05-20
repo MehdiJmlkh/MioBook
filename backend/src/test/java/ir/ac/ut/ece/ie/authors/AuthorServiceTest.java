@@ -9,6 +9,7 @@ import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -16,10 +17,8 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -113,14 +112,21 @@ public class AuthorServiceTest {
 
     @Test
     void getAuthor_authorNotFound_throwsException() {
-        assertThrows(AuthorNotFoundException.class, () -> authorService.getAuthor("name"));
+        assertThrows(AuthorNotFoundException.class, () -> authorService.getAuthor(1L));
     }
 
     @Test
     void getAuthor_validInput_returnsAuthor() {
-        var author = new Author();
-        author.setName("name");
-        when(authorRepository.findByName(author.getName())).thenReturn(Optional.of(author));
-        assertEquals(author, authorService.getAuthor("name"));
+        var author = TestDataFactory.sampleAuthor();
+        when(authorRepository.findById(author.getId())).thenReturn(Optional.of(author));
+
+        var authorDto = authorService.getAuthor(author.getId());
+
+        assertEquals(author.getName(), authorDto.getName());
+        assertEquals(author.getPenName(), authorDto.getPenName());
+        assertEquals(author.getBorn(), authorDto.getBorn());
+        assertEquals(author.getDied(), authorDto.getDied());
+        assertEquals(author.getNationality(), authorDto.getNationality());
+        assertEquals(author.getImageLink(), authorDto.getImageLink());
     }
 }
