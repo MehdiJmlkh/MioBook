@@ -87,6 +87,7 @@ public class AuthorServiceTest {
                 .penName("pen")
                 .born("2020-01-01")
                 .nationality("nationality")
+                .imageLink("http://sample-link")
                 .build();
 
         var user = TestDataFactory.sampleAdminUser();
@@ -97,12 +98,17 @@ public class AuthorServiceTest {
 
         authorService.addAuthor(request);
 
-        verify(authorRepository).save(argThat(author ->
-                author.getName().equals(request.getName()) &&
-                author.getPenName().equals(request.getPenName()) &&
-                author.getBorn().equals(LocalDate.of(2020, 1, 1)) &&
-                author.getNationality().equals(request.getNationality())
-        ));
+        var captor = ArgumentCaptor.forClass(Author.class);
+        verify(authorRepository).save(captor.capture());
+        var author = captor.getValue();
+
+        assertEquals(request.getName(), author.getName());
+        assertEquals(request.getPenName(), author.getPenName());
+        assertEquals(LocalDate.of(2020, 1, 1), author.getBorn());
+        assertNull(author.getDied());
+        assertEquals(request.getNationality(), author.getNationality());
+        assertEquals(user, author.getAdmin());
+        assertEquals(request.getImageLink(), author.getImageLink());
     }
 
     @Test
