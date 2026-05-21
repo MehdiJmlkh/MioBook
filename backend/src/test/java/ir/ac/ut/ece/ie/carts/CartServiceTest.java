@@ -86,6 +86,7 @@ public class CartServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
+        when(cartRepository.countCartItems(user)).thenReturn(10L);
 
         assertThrows(CartIsFullException.class, () -> cartService.addItemToCart(request));
     }

@@ -63,7 +63,7 @@ public class CartService {
 
         var cart = cartRepository.findByUser(user).orElseThrow();
 
-        if (cart.getItems().size() >= 10) {
+        if (cartRepository.countCartItems(user) >= 10) {
             throw new CartIsFullException();
         }
 
