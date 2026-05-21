@@ -110,7 +110,7 @@ public class BookServiceTest {
                 .price(10)
                 .synopsis("synopsis")
                 .content("content")
-                .genres(Set.of("genre"))
+                .genres(Set.of("genre1, genre2"))
                 .build();
 
         var author = new Author();
@@ -165,11 +165,14 @@ public class BookServiceTest {
                 .genres(Set.of(new Genre("genres")))
                 .price(100)
                 .synopsis("synopsis")
-                .content("content").reviews(Set.of(review1, review2)).build();
+                .content("content")
+                .totalBuys(3)
+                .reviews(Set.of(review1, review2)).build();
 
         when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
 
         var bookDto = bookService.getBook(1L);
+
         assertEquals(book.getTitle(), bookDto.getTitle());
         assertEquals(author.getName(), bookDto.getAuthor());
         assertEquals(book.getPublisher(), bookDto.getPublisher());
@@ -178,6 +181,7 @@ public class BookServiceTest {
         assertEquals(book.getPrice(), bookDto.getPrice());
         assertEquals(book.getSynopsis(), bookDto.getSynopsis());
         assertEquals(3.5, bookDto.getAverageRating());
+        assertEquals(3, bookDto.getTotalBuys());
     }
 
     @Test
