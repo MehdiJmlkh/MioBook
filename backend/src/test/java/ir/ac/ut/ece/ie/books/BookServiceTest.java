@@ -8,6 +8,7 @@ import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
@@ -17,6 +18,7 @@ import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -26,8 +28,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
@@ -99,7 +100,7 @@ public class BookServiceTest {
     }
 
     @Test
-    void addBook_validInput_addBook() {
+    void addBook_validInput_addsBook() {
         var request = AddBookRequest.builder()
                 .username("username")
                 .title("title")
@@ -123,16 +124,20 @@ public class BookServiceTest {
 
         bookService.addBook(request);
 
-        verify(bookRepository).save(argThat(book ->
-                book.getTitle().equals(request.getTitle()) &&
-                book.getAuthor().equals(author) &&
-                book.getPublisher().equals(request.getPublisher()) &&
-                book.getYear().equals(request.getYear()) &&
-                book.getGenreNames().equals(request.getGenres()) &&
-                book.getPrice().equals(request.getPrice()) &&
-                book.getSynopsis().equals(request.getSynopsis()) &&
-                book.getContent().equals(request.getContent())
-        ));
+        var captor = ArgumentCaptor.forClass(Book.class);
+        verify(bookRepository).save(captor.capture());
+        var book = captor.getValue();
+
+        assertEquals(request.getTitle(), book.getTitle());
+        assertEquals(request.getPublisher(), book.getPublisher());
+        assertEquals(request.getYear(), book.getYear());
+        assertEquals(request.getPrice(), book.getPrice());
+        assertEquals(request.getSynopsis(), book.getSynopsis());
+        assertEquals(request.getContent(), book.getContent());
+        assertEquals(request.getGenres(), book.getGenreNames());
+        assertEquals(author, book.getAuthor());
+        assertEquals(user, book.getAdmin());
+        assertNotNull(book.getReviews());
     }
 
     @Test
