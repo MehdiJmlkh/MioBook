@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -74,6 +75,22 @@ public class Book {
     public void IncrementBuys() {
         totalBuys++;
     }
+
+    @Formula("(select count(r.id) from reviews r where r.book_id = id)")
+    private int reviewsCount;
+
+    @Formula("""
+    COALESCE(
+        ROUND(
+            (SELECT AVG(r.rate)
+            FROM reviews r
+            WHERE r.book_id = id) * 2
+        ) / 2,
+        0
+        )
+    """)
+    private Float averageRating;
+
 
     public int getReviewsCount() {
         return reviews.size();

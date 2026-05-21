@@ -12,6 +12,9 @@ import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
@@ -90,15 +93,39 @@ public class BookService {
     }
 
     public BookPageDto getBooks(SearchQuery query, Integer page, Integer size) {
-        var bookPage = bookRepository.findByQuery(query, page, size);
+        Specification<Book> spec = Specification.where(null);
+        if (query.getTitle() != null) {
+            spec = spec.and(BookSpec.hasTitle(query.getTitle()));
+        }
+        if (query.getAuthor() != null) {
+            spec = spec.and(BookSpec.hasAuthor(query.getAuthor()));
+        }
+        if (query.getGenre() != null) {
+            spec = spec.and(BookSpec.hasGenre(query.getGenre()));
+        }
+        if (query.getYear() != null) {
+            spec = spec.and(BookSpec.hasYear(query.getYear()));
+        }
 
-        var books = bookPage.getBooks().stream()
+        String sortField = query.getSortBy() == SortType.Reviews
+                ? "reviewsCount"
+                : "averageRating";
+
+        Sort.Direction direction = query.getOrder() == SortOrder.Descending
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
+
+        Sort sort = Sort.by(direction, sortField);
+
+        var bookPage = bookRepository.findAll(spec, PageRequest.of(page - 1, size, sort));
+
+        var books = bookPage.getContent().stream()
                 .map(bookMapper::toDto)
                 .toList();
 
         var response = new BookPageDto();
         response.setBooks(books);
-        response.setTotalBooks((long) bookPage.getTotalBooks());
+        response.setTotalBooks(bookPage.getTotalElements());
 
         return response;
     }
