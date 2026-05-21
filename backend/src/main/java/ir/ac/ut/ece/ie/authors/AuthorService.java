@@ -11,6 +11,7 @@ import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -64,11 +65,11 @@ public class AuthorService {
         var author = authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
 
-        var bookPage = bookRepository.findByAuthor(author, page, size);
-        var bookDtoList = bookPage.getBooks().stream()
+        var bookPage = bookRepository.findByAuthor(author, PageRequest.of(page, size));
+        var bookDtoList = bookPage.getContent().stream()
                 .map(bookMapper::toDto)
                 .toList();
 
-        return new BookPageDto(bookDtoList, bookPage.getTotalBooks());
+        return new BookPageDto(bookDtoList, bookPage.getTotalElements());
     }
 }

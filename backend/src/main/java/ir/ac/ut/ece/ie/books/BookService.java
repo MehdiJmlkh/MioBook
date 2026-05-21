@@ -98,7 +98,7 @@ public class BookService {
 
         var response = new BookPageDto();
         response.setBooks(books);
-        response.setTotalBooks(bookPage.getTotalBooks());
+        response.setTotalBooks((long) bookPage.getTotalBooks());
 
         return response;
     }

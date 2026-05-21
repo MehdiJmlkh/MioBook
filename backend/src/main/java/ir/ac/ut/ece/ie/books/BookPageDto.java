@@ -11,5 +11,5 @@ import java.util.List;
 @Data
 public class BookPageDto {
     List<BookDto> books;
-    int totalBooks;
+    Long totalBooks;
 }

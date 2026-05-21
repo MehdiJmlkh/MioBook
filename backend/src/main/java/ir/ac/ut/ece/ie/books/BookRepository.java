@@ -1,15 +1,15 @@
 package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.authors.Author;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByTitle(String title);
-
+    Page<Book> findByAuthor(Author author, Pageable pageable);
 
     default BookPage findByQuery(SearchQuery query, Integer page, Integer size) {
         String title = query.getTitle();
@@ -59,21 +59,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
                 .sorted(Comparator.comparing(Book::getYear).reversed())
                 .limit(limit)
                 .toList();
-    }
-
-    default BookPage findByAuthor(Author author, Integer page, Integer size) {
-        var books = findAll();
-        var filteredBooks = books.stream()
-                .filter(book -> book.getAuthor().equals(author))
-                .toList();
-
-        if (page == null || size == null) {
-            return new BookPage(filteredBooks, filteredBooks.size());
-        }
-
-        int fromPage = Math.min((page - 1) * size, filteredBooks.size());
-        int toPage = Math.min(fromPage + size, filteredBooks.size());
-
-        return new BookPage(filteredBooks.subList(fromPage, toPage), filteredBooks.size());
     }
 }
