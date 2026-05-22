@@ -119,27 +119,37 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void addReview_reviewedBefore_removesPreviousReview() {
+    void addReview_reviewedBefore_updatesReview() {
         var request = new AddReviewRequest();
         var user = TestDataFactory.sampleCustomerUser();
         request.setUsername(user.getUsername());
+        request.setComment("new comment");
+        request.setTitle("title");
+        request.setRate(5);
 
         var book = new Book();
 
-        var purchaseItem = mock(PurchaseItem.class);
         var previousReview = new Review();
+        previousReview.setComment("old comment");
+        previousReview.setRate(3);
+        var previousDate = LocalDate.of(2020, 1, 1);
+        previousReview.setDate(previousDate);
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
-        when(purchaseItemRepository.findPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
-        when(purchaseItem.hasExpired()).thenReturn(false);
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any(), any())).thenReturn(List.of(new PurchaseItem()));
         when(reviewRepository.findByUserAndBook(user, book)).thenReturn(Optional.of(previousReview));
 
         reviewService.addReview(request);
 
-        verify(reviewRepository).deleteReview(previousReview);
+        var captor = ArgumentCaptor.forClass(Review.class);
+        verify(reviewRepository).save(captor.capture());
+        var savedReview = captor.getValue();
+        assertEquals(request.getComment(), savedReview.getComment());
+        assertEquals(request.getRate(), savedReview.getRate());
+        assertNotEquals(previousDate, savedReview.getDate());
     }
 
     @Test
@@ -162,7 +172,7 @@ public class ReviewServiceTest {
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
-        when(purchaseItemRepository.findPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any(), any())).thenReturn(List.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(false);
 
         var before = LocalDate.now();
@@ -171,7 +181,7 @@ public class ReviewServiceTest {
 
 
         var captor = ArgumentCaptor.forClass(Review.class);
-        verify(reviewRepository).addReview(captor.capture());
+        verify(reviewRepository).save(captor.capture());
         var review = captor.getValue();
 
         assertEquals(request.getRate(), review.getRate());
@@ -180,8 +190,6 @@ public class ReviewServiceTest {
         assertEquals(user, review.getUser());
         assertFalse(review.getDate().isBefore(before));
         assertFalse(review.getDate().isAfter(after));
-
-        assertEquals(1, book.getReviews().size());
     }
 
     @Test
