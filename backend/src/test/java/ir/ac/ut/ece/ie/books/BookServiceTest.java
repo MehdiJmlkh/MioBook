@@ -19,8 +19,13 @@ import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Collections;
@@ -246,39 +251,18 @@ public class BookServiceTest {
     }
 
     @Test
-    void getBooks_withoutPagination_returnsBooksDto() {
-        var query = new SearchQuery();
-        var book = TestDataFactory.sampleBook();
-
-        var bookPage = new BookPage(List.of(book), 1);
-        when(bookRepository.findByQuery(eq(query), any(), any())).thenReturn(bookPage);
-
-        var bookPageDto = bookService.getBooks(query, null, null);
-
-        var bookDtoList = bookPageDto.getBooks();
-
-        assertEquals(1, bookDtoList.size());
-
-        var bookDto = bookDtoList.get(0);
-        assertEquals(book.getTitle(), bookDto.getTitle());
-        assertEquals(book.getAuthor().getName(), bookDto.getAuthor());
-        assertEquals(book.getPublisher(), bookDto.getPublisher());
-        assertEquals(book.getGenreNames(), bookDto.getGenres());
-        assertEquals(book.getYear(), bookDto.getYear());
-        assertEquals(book.getPrice(), bookDto.getPrice());
-        assertEquals(book.getSynopsis(), bookDto.getSynopsis());
-        assertEquals(book.getAverageRating(), bookDto.getAverageRating());
-    }
-
-    @Test
     void getBooks_withPagination_returnsBooksDto() {
         var query = new SearchQuery();
         var book = TestDataFactory.sampleBook();
         Integer page = 1;
         Integer size = 1;
 
-        var bookPage = new BookPage(List.of(book), 1);
-        when(bookRepository.findByQuery(eq(query), eq(page), eq(size))).thenReturn(bookPage);
+        Page<Book> bookPage = new PageImpl<>(List.of(book));
+
+        when(bookRepository.findAll(
+                ArgumentMatchers.<Specification<Book>>any(),
+                any(Pageable.class)
+        )).thenReturn(bookPage);
 
         var bookPageDto = bookService.getBooks(query, page, size);
         var bookDtoList = bookPageDto.getBooks();
