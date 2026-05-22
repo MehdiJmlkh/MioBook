@@ -32,7 +32,7 @@ public class ReviewService {
         var book = bookRepository.findById(bookId)
                 .orElseThrow(BookNotFoundException::new);
 
-        var reviews = reviewRepository.findByBook(book, PageRequest.of(page, size))
+        var reviews = reviewRepository.findByBook(book, PageRequest.of(page - 1, size))
                 .getContent().stream()
                 .map(reviewMapper::toDto)
                 .toList();
