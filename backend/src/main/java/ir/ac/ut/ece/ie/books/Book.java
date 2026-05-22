@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -76,25 +76,12 @@ public class Book {
         totalBuys++;
     }
 
-    @Formula("(select count(r.id) from reviews r where r.book_id = id)")
+    @Column(name = "reviews_count")
     private int reviewsCount;
 
-    @Formula("""
-    COALESCE(
-        ROUND(
-            (SELECT AVG(r.rate)
-            FROM reviews r
-            WHERE r.book_id = id) * 2
-        ) / 2,
-        0
-        )
-    """)
-    private Float averageRating;
-
-
-    public int getReviewsCount() {
-        return reviews.size();
-    }
+    @Column(name = "average_rating")
+    @Builder.Default
+    private BigDecimal averageRating = BigDecimal.ZERO;
 
     public float getAverageRating() {
         if (reviews.isEmpty()) {
@@ -106,15 +93,5 @@ public class Book {
                 .orElse(0) / reviews.size();
 
         return (float) (Math.round(rating * 2.0) / 2.0);
-    }
-
-    public boolean publishedInRange(Integer from, Integer to) {
-        if (from == null) {
-            return year <= to;
-        }
-        if (to == null) {
-            return from <= year;
-        }
-        return (from <= year) && (year <= to);
     }
 }
