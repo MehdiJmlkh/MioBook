@@ -85,13 +85,9 @@ public class CartService {
         var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
-        cartRepository.findByUser(user).ifPresent(
-                cart -> {
-                    if (cart.getItems().size() >= 10) {
-                        throw new CartIsFullException();
-                    }
-                }
-        );
+        if (cartRepository.countCartItems(user) >= 10) {
+            throw new CartIsFullException();
+        }
 
         var cartItem = CartItem.BorrowCartItem(book, request.getDays());
 
