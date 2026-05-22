@@ -34,6 +34,8 @@ public class CartServiceTest {
     @MockitoBean
     private CartRepository cartRepository;
     @MockitoBean
+    private CartItemRepository cartItemRepository;
+    @MockitoBean
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
@@ -126,67 +128,43 @@ public class CartServiceTest {
     }
 
     @Test
-    void removeItemFromCart_bookNotFound_throwsException() {
-        var request = new RemoveCartRequest();
-        assertThrows(BookNotFoundException.class, () -> cartService.removeItemFromCart(1L));
+    void removeItemFromCart_notLoggedInUser_throwsException() {
+        assertThrows(NotLoggedInException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_notCustomerUser_throwsException() {
         var user = TestDataFactory.sampleAdminUser();
 
-        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
 
         assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
-    void removeItemFromCart_bookNotInCart_throwsException() {
+    void removeItemFromCart_cartItemNotFound_throwsException() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
 
-        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
-    }
-
-    @Test
-    void removeItemFromCart_cartNotExists_throwsException() {
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(bookRepository.findById(any())).thenReturn(Optional.of(new Book()));
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(any())).thenReturn(Optional.empty());
-
-        assertThrows(BookNotInCartException.class, () -> cartService.removeItemFromCart(1L));
+        assertThrows(CartItemNotFoundException.class, () -> cartService.removeItemFromCart(1L));
     }
 
     @Test
     void removeItemFromCart_validInput_removesCartItem() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        var book = new Book();
-        Long id = 2L;
-        book.setId(id);
-
         var cartItem = new CartItem();
-        cartItem.setBook(book);
+        cartItem.setId(1L);
 
-        var cart = new Cart();
-        cart.getItems().add(cartItem);
-
-        when(bookRepository.findById(id)).thenReturn(Optional.of(book));
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
+        when(cartItemRepository.findByIdAndUser(cartItem.getId() ,user)).thenReturn(Optional.of(cartItem));
 
-        cartService.removeItemFromCart(id);
+        cartService.removeItemFromCart(cartItem.getId());
 
-        assertFalse(cart.contains(book));
+        verify(cartItemRepository).delete(cartItem);
     }
 
     @Test

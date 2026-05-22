@@ -28,9 +28,9 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/items/{bookId}")
-    public ResponseEntity<Void> removeItemFromCart(@PathVariable(name = "bookId") Long bookId) {
-        cartService.removeItemFromCart(bookId);
+    @DeleteMapping("/items/{cartItemId}")
+    public ResponseEntity<Void> removeItemFromCart(@PathVariable(name = "cartItemId") Long cartItemId) {
+        cartService.removeItemFromCart(cartItemId);
         return ResponseEntity.ok().build();
     }
 
@@ -47,10 +47,10 @@ public class CartController {
                 .body(new ErrorDto("Cart is full"));
     }
 
-    @ExceptionHandler(BookNotInCartException.class)
-    public ResponseEntity<ErrorDto> handleBookNotInCartException() {
+    @ExceptionHandler(CartItemNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleCartItemNotFoundException() {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("Cart does not contain the book."));
+                .body(new ErrorDto("Cart item not found."));
     }
 
     @ExceptionHandler(EmptyCartException.class)

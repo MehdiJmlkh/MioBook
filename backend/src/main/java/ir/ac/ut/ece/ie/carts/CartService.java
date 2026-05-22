@@ -25,6 +25,7 @@ public class CartService {
     private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
     private final PurchaseRepository purchaseRepository;
     private final CartMapper cartMapper;
     private final AuthRepository authRepository;
@@ -99,24 +100,17 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public void removeItemFromCart(Long bookId) {
-        var book = bookRepository.findById(bookId)
-                .orElseThrow(BookNotFoundException::new);
-
+    public void removeItemFromCart(Long cartItemId) {
         var user = authRepository.getAuthenticatedUser()
                 .orElseThrow(NotLoggedInException::new);
 
         customerRepository.findByUsername(user.getUsername())
                 .orElseThrow(NotCustomerException::new);
 
-        var cart = cartRepository.findByUser(user)
-                .orElseThrow(BookNotInCartException::new);
+        var cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
+                .orElseThrow(CartItemNotFoundException::new);
 
-        if (!cart.contains(book)) {
-            throw new BookNotInCartException();
-        }
-
-        cart.removeBook(book);
+        cartItemRepository.delete(cartItem);
     }
 
     public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
