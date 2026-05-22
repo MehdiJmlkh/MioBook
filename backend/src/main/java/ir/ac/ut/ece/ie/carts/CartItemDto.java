@@ -6,6 +6,7 @@ import java.util.Set;
 
 @Data
 public class CartItemDto {
+    private Long id;
     private Long bookId;
     private Long authorId;
     private String title;
@@ -22,6 +23,7 @@ public class CartItemDto {
         var cartItemDto = new CartItemDto();
         var book = cartItem.getBook();
 
+        cartItemDto.id = cartItem.getId();
         cartItemDto.bookId = book.getId();
         cartItemDto.authorId = book.getAuthor().getId();
         cartItemDto.title = book.getTitle();
