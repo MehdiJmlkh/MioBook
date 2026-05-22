@@ -8,13 +8,14 @@ import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
-import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Service
@@ -31,7 +32,8 @@ public class ReviewService {
         var book = bookRepository.findById(bookId)
                 .orElseThrow(BookNotFoundException::new);
 
-        var reviews = reviewRepository.findByBook(book, page, size).stream()
+        var reviews = reviewRepository.findByBook(book, PageRequest.of(page, size))
+                .getContent().stream()
                 .map(reviewMapper::toDto)
                 .toList();
 
@@ -39,7 +41,7 @@ public class ReviewService {
         reviewListDto.setTitle(book.getTitle());
         reviewListDto.setReviews(reviews);
         reviewListDto.setAverageRating(book.getAverageRating());
-        reviewListDto.setTotalReviews(reviewRepository.getCountByBook(book));
+        reviewListDto.setTotalReviews(reviewRepository.countByBook(book));
 
         return reviewListDto;
     }
@@ -61,30 +63,21 @@ public class ReviewService {
         var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);
 
-        var purchaseItems = purchaseItemRepository.findPurchaseItems(username, bookTitle);
+        var purchaseItems = purchaseItemRepository.findNotExpiredPurchaseItems(username, bookTitle, LocalDateTime.now());
         if (purchaseItems.isEmpty()) {
             throw new BookNotInStockException();
         }
-        purchaseItems.forEach(purchaseItem -> {
-            if (purchaseItem.hasExpired()) {
-                throw new BookNotInStockException();
-            }
-        });
 
-        reviewRepository.findByUserAndBook(user, book)
-                .ifPresent(reviewRepository::deleteReview);
+        var review = reviewRepository.findByUserAndBook(user, book)
+                .orElse(new Review());
 
-        var review = Review.builder()
-                .user(user)
-                .book(book)
-                .rate(request.getRate())
-                .comment(request.getComment())
-                .date(LocalDate.now())
-                .build();
+        review.setUser(user);
+        review.setBook(book);
+        review.setRate(request.getRate());
+        review.setComment(request.getComment());
+        review.setDate(LocalDate.now());
 
-        book.getReviews().add(review);
-        reviewRepository.addReview(review);
-
+        reviewRepository.save(review);
         return reviewMapper.toDto(review);
     }
 }
