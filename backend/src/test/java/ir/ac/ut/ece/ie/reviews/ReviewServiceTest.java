@@ -19,6 +19,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.time.LocalDate;
@@ -198,7 +201,7 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void getAllReviews_withoutPagination_returnsReviewListDto() {
+    void getAllReviews_validInput_returnsReviewListDto() {
         var book = new Book();
 
         var user1 = User.builder().username("user1").build();
@@ -223,9 +226,10 @@ public class ReviewServiceTest {
         book.getReviews().add(review2);
 
         when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
-        when(reviewRepository.findByBook(any(), any(), any())).thenReturn(List.of(review1, review2));
+        Page<Review> reviewPage = new PageImpl<>(List.of(review1, review2), PageRequest.of(1, 2), 2);
+        when(reviewRepository.findByBook(book, PageRequest.of(1, 2))).thenReturn(reviewPage);
 
-        var reviewListDto = reviewService.getAllReviews(book.getId(), null, null);
+        var reviewListDto = reviewService.getAllReviews(book.getId(), 1, 2);
 
         assertEquals(book.getTitle(), reviewListDto.getTitle());
         assertEquals(3.5, reviewListDto.getAverageRating());
@@ -240,46 +244,5 @@ public class ReviewServiceTest {
         assertEquals(review2.getComment(), reviewDto2.getComment());
         assertEquals(review2.getRate(), reviewDto2.getRate());
         assertEquals(user2.getUsername(), reviewDto2.getUsername());
-    }
-
-    @Test
-    void getAllReviews_withPagination_returnsReviewListDto() {
-        var book = new Book();
-
-        var user1 = User.builder().username("user1").build();
-        var review1 = Review.builder()
-                .rate(3)
-                .comment("comment1")
-                .date(LocalDate.of(2001, 1,1))
-                .book(book)
-                .user(user1)
-                .build();
-
-        var user2 = User.builder().username("user2").build();
-        var review2 = Review.builder()
-                .rate(4)
-                .comment("comment2")
-                .date(LocalDate.of(2002, 2,2))
-                .book(book)
-                .user(user2)
-                .build();
-
-        book.getReviews().add(review1);
-        book.getReviews().add(review2);
-
-        when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
-        when(reviewRepository.findByBook(book, 1, 1)).thenReturn(List.of(review2));
-
-
-        var reviewListDto = reviewService.getAllReviews(book.getId(), 1, 1);
-
-        assertEquals(book.getTitle(), reviewListDto.getTitle());
-        assertEquals(3.5, reviewListDto.getAverageRating());
-
-        assertEquals(1, reviewListDto.getReviews().size());
-        var reviewDto1 = reviewListDto.getReviews().get(0);
-        assertEquals(review2.getComment(), reviewDto1.getComment());
-        assertEquals(review2.getRate(), reviewDto1.getRate());
-        assertEquals(user2.getUsername(), reviewDto1.getUsername());
     }
 }
