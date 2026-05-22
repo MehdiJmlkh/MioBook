@@ -1,13 +1,14 @@
 import "./Avatar.css";
 
 interface Props {
+  username?: string;
   onClick?: () => void;
 }
 
-const Avatar = ({ onClick }: Props) => {
+const Avatar = ({ username, onClick }: Props) => {
   return (
     <span onClick={onClick} className="avatar">
-      S
+      {username?.charAt(0).toLocaleUpperCase()}
     </span>
   );
 };

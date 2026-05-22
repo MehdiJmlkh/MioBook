@@ -17,7 +17,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <Avatar onClick={() => setVisible(!visible)} />
+      <Avatar username={user?.username} onClick={() => setVisible(!visible)} />
       {visible && (
         <div className="profile-menu">
           <div className="profile-menu__header">
