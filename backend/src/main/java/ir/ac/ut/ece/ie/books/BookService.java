@@ -4,7 +4,6 @@ import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
-import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
@@ -143,7 +142,7 @@ public class BookService {
     }
 
     public List<String> getAllGenres() {
-        return genreRepository.getAllGenreNames();
+        return genreRepository.findAllNames();
     }
 
     public List<BookDto> getAllBooks() {

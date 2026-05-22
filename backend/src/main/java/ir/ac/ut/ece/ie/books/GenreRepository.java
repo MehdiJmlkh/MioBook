@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.books;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,10 +9,6 @@ import java.util.Optional;
 public interface GenreRepository extends JpaRepository<Genre, Long> {
     Optional<Genre> findByName(String name);
 
-    default List<String> getAllGenreNames() {
-        var genres = findAll();
-        return genres.stream()
-                .map(Genre::getName)
-                .toList();
-    }
+    @Query("select g.name from Genre g")
+    List<String> findAllNames();
 }
