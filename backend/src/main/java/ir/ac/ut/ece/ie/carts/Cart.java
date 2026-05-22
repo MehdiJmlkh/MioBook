@@ -23,7 +23,7 @@ public class Cart {
     @MapsId
     private User user;
 
-    @OneToMany(mappedBy = "cart", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "cart", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<CartItem> items = new ArrayList<>();
 
     public boolean contains(Book book) {
@@ -47,6 +47,11 @@ public class Cart {
     public void addItem(CartItem item) {
         item.setCart(this);
         items.add(item);
+    }
+
+    public void clear() {
+        items.forEach(cartItem -> cartItem.setCart(null));
+        items.clear();
     }
 
     public void removeBook(Book book) {

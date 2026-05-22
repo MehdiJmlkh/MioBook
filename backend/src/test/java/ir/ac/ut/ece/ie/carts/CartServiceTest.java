@@ -291,7 +291,11 @@ public class CartServiceTest {
 
         assertEquals(10, user.getBalance());
 
-        verify(cartRepository).delete(eq(cart));
+        var cartCaptor = ArgumentCaptor.forClass(Cart.class);
+        verify(cartRepository).save(cartCaptor.capture());
+        var savedCart = cartCaptor.getValue();
+
+        assertEquals(0, savedCart.getItems().size());
 
         assertEquals(1, purchaseSummary.getBookCount());
         assertEquals(100, purchaseSummary.getTotalCost());

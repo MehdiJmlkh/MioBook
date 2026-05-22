@@ -146,7 +146,10 @@ public class CartService {
         purchase.setTotalCost(cart.getTotalPrice());
 
         user.withdrawCredit(cart.getTotalPrice());
-        cartRepository.delete(cart);
+        user.addPurchase(purchase);
+
+        cart.clear();
+        cartRepository.save(cart);
         purchaseRepository.save(purchase);
 
         return PurchaseSummaryDto.builder()

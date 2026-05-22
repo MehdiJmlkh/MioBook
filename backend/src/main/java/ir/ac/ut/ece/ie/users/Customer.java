@@ -42,6 +42,11 @@ public class Customer extends User {
         wallet.addCredit(amount);
     }
 
+    public void addPurchase(Purchase purchase) {
+        purchase.setUser(this);
+        purchases.add(purchase);
+    }
+
     public void withdrawCredit(Integer amount) {
         wallet.withdrawCredit(amount);
     }
