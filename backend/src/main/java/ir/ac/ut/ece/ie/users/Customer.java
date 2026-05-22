@@ -5,6 +5,7 @@ import ir.ac.ut.ece.ie.purchases.Purchase;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
@@ -20,7 +21,7 @@ public class Customer extends User {
     private Cart cart;
 
     @OneToMany(mappedBy = "user")
-    private Set<Purchase> purchases;
+    private Set<Purchase> purchases = new LinkedHashSet<>();
 
     public Customer() {
         addEmptyWallet();
