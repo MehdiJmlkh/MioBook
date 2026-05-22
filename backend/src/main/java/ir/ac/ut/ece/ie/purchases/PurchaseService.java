@@ -9,10 +9,13 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @Service
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
+    private final PurchaseItemRepository purchaseItemRepository;
     private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
     private final AuthRepository authRepository;
@@ -31,13 +34,13 @@ public class PurchaseService {
 
         var purchases = purchaseRepository.findByUsername(username);
 
-        var purchaseDtos = purchases.stream()
+        var purchaseDtoList = purchases.stream()
                 .map(purchaseMapper::toDto)
                 .toList();
 
         return PurchaseHistoryDto.builder()
                 .username(username)
-                .purchaseHistory(purchaseDtos)
+                .purchaseHistory(purchaseDtoList)
                 .build();
     }
 
@@ -52,11 +55,9 @@ public class PurchaseService {
             throw new NotLoggedInException();
         }
 
-        var purchases = purchaseRepository.findByUsername(username);
+        var items = purchaseItemRepository.findNotExpiredPurchaseItems(username, LocalDateTime.now());
 
-        var purchasedBooks = purchases.stream()
-                .flatMap(purchase -> purchase.getItems().stream())
-                .filter(purchaseItem -> !purchaseItem.hasExpired())
+        var purchasedBooks = items.stream()
                 .map(purchaseMapper::toDto)
                 .toList();
 

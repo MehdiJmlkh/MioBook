@@ -30,4 +30,19 @@ public interface PurchaseItemRepository extends CrudRepository<PurchaseItem, Lon
             LocalDateTime now
     );
 
+    @Query(value = """
+    select pi.*
+    from purchased_items pi
+    join purchases p on pi.purchase_id = p.id
+    join users u on p.customer_id = u.id
+    where u.username = :username
+    and (
+        pi.is_borrowed = false
+        or (pi.is_borrowed = true and DATE_ADD(pi.date, INTERVAL pi.borrow_days DAY) >= :now)
+    )
+    """, nativeQuery = true)
+    List<PurchaseItem> findNotExpiredPurchaseItems(
+            String username,
+            LocalDateTime now
+    );
 }

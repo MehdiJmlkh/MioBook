@@ -25,6 +25,8 @@ public class PurchaseServiceTest {
     @MockitoBean
     private PurchaseRepository purchaseRepository;
     @MockitoBean
+    private PurchaseItemRepository purchaseItemRepository;
+    @MockitoBean
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
@@ -135,7 +137,7 @@ public class PurchaseServiceTest {
         var book = purchaseItem.getBook();
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
-        when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
         when(authRepository.isLoggedIn(user)).thenReturn(true);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -149,7 +151,7 @@ public class PurchaseServiceTest {
         assertEquals(book.getTitle(), purchasedBookDto.getTitle());
         assertEquals(book.getAuthor().getName(), purchasedBookDto.getAuthor());
         assertEquals(book.getPublisher(), purchasedBookDto.getPublisher());
-        assertEquals(book.getGenres(), purchasedBookDto.getGenres());
+        assertEquals(book.getGenreNames(), purchasedBookDto.getGenres());
         assertEquals(book.getYear(), purchasedBookDto.getYear());
         assertEquals(purchaseItem.getPrice(), purchasedBookDto.getPrice());
         assertEquals(true, purchasedBookDto.getIsBorrowed());
