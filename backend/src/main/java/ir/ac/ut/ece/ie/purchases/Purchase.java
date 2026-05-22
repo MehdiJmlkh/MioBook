@@ -30,6 +30,11 @@ public class Purchase {
     @JoinColumn(name = "customer_id")
     private User user;
 
-    @OneToMany(mappedBy = "purchase")
+    @OneToMany(mappedBy = "purchase", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<PurchaseItem> items = new LinkedHashSet<>();
+
+    public void addItem(PurchaseItem purchaseItem) {
+        purchaseItem.setPurchase(this);
+        items.add(purchaseItem);
+    }
 }

@@ -132,12 +132,13 @@ public class CartService {
         }
 
         var purchase = new Purchase();
-        purchase.setUser(user);
         var purchaseItems = cart.getItems().stream()
                         .map(cartMapper::toPurchaseItem)
                                 .collect(Collectors.toSet());
-        purchaseItems.forEach(purchaseItem -> purchaseItem.setDate(LocalDateTime.now()));
-        purchase.setItems(purchaseItems);
+        purchaseItems.forEach(purchaseItem -> {
+            purchaseItem.setDate(LocalDateTime.now());
+            purchase.addItem(purchaseItem);
+        });
         purchase.setDate(LocalDateTime.now());
         purchase.setTotalCost(cart.getTotalPrice());
 
