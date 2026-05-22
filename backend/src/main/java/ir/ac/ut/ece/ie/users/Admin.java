@@ -7,12 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "admins")
-@PrimaryKeyJoinColumn(name = "id")
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "admins")
+@PrimaryKeyJoinColumn(name = "id")
 public class Admin extends User {
     @Override
     public Role getRole() {
