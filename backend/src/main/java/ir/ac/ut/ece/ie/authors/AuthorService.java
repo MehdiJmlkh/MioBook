@@ -65,7 +65,7 @@ public class AuthorService {
         var author = authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
 
-        var bookPage = bookRepository.findByAuthor(author, PageRequest.of(page, size));
+        var bookPage = bookRepository.findByAuthor(author, PageRequest.of(page - 1, size));
         var bookDtoList = bookPage.getContent().stream()
                 .map(bookMapper::toDto)
                 .toList();
