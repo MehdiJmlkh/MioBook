@@ -34,8 +34,8 @@ class CartService {
       });
   }
 
-  removeItem(bookId: number) {
-    return apiClient.delete(`/carts/items/${bookId}`).then((res) => res.data);
+  removeItem(id: number) {
+    return apiClient.delete(`/carts/items/${id}`).then((res) => res.data);
   }
 
   purchase(username: string) {

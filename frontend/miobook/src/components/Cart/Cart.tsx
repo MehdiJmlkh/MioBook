@@ -44,7 +44,7 @@ const Cart = () => {
                   key={i}
                   item={item}
                   addBtn={true}
-                  onClick={() => removeCartItem.mutate(item.bookId)}
+                  onClick={() => removeCartItem.mutate(item.id)}
                 />
               ))}
             </tbody>

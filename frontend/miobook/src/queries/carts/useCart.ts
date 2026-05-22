@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import cartService from "../../services/cartService";
 
 interface CartItem {
+  id: number;
   bookId: number;
   authorId: number;
   title: string;
