@@ -35,6 +35,7 @@ public class Purchase {
 
     public void addItem(PurchaseItem purchaseItem) {
         purchaseItem.setPurchase(this);
+        purchaseItem.getBook().incrementBuys();
         items.add(purchaseItem);
     }
 }

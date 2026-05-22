@@ -33,7 +33,7 @@ public class PurchaseItem {
     @Column(name = "date")
     private LocalDateTime date;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "book_id")
     private Book book;
 

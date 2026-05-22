@@ -72,7 +72,7 @@ public class Book {
                 .collect(Collectors.toSet());
     }
 
-    public void IncrementBuys() {
+    public void incrementBuys() {
         totalBuys++;
     }
 
