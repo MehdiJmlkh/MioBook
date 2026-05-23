@@ -6,12 +6,12 @@ export const useRemoveCartItem = (username: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: cartService.removeItem,
-    onSuccess: (_, bookId) => {
+    onSuccess: (_, id) => {
       queryClient.setQueryData<Cart>(["carts", username], (cart) => {
         if (!cart) return cart;
         return {
           ...cart,
-          items: cart.items.filter((item) => item.bookId !== bookId),
+          items: cart.items.filter((item) => item.id !== id),
         };
       });
     },
