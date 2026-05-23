@@ -2,7 +2,6 @@ ALTER TABLE books
 ADD COLUMN reviews_count BIGINT DEFAULT 0,
 ADD COLUMN average_rating DECIMAL(3,2) DEFAULT 0.00;
 
-
 DELIMITER //
 
 CREATE TRIGGER trg_reviews_after_insert
@@ -35,7 +34,7 @@ BEGIN
         average_rating = CASE
                              WHEN reviews_count - 1 <= 0 THEN 0
                              ELSE ((average_rating * reviews_count) - OLD.rate) / (reviews_count - 1)
-            END,
+                         END,
         reviews_count = reviews_count - 1
     WHERE id = OLD.book_id;
 END //
