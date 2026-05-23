@@ -9,6 +9,6 @@ import org.hibernate.validator.constraints.Range;
 public class AddCreditRequest {
     private String username;
 
-    @Range(min = 1, max = 1000, message = "Credit must be between 1 and 1000 cents.")
+    @Range(min = 100, message = "Credit must be at least $1.")
     private Integer credit;
 }
