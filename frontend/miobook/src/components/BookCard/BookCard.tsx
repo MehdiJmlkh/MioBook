@@ -8,7 +8,12 @@ import Button from "../Button";
 import FiveStars from "../FiveStars";
 import Price from "../Price";
 import "./BookCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  BookStatus,
+  useBookStatus,
+} from "../../queries/purchases/useBookStatus";
+import { useAuth } from "../../queries/auth/useAuth";
 
 interface Props {
   book?: Book;
@@ -16,6 +21,11 @@ interface Props {
 
 function BookCard({ book }: Props) {
   const [showCartModal, setShowCartModal] = useState(false);
+  const { data: user } = useAuth();
+  const { data: status } = useBookStatus(user?.username, book?.id);
+  const purchased =
+    status === BookStatus.Owned || status === BookStatus.Borrowed;
+  const navigate = useNavigate();
 
   useNoScroll([showCartModal]);
 
@@ -41,8 +51,15 @@ function BookCard({ book }: Props) {
           />
           <Price className="book-card__price">{book?.price || 11.11}</Price>
         </div>
-        <Button className="btn-primary" onClick={() => setShowCartModal(true)}>
-          Add to Cart
+        <Button
+          className="btn-primary"
+          onClick={() =>
+            purchased
+              ? navigate(`/books/${book?.id}/content`)
+              : setShowCartModal(true)
+          }
+        >
+          {purchased ? "Read" : "Add to Cart"}
         </Button>
       </div>
     </div>
