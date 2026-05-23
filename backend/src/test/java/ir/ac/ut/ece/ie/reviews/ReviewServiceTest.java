@@ -227,7 +227,7 @@ public class ReviewServiceTest {
 
         when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
         Page<Review> reviewPage = new PageImpl<>(List.of(review1, review2), PageRequest.of(1, 2), 2);
-        when(reviewRepository.findByBook(book, PageRequest.of(1, 2))).thenReturn(reviewPage);
+        when(reviewRepository.findByBook(book, PageRequest.of(0, 2))).thenReturn(reviewPage);
 
         var reviewListDto = reviewService.getAllReviews(book.getId(), 1, 2);
 
