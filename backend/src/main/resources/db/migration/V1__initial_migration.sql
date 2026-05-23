@@ -44,7 +44,7 @@ CREATE TABLE books (
     title VARCHAR(255) NOT NULL UNIQUE,
     publisher VARCHAR(255) NOT NULL,
     year INT NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
+    price INT NOT NULL,
     synopsis TEXT NOT NULL,
     content TEXT NOT NULL,
     total_buys BIGINT DEFAULT 0,
@@ -73,7 +73,7 @@ CREATE TABLE book_genres (
 
 CREATE TABLE wallets (
     customer_id BIGINT PRIMARY KEY,
-    balance DECIMAL(10,2) DEFAULT 0,
+    balance INT DEFAULT 0,
     CONSTRAINT fk_wallets_customer
         FOREIGN KEY (customer_id) REFERENCES customers(id)
         ON DELETE CASCADE
@@ -97,7 +97,7 @@ CREATE TABLE purchased_books (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     is_borrowed BOOLEAN NOT NULL DEFAULT FALSE,
     borrow_days TINYINT,
-    price DECIMAL(10,2) NOT NULL,
+    price INT NOT NULL,
     date DATETIME NOT NULL,
     book_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE cart_items (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     is_borrowed BOOLEAN NOT NULL DEFAULT FALSE,
     borrow_days TINYINT,
-    price DECIMAL(10,2) NOT NULL,
+    price INT NOT NULL,
     book_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
     CONSTRAINT fk_cart_items_book
