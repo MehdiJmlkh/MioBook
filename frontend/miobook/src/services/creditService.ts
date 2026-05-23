@@ -12,7 +12,7 @@ class CreditService {
 
   addCredit(request: AddCreditRequest) {
     return apiClient
-      .post("/credits", request)
+      .post("/credits", {...request, credit: Math.round(request.credit * 100)})
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;

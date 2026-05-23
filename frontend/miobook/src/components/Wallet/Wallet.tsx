@@ -26,7 +26,7 @@ const Wallet = ({ className }: Props) => {
   const handleAddCredit = handleSubmit((data) => {
     if (data.credit)
       addCredit.mutate(
-        { credit: data.credit * 100, username: user?.username },
+        { credit: data.credit, username: user?.username },
         { onSuccess: () => reset({ credit: null }) },
       );
   });
