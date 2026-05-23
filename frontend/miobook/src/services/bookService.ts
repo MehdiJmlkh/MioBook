@@ -71,7 +71,7 @@ class BookService {
 
   addBook(request: AddBookRequest) {
     return apiClient
-      .post("/books", request)
+      .post("/books", {...request, price: Math.round(request.price * 100)})
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;
