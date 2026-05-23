@@ -26,7 +26,7 @@ const Wallet = ({ className }: Props) => {
   const handleAddCredit = handleSubmit((data) => {
     if (data.credit)
       addCredit.mutate(
-        { credit: data.credit, username: user?.username },
+        { credit: data.credit * 100, username: user?.username },
         { onSuccess: () => reset({ credit: null }) },
       );
   });
@@ -34,7 +34,7 @@ const Wallet = ({ className }: Props) => {
   return (
     <div className={`wallet ${className}`}>
       <Price className="wallet__price">
-        {balance?.toLocaleString() || "0"}
+        {balance}
       </Price>
       <Input
         {...register("credit")}
