@@ -7,3 +7,7 @@ spring:
     password: NewPassword123!
   jpa:
     show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
