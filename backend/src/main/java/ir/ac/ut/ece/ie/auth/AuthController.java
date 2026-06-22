@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.auth;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.sessions.SessionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
+    private final SessionService sessionService;
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
@@ -19,9 +21,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserDto> login(@RequestBody LoginRequest request) {
+    public LoginResponse login(@RequestBody LoginRequest request) {
         var userDto = authService.login(request);
-        return ResponseEntity.ok(userDto);
+
+        String token = sessionService.createSession(userDto.getId());
+
+        return new LoginResponse(token);
     }
 
     @PostMapping("/logout")
