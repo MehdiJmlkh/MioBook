@@ -31,9 +31,14 @@ public class SessionService {
     }
 
     public Long getSession(String token) {
-        return redisTemplate
+        Number id = redisTemplate
                 .opsForValue()
                 .get("session:" + token);
+
+        if (id == null) {
+            return null;
+        }
+        return id.longValue();
     }
 
     public void deleteSession(String token) {
