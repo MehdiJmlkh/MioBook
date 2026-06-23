@@ -11,7 +11,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class SessionService {
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, UserSession> redisTemplate;
 
     private static final Duration SESSION_DURATION = Duration.ofHours(24);
 
@@ -32,7 +32,7 @@ public class SessionService {
     }
 
     public UserSession getSession(String token) {
-        return (UserSession) redisTemplate
+        return redisTemplate
                 .opsForValue()
                 .get("session:" + token);
     }
