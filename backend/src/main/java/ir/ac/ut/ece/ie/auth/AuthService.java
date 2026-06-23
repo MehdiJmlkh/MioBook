@@ -21,12 +21,6 @@ public class AuthService {
             throw new UsernameOrPasswordIncorrectException();
         }
 
-        authRepository.getAuthenticatedUser().ifPresent(loggedInUser -> {
-            if (loggedInUser != user) {
-                throw new AnotherUserAlreadyLoggedInException();
-            }
-        });
-
         authRepository.setAuthenticatedUser(user);
 
         return userMapper.toDto(user);
