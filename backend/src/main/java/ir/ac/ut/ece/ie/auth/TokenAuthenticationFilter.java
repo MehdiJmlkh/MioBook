@@ -32,7 +32,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
 
-            UserSession session = sessionService.getSession(token);
+            Long session = sessionService.getSession(token);
 
             if (session != null) {
                 var authentication =

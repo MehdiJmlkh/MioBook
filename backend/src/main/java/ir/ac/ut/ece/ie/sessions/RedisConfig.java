@@ -14,7 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     @Bean
-    public RedisTemplate<String, UserSession> redisTemplate(
+    public RedisTemplate<String, Long> redisTemplate(
             RedisConnectionFactory connectionFactory) {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -24,7 +24,7 @@ public class RedisConfig {
         objectMapper.disable(
                 SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        RedisTemplate<String, UserSession> template =
+        RedisTemplate<String, Long> template =
                 new RedisTemplate<>();
 
         template.setConnectionFactory(connectionFactory);
