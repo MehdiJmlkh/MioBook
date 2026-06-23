@@ -39,4 +39,13 @@ public class SessionService {
     public void deleteSession(String token) {
         redisTemplate.delete("session:" + token);
     }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void clearSessions() {
+        Set<String> keys = redisTemplate.keys("session:*");
+
+        if (!keys.isEmpty()) {
+            redisTemplate.delete(keys);
+        }
+    }
 }
