@@ -2,7 +2,6 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.AuthService;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;

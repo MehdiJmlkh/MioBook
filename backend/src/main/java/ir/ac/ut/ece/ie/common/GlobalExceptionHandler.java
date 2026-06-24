@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.common;
 
 import ir.ac.ut.ece.ie.auth.AnotherUserAlreadyLoggedInException;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.users.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,11 +69,5 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDto> handleAnotherUserAlreadyLoggedInException() {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("Another user already logged in"));
-    }
-
-    @ExceptionHandler(NotLoggedInException.class)
-    public ResponseEntity<ErrorDto> handleNotLoggedInException() {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(new ErrorDto("You must login first."));
     }
 }
