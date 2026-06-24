@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.BookMapper;
 import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -44,10 +43,6 @@ public class AuthorService {
 
         var admin = adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotAdminException::new);
-
-        if (!authRepository.isLoggedIn(admin)) {
-            throw new NotLoggedInException();
-        }
 
         var author = authorMapper.toAuthor(request);
         author.setAdmin(admin);
