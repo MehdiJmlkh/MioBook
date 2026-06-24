@@ -23,8 +23,6 @@ public class AuthService {
             throw new UsernameOrPasswordIncorrectException();
         }
 
-        authRepository.setAuthenticatedUser(user);
-
         return userMapper.toDto(user);
     }
 

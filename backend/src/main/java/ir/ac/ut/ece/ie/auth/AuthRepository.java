@@ -8,9 +8,4 @@ import java.util.Optional;
 
 @Repository
 public class AuthRepository {
-    private User user = null;
-
-    public void setAuthenticatedUser(User user) {
-        this.user = user;
-    }
 }
