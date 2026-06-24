@@ -6,10 +6,14 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface LoginResponse {
+  token: string;
+}
+
 class AuthService {
   login(loginRequest: LoginRequest) {
     return apiClient
-      .post<User>("/auth/login", loginRequest)
+      .post<LoginResponse>("/auth/login", loginRequest)
       .then((res) => res.data)
       .catch((err) => {
         throw err.response.data;
