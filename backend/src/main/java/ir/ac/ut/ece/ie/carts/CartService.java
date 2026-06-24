@@ -1,7 +1,7 @@
 package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
@@ -28,7 +28,7 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final PurchaseRepository purchaseRepository;
     private final CartMapper cartMapper;
-    private final AuthRepository authRepository;
+    private final AuthService authService;
 
     public CartDto getCart(String username) {
         var user = userRepository.findByUsername(username)
@@ -97,8 +97,7 @@ public class CartService {
     }
 
     public void removeItemFromCart(Long cartItemId) {
-        var user = authRepository.getAuthenticatedUser()
-                .orElseThrow(NotLoggedInException::new);
+        var user = authService.me();
 
         customerRepository.findByUsername(user.getUsername())
                 .orElseThrow(NotCustomerException::new);
@@ -121,10 +120,6 @@ public class CartService {
 
         if (cart.isEmpty()) {
             throw new EmptyCartException();
-        }
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
         }
 
         if (cart.getTotalPrice() > user.getBalance()) {

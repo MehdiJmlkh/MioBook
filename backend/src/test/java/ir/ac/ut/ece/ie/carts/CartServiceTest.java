@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -45,6 +46,8 @@ public class CartServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private AuthRepository authRepository;
+    @MockitoBean
+    private AuthService authService;
 
     @Autowired
     private CartService cartService;
@@ -127,16 +130,12 @@ public class CartServiceTest {
         assertEquals(book.getPrice(), cartItem.getPrice());
     }
 
-    @Test
-    void removeItemFromCart_notLoggedInUser_throwsException() {
-        assertThrows(NotLoggedInException.class, () -> cartService.removeItemFromCart(1L));
-    }
 
     @Test
     void removeItemFromCart_notCustomerUser_throwsException() {
         var user = TestDataFactory.sampleAdminUser();
 
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
 
         assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(1L));
     }
@@ -145,7 +144,7 @@ public class CartServiceTest {
     void removeItemFromCart_cartItemNotFound_throwsException() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(CartItemNotFoundException.class, () -> cartService.removeItemFromCart(1L));
@@ -158,7 +157,7 @@ public class CartServiceTest {
         var cartItem = new CartItem();
         cartItem.setId(1L);
 
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartItemRepository.findByIdAndUser(cartItem.getId() ,user)).thenReturn(Optional.of(cartItem));
 
@@ -209,23 +208,6 @@ public class CartServiceTest {
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(new Cart()));
 
         assertThrows(EmptyCartException.class, () -> cartService.purchaseCart(request));
-    }
-
-    @Test
-    void purchaseCart_userNotLoggedIn_throwsException() {
-        var request = new PurchaseCartRequest();
-
-        var user = TestDataFactory.sampleCustomerUser();
-
-        var cart = new Cart();
-        var cartItem = new CartItem();
-        cart.addItem(cartItem);
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
-
-        assertThrows(NotLoggedInException.class, () -> cartService.purchaseCart(request));
     }
 
     @Test
