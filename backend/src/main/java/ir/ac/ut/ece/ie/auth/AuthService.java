@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.auth;
 import ir.ac.ut.ece.ie.users.UserMapper;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -34,17 +35,19 @@ public class AuthService {
     }
 
     public UserDto getLoggedInUser() {
-         var userId = (Long) SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getPrincipal();
 
-        var user = userRepository.findById(userId).orElse(null);
+        Authentication authentication =
+                SecurityContextHolder.getContext()
+                        .getAuthentication();
 
-        if (user == null) {
+        if (authentication == null) {
             return null;
         }
 
-        return userMapper.toDto(user);
+        Long userId = (Long) authentication.getPrincipal();
+
+        return userRepository.findById(userId)
+                .map(userMapper::toDto)
+                .orElse(null);
     }
 }
