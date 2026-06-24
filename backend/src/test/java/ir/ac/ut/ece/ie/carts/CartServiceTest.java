@@ -224,7 +224,6 @@ public class CartServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
-        when(authRepository.isLoggedIn(any())).thenReturn(true);
 
         assertThrows(NotEnoughCreditException.class, () -> cartService.purchaseCart(request));
     }
@@ -247,7 +246,6 @@ public class CartServiceTest {
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         LocalDateTime before = LocalDateTime.now();
         var purchaseSummary = cartService.purchaseCart(request);

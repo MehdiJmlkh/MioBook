@@ -24,11 +24,4 @@ public class AuthRepository {
         }
         return Optional.of(user);
     }
-
-    public boolean isLoggedIn(User user) {
-        if (this.user == null) {
-            return false;
-        }
-        return this.user.equals(user);
-    }
 }

@@ -54,7 +54,6 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(any())).thenReturn(List.of());
-        when(authRepository.isLoggedIn(any())).thenReturn(true);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchaseHistoryDto = purchaseService.getAllPurchases("username");
@@ -71,7 +70,6 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchaseHistoryDto = purchaseService.getAllPurchases(user.getUsername());
@@ -118,7 +116,6 @@ public class PurchaseServiceTest {
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var purchasedBooksHistory= purchaseService.getPurchasedBooks(user.getUsername());

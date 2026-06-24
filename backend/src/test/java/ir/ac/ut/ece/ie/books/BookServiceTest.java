@@ -113,7 +113,6 @@ public class BookServiceTest {
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(adminRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         bookService.addBook(request);
 

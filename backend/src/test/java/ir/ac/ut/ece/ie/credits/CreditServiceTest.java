@@ -54,7 +54,6 @@ public class CreditServiceTest {
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         creditService.addCredit(request);
 

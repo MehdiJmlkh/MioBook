@@ -80,7 +80,6 @@ public class AuthorServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(adminRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(authRepository.isLoggedIn(user)).thenReturn(true);
 
         authorService.addAuthor(request);
 
