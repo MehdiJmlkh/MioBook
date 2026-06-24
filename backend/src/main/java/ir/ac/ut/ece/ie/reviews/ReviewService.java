@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.reviews;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -55,10 +54,6 @@ public class ReviewService {
 
         customerRepository.findByUsername(username)
                 .orElseThrow(NotCustomerException::new);
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
 
         var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);

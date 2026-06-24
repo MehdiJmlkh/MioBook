@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.reviews;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -65,17 +64,6 @@ public class ReviewServiceTest {
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         assertThrows(NotCustomerException.class, () -> reviewService.addReview(request));
-    }
-
-    @Test
-    void addReview_userNotLoggedIn_throwsException() {
-        var request = new AddReviewRequest();
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotLoggedInException.class, () -> reviewService.addReview(request));
     }
 
     @Test
