@@ -6,6 +6,9 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Optional;
@@ -44,22 +47,6 @@ public class AuthServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(UsernameOrPasswordIncorrectException.class, () -> authService.login(request));
-    }
-
-    @Test
-    void login_anotherUserLoggedIn_throwsException() {
-        var request = new LoginRequest();
-        request.setUsername("username");
-        request.setPassword("correct");
-
-        var user = new User();
-        user.setPassword("correct");
-
-        var anotherUser = new User();
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(anotherUser));
-
-        assertThrows(AnotherUserAlreadyLoggedInException.class, () -> authService.login(request));
     }
 
     @Test
@@ -111,14 +98,25 @@ public class AuthServiceTest {
 
     @Test
     void getLoggedInUser_notLoggedIn_returnsNull() {
+        SecurityContextHolder.clearContext();
+
         var user = authService.getLoggedInUser();
+
         assertNull(user);
     }
 
     @Test
     void getLoggedInUser_loggedIn_returnsUserDto() {
         var user = TestDataFactory.sampleCustomerUser();
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
+        var userId = user.getId();
+        var authentication = new UsernamePasswordAuthenticationToken(
+                userId,null);
+
+        SecurityContextHolder.getContext()
+                .setAuthentication(authentication);
+
+        when(userRepository.findById(userId))
+                .thenReturn(Optional.of(user));
 
         var userDto = authService.getLoggedInUser();
         assertEquals(user.getUsername(), userDto.getUsername());
