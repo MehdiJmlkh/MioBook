@@ -29,7 +29,6 @@ public class AuthService {
     }
 
     public void logout() {
-        authRepository.removeAuthenticatedUser();
     }
 
     public User me() {

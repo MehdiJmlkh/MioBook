@@ -13,8 +13,4 @@ public class AuthRepository {
     public void setAuthenticatedUser(User user) {
         this.user = user;
     }
-
-    public void removeAuthenticatedUser() {
-        user = null;
-    }
 }

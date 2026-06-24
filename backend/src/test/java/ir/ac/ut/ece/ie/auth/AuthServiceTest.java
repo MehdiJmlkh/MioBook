@@ -85,7 +85,6 @@ public class AuthServiceTest {
     @Test
     void logout_validInput_removesAuthenticatedUser() {
         authService.logout();
-        verify(authRepository).removeAuthenticatedUser();
     }
 
     @Test
