@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.auth;
 
 import ir.ac.ut.ece.ie.sessions.SessionService;
-import ir.ac.ut.ece.ie.sessions.UserSession;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
