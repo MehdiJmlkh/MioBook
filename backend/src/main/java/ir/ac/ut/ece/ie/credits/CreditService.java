@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.credits;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -22,10 +21,6 @@ public class CreditService {
 
         var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotCustomerException::new);
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
 
         user.addCredit(request.getCredit());
         customerRepository.save(user);

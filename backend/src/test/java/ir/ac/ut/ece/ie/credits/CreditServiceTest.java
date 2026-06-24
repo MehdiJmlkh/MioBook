@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.credits;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -42,16 +41,6 @@ public class CreditServiceTest {
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         assertThrows(NotCustomerException.class, () -> creditService.addCredit(request));
-    }
-
-    @Test
-    void addCredit_userNotLoggedIn_throwsException() {
-        var request = new AddCreditRequest();
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        assertThrows(NotLoggedInException.class, () -> creditService.addCredit(request));
     }
 
     @Test
