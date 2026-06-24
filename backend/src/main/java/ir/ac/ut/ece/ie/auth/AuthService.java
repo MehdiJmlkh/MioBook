@@ -34,7 +34,7 @@ public class AuthService {
         authRepository.removeAuthenticatedUser();
     }
 
-    public UserDto getLoggedInUser() {
+    public UserDto getCurrentUser() {
 
         Authentication authentication =
                 SecurityContextHolder.getContext()

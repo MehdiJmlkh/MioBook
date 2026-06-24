@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
@@ -97,16 +96,16 @@ public class AuthServiceTest {
     }
 
     @Test
-    void getLoggedInUser_notLoggedIn_returnsNull() {
+    void getCurrentUser_notLoggedIn_returnsNull() {
         SecurityContextHolder.clearContext();
 
-        var user = authService.getLoggedInUser();
+        var user = authService.getCurrentUser();
 
         assertNull(user);
     }
 
     @Test
-    void getLoggedInUser_loggedIn_returnsUserDto() {
+    void getCurrentUser_loggedIn_returnsUserDto() {
         var user = TestDataFactory.sampleCustomerUser();
         var userId = user.getId();
         var authentication = new UsernamePasswordAuthenticationToken(
@@ -118,7 +117,7 @@ public class AuthServiceTest {
         when(userRepository.findById(userId))
                 .thenReturn(Optional.of(user));
 
-        var userDto = authService.getLoggedInUser();
+        var userDto = authService.getCurrentUser();
         assertEquals(user.getUsername(), userDto.getUsername());
         assertEquals(user.getEmail(), userDto.getEmail());
         assertEquals(user.getRole().toString(), userDto.getRole());

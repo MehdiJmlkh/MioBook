@@ -16,7 +16,7 @@ public class AuthController {
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
-        var userDto = authService.getLoggedInUser();
+        var userDto = authService.getCurrentUser();
         return ResponseEntity.ok(userDto);
     }
 
