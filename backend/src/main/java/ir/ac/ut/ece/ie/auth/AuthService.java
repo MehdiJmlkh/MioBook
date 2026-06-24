@@ -28,9 +28,6 @@ public class AuthService {
         return userMapper.toDto(user);
     }
 
-    public void logout() {
-    }
-
     public User me() {
         Authentication authentication =
                 SecurityContextHolder.getContext()

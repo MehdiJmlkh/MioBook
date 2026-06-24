@@ -83,11 +83,6 @@ public class AuthServiceTest {
     }
 
     @Test
-    void logout_validInput_removesAuthenticatedUser() {
-        authService.logout();
-    }
-
-    @Test
     void getCurrentUser_notLoggedIn_returnsNull() {
         SecurityContextHolder.clearContext();
 
