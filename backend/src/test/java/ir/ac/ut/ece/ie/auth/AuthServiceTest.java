@@ -84,11 +84,6 @@ public class AuthServiceTest {
     }
 
     @Test
-    void logout_notLoggedIn_throwsException() {
-        assertThrows(NotLoggedInException.class, () -> authService.logout());
-    }
-
-    @Test
     void logout_validInput_removesAuthenticatedUser() {
         when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
         authService.logout();

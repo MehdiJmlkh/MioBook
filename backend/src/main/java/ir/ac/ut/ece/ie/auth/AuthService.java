@@ -28,9 +28,6 @@ public class AuthService {
     }
 
     public void logout() {
-        authRepository.getAuthenticatedUser()
-                .orElseThrow(NotLoggedInException::new);
-
         authRepository.removeAuthenticatedUser();
     }
 
