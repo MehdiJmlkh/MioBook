@@ -17,11 +17,4 @@ public class AuthRepository {
     public void removeAuthenticatedUser() {
         user = null;
     }
-
-    public Optional<User> getAuthenticatedUser() {
-        if (user == null) {
-            return Optional.empty();
-        }
-        return Optional.of(user);
-    }
 }

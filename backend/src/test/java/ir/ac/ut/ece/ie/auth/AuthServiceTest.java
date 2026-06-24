@@ -58,7 +58,6 @@ public class AuthServiceTest {
         user.setPassword("correct");
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(user));
 
         var userDto = authService.login(request);
         assertEquals(user.getUsername(), userDto.getUsername());
@@ -85,7 +84,6 @@ public class AuthServiceTest {
 
     @Test
     void logout_validInput_removesAuthenticatedUser() {
-        when(authRepository.getAuthenticatedUser()).thenReturn(Optional.of(new User()));
         authService.logout();
         verify(authRepository).removeAuthenticatedUser();
     }
