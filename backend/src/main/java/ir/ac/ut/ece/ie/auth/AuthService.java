@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService {
     private final UserRepository userRepository;
-    private final AuthRepository authRepository;
     private final UserMapper userMapper;
 
     public UserDto login(LoginRequest request) {

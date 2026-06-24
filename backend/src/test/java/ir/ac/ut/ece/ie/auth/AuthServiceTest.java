@@ -21,8 +21,6 @@ import static org.mockito.Mockito.when;
 public class AuthServiceTest {
     @MockitoBean
     private UserRepository userRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @Autowired
     private AuthService authService;
 

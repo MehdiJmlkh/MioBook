@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.credits;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreditService {
     private final UserRepository userRepository;
-    private final AuthRepository authRepository;
     private final CustomerRepository customerRepository;
 
     public Integer addCredit(AddCreditRequest request) {

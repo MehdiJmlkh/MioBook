@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.carts;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -43,8 +42,6 @@ public class CartServiceTest {
     private BookRepository bookRepository;
     @MockitoBean
     private PurchaseRepository purchaseRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @MockitoBean
     private AuthService authService;
 

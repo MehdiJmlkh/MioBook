@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.authors;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.books.BookMapper;
 import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -21,7 +20,6 @@ public class AuthorService {
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
     private final AdminRepository adminRepository;
-    private final AuthRepository authRepository;
     private final BookRepository bookRepository;
     private final AuthorMapper authorMapper;
     private final BookMapper bookMapper;

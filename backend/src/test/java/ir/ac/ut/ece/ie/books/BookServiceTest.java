@@ -1,8 +1,6 @@
 package ir.ac.ut.ece.ie.books;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.auth.AuthService;
-import ir.ac.ut.ece.ie.auth.UserDto;
 import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
@@ -35,7 +33,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -52,8 +49,6 @@ public class BookServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private PurchaseItemRepository purchaseItemRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @MockitoBean
     private AuthService authService;
     @Autowired

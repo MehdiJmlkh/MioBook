@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.authors;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
@@ -29,8 +28,6 @@ public class AuthorServiceTest {
     private AdminRepository adminRepository;
     @MockitoBean
     private UserRepository userRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @Autowired
     private AuthorService authorService;
 

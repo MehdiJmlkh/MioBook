@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -29,8 +28,6 @@ public class PurchaseServiceTest {
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @Autowired
     private PurchaseService purchaseService;
 

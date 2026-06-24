@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.credits;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -23,8 +22,6 @@ public class CreditServiceTest {
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @Autowired
     private CreditService creditService;
 

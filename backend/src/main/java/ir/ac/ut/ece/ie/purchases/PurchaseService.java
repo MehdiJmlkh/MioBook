@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -17,7 +16,6 @@ public class PurchaseService {
     private final PurchaseItemRepository purchaseItemRepository;
     private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
-    private final AuthRepository authRepository;
     private final PurchaseMapper purchaseMapper;
 
     public PurchaseHistoryDto getAllPurchases(String username) {

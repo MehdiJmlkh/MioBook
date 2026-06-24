@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.reviews;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -45,8 +44,6 @@ public class ReviewServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private PurchaseItemRepository purchaseItemRepository;
-    @MockitoBean
-    private AuthRepository authRepository;
     @Autowired
     private ReviewService reviewService;
 

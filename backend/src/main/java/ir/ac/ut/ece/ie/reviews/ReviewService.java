@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.reviews;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -24,7 +23,6 @@ public class ReviewService {
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
     private final PurchaseItemRepository purchaseItemRepository;
-    private final AuthRepository authRepository;
     private final ReviewMapper reviewMapper;
 
     public ReviewListDto getAllReviews(Long bookId, Integer page, Integer size) {
