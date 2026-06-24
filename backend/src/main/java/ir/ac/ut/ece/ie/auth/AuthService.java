@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.auth;
 
+import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserMapper;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,21 @@ public class AuthService {
 
     public void logout() {
         authRepository.removeAuthenticatedUser();
+    }
+
+    public User me() {
+        Authentication authentication =
+                SecurityContextHolder.getContext()
+                        .getAuthentication();
+
+        if (authentication == null) {
+            return null;
+        }
+
+        Long userId = (Long) authentication.getPrincipal();
+
+        return userRepository.findById(userId)
+                .orElse(null);
     }
 
     public UserDto getCurrentUser() {

@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.books;
 
-import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
@@ -27,7 +26,7 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final UserRepository userRepository;
     private final AdminRepository adminRepository;
-    private final AuthRepository authRepository;
+    private final AuthService authService;
     private final PurchaseItemRepository purchaseItemRepository;
     private final GenreRepository genreRepository;
     private final BookMapper bookMapper;
@@ -42,8 +41,7 @@ public class BookService {
         var book = bookRepository.findById(id)
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = authRepository.getAuthenticatedUser()
-                .orElseThrow(NotLoggedInException::new);
+        var user = authService.me();
 
         var purchaseItems = purchaseItemRepository.findPurchaseItems(user.getUsername(), book.getTitle());
         if (purchaseItems.isEmpty()) {
@@ -71,10 +69,6 @@ public class BookService {
 
         var user = adminRepository.findByUsername(request.getUsername())
                 .orElseThrow(NotAdminException::new);
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
 
         var genres = request.getGenres().stream()
                 .map(name -> genreRepository.findByName(name)
