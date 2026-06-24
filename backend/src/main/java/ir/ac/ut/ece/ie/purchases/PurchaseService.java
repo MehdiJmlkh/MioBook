@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.purchases;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -28,10 +27,6 @@ public class PurchaseService {
         customerRepository.findByUsername(username)
                 .orElseThrow(NotCustomerException::new);
 
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
-
         var purchases = purchaseRepository.findByUsername(username);
 
         var purchaseDtoList = purchases.stream()
@@ -50,10 +45,6 @@ public class PurchaseService {
 
         customerRepository.findByUsername(username)
                 .orElseThrow(NotCustomerException::new);
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
 
         var items = purchaseItemRepository.findNotExpiredPurchaseItems(username, LocalDateTime.now());
 
@@ -74,10 +65,6 @@ public class PurchaseService {
 
         customerRepository.findByUsername(username)
                 .orElseThrow(NotCustomerException::new);
-
-        if (!authRepository.isLoggedIn(user)) {
-            throw new NotLoggedInException();
-        }
 
         var purchases = purchaseRepository.findByUsername(username);
 

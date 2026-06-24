@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.purchases;
 
 import ir.ac.ut.ece.ie.auth.AuthRepository;
-import ir.ac.ut.ece.ie.auth.NotLoggedInException;
 import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -47,16 +46,6 @@ public class PurchaseServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotCustomerException.class, () -> purchaseService.getAllPurchases("username"));
-    }
-
-    @Test
-    void getAllPurchases_userNotLoggedIn_throwsException() {
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotLoggedInException.class, () -> purchaseService.getAllPurchases("username"));
     }
 
     @Test
@@ -117,15 +106,6 @@ public class PurchaseServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(NotCustomerException.class, () -> purchaseService.getPurchasedBooks("username"));
-    }
-
-    @Test
-    void getPurchasedBooks_userNotLoggedIn_throwsException() {
-        var user = TestDataFactory.sampleCustomerUser();
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotLoggedInException.class, () -> purchaseService.getPurchasedBooks("username"));
     }
 
     @Test
