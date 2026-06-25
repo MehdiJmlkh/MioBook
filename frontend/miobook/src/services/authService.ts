@@ -25,7 +25,7 @@ class AuthService {
   }
 
   get() {
-    return apiClient.get("/auth").then((res) => res.data);
+    return apiClient.get("/auth").then((res) => res.data).catch(err => {throw new Error(err.response.error)});
   }
 }
 

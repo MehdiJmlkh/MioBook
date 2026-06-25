@@ -3,13 +3,13 @@ import { useAuth } from "../queries/auth/useAuth";
 import Layout from "./Layout";
 
 const PrivateRoutes = () => {
-  const { data: user, isLoading } = useAuth();
+  const { data: user, isLoading, error } = useAuth();
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (!user) {
+  if (error || !user) {
     return <Navigate to="/sign-in" />;
   }
 
