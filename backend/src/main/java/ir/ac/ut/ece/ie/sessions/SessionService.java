@@ -16,7 +16,7 @@ import java.util.UUID;
 public class SessionService {
     private final RedisTemplate<String, Long> redisTemplate;
 
-    private static final Duration SESSION_DURATION = Duration.ofHours(24);
+    private static final Duration SESSION_DURATION = Duration.ofMinutes(20);
 
     public String createSession(Long userId) {
         String token = UUID.randomUUID().toString();
