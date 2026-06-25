@@ -38,11 +38,16 @@ public class SessionService {
         if (id == null) {
             return null;
         }
+        refreshSession(token);
         return id.longValue();
     }
 
     public void deleteSession(String token) {
         redisTemplate.delete(createSessionKey(token));
+    }
+
+    private void refreshSession(String token) {
+        redisTemplate.expire(createSessionKey(token), SESSION_DURATION);
     }
 
     @EventListener(ApplicationReadyEvent.class)
