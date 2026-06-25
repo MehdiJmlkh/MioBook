@@ -58,25 +58,22 @@ public class PurchaseService {
     }
 
     public PurchasedBookStatus getPurchasedBookStatus(String username, Long id) {
-        var user = userRepository.findByUsername(username)
+        userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
         customerRepository.findByUsername(username)
                 .orElseThrow(NotCustomerException::new);
 
-        var purchases = purchaseRepository.findByUsername(username);
-
-        var purchaseBook = purchases.stream()
-                .flatMap(purchase -> purchase.getItems().stream())
-                .filter(purchaseItem -> !purchaseItem.hasExpired())
-                .filter(purchaseItem -> purchaseItem.getBook().getId().equals(id))
+        var purchaseItem = purchaseItemRepository
+                .findNotExpiredPurchaseItems(username, id, LocalDateTime.now())
+                .stream()
                 .findFirst()
                 .orElse(null);
 
-        if (purchaseBook == null) {
+        if (purchaseItem == null) {
             return PurchasedBookStatus.Available;
         }
-        if (purchaseBook.getIsBorrowed()) {
+        if (purchaseItem.getIsBorrowed()) {
             return PurchasedBookStatus.Borrowed;
         }
         return PurchasedBookStatus.Owned;
