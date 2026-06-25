@@ -22,7 +22,7 @@ public class SessionService {
         String token = UUID.randomUUID().toString();
 
         redisTemplate.opsForValue().set(
-                "session:" + token,
+                createSessionKey(token),
                 userId,
                 SESSION_DURATION
         );
@@ -33,7 +33,7 @@ public class SessionService {
     public Long getSession(String token) {
         Number id = redisTemplate
                 .opsForValue()
-                .get("session:" + token);
+                .get(createSessionKey(token));
 
         if (id == null) {
             return null;
@@ -42,7 +42,7 @@ public class SessionService {
     }
 
     public void deleteSession(String token) {
-        redisTemplate.delete("session:" + token);
+        redisTemplate.delete(createSessionKey(token));
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -52,5 +52,9 @@ public class SessionService {
         if (!keys.isEmpty()) {
             redisTemplate.delete(keys);
         }
+    }
+
+    private String createSessionKey(String token) {
+        return "session:" + token;
     }
 }
