@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
+import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -47,11 +48,9 @@ public class BookService {
         if (purchaseItems.isEmpty()) {
             throw new BookNotInStockException();
         }
-        purchaseItems.forEach(purchaseItem -> {
-            if (purchaseItem.hasExpired()) {
+        if (purchaseItems.stream().allMatch(PurchaseItem::hasExpired)) {
                 throw new BookNotInStockException();
-            }
-        });
+        }
 
         return bookMapper.toContentDto(book);
     }
