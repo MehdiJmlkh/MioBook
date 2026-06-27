@@ -5,6 +5,7 @@ import ir.ac.ut.ece.ie.sessions.SessionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
@@ -22,9 +23,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest request) {
-        var userDto = authService.login(request);
+        authService.login(request);
 
-        String token = sessionService.createSession(userDto.getId());
+        String token = sessionService.createSession(1L);
 
         return new LoginResponse(token);
     }
@@ -39,8 +40,8 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
 
-    @ExceptionHandler(UsernameOrPasswordIncorrectException.class)
-    public ResponseEntity<ErrorDto> handleUsernameOrPasswordIncorrectException() {
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorDto> handleBadCredentialsExceptionException() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(new ErrorDto("Username or password is incorrect."));
     }

@@ -4,6 +4,8 @@ import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserMapper;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -13,16 +15,15 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final AuthenticationManager authenticationManager;
 
-    public UserDto login(LoginRequest request) {
-        var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UsernameOrPasswordIncorrectException::new);
-
-        if (!user.getPassword().equals(request.getPassword())) {
-            throw new UsernameOrPasswordIncorrectException();
-        }
-
-        return userMapper.toDto(user);
+    public void login(LoginRequest request) {
+        authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                request.getUsername(),
+                request.getPassword()
+            )
+        );
     }
 
     public User me() {
