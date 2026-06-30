@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Optional;
@@ -22,9 +23,11 @@ public class UserServiceTest {
     private CustomerRepository customerRepository;
     @MockitoBean
     private AdminRepository adminRepository;
-
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Test
     void addUser_duplicateUsername_throwsException() {
@@ -63,7 +66,7 @@ public class UserServiceTest {
         var savedUser = captor.getValue();
 
         assertEquals(request.getUsername(), savedUser.getUsername());
-        assertEquals(request.getPassword(), savedUser.getPassword());
+        assertTrue(passwordEncoder.matches(request.getPassword(), savedUser.getPassword()));
         assertEquals(request.getEmail(), savedUser.getEmail());
         assertEquals(request.getAddress().getCountry(), savedUser.getAddress().getCountry());
         assertEquals(request.getAddress().getCity(), savedUser.getAddress().getCity());
@@ -93,7 +96,7 @@ public class UserServiceTest {
         var savedUser = captor.getValue();
 
         assertEquals(request.getUsername(), savedUser.getUsername());
-        assertEquals(request.getPassword(), savedUser.getPassword());
+        assertTrue(passwordEncoder.matches(request.getPassword(), savedUser.getPassword()));
         assertEquals(request.getEmail(), savedUser.getEmail());
         assertEquals(request.getAddress().getCountry(), savedUser.getAddress().getCountry());
         assertEquals(request.getAddress().getCity(), savedUser.getAddress().getCity());
