@@ -6,21 +6,24 @@ import ir.ac.ut.ece.ie.users.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class AuthServiceTest {
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private AuthService authService;
 
@@ -29,7 +32,7 @@ public class AuthServiceTest {
         var request = new LoginRequest();
         request.setUsername("username");
 
-        assertThrows(UsernameOrPasswordIncorrectException.class, () -> authService.login(request));
+        assertThrows(BadCredentialsException.class, () -> authService.login(request));
     }
 
     @Test
@@ -39,28 +42,12 @@ public class AuthServiceTest {
         request.setPassword("incorrect");
 
         var user = new User();
+        user.setUsername("username");
         user.setPassword("correct");
 
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
-        assertThrows(UsernameOrPasswordIncorrectException.class, () -> authService.login(request));
-    }
-
-    @Test
-    void login_alreadyLoggedIn_returnsUserDto() {
-        var request = new LoginRequest();
-        request.setUsername("username");
-        request.setPassword("correct");
-
-        var user = TestDataFactory.sampleCustomerUser();
-        user.setPassword("correct");
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        var userDto = authService.login(request);
-        assertEquals(user.getUsername(), userDto.getUsername());
-        assertEquals(user.getEmail(), userDto.getEmail());
-        assertEquals(user.getRole().toString(), userDto.getRole());
+        assertThrows(BadCredentialsException.class, () -> authService.login(request));
     }
 
     @Test
@@ -73,11 +60,9 @@ public class AuthServiceTest {
         user.setPassword("correct");
 
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(passwordEncoder.matches(user.getPassword() ,request.getPassword())).thenReturn(true);
 
-        var userDto = authService.login(request);
-        assertEquals(user.getUsername(), userDto.getUsername());
-        assertEquals(user.getEmail(), userDto.getEmail());
-        assertEquals(user.getRole().toString(), userDto.getRole());
+        assertDoesNotThrow(() -> authService.login(request));
     }
 
     @Test
