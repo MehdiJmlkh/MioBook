@@ -123,7 +123,8 @@ public class ReviewServiceTest {
         when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
-        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any(), any())).thenReturn(List.of(new PurchaseItem()));
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), anyString(), any()))
+                .thenReturn(List.of(new PurchaseItem()));
         when(reviewRepository.findByUserAndBook(user, book)).thenReturn(Optional.of(previousReview));
 
         reviewService.addReview(request);
@@ -155,7 +156,8 @@ public class ReviewServiceTest {
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
-        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any(), any())).thenReturn(List.of(purchaseItem));
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), anyString(), any()))
+                .thenReturn(List.of(purchaseItem));
         when(purchaseItem.hasExpired()).thenReturn(false);
 
         var before = LocalDate.now();
