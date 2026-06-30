@@ -219,7 +219,7 @@ public class BookServiceTest {
         when(bookRepository.findById(id)).thenReturn(Optional.of(book));
         when(authService.me()).thenReturn(user);
 
-        when(purchaseItemRepository.findPurchaseItems(username, title)).thenReturn(List.of(purchase));
+        when(purchaseItemRepository.findNotExpiredPurchaseItems(eq(username), eq(title), any())).thenReturn(List.of(purchase));
 
         var bookContentDto = bookService.getBookContent(id);
 
