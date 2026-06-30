@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
     private final SessionService sessionService;
+    private final JwtService jwtService;
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
@@ -22,12 +23,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest request) {
+    public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest request) {
         authService.login(request);
 
-        String token = sessionService.createSession(1L);
+        var token = jwtService.generateToken(request.getUsername());
 
-        return new LoginResponse(token);
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     @PostMapping("/logout")
