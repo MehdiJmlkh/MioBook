@@ -51,9 +51,9 @@ public class AuthService {
             return null;
         }
 
-        Long userId = (Long) authentication.getPrincipal();
+        var username = (String) authentication.getPrincipal();
 
-        return userRepository.findById(userId)
+        return userRepository.findByUsername(username)
                 .map(userMapper::toDto)
                 .orElse(null);
     }
