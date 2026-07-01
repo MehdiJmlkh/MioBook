@@ -3,6 +3,7 @@ package ir.ac.ut.ece.ie.auth;
 import ir.ac.ut.ece.ie.common.ErrorDto;
 import ir.ac.ut.ece.ie.config.JwtConfig;
 import ir.ac.ut.ece.ie.sessions.SessionService;
+import ir.ac.ut.ece.ie.users.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
     private final SessionService sessionService;
+    private final UserRepository userRepository;
     private final JwtService jwtService;
     private final JwtConfig jwtConfig;
 
@@ -41,6 +43,21 @@ public class AuthController {
         cookie.setMaxAge(jwtConfig.getRefreshTokenExpiration());
         cookie.setSecure(true);
         response.addCookie(cookie);
+
+        return ResponseEntity.ok(new JwtResponse(accessToken));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtResponse> refresh(
+            @CookieValue(value = "refreshToken") String refreshToken
+    ) {
+        if (!jwtService.validateToken(refreshToken)) {
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        var userId = jwtService.getUserIdFromToken(refreshToken);
+        var user = userRepository.findById(userId).orElseThrow();
+        var accessToken = jwtService.generateAccessToken(user);
 
         return ResponseEntity.ok(new JwtResponse(accessToken));
     }
