@@ -17,13 +17,15 @@ public class AuthService {
     private final UserMapper userMapper;
     private final AuthenticationManager authenticationManager;
 
-    public void login(LoginRequest request) {
+    public User login(LoginRequest request) {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                 request.getUsername(),
                 request.getPassword()
             )
         );
+
+        return userRepository.findByUsername(request.getUsername()).orElseThrow();
     }
 
     public User me() {
@@ -51,9 +53,9 @@ public class AuthService {
             return null;
         }
 
-        var username = (String) authentication.getPrincipal();
+        var userId = (Long) authentication.getPrincipal();
 
-        return userRepository.findByUsername(username)
+        return userRepository.findById(userId)
                 .map(userMapper::toDto)
                 .orElse(null);
     }
