@@ -3,28 +3,24 @@ package ir.ac.ut.ece.ie.auth;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
+import ir.ac.ut.ece.ie.config.JwtConfig;
 import ir.ac.ut.ece.ie.users.User;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@AllArgsConstructor
 @Service
 public class JwtService {
-    @Value("${spring.jwt.secret}")
-    private String secret;
+    private final JwtConfig jwtConfig;
 
     public String generateAccessToken(User user) {
-        final long tokenExpiration = 300; // 5m
-
-        return generateToken(user, tokenExpiration);
+        return generateToken(user, jwtConfig.getAccessTokenExpiration());
     }
 
     public String generateRefreshToken(User user) {
-        final long tokenExpiration = 604800; // 7d
-
-        return generateToken(user, tokenExpiration);
+        return generateToken(user, jwtConfig.getRefreshTokenExpiration());
     }
 
     private String generateToken(User user, long tokenExpiration) {
@@ -33,7 +29,7 @@ public class JwtService {
                 .claim("username", user.getUsername())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000 * tokenExpiration))
-                .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .signWith(jwtConfig.getSecretKey())
                 .compact();
     }
 
@@ -48,7 +44,7 @@ public class JwtService {
 
     private Claims getClaims(String token) {
         return Jwts.parser()
-                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .verifyWith(jwtConfig.getSecretKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();

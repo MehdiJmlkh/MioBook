@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.auth;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.config.JwtConfig;
 import ir.ac.ut.ece.ie.sessions.SessionService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ public class AuthController {
     private final AuthService authService;
     private final SessionService sessionService;
     private final JwtService jwtService;
+    private final JwtConfig jwtConfig;
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
@@ -36,7 +38,7 @@ public class AuthController {
         var cookie = new Cookie("refreshToken", refreshToken);
         cookie.setHttpOnly(true);
         cookie.setPath("/auth/refresh");
-        cookie.setMaxAge(604800); // 7d
+        cookie.setMaxAge(jwtConfig.getRefreshTokenExpiration());
         cookie.setSecure(true);
         response.addCookie(cookie);
 
