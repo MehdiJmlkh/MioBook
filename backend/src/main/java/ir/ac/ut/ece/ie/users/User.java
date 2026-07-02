@@ -32,7 +32,7 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    Role getRole() {
+    public Role getRole() {
         return null;
     }
 
