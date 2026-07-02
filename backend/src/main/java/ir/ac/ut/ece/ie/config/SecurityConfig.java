@@ -1,6 +1,7 @@
 package ir.ac.ut.ece.ie.config;
 
 import ir.ac.ut.ece.ie.auth.JwtAuthenticationFilter;
+import ir.ac.ut.ece.ie.users.Role;
 import ir.ac.ut.ece.ie.users.UserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -57,6 +58,12 @@ public class SecurityConfig {
                 c
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/auth/refresh").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/authors").hasRole(Role.ADMIN.name())
+                    .requestMatchers(HttpMethod.POST, "/books").hasRole(Role.ADMIN.name())
+                    .requestMatchers("/carts/**").hasRole(Role.CUSTOMER.name())
+                    .requestMatchers("/credits/**").hasRole(Role.CUSTOMER.name())
+                    .requestMatchers("/purchases/**").hasRole(Role.CUSTOMER.name())
+                    .requestMatchers(HttpMethod.POST, "/reviews").hasRole(Role.CUSTOMER.name())
                     .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
