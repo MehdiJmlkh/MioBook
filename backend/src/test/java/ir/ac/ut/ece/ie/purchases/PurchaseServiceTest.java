@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -34,15 +33,6 @@ public class PurchaseServiceTest {
     @Test
     void getAllPurchases_userNotFound_throwsException() {
         assertThrows(UserNotFoundException.class, () -> purchaseService.getAllPurchases("username"));
-    }
-
-    @Test
-    void getAllPurchases_notCustomerUser_throwsException() {
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> purchaseService.getAllPurchases("username"));
     }
 
     @Test
@@ -93,14 +83,6 @@ public class PurchaseServiceTest {
     @Test
     void getPurchasedBooks_userNotFound_throwsException() {
         assertThrows(UserNotFoundException.class, () -> purchaseService.getPurchasedBooks("username"));
-    }
-
-    @Test
-    void getPurchasedBooks_notCustomerUser_throwsException() {
-        var user = TestDataFactory.sampleAdminUser();
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> purchaseService.getPurchasedBooks("username"));
     }
 
     @Test

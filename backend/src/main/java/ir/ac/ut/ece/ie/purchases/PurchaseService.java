@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -19,11 +18,8 @@ public class PurchaseService {
     private final PurchaseMapper purchaseMapper;
 
     public PurchaseHistoryDto getAllPurchases(String username) {
-        var user = userRepository.findByUsername(username)
+        userRepository.findByUsername(username)
                         .orElseThrow(UserNotFoundException::new);
-
-        customerRepository.findByUsername(username)
-                .orElseThrow(NotCustomerException::new);
 
         var purchases = purchaseRepository.findByUsername(username);
 
@@ -38,11 +34,8 @@ public class PurchaseService {
     }
 
     public PurchasedBooksHistory getPurchasedBooks(String username) {
-        var user = userRepository.findByUsername(username)
+        userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
-
-        customerRepository.findByUsername(username)
-                .orElseThrow(NotCustomerException::new);
 
         var items = purchaseItemRepository.findNotExpiredPurchaseItems(username, LocalDateTime.now());
 
@@ -60,9 +53,6 @@ public class PurchaseService {
     public PurchasedBookStatus getPurchasedBookStatus(String username, Long id) {
         userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
-
-        customerRepository.findByUsername(username)
-                .orElseThrow(NotCustomerException::new);
 
         var purchaseItem = purchaseItemRepository
                 .findNotExpiredPurchaseItems(username, id, LocalDateTime.now())
