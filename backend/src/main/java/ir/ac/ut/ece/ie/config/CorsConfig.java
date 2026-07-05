@@ -1,4 +1,4 @@
-package ir.ac.ut.ece.ie.common;
+package ir.ac.ut.ece.ie.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
