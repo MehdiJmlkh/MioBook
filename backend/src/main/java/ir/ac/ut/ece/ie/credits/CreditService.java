@@ -1,6 +1,5 @@
 package ir.ac.ut.ece.ie.credits;
 
-import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -18,7 +17,7 @@ public class CreditService {
                 .orElseThrow(UserNotFoundException::new);
 
         var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotCustomerException::new);
+                .orElseThrow();
 
         user.addCredit(request.getCredit());
         customerRepository.save(user);

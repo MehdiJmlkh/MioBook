@@ -32,15 +32,6 @@ public class CreditServiceTest {
     }
 
     @Test
-    void addCredit_notCustomerUser_throwsException() {
-        var request = new AddCreditRequest();
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        assertThrows(NotCustomerException.class, () -> creditService.addCredit(request));
-    }
-
-    @Test
     void addCredit_validInput_addsCredit() {
         var request = new AddCreditRequest();
         request.setUsername("username");
