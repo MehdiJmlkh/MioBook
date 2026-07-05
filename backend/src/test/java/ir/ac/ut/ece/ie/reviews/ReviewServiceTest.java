@@ -54,16 +54,6 @@ public class ReviewServiceTest {
     }
 
     @Test
-    void addReview_notCustomerUser_throwsException() {
-        var request = new AddReviewRequest();
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-        assertThrows(NotCustomerException.class, () -> reviewService.addReview(request));
-    }
-
-    @Test
     void addReview_bookNotFound_throwsException() {
         var request = new AddReviewRequest();
         var user = TestDataFactory.sampleCustomerUser();

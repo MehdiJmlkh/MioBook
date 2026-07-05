@@ -3,7 +3,6 @@ package ir.ac.ut.ece.ie.reviews;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
@@ -49,9 +48,6 @@ public class ReviewService {
 
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
-
-        customerRepository.findByUsername(username)
-                .orElseThrow(NotCustomerException::new);
 
         var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);
