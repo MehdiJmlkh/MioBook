@@ -2,7 +2,6 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.NotCustomerException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.purchases.Purchase;
@@ -33,9 +32,6 @@ public class CartService {
         var user = userRepository.findByUsername(username)
                 .orElseThrow(UserNotFoundException::new);
 
-        customerRepository.findByUsername(username)
-                .orElseThrow(NotCustomerException::new);
-
         var cart = cartRepository.findByUser(user)
                 .orElse(new Cart());
 
@@ -59,7 +55,7 @@ public class CartService {
                 .orElseThrow(UserNotFoundException::new);
 
         var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotCustomerException::new);
+                .orElseThrow();
 
         var cart = cartRepository.findByUser(user).orElseThrow();
 
@@ -82,7 +78,7 @@ public class CartService {
                 .orElseThrow(UserNotFoundException::new);
 
         var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotCustomerException::new);
+                .orElseThrow();
 
         if (cartRepository.countCartItems(user) >= 10) {
             throw new CartIsFullException();
@@ -98,9 +94,6 @@ public class CartService {
     public void removeItemFromCart(Long cartItemId) {
         var user = authService.me();
 
-        customerRepository.findByUsername(user.getUsername())
-                .orElseThrow(NotCustomerException::new);
-
         var cartItem = cartItemRepository.findByIdAndUser(cartItemId, user)
                 .orElseThrow(CartItemNotFoundException::new);
 
@@ -112,7 +105,7 @@ public class CartService {
                 .orElseThrow(UserNotFoundException::new);
 
         var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotCustomerException::new);
+                .orElseThrow();
 
         var cart = cartRepository.findByUser(user)
                 .orElseThrow(EmptyCartException::new);

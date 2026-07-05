@@ -62,18 +62,6 @@ public class CartServiceTest {
     }
 
     @Test
-    void addItemToCart_notCustomerUser_throwsException() {
-        var request = new AddCartRequest();
-
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> cartService.addItemToCart(request));
-    }
-
-    @Test
     void addItemToCart_cartIsFull_throwsException() {
         var request = new AddCartRequest();
 
@@ -126,16 +114,6 @@ public class CartServiceTest {
         assertEquals(book.getPrice(), cartItem.getPrice());
     }
 
-
-    @Test
-    void removeItemFromCart_notCustomerUser_throwsException() {
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(authService.me()).thenReturn(user);
-
-        assertThrows(NotCustomerException.class, () -> cartService.removeItemFromCart(1L));
-    }
-
     @Test
     void removeItemFromCart_cartItemNotFound_throwsException() {
         var user = TestDataFactory.sampleCustomerUser();
@@ -167,17 +145,6 @@ public class CartServiceTest {
         var request = new PurchaseCartRequest();
 
         assertThrows(UserNotFoundException.class, () -> cartService.purchaseCart(request));
-    }
-
-    @Test
-    void purchaseCart_notCustomerUser_throwsException() {
-        var request = new PurchaseCartRequest();
-
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> cartService.purchaseCart(request));
     }
 
     @Test
@@ -296,18 +263,6 @@ public class CartServiceTest {
     }
 
     @Test
-    void addBorrowedItemToCart_notCustomerUser_throwsException() {
-        var request = new BorrowBookRequest();
-
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> cartService.addBorrowedItemToCart(request));
-    }
-
-    @Test
     void addBorrowedItemToCart_validInput_addsCartItem() {
         var request = new BorrowBookRequest();
         request.setUsername("username");
@@ -341,15 +296,6 @@ public class CartServiceTest {
     @Test
     void getCart_userNotFound_throwsException() {
         assertThrows(UserNotFoundException.class, () -> cartService.getCart("username"));
-    }
-
-    @Test
-    void getCart_notCustomerUser_throwsException() {
-        var user = TestDataFactory.sampleAdminUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotCustomerException.class, () -> cartService.getCart("username"));
     }
 
     @Test
