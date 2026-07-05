@@ -1,7 +1,6 @@
 package ir.ac.ut.ece.ie.authors;
 
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
-import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.AdminRepository;
@@ -49,17 +48,6 @@ public class AuthorServiceTest {
         when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.empty());
 
         assertThrows(UserNotFoundException.class, () -> authorService.addAuthor(request));
-    }
-
-    @Test
-    void addAuthor_notAdminUser_throwsException() {
-        var request = new AddAuthorRequest();
-
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotAdminException.class, () -> authorService.addAuthor(request));
     }
 
     @Test

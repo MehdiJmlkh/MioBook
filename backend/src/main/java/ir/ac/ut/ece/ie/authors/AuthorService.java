@@ -4,7 +4,6 @@ import ir.ac.ut.ece.ie.books.BookMapper;
 import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
-import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -40,7 +39,7 @@ public class AuthorService {
                 .orElseThrow(UserNotFoundException::new);
 
         var admin = adminRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotAdminException::new);
+                .orElseThrow();
 
         var author = authorMapper.toAuthor(request);
         author.setAdmin(admin);
