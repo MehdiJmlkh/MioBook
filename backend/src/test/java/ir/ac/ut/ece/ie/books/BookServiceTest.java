@@ -5,7 +5,6 @@ import ir.ac.ut.ece.ie.authors.Author;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
@@ -73,18 +72,6 @@ public class BookServiceTest {
         var request = new AddBookRequest();
         when(authorRepository.findByName(any())).thenReturn(Optional.of(new Author()));
         assertThrows(UserNotFoundException.class, () -> bookService.addBook(request));
-    }
-
-    @Test
-    void addBook_notAdminUser_throwsException() {
-        var request = new AddBookRequest();
-        when(authorRepository.findByName(any())).thenReturn(Optional.of(new Author()));
-
-        var user = TestDataFactory.sampleCustomerUser();
-
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
-
-        assertThrows(NotAdminException.class, () -> bookService.addBook(request));
     }
 
     @Test

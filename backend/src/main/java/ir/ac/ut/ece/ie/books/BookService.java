@@ -2,11 +2,9 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
-import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.NotAdminException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.users.AdminRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -67,7 +65,7 @@ public class BookService {
                 .orElseThrow(UserNotFoundException::new);
 
         var user = adminRepository.findByUsername(request.getUsername())
-                .orElseThrow(NotAdminException::new);
+                .orElseThrow();
 
         var genres = request.getGenres().stream()
                 .map(name -> genreRepository.findByName(name)
