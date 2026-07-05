@@ -47,12 +47,6 @@ public class GlobalExceptionHandler {
                 .body(new ErrorDto("Book not found."));
     }
 
-    @ExceptionHandler(NotAdminException.class)
-    public ResponseEntity<ErrorDto> handleNotAdminException() {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .body(new ErrorDto("This command is restricted to admins."));
-    }
-
     @ExceptionHandler(NotCustomerException.class)
     public ResponseEntity<ErrorDto> handleNotCustomerException() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
