@@ -57,8 +57,7 @@ public class AuthController {
             ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        var userId = jwt.getUserId();
-        var user = userRepository.findById(userId).orElseThrow();
+        var user = userRepository.findById(jwt.getUserId()).orElseThrow();
         var accessToken = jwtService.generateAccessToken(user);
 
         return ResponseEntity.ok(new JwtResponse(accessToken.toString()));
