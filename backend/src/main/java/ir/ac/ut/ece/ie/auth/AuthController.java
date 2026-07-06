@@ -62,8 +62,16 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Void> logout(HttpServletResponse response) {
+        var cookie = new Cookie("refreshToken", "");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/auth/refresh");
+        cookie.setMaxAge(0);
+
+        response.addCookie(cookie);
+
+        return ResponseEntity.noContent().build();
     }
 
     @ExceptionHandler(BadCredentialsException.class)
