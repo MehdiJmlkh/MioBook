@@ -12,7 +12,7 @@ export const useLogout = () => {
     },
     onSuccess: () => {
       queryClient.setQueryData(["auth"], null);
-      localStorage.removeItem("token");
+      localStorage.removeItem("accessToken");
     },
   });
 };
