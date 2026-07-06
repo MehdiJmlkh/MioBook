@@ -14,7 +14,7 @@ export const useLogin = () => {
   return useMutation<LoginResponse, LoginRequestError, LoginRequest>({
     mutationFn: authService.login,
     onSuccess: (response: LoginResponse) => {
-      localStorage.setItem("token", response.token);
+      localStorage.setItem("accessToken", response.token);
       navigate("/");
     },
   });
