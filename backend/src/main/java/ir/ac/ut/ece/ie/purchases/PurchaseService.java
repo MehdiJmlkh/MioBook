@@ -1,8 +1,6 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.CustomerRepository;
-import ir.ac.ut.ece.ie.users.UserRepository;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +11,11 @@ import java.time.LocalDateTime;
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
     private final PurchaseItemRepository purchaseItemRepository;
-    private final UserRepository userRepository;
-    private final CustomerRepository customerRepository;
     private final PurchaseMapper purchaseMapper;
+    private final AuthService authService;
 
-    public PurchaseHistoryDto getAllPurchases(String username) {
-        userRepository.findByUsername(username)
-                        .orElseThrow(UserNotFoundException::new);
-
+    public PurchaseHistoryDto getAllPurchases(String _username) {
+        var username = authService.currentUsername();
         var purchases = purchaseRepository.findByUsername(username);
 
         var purchaseDtoList = purchases.stream()
@@ -33,10 +28,8 @@ public class PurchaseService {
                 .build();
     }
 
-    public PurchasedBooksHistory getPurchasedBooks(String username) {
-        userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
-
+    public PurchasedBooksHistory getPurchasedBooks(String _username) {
+        var username = authService.currentUsername();
         var items = purchaseItemRepository.findNotExpiredPurchaseItems(username, LocalDateTime.now());
 
         var purchasedBooks = items.stream()
@@ -50,10 +43,8 @@ public class PurchaseService {
         return purchasedBooksHistory;
     }
 
-    public PurchasedBookStatus getPurchasedBookStatus(String username, Long id) {
-        userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
-
+    public PurchasedBookStatus getPurchasedBookStatus(String _username, Long id) {
+        var username = authService.currentUsername();
         var purchaseItem = purchaseItemRepository
                 .findNotExpiredPurchaseItems(username, id, LocalDateTime.now())
                 .stream()

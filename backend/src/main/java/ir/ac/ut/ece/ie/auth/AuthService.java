@@ -27,9 +27,7 @@ public class AuthService {
     }
 
     public User me() {
-        Authentication authentication =
-                SecurityContextHolder.getContext()
-                        .getAuthentication();
+        var authentication = getAuthentication();
 
         if (authentication == null) {
             return null;
@@ -61,11 +59,20 @@ public class AuthService {
         return admin;
     }
 
-    public UserDto getCurrentUser() {
+    public String currentUsername() {
+        var authentication = getAuthentication();
 
-        Authentication authentication =
-                SecurityContextHolder.getContext()
-                        .getAuthentication();
+        if (authentication == null) {
+            return null;
+        }
+
+        var user = (AuthenticatedUser) authentication.getPrincipal();
+
+        return user.username();
+    }
+
+    public UserDto getCurrentUser() {
+        var authentication = getAuthentication();
 
         if (authentication == null) {
             return null;
@@ -76,5 +83,10 @@ public class AuthService {
         return userRepository.findById(user.id())
                 .map(userMapper::toDto)
                 .orElse(null);
+    }
+
+    private Authentication getAuthentication() {
+        return SecurityContextHolder.getContext()
+                .getAuthentication();
     }
 }

@@ -1,6 +1,6 @@
 package ir.ac.ut.ece.ie.purchases;
 
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
 import ir.ac.ut.ece.ie.users.UserRepository;
@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -27,19 +26,15 @@ public class PurchaseServiceTest {
     private UserRepository userRepository;
     @MockitoBean
     private CustomerRepository customerRepository;
+    @MockitoBean
+    private AuthService authService;
     @Autowired
     private PurchaseService purchaseService;
-
-    @Test
-    void getAllPurchases_userNotFound_throwsException() {
-        assertThrows(UserNotFoundException.class, () -> purchaseService.getAllPurchases("username"));
-    }
 
     @Test
     void getAllPurchases_emptyPurchaseHistory_returnsEmptyPurchaseHistoryDto() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(purchaseRepository.findByUsername(any())).thenReturn(List.of());
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -55,7 +50,7 @@ public class PurchaseServiceTest {
         var purchase = TestDataFactory.samplePurchaseWithOneBorrowItem(user);
         var book = purchase.getItems().stream().findFirst().orElseThrow().getBook();
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.currentUsername()).thenReturn(user.getUsername());
         when(purchaseRepository.findByUsername(user.getUsername())).thenReturn(List.of(purchase));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
@@ -81,11 +76,6 @@ public class PurchaseServiceTest {
     }
 
     @Test
-    void getPurchasedBooks_userNotFound_throwsException() {
-        assertThrows(UserNotFoundException.class, () -> purchaseService.getPurchasedBooks("username"));
-    }
-
-    @Test
     void getPurchasedBooks_validInput_returnsPurchasedBooksHistory() {
         var user = TestDataFactory.sampleCustomerUser();
 
@@ -93,7 +83,7 @@ public class PurchaseServiceTest {
         var purchaseItem = purchase.getItems().stream().findFirst().orElseThrow();
         var book = purchaseItem.getBook();
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.currentUsername()).thenReturn(user.getUsername());
         when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
