@@ -21,7 +21,7 @@ public class CreditService {
     }
 
     public Integer getBalance(String username) {
-        var user = customerRepository.findByUsername(username)
+        var user = customerRepository.findByUsername(authService.currentUsername())
                 .orElseThrow(UserNotFoundException::new);
 
         return  user.getBalance();
