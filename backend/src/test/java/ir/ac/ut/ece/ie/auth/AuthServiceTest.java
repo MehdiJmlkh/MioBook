@@ -79,7 +79,7 @@ public class AuthServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
         var userId = user.getId();
         var authentication = new UsernamePasswordAuthenticationToken(
-                userId,null);
+                new AuthenticatedUser(userId, "username"),null);
 
         SecurityContextHolder.getContext()
                 .setAuthentication(authentication);

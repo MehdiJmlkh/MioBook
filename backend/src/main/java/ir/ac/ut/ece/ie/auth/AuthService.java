@@ -35,9 +35,9 @@ public class AuthService {
             return null;
         }
 
-        Long userId = (Long) authentication.getPrincipal();
+        var user = (AuthenticatedUser) authentication.getPrincipal();
 
-        return userRepository.findById(userId)
+        return userRepository.findById(user.getId())
                 .orElse(null);
     }
 
@@ -71,9 +71,9 @@ public class AuthService {
             return null;
         }
 
-        var userId = (Long) authentication.getPrincipal();
+        var user = (AuthenticatedUser) authentication.getPrincipal();
 
-        return userRepository.findById(userId)
+        return userRepository.findById(user.getId())
                 .map(userMapper::toDto)
                 .orElse(null);
     }
