@@ -2,13 +2,11 @@ package ir.ac.ut.ece.ie.carts;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseSummaryDto;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
 import ir.ac.ut.ece.ie.users.CustomerRepository;
-import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +18,6 @@ import java.util.stream.Collectors;
 @Service
 public class CartService {
     private final BookRepository bookRepository;
-    private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
@@ -29,8 +26,7 @@ public class CartService {
     private final AuthService authService;
 
     public CartDto getCart(String username) {
-        var user = userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
+        var user = authService.me();
 
         var cart = cartRepository.findByUser(user)
                 .orElse(new Cart());
@@ -50,9 +46,6 @@ public class CartService {
     public CartItemDto addItemToCart(AddCartRequest request) {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
-
-        userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
 
         var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow();
@@ -74,11 +67,7 @@ public class CartService {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
-        userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
-
-        var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow();
+        var user = authService.me();
 
         if (cartRepository.countCartItems(user) >= 10) {
             throw new CartIsFullException();
@@ -101,9 +90,6 @@ public class CartService {
     }
 
     public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
-        userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
-
         var user = customerRepository.findByUsername(request.getUsername())
                 .orElseThrow();
 

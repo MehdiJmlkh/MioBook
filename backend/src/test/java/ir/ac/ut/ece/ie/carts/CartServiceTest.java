@@ -4,7 +4,6 @@ import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.purchases.Purchase;
 import ir.ac.ut.ece.ie.purchases.PurchaseItem;
 import ir.ac.ut.ece.ie.purchases.PurchaseRepository;
@@ -51,13 +50,6 @@ public class CartServiceTest {
     void addItemToCart_bookNotFound_throwsException() {
         var request = new AddCartRequest();
         assertThrows(BookNotFoundException.class, () -> cartService.addItemToCart(request));
-    }
-
-    @Test
-    void addItemToCart_userNotFound_throwsException() {
-        var request = new AddCartRequest();
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        assertThrows(UserNotFoundException.class, () -> cartService.addItemToCart(request));
     }
 
     @Test
@@ -137,13 +129,6 @@ public class CartServiceTest {
         cartService.removeItemFromCart(cartItem.getId());
 
         verify(cartItemRepository).delete(cartItem);
-    }
-
-    @Test
-    void purchaseCart_userNotFound_throwsException() {
-        var request = new PurchaseCartRequest();
-
-        assertThrows(UserNotFoundException.class, () -> cartService.purchaseCart(request));
     }
 
     @Test
@@ -253,15 +238,6 @@ public class CartServiceTest {
     }
 
     @Test
-    void addBorrowedItemToCart_userNotFound_throwsException() {
-        var request = new BorrowBookRequest();
-
-        when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-
-        assertThrows(UserNotFoundException.class, () -> cartService.addBorrowedItemToCart(request));
-    }
-
-    @Test
     void addBorrowedItemToCart_validInput_addsCartItem() {
         var request = new BorrowBookRequest();
         request.setUsername("username");
@@ -273,7 +249,7 @@ public class CartServiceTest {
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
 
         var user = TestDataFactory.sampleCustomerUser();
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(new Cart()));
 
@@ -290,11 +266,6 @@ public class CartServiceTest {
         assertEquals(5, cartItem.getBorrowDays());
         assertEquals(book, cartItem.getBook());
         assertEquals(50, cartItem.getPrice());
-    }
-
-    @Test
-    void getCart_userNotFound_throwsException() {
-        assertThrows(UserNotFoundException.class, () -> cartService.getCart("username"));
     }
 
     @Test
@@ -321,7 +292,7 @@ public class CartServiceTest {
         cart.setUser(user);
         cart.setItems(List.of(cartItem));
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
 
@@ -354,7 +325,7 @@ public class CartServiceTest {
         cart.setUser(user);
         cart.setItems(List.of(cartItem));
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(eq(user))).thenReturn(Optional.of(cart));
 
