@@ -36,7 +36,7 @@ public class CartService {
                 .toList();
 
         var cartDto = new CartDto();
-        cartDto.setUsername(username);
+        cartDto.setUsername(user.getUsername());
         cartDto.setTotalCost(cart.getTotalPrice());
         cartDto.setItems(items);
 
@@ -47,8 +47,7 @@ public class CartService {
         var book = bookRepository.findByTitle(request.getTitle())
                 .orElseThrow(BookNotFoundException::new);
 
-        var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow();
+        var user = authService.currentCustomer();
 
         var cart = cartRepository.findByUser(user).orElseThrow();
 
@@ -90,8 +89,7 @@ public class CartService {
     }
 
     public PurchaseSummaryDto purchaseCart(PurchaseCartRequest request) {
-        var user = customerRepository.findByUsername(request.getUsername())
-                .orElseThrow();
+        var user = authService.currentCustomer();
 
         var cart = cartRepository.findByUser(user)
                 .orElseThrow(EmptyCartException::new);

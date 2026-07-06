@@ -63,7 +63,7 @@ public class CartServiceTest {
                 .forEach(i -> cart.getItems().add(new CartItem()));
 
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.currentCustomer()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
         when(cartRepository.countCartItems(user)).thenReturn(10L);
@@ -85,7 +85,7 @@ public class CartServiceTest {
         var user = TestDataFactory.sampleCustomerUser();
 
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authService.currentCustomer()).thenReturn(user);
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(new Cart()));
@@ -169,7 +169,7 @@ public class CartServiceTest {
         cartItem.setPrice(100);
         cart.addItem(cartItem);
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.currentCustomer()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(any())).thenReturn(Optional.of(cart));
 
@@ -191,7 +191,7 @@ public class CartServiceTest {
         var cart = new Cart();
         cart.addItem(cartItem);
 
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authService.currentCustomer()).thenReturn(user);
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(cartRepository.findByUser(user)).thenReturn(Optional.of(cart));
 
@@ -272,7 +272,7 @@ public class CartServiceTest {
     void getCart_emptyCart_returnsEmptyCartDto() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         var cartDto = cartService.getCart("username");
