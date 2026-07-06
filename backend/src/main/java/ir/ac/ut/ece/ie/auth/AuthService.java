@@ -37,7 +37,7 @@ public class AuthService {
 
         var user = (AuthenticatedUser) authentication.getPrincipal();
 
-        return userRepository.findById(user.getId())
+        return userRepository.findById(user.id())
                 .orElse(null);
     }
 
@@ -73,7 +73,7 @@ public class AuthService {
 
         var user = (AuthenticatedUser) authentication.getPrincipal();
 
-        return userRepository.findById(user.getId())
+        return userRepository.findById(user.id())
                 .map(userMapper::toDto)
                 .orElse(null);
     }
