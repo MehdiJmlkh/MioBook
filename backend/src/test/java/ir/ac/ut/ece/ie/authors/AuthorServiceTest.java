@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
@@ -27,6 +28,8 @@ public class AuthorServiceTest {
     private AdminRepository adminRepository;
     @MockitoBean
     private UserRepository userRepository;
+    @MockitoBean
+    private AuthService authService;
     @Autowired
     private AuthorService authorService;
 
@@ -38,16 +41,6 @@ public class AuthorServiceTest {
         when(authorRepository.findByName(request.getName())).thenReturn(Optional.of(new Author()));
 
         assertThrows(AuthorNameAlreadyExistsException.class, () -> authorService.addAuthor(request));
-    }
-
-    @Test
-    void addAuthor_userNotFound_throwsException() {
-        var request = new AddAuthorRequest();
-        request.setUsername("username");
-
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.empty());
-
-        assertThrows(UserNotFoundException.class, () -> authorService.addAuthor(request));
     }
 
     @Test
@@ -63,7 +56,7 @@ public class AuthorServiceTest {
 
         var user = TestDataFactory.sampleAdminUser();
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.currentAdmin()).thenReturn(user);
         when(adminRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         authorService.addAuthor(request);

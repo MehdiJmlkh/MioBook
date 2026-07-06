@@ -1,8 +1,6 @@
 package ir.ac.ut.ece.ie.auth;
 
-import ir.ac.ut.ece.ie.users.User;
-import ir.ac.ut.ece.ie.users.UserMapper;
-import ir.ac.ut.ece.ie.users.UserRepository;
+import ir.ac.ut.ece.ie.users.*;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,6 +39,26 @@ public class AuthService {
 
         return userRepository.findById(userId)
                 .orElse(null);
+    }
+
+    public Customer currentCustomer() {
+        User user = me();
+
+        if (!(user instanceof Customer customer)) {
+            throw new IllegalStateException("Current user is not a customer");
+        }
+
+        return customer;
+    }
+
+    public Admin currentAdmin() {
+        User user = me();
+
+        if (!(user instanceof  Admin admin)) {
+            throw new IllegalStateException("Current user is not an admin");
+        }
+
+        return admin;
     }
 
     public UserDto getCurrentUser() {

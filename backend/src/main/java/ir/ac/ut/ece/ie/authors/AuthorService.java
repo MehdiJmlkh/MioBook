@@ -1,12 +1,10 @@
 package ir.ac.ut.ece.ie.authors;
 
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.BookMapper;
 import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.AdminRepository;
-import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -17,8 +15,7 @@ import java.util.List;
 @Service
 public class AuthorService {
     private final AuthorRepository authorRepository;
-    private final UserRepository userRepository;
-    private final AdminRepository adminRepository;
+    private final AuthService authService;
     private final BookRepository bookRepository;
     private final AuthorMapper authorMapper;
     private final BookMapper bookMapper;
@@ -35,14 +32,8 @@ public class AuthorService {
             throw new AuthorNameAlreadyExistsException();
         }
 
-        userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
-
-        var admin = adminRepository.findByUsername(request.getUsername())
-                .orElseThrow();
-
         var author = authorMapper.toAuthor(request);
-        author.setAdmin(admin);
+        author.setAdmin(authService.currentAdmin());
         authorRepository.save(author);
         return authorMapper.toDto(author);
     }
