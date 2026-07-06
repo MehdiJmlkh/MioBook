@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.users;
 
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.auth.UserDto;
 import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import lombok.AllArgsConstructor;
@@ -12,12 +13,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
     private final AdminRepository adminRepository;
+    private final AuthService authService;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
     public UserDto getUser(String username) {
-        var user = userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
+        var user = authService.me();
 
         return userMapper.toDto(user);
     }

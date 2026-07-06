@@ -1,6 +1,6 @@
 package ir.ac.ut.ece.ie.users;
 
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.testdata.TestDataFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -23,6 +23,8 @@ public class UserServiceTest {
     private CustomerRepository customerRepository;
     @MockitoBean
     private AdminRepository adminRepository;
+    @MockitoBean
+    private AuthService authService;
     @Autowired
     private UserService userService;
 
@@ -108,15 +110,10 @@ public class UserServiceTest {
     }
 
     @Test
-    void getUser_userNotFound_throwsException() {
-        assertThrows(UserNotFoundException.class, () -> userService.getUser("username"));
-    }
-
-    @Test
     void getUser_validCustomer_returnsCustomer() {
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         var userDto = userService.getUser(user.getUsername());
 
         assertEquals(userDto.getUsername(), user.getUsername());
@@ -128,7 +125,7 @@ public class UserServiceTest {
     void getUser_validAdmin_returnsAdmin() {
         var user = TestDataFactory.sampleAdminUser();
 
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         var userDto = userService.getUser(user.getUsername());
 
         assertEquals(userDto.getUsername(), user.getUsername());
