@@ -68,13 +68,6 @@ public class BookServiceTest {
     }
 
     @Test
-    void addBook_userNotFound_throwsException() {
-        var request = new AddBookRequest();
-        when(authorRepository.findByName(any())).thenReturn(Optional.of(new Author()));
-        assertThrows(UserNotFoundException.class, () -> bookService.addBook(request));
-    }
-
-    @Test
     void addBook_validInput_addsBook() {
         var request = AddBookRequest.builder()
                 .username("username")
@@ -93,7 +86,7 @@ public class BookServiceTest {
 
         var user = TestDataFactory.sampleAdminUser();
 
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authService.currentAdmin()).thenReturn(user);
         when(adminRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
 
         bookService.addBook(request);

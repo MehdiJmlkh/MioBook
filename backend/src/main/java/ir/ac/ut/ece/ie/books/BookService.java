@@ -5,9 +5,6 @@ import ir.ac.ut.ece.ie.authors.AuthorRepository;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
-import ir.ac.ut.ece.ie.users.AdminRepository;
-import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,8 +21,6 @@ import java.util.stream.Collectors;
 public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
-    private final UserRepository userRepository;
-    private final AdminRepository adminRepository;
     private final AuthService authService;
     private final PurchaseItemRepository purchaseItemRepository;
     private final GenreRepository genreRepository;
@@ -61,12 +56,6 @@ public class BookService {
         var author = authorRepository.findByName(request.getAuthor())
                 .orElseThrow(AuthorNotFoundException::new);
 
-        userRepository.findByUsername(request.getUsername())
-                .orElseThrow(UserNotFoundException::new);
-
-        var user = adminRepository.findByUsername(request.getUsername())
-                .orElseThrow();
-
         var genres = request.getGenres().stream()
                 .map(name -> genreRepository.findByName(name)
                         .orElseGet(() -> new Genre(name)))
@@ -76,7 +65,7 @@ public class BookService {
         book.setAuthor(author);
         book.setGenres(genres);
         book.setReviews(new LinkedHashSet<>());
-        book.setAdmin(user);
+        book.setAdmin(authService.currentAdmin());
 
         bookRepository.save(book);
         return bookMapper.toDto(book);
