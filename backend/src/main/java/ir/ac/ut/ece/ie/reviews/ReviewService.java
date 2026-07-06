@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.reviews;
 
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -17,12 +18,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Service
 public class ReviewService {
-    private final UserRepository userRepository;
-    private final CustomerRepository customerRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
     private final PurchaseItemRepository purchaseItemRepository;
     private final ReviewMapper reviewMapper;
+    private final AuthService authService;
 
     public ReviewListDto getAllReviews(Long bookId, Integer page, Integer size) {
         var book = bookRepository.findById(bookId)
@@ -43,16 +43,16 @@ public class ReviewService {
     }
 
     public ReviewDto addReview(AddReviewRequest request) {
-        var username = request.getUsername();
         var bookTitle = request.getTitle();
 
-        var user = userRepository.findByUsername(username)
-                .orElseThrow(UserNotFoundException::new);
+        var user = authService.me();
 
         var book = bookRepository.findByTitle(bookTitle)
                 .orElseThrow(BookNotFoundException::new);
 
-        var purchaseItems = purchaseItemRepository.findNotExpiredPurchaseItems(username, bookTitle, LocalDateTime.now());
+        var purchaseItems = purchaseItemRepository.findNotExpiredPurchaseItems(
+                user.getUsername(), bookTitle, LocalDateTime.now());
+
         if (purchaseItems.isEmpty()) {
             throw new BookNotInStockException();
         }

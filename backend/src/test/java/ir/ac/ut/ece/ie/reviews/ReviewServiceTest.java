@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.reviews;
 
+import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.Book;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
@@ -43,21 +44,17 @@ public class ReviewServiceTest {
     private PurchaseRepository purchaseRepository;
     @MockitoBean
     private PurchaseItemRepository purchaseItemRepository;
+    @MockitoBean
+    private AuthService authService;
     @Autowired
     private ReviewService reviewService;
-
-    @Test
-    void addReview_userNotFound_throwsException() {
-        var request = new AddReviewRequest();
-        assertThrows(UserNotFoundException.class, () -> reviewService.addReview(request));
-    }
 
     @Test
     void addReview_bookNotFound_throwsException() {
         var request = new AddReviewRequest();
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
 
         assertThrows(BookNotFoundException.class, () -> reviewService.addReview(request));
@@ -68,7 +65,7 @@ public class ReviewServiceTest {
         var request = new AddReviewRequest();
         var user = TestDataFactory.sampleCustomerUser();
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(new Book()));
 
@@ -83,7 +80,7 @@ public class ReviewServiceTest {
 
         var purchaseItem = mock(PurchaseItem.class);
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseItemRepository.findPurchaseItems(any(), any())).thenReturn(List.of(purchaseItem));
@@ -109,7 +106,7 @@ public class ReviewServiceTest {
         var previousDate = LocalDate.of(2020, 1, 1);
         previousReview.setDate(previousDate);
 
-        when(userRepository.findByUsername(any())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(any())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(any())).thenReturn(Optional.of(book));
         when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), anyString(), any()))
@@ -142,7 +139,7 @@ public class ReviewServiceTest {
         var purchaseItem = mock(PurchaseItem.class);
 
 
-        when(userRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
+        when(authService.me()).thenReturn(user);
         when(customerRepository.findByUsername(request.getUsername())).thenReturn(Optional.of(user));
         when(bookRepository.findByTitle(request.getTitle())).thenReturn(Optional.of(book));
         when(purchaseItemRepository.findNotExpiredPurchaseItems(any(), anyString(), any()))
