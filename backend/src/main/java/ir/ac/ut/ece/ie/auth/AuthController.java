@@ -2,7 +2,6 @@ package ir.ac.ut.ece.ie.auth;
 
 import ir.ac.ut.ece.ie.common.ErrorDto;
 import ir.ac.ut.ece.ie.config.JwtConfig;
-import ir.ac.ut.ece.ie.sessions.SessionService;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
-    private final SessionService sessionService;
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final JwtConfig jwtConfig;
@@ -64,12 +62,7 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(
-            @RequestHeader("Authorization") String authorization) {
-
-        String token = authorization.substring(7);
-        sessionService.deleteSession(token);
-
+    public ResponseEntity<Void> logout() {
         return ResponseEntity.ok().build();
     }
 
