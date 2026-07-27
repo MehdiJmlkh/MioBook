@@ -12,6 +12,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
 import ErrorPage from "./pages/ErrorPage";
+import AuthCallbackPage from "./pages/AuthCallbackPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       },
       { path: "sign-in", element: <SignInPage /> },
       { path: "sign-up", element: <SignUpPage /> },
+      { path: "auth/google/callback", element: <AuthCallbackPage /> },
     ],
   },
 ]);
