@@ -1,10 +1,9 @@
 import { FormEvent, ReactNode } from "react";
 import Button from "../Button";
+import Divider from "../Divider";
+import GoogleButton from "../GoogleButton";
 import Link from "../Link";
 import "./Form.css";
-import Divider from "../Divider";
-import { FcGoogle } from "react-icons/fc";
-import GoogleButton from "../GoogleButton";
 
 export enum FormType {
   SingIn,
