@@ -1,6 +1,9 @@
 spring:
   application:
     name: MioBook
+  frontend:
+    url: http://localhost:5173
+    authCallbackPath: /auth/google/callback
   datasource:
     url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
     username: root
@@ -15,3 +18,7 @@ spring:
     secret: ${JWT_SECRET}
     accessTokenExpiration: 300 # 5m
     refreshTokenExpiration: 604800 # 7d
+  oauth:
+    googleClient:
+      id: 312476898368-5t065nkj5j3miq5m8omg6osm7ldgcg24.apps.googleusercontent.com
+      secret: ${OAUTH_GOOGLE_CLIENT_SECRET}

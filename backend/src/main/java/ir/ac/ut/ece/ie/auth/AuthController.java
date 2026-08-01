@@ -31,10 +31,10 @@ public class AuthController {
     private final JwtConfig jwtConfig;
     private final RestClient restClient;
 
-    @Value("${spring.oauth.google.clientId}")
+    @Value("${spring.oauth.googleClient.id}")
     private String clientId;
 
-    @Value("${spring.oauth.google.clientSecret}")
+    @Value("${spring.oauth.googleClient.secret}")
     private String clientSecret;
 
     @Value("${spring.frontend.url}")
