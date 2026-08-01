@@ -44,7 +44,7 @@
 }
 
 .form__btn {
-  font-size: 2rem;
+  padding: 0.75rem;
 }
 
 @media (min-width: 650px) {
@@ -59,7 +59,7 @@
   }
 
   .form__btn-container {
-    margin-top: 0.5rem;
+    margin-top: 0rem;
   }
 
   .form__btn {

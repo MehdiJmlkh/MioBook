@@ -2,6 +2,9 @@ import { FormEvent, ReactNode } from "react";
 import Button from "../Button";
 import Link from "../Link";
 import "./Form.css";
+import Divider from "../Divider";
+import { FcGoogle } from "react-icons/fc";
+import GoogleButton from "../GoogleButton";
 
 export enum FormType {
   SingIn,
@@ -31,6 +34,8 @@ const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
           <Button disabled={!isValid} className="btn-primary form__btn">
             {title}
           </Button>
+          <Divider>or</Divider>
+          <GoogleButton className="form__btn" />
         </div>
       </form>
 
@@ -40,7 +45,10 @@ const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
             ? "Not a member yet? "
             : "Already have an account? "}
         </span>
-        <Link className="link--primary" to={type === FormType.SingIn ? "/sign-up" : "/sign-in"}>
+        <Link
+          className="link--primary"
+          to={type === FormType.SingIn ? "/sign-up" : "/sign-in"}
+        >
           {type === FormType.SingIn ? "Sign Up" : "Sign in"}
         </Link>
       </div>
