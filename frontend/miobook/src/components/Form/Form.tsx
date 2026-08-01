@@ -34,10 +34,10 @@ const Form = ({ type, children, onSubmit, isValid, error }: Props) => {
           <Button disabled={!isValid} className="btn-primary form__btn">
             {title}
           </Button>
-          <Divider>or</Divider>
-          <GoogleButton className="form__btn" />
         </div>
       </form>
+      <Divider>or</Divider>
+      <GoogleButton className="form__btn" />
 
       <div className="form__footer">
         <span>
