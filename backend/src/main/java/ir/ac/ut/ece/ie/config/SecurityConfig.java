@@ -60,6 +60,8 @@ public class SecurityConfig {
                 c
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/auth/refresh").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/auth/google").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/users").permitAll()
                     .requestMatchers(HttpMethod.POST, "/authors").hasRole(Role.ADMIN.name())
                     .requestMatchers(HttpMethod.POST, "/books").hasRole(Role.ADMIN.name())
                     .requestMatchers("/carts/**").hasRole(Role.CUSTOMER.name())
