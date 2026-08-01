@@ -7,13 +7,15 @@ interface Props {
 }
 
 const GoogleButton = ({ className }: Props) => {
+  const frontendUrl = window.location.origin;
+
   return (
     <Button
       className={`btn-secondary google-btn ${className}`}
       onClick={() => {
         const params = new URLSearchParams({
           client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-          redirect_uri: "http://localhost:5173/auth/google/callback",
+          redirect_uri: `${frontendUrl}/auth/google/callback`,
           response_type: "code",
           scope: "openid email profile",
           state: "RANDOM_STRING",
@@ -22,7 +24,7 @@ const GoogleButton = ({ className }: Props) => {
         window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
       }}
     >
-      <FcGoogle className="google-btn__icon"/>
+      <FcGoogle className="google-btn__icon" />
       Continue with Google
     </Button>
   );
