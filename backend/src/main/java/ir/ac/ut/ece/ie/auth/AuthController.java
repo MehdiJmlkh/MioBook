@@ -2,13 +2,13 @@ package ir.ac.ut.ece.ie.auth;
 
 import com.auth0.jwt.interfaces.Claim;
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.config.FrontendConfig;
 import ir.ac.ut.ece.ie.config.GoogleAuthConfig;
 import ir.ac.ut.ece.ie.config.JwtConfig;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,12 +32,7 @@ public class AuthController {
     private final JwtConfig jwtConfig;
     private final RestClient restClient;
     private final GoogleAuthConfig googleAuthConfig;
-
-    @Value("${spring.frontend.url}")
-    private String frontendUrl;
-
-    @Value("${spring.frontend.authCallbackPath}")
-    private String authCallback;
+    private final FrontendConfig frontendConfig;
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
@@ -101,7 +96,7 @@ public class AuthController {
         body.add("client_secret", googleAuthConfig.getClientSecret());
         body.add("code", request.getCode());
         body.add("grant_type", "authorization_code");
-        body.add("redirect_uri", frontendUrl + authCallback);
+        body.add("redirect_uri", frontendConfig.getAuthCallbackUrl());
 
         var response = restClient.post()
                 .uri("https://oauth2.googleapis.com/token")

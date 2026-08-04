@@ -3,7 +3,7 @@ spring:
     name: MioBook
   frontend:
     url: http://localhost:5173
-    authCallbackPath: /auth/google/callback
+    authCallback: /auth/google/callback
   datasource:
     url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
     username: root
