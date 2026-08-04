@@ -2,6 +2,7 @@ package ir.ac.ut.ece.ie.auth;
 
 import com.auth0.jwt.interfaces.Claim;
 import ir.ac.ut.ece.ie.common.ErrorDto;
+import ir.ac.ut.ece.ie.config.GoogleAuthConfig;
 import ir.ac.ut.ece.ie.config.JwtConfig;
 import ir.ac.ut.ece.ie.users.UserRepository;
 import jakarta.servlet.http.Cookie;
@@ -30,12 +31,7 @@ public class AuthController {
     private final JwtService jwtService;
     private final JwtConfig jwtConfig;
     private final RestClient restClient;
-
-    @Value("${spring.oauth.googleClient.id}")
-    private String clientId;
-
-    @Value("${spring.oauth.googleClient.secret}")
-    private String clientSecret;
+    private final GoogleAuthConfig googleAuthConfig;
 
     @Value("${spring.frontend.url}")
     private String frontendUrl;
@@ -101,8 +97,8 @@ public class AuthController {
     public Map<String, Claim> googleLogin(@RequestBody GoogleAuthRequest request) {
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
 
-        body.add("client_id", clientId);
-        body.add("client_secret", clientSecret);
+        body.add("client_id", googleAuthConfig.getClientId());
+        body.add("client_secret", googleAuthConfig.getClientSecret());
         body.add("code", request.getCode());
         body.add("grant_type", "authorization_code");
         body.add("redirect_uri", frontendUrl + authCallback);

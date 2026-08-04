@@ -19,6 +19,6 @@ spring:
     accessTokenExpiration: 300 # 5m
     refreshTokenExpiration: 604800 # 7d
   oauth:
-    googleClient:
-      id: 312476898368-5t065nkj5j3miq5m8omg6osm7ldgcg24.apps.googleusercontent.com
-      secret: ${OAUTH_GOOGLE_CLIENT_SECRET}
+    google:
+      clientId: 312476898368-5t065nkj5j3miq5m8omg6osm7ldgcg24.apps.googleusercontent.com
+      clientSecret: ${OAUTH_GOOGLE_CLIENT_SECRET}
