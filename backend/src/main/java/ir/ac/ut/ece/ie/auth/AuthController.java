@@ -80,14 +80,9 @@ public class AuthController {
     @PostMapping("/google")
     public ResponseEntity<JwtResponse> googleLogin(@RequestBody GoogleAuthRequest request,
                             HttpServletResponse response) {
-        var googleResponse = googleAuthService.getToken(request.getCode());
+        var idToken = googleAuthService.getIdToken(request.getCode());
 
-        var claims = JWT.decode(googleResponse.getIdToken()).getClaims();
-
-        var email = claims.get("email").toString();
-        var name = claims.get("name").toString();
-
-        var user = userService.addIfNotExists(email, name);
+        var user = userService.addIfNotExists(idToken.getEmail(), idToken.getName());
 
         var accessToken = jwtService.generateAccessToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);

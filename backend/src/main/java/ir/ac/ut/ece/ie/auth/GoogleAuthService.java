@@ -1,5 +1,6 @@
 package ir.ac.ut.ece.ie.auth;
 
+import com.auth0.jwt.JWT;
 import ir.ac.ut.ece.ie.config.FrontendConfig;
 import ir.ac.ut.ece.ie.config.GoogleAuthConfig;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,21 @@ public class GoogleAuthService {
     private final RestClient restClient;
 
 
-    public GoogleTokenResponse getToken(String code) {
+    public GoogleIdToken getIdToken(String code) {
+        var response = sendTokenRequest(code);
+
+        var claims = JWT.decode(response.getIdToken()).getClaims();
+
+        var email = claims.get("email").toString();
+        var name = claims.get("name").toString();
+
+        return GoogleIdToken.builder()
+                .email(email)
+                .name(name)
+                .build();
+    }
+
+    private GoogleTokenResponse sendTokenRequest(String code) {
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
 
         body.add("client_id", googleAuthConfig.getClientId());
