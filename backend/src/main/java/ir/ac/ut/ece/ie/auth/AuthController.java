@@ -82,7 +82,8 @@ public class AuthController {
     }
 
     @PostMapping("/google")
-    public User googleLogin(@RequestBody GoogleAuthRequest request) {
+    public ResponseEntity<JwtResponse> googleLogin(@RequestBody GoogleAuthRequest request,
+                            HttpServletResponse response) {
         var googleResponse = googleAuthService.getToken(request.getCode());
 
         assert googleResponse != null;
@@ -91,7 +92,19 @@ public class AuthController {
         var email = claims.get("email").toString();
         var name = claims.get("name").toString();
 
-        return userService.addIfNotExists(email, name);
+        var user = userService.addIfNotExists(email, name);
+
+        var accessToken = jwtService.generateAccessToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
+
+        var cookie = new Cookie("refreshToken", refreshToken.toString());
+        cookie.setHttpOnly(true);
+        cookie.setPath("/auth/refresh");
+        cookie.setMaxAge(jwtConfig.getRefreshTokenExpiration());
+        cookie.setSecure(true);
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok(new JwtResponse(accessToken.toString()));
     }
 
     @ExceptionHandler(BadCredentialsException.class)
