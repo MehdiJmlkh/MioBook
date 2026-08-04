@@ -1,0 +1,3 @@
+ALTER TABLE users
+    MODIFY COLUMN password VARCHAR(255) NULL,
+    MODIFY COLUMN address_id BIGINT NULL;
