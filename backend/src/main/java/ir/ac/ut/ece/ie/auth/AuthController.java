@@ -1,24 +1,18 @@
 package ir.ac.ut.ece.ie.auth;
 
-import com.auth0.jwt.interfaces.Claim;
 import ir.ac.ut.ece.ie.common.ErrorDto;
-import ir.ac.ut.ece.ie.config.FrontendConfig;
-import ir.ac.ut.ece.ie.config.GoogleAuthConfig;
 import ir.ac.ut.ece.ie.config.JwtConfig;
+import ir.ac.ut.ece.ie.users.User;
 import ir.ac.ut.ece.ie.users.UserRepository;
+import ir.ac.ut.ece.ie.users.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClient;
 
-import java.util.Map;
 
 import com.auth0.jwt.JWT;
 
@@ -27,6 +21,7 @@ import com.auth0.jwt.JWT;
 @RequestMapping("/auth")
 public class AuthController {
     private final AuthService authService;
+    private final UserService userService;
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final JwtConfig jwtConfig;
@@ -87,24 +82,16 @@ public class AuthController {
     }
 
     @PostMapping("/google")
-    public Map<String, Claim> googleLogin(@RequestBody GoogleAuthRequest request) {
+    public User googleLogin(@RequestBody GoogleAuthRequest request) {
         var googleResponse = googleAuthService.getToken(request.getCode());
-
-//        var verifier = new GoogleIdTokenVerifier.Builder(
-//                    new NetHttpTransport(),
-//                    GsonFactory.getDefaultInstance()
-//                )
-//                .setAudience(List.of(clientId))
-//                .build();
-//
-//        var idToken = verifier.verify(response.getIdToken());
 
         assert googleResponse != null;
         var claims = JWT.decode(googleResponse.getIdToken()).getClaims();
 
         var email = claims.get("email").toString();
-        System.out.println(email);
-        return claims;
+        var name = claims.get("name").toString();
+
+        return userService.addIfNotExists(email, name);
     }
 
     @ExceptionHandler(BadCredentialsException.class)

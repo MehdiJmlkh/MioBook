@@ -2,10 +2,11 @@ package ir.ac.ut.ece.ie.users;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.auth.UserDto;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -49,5 +50,32 @@ public class UserService {
         }
 
         return userMapper.toDto(user);
+    }
+
+    public User addIfNotExists(String email, String name) {
+        var user = userRepository.findByEmail(email).orElse(null);
+        if (user != null) {
+            return user;
+        }
+
+        String usernamePrefix = name.replace(" ", "_");
+
+        List<String> usernames = userRepository.findUsernamesStartingWith(usernamePrefix);
+
+        String username = usernamePrefix;
+
+        if (usernames.contains(usernamePrefix)) {
+            int suffix = 1;
+            while (usernames.contains(usernamePrefix + suffix)) {
+                suffix++;
+            }
+            username = usernamePrefix + suffix;
+        }
+
+        Customer newUser = new Customer();
+        newUser.setUsername(username);
+        newUser.setEmail(email);
+
+        return customerRepository.save(newUser);
     }
 }
