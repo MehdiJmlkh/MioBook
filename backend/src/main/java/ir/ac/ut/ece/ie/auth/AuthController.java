@@ -30,9 +30,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final JwtConfig jwtConfig;
-    private final RestClient restClient;
-    private final GoogleAuthConfig googleAuthConfig;
-    private final FrontendConfig frontendConfig;
+    private final GoogleAuthService googleAuthService;
 
     @GetMapping
     public ResponseEntity<UserDto> getCurrentUser() {
@@ -90,20 +88,7 @@ public class AuthController {
 
     @PostMapping("/google")
     public Map<String, Claim> googleLogin(@RequestBody GoogleAuthRequest request) {
-        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-
-        body.add("client_id", googleAuthConfig.getClientId());
-        body.add("client_secret", googleAuthConfig.getClientSecret());
-        body.add("code", request.getCode());
-        body.add("grant_type", "authorization_code");
-        body.add("redirect_uri", frontendConfig.getAuthCallbackUrl());
-
-        var response = restClient.post()
-                .uri("https://oauth2.googleapis.com/token")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .body(body)
-                .retrieve()
-                .body(GoogleTokenResponse.class);
+        var googleResponse = googleAuthService.getToken(request.getCode());
 
 //        var verifier = new GoogleIdTokenVerifier.Builder(
 //                    new NetHttpTransport(),
@@ -114,8 +99,8 @@ public class AuthController {
 //
 //        var idToken = verifier.verify(response.getIdToken());
 
-        assert response != null;
-        var claims = JWT.decode(response.getIdToken()).getClaims();
+        assert googleResponse != null;
+        var claims = JWT.decode(googleResponse.getIdToken()).getClaims();
 
         var email = claims.get("email").toString();
         System.out.println(email);
