@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientResponseException;
 
 @AllArgsConstructor
 @Service
@@ -26,11 +27,15 @@ public class GoogleAuthService {
         body.add("grant_type", "authorization_code");
         body.add("redirect_uri", frontendConfig.getAuthCallbackUrl());
 
-        return restClient.post()
-                .uri("https://oauth2.googleapis.com/token")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .body(body)
-                .retrieve()
-                .body(GoogleTokenResponse.class);
+        try {
+            return restClient.post()
+                    .uri("https://oauth2.googleapis.com/token")
+                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                    .body(body)
+                    .retrieve()
+                    .body(GoogleTokenResponse.class);
+        } catch (RestClientResponseException e) {
+            throw new GoogleLoginFailedException(e.getResponseBodyAsString());
+        }
     }
 }

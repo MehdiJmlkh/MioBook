@@ -82,7 +82,6 @@ public class AuthController {
                             HttpServletResponse response) {
         var googleResponse = googleAuthService.getToken(request.getCode());
 
-        assert googleResponse != null;
         var claims = JWT.decode(googleResponse.getIdToken()).getClaims();
 
         var email = claims.get("email").toString();
@@ -112,6 +111,12 @@ public class AuthController {
     public ResponseEntity<ErrorDto> handleBadCredentialsExceptionException() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(new ErrorDto("Username or password is incorrect."));
+    }
+
+    @ExceptionHandler(GoogleLoginFailedException.class)
+    public ResponseEntity<ErrorDto> handleGoogleLoginFailedException() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorDto("Google login failed."));
     }
 }
 
