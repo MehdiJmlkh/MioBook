@@ -10,7 +10,9 @@ const GoogleButton = ({ className }: Props) => {
   const frontendUrl = window.location.origin;
   
   const state = crypto.randomUUID();
+  const nonce = crypto.randomUUID();
   sessionStorage.setItem("oauth_state", state);
+  sessionStorage.setItem("oauth_nonce", nonce);
 
   return (
     <Button
@@ -22,7 +24,7 @@ const GoogleButton = ({ className }: Props) => {
           response_type: "code",
           scope: "openid email profile",
           state: state,
-          nonce: "RANDOM_NONCE",
+          nonce: nonce,
         });
         window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
       }}
