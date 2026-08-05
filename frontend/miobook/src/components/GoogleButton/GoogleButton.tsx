@@ -8,6 +8,9 @@ interface Props {
 
 const GoogleButton = ({ className }: Props) => {
   const frontendUrl = window.location.origin;
+  
+  const state = crypto.randomUUID();
+  sessionStorage.setItem("oauth_state", state);
 
   return (
     <Button
@@ -18,7 +21,7 @@ const GoogleButton = ({ className }: Props) => {
           redirect_uri: `${frontendUrl}/auth/google/callback`,
           response_type: "code",
           scope: "openid email profile",
-          state: "RANDOM_STRING",
+          state: state,
           nonce: "RANDOM_NONCE",
         });
         window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
