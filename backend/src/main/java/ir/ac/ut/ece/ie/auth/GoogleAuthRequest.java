@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class GoogleAuthRequest {
     private String code;
+    private String nonce;
 }

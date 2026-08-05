@@ -19,13 +19,18 @@ public class GoogleAuthService {
     private final RestClient restClient;
 
 
-    public GoogleIdToken getIdToken(String code) {
-        var response = sendTokenRequest(code);
+    public GoogleIdToken getIdToken(GoogleAuthRequest request) {
+        var response = sendTokenRequest(request.getCode());
 
         var claims = JWT.decode(response.getIdToken()).getClaims();
 
-        var email = claims.get("email").toString();
-        var name = claims.get("name").toString();
+        var email = claims.get("email").asString();
+        var name = claims.get("name").asString();
+        var nonce= claims.get("nonce").asString();
+
+        if (!request.getNonce().equals(nonce)) {
+            throw new InvalidNonceException();
+        }
 
         return GoogleIdToken.builder()
                 .email(email)

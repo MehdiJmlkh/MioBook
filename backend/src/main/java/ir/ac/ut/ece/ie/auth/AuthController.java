@@ -80,7 +80,7 @@ public class AuthController {
     @PostMapping("/google")
     public ResponseEntity<JwtResponse> googleLogin(@RequestBody GoogleAuthRequest request,
                             HttpServletResponse response) {
-        var idToken = googleAuthService.getIdToken(request.getCode());
+        var idToken = googleAuthService.getIdToken(request);
 
         var user = userService.addIfNotExists(idToken.getEmail(), idToken.getName());
 
@@ -112,6 +112,12 @@ public class AuthController {
     public ResponseEntity<ErrorDto> handleGoogleLoginFailedException() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(new ErrorDto("Google login failed."));
+    }
+
+    @ExceptionHandler(InvalidNonceException.class)
+    public ResponseEntity<ErrorDto> handleInvalidNonceException() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorDto("Invalid nonce"));
     }
 }
 
