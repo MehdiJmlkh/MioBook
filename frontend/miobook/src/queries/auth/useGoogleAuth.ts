@@ -1,6 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import authService from "../../services/authService";
+import authService, { LoginResponse } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
-export const useGoogleAuth = () => useMutation({
-  mutationFn: authService.googleAuth,
-});
+export const useGoogleAuth = () => {
+  const navigate = useNavigate();
+
+  return useMutation({
+    mutationFn: authService.googleAuth,
+    onSuccess: (response: LoginResponse) => {
+      localStorage.setItem("accessToken", response.token);
+      navigate("/");
+    },
+  });
+};
