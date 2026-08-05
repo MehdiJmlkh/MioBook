@@ -1,30 +1,29 @@
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Footer from "../../components/Footer";
-import "./AuthCallbackPage.css";
 import { useGoogleAuth } from "../../queries/auth/useGoogleAuth";
-import { useEffect } from "react";
+import "./AuthCallbackPage.css";
 
 const AuthCallbackPage = () => {
   const [searchParams] = useSearchParams();
+
   const returnedState = searchParams.get("state");
-
   const savedState = sessionStorage.getItem("oauth_state");
-
+  
   if (returnedState !== savedState) {
     throw new Error("Possible CSRF attack");
   }
-
+  
   const code = searchParams.get("code");
+  const nonce = sessionStorage.getItem("oauth_nonce");
 
   const googleAuth = useGoogleAuth();
-
+  
   useEffect(() => {
-    if (code) {
-      googleAuth.mutate(code);
+    if (code && nonce) {
+      googleAuth.mutate({code, nonce});
     }
-  }, [code]);
-
-  console.log(code);
+  }, [code, nonce]);
 
   return (
     <div className="callback-page">
