@@ -62,6 +62,6 @@ public class CartController {
     @ExceptionHandler(NotEnoughCreditException.class)
     public ResponseEntity<ErrorDto> handleNotEnoughCreditException(NotEnoughCreditException exception) {
         return ResponseEntity.badRequest()
-                .body(new ErrorDto("$" + exception.getExtraCredit() + " more credit needed."));
+                .body(new ErrorDto("$" + (exception.getExtraCredit() / 100.0) + " more credit needed."));
     }
 }
