@@ -22,7 +22,7 @@ apiClient.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (originalRequest.url === "/auth/refresh") {
+    if (originalRequest.url === "/auth/refresh" || originalRequest.url === "/auth/login") {
       return Promise.reject(error);
     }
 
