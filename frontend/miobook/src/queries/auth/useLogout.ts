@@ -11,7 +11,7 @@ export const useLogout = () => {
       navigate("/sign-in");
     },
     onSuccess: () => {
-      queryClient.setQueryData(["auth"], null);
+      queryClient.removeQueries({ queryKey: ["auth"] });
       localStorage.removeItem("accessToken");
     },
   });
