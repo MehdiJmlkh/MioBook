@@ -1,14 +1,23 @@
 .profile {
-  position: relative;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+}
+
+.profile__avatar {
+  padding-bottom: 3rem;
+  padding-left: 4rem;
+  cursor: pointer;
 }
 
 .profile-menu {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
   width: 22rem;
   padding: 1.5rem;
   background: #fff;
   border-radius: var(--border-radius);
   position: absolute;
-  top: 7.5rem;
+  top: 5.5rem;
   right: 0;
   animation: profileMenuOpen 0.22s ease-out;
 }

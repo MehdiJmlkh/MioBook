@@ -16,8 +16,15 @@ const Profile = () => {
   const logout = useLogout();
 
   return (
-    <div className="profile">
-      <Avatar username={user?.username} onClick={() => setVisible(!visible)} />
+    <div
+      className="profile"
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      onClick={() => setVisible(!visible)}
+    >
+      <div className="profile__avatar">
+        <Avatar username={user?.username} />
+      </div>
       {visible && (
         <div className="profile-menu">
           <div className="profile-menu__header">
