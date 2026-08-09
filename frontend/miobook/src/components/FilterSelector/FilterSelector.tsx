@@ -23,7 +23,9 @@ const FilterSelector = ({ filters, selectedFilter, onClickFilter }: Props) => {
       onMouseLeave={() => setOpen(false)}
     >
       <span>{selectedFilter} </span>{" "}
-      <BsChevronDown className="filter-selector__icon" />
+      <BsChevronDown
+        className={`filter-selector__icon  ${open ? "open" : ""}`}
+      />
       <ul className="filter-selector__options">
         {filters.map((option) => (
           <li

@@ -4,10 +4,15 @@
   background: inherit;
   cursor: pointer;
   width: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 7rem;
 }
 
 .filter-selector__icon {
   margin-left: 0.5rem;
+  transition: all 250ms ease;
 }
 
 .filter-selector__options {
@@ -56,4 +61,8 @@
   left: 0;
   width: 100%;
   height: 1.5rem;
+}
+
+.filter-selector__icon.open {
+  transform: rotate(180deg);
 }
