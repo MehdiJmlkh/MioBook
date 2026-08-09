@@ -9,27 +9,26 @@ const AuthCallbackPage = () => {
 
   const returnedState = searchParams.get("state");
   const savedState = sessionStorage.getItem("oauth_state");
-  
+
   if (returnedState !== savedState) {
     throw new Error("Possible CSRF attack");
   }
-  
+
   const code = searchParams.get("code");
   const nonce = sessionStorage.getItem("oauth_nonce");
 
   const googleAuth = useGoogleAuth();
-  
+
   useEffect(() => {
     if (code && nonce) {
-      googleAuth.mutate({code, nonce});
+      googleAuth.mutate({ code, nonce });
     }
   }, [code, nonce]);
 
   return (
     <div className="callback-page">
       <div className="callback-page__content">
-        <div className="spinner" />
-        <p>Signing you in...</p>
+        <p className="gradient-text">Signing you in...</p>
       </div>
       <Footer />
     </div>
