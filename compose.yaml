@@ -1,0 +1,24 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+  backend:
+    build: ./backend
+    environment:
+      SPRING_FRONTEND_URL: http://localhost
+      SPRING_JWT_SECRET: ${JWT_SECRET}
+      SPRING_OAUTH_GOOGLE_CLIENT_SECRET: ${OAUTH_GOOGLE_CLIENT_SECRET}
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/miobook
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: miobook
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
