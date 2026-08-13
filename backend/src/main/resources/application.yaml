@@ -2,6 +2,8 @@ server:
   servlet:
     context-path: /api
 spring:
+  config:
+    import: "optional:configtree:/run/secrets/"
   application:
     name: MioBook
   frontend:
@@ -10,7 +12,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
     username: root
-    password: NewPassword123!
+    password: ${db_root_password}
   jpa:
     show-sql: true
   data:

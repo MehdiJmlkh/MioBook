@@ -11,7 +11,9 @@ services:
       SPRING_OAUTH_GOOGLE_CLIENT_SECRET: ${OAUTH_GOOGLE_CLIENT_SECRET}
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/miobook
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      # SPRING_DATASOURCE_PASSWORD: run/secrets/db_root_password
+    secrets:
+      - db_root_password
   db:
     image: mysql:8.0
     environment:
