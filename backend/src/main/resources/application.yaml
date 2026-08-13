@@ -15,10 +15,6 @@ spring:
     password: ${db_root_password}
   jpa:
     show-sql: true
-  data:
-    redis:
-      host: localhost
-      port: 6379
   jwt:
     secret: ${jwt_secret}
     accessTokenExpiration: 300 # 5m
