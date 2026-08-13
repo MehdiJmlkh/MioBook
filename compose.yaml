@@ -1,11 +1,19 @@
 services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      backend:
-        condition: service_healthy
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: miobook
+      MYSQL_ROOT_PASSWORD_FILE: run/secrets/db_root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    secrets:
+      - db_root_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=$$(cat /run/secrets/db_root_password)"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
   backend:
     build: ./backend
@@ -27,21 +35,13 @@ services:
       retries: 10
       start_period: 20s
 
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: miobook
-      MYSQL_ROOT_PASSWORD_FILE: run/secrets/db_root_password
-    volumes:
-      - mysql_data:/var/lib/mysql
-    secrets:
-      - db_root_password
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=$$(cat /run/secrets/db_root_password)"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
 
 secrets:
   db_root_password:
