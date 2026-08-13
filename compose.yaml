@@ -3,6 +3,10 @@ services:
     build: ./frontend
     ports:
       - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
   backend:
     build: ./backend
     environment:
@@ -16,6 +20,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   db:
     image: mysql:8.0
