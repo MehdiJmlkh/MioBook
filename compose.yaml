@@ -16,9 +16,15 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: miobook
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD_FILE: run/secrets/db_root_password
     volumes:
       - mysql_data:/var/lib/mysql
+    secrets:
+      - db_root_password
+
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
 
 volumes:
   mysql_data:
