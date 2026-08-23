@@ -33,3 +33,14 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "500m"
+          
+          envFrom:
+            - configMapRef:
+                name: backend-config
+
+          env:
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD

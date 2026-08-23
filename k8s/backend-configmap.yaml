@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: backend-config
 data:
-  DB_URL: "jdbc:mysql://mysql-service:3306/miobook"
-  DB_USERNAME: "root"
+  SPRING_FRONTEND_URL: http://localhost
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-service:3306/miobook"
+  SPRING_DATASOURCE_USERNAME: "root"
