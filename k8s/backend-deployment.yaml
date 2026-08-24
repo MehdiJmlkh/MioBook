@@ -56,6 +56,13 @@ spec:
                   name: backend-secret
                   key: OAUTH_CLIENT_SECRET
           
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 12
+
           readinessProbe:
             httpGet:
               path: /actuator/health
