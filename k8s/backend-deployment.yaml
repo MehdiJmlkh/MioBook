@@ -55,3 +55,17 @@ spec:
                 secretKeyRef:
                   name: backend-secret
                   key: OAUTH_CLIENT_SECRET
+          
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
