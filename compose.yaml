@@ -39,6 +39,8 @@ services:
     build: ./frontend
     ports:
       - "80:80"
+    environment:
+      BACKEND_DOMAIN: backend
     depends_on:
       backend:
         condition: service_healthy
