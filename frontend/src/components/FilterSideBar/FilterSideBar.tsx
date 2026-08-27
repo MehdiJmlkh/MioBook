@@ -95,9 +95,9 @@ const FilterSideBar = ({ onClose, className }: Props) => {
           <div className="filter-sidebar__filter">
             <h2 className="filter-sidebar__filter__name">Order:</h2>
             <RadioOptions>
-              <RadioInput value="Descending" {...register("order")} />
+              <RadioInput value="Ascending" {...register("order")} />
               <RadioInput
-                value="Ascending"
+                value="Descending"
                 {...register("order")}
                 defaultChecked={true}
               />
