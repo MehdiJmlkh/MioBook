@@ -30,6 +30,8 @@ function BookCard({ book }: Props) {
 
   useNoScroll([showCartModal]);
 
+  const baseUrl = window.location.origin;
+
   return (
     <div className="book-card">
       <Backdrop enabled={showCartModal} />
@@ -40,7 +42,11 @@ function BookCard({ book }: Props) {
         bookTitle={book?.title}
       />
       <Link to={`/books/${book?.id}`}>
-        <img className="book-card__img" src={noImage} alt="Image of the book" />
+        <img
+          className="book-card__img"
+          src={`${baseUrl}/public/${book?.imageLink || "no-image.svg"}`}
+          alt="Image of the book"
+        />
       </Link>
       <div className="book-card__body">
         <h2 className="book-card__title">{book?.title || "Book title"}</h2>
