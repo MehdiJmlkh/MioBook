@@ -35,7 +35,6 @@ public class BookController {
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "size", required = false) Integer size
     ) {
-        System.out.println(query);
         return bookService.getBooks(query, page, size);
     }
 
