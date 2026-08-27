@@ -8,12 +8,13 @@ import Button from "../Button";
 import FiveStars from "../FiveStars";
 import Price from "../Price";
 import "./BookCard.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   BookStatus,
   useBookStatus,
 } from "../../queries/purchases/useBookStatus";
 import { useAuth } from "../../queries/auth/useAuth";
+import Link from "../Link";
 
 interface Props {
   book?: Book;
@@ -43,7 +44,12 @@ function BookCard({ book }: Props) {
       </Link>
       <div className="book-card__body">
         <h2 className="book-card__title">{book?.title || "Book title"}</h2>
-        <h3 className="book-card__author">{book?.author || "Author McName"}</h3>
+        <h3 className="book-card__author">
+          <Link to={`/authors/${book?.authorId}`}>
+            {book?.author || "Author McName"}
+          </Link>
+        </h3>
+
         <div className="book-card__badges">
           <FiveStars
             className="book-card__stars"
