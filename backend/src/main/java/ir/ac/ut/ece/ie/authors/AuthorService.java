@@ -7,6 +7,7 @@ import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,7 +49,10 @@ public class AuthorService {
         var author = authorRepository.findById(id)
                 .orElseThrow(AuthorNotFoundException::new);
 
-        var bookPage = bookRepository.findByAuthor(author, PageRequest.of(page - 1, size));
+        var pageable = PageRequest.of(page - 1, size,
+                Sort.by("averageRating").descending());
+
+        var bookPage = bookRepository.findByAuthor(author, pageable);
         var bookDtoList = bookPage.getContent().stream()
                 .map(bookMapper::toDto)
                 .toList();
