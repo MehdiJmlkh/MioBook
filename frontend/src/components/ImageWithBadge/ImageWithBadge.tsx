@@ -1,16 +1,16 @@
 import "./ImageWithBadge.css";
-import noImage from "../../assets/no-image.svg";
+import BookImage from "../BookImage";
 
 interface Props {
   className?: string;
   label?: string;
-  src?: string;
+  imageLink?: string;
 }
 
-const ImageWithBadge = ({ className, label, src }: Props) => {
+const ImageWithBadge = ({ className, label, imageLink }: Props) => {
   return (
     <div className={`image ${className}`}>
-      <img src={src || noImage} alt="book's image" />
+      <BookImage imageLink={imageLink} />
       <div className="image-backdrop">
         <span className="image-badge">{label}</span>
       </div>

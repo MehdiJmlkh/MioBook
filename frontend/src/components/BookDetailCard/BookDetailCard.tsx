@@ -31,7 +31,7 @@ const BookDetailCard = ({ onAddToCart, book }: Props) => {
   return (
     <div className="book">
       <ImageWithBadge
-        src={`${baseUrl}/public/${book?.imageLink || "no-image.svg"}`}
+        imageLink={book?.imageLink}
         label={status?.toString()}
         className="book__img"
       />
