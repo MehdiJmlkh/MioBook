@@ -15,6 +15,7 @@ import {
 } from "../../queries/purchases/useBookStatus";
 import { useAuth } from "../../queries/auth/useAuth";
 import Link from "../Link";
+import BookImage from "../BookImage";
 
 interface Props {
   book?: Book;
@@ -42,11 +43,7 @@ function BookCard({ book }: Props) {
         bookTitle={book?.title}
       />
       <Link to={`/books/${book?.id}`}>
-        <img
-          className="book-card__img"
-          src={`${baseUrl}/public/${book?.imageLink || "no-image.svg"}`}
-          alt="Image of the book"
-        />
+        <BookImage className="book-card__img" imageLink={book?.imageLink} />
       </Link>
       <div className="book-card__body">
         <h2 className="book-card__title">{book?.title || "Book title"}</h2>
