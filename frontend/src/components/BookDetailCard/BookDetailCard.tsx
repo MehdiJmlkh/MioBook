@@ -26,9 +26,15 @@ const BookDetailCard = ({ onAddToCart, book }: Props) => {
     return <p>Loading...</p>;
   }
 
+  const baseUrl = window.location.origin;
+
   return (
     <div className="book">
-      <ImageWithBadge label={status?.toString()} className="book__img" />
+      <ImageWithBadge
+        src={`${baseUrl}/public/${book?.imageLink || "no-image.svg"}`}
+        label={status?.toString()}
+        className="book__img"
+      />
 
       <div className="book__content">
         <div className="book__details">
