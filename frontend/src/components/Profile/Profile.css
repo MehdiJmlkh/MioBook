@@ -1,7 +1,11 @@
 .profile {
   position: absolute;
+  top: 50%;
   right: 1.5rem;
-  top: 1.5rem;
+}
+
+.profile__avatar .avatar {
+  transform: translateY(-50%);
 }
 
 .profile__avatar {
