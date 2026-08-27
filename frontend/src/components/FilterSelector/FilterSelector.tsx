@@ -21,6 +21,7 @@ const FilterSelector = ({ filters, selectedFilter, onClickFilter }: Props) => {
       className={`filter-selector ${open ? "open" : ""}`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen(!open)}
     >
       <span>{selectedFilter} </span>{" "}
       <BsChevronDown
