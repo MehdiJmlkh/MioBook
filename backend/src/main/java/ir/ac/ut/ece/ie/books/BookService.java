@@ -90,9 +90,9 @@ public class BookService {
                 ? "reviewsCount"
                 : "averageRating";
 
-        Sort.Direction direction = query.getOrder() == SortOrder.Descending
-                ? Sort.Direction.DESC
-                : Sort.Direction.ASC;
+        Sort.Direction direction = query.getOrder() == SortOrder.Ascending
+                ? Sort.Direction.ASC
+                : Sort.Direction.DESC;
 
         Sort sort = Sort.by(direction, sortField);
 
