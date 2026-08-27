@@ -16,6 +16,7 @@ public class BookDto {
     private Integer year;
     private Integer price;
     private String synopsis;
+    private String imageLink;
     private float averageRating;
     private Integer totalBuys;
 }

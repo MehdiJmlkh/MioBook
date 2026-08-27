@@ -44,6 +44,9 @@ public class Book {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "image_link")
+    private String imageLink;
+
     @Column(name = "total_buys")
     private int totalBuys = 0;
 
