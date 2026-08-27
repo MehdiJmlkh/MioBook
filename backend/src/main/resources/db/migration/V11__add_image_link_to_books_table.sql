@@ -1,0 +1,2 @@
+ALTER TABLE books
+    ADD COLUMN image_link VARCHAR(255) NULL;
