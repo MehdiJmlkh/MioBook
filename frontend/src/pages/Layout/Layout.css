@@ -1,11 +1,18 @@
 .page-container {
-  padding: 0 5.5rem;
+  padding: 0 5%;
 }
 
 .page {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+@media (min-width: 425px) {
+  .page-container {
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+  }
 }
 
 @media (min-width: 1024px) {
