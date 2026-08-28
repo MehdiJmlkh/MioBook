@@ -13,6 +13,7 @@ public class PurchaseItemDto {
     private String publisher;
     private Set<String> genres;
     private Integer year;
+    private String imageLink;
     private Boolean isBorrowed;
     private Integer borrowDays;
     private Integer price;
@@ -28,6 +29,7 @@ public class PurchaseItemDto {
         dto.publisher = book.getPublisher();
         dto.genres = book.getGenreNames();
         dto.year = book.getYear();
+        dto.imageLink = book.getImageLink();
         dto.isBorrowed = item.getIsBorrowed();
         dto.borrowDays = item.getBorrowDays();
         dto.price = book.getPrice();
