@@ -65,6 +65,8 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/users").permitAll()
                     .requestMatchers(HttpMethod.POST, "/authors").hasRole(Role.ADMIN.name())
                     .requestMatchers(HttpMethod.POST, "/books").hasRole(Role.ADMIN.name())
+                    .requestMatchers(HttpMethod.GET, "/carts/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/purchases/**").permitAll()
                     .requestMatchers("/carts/**").hasRole(Role.CUSTOMER.name())
                     .requestMatchers("/credits/**").hasRole(Role.CUSTOMER.name())
                     .requestMatchers("/purchases/**").hasRole(Role.CUSTOMER.name())
