@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romeDawn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#24141b"/>
+      <stop offset="45%" stop-color="#9b5b46"/>
+      <stop offset="100%" stop-color="#e1bd82"/>
+    </linearGradient>
+
+    <linearGradient id="marble" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eee1c5"/>
+      <stop offset="100%" stop-color="#8d7861"/>
+    </linearGradient>
+
+    <radialGradient id="moonGlow">
+      <stop offset="0%" stop-color="#fff1c2"/>
+      <stop offset="100%" stop-color="#fff1c2" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Roman twilight -->
+  <rect width="600" height="900" fill="url(#romeDawn)"/>
+
+
+  <!-- Moonlight -->
+  <circle cx="420" cy="210"
+          r="130"
+          fill="url(#moonGlow)"
+          filter="url(#soft)"/>
+
+  <circle cx="420" cy="210"
+          r="42"
+          fill="#fff0c4"
+          opacity="0.8"/>
+
+
+  <!-- Temple background -->
+  <g fill="#30251d">
+
+    <rect x="80" y="350"
+          width="440"
+          height="250"/>
+
+    <!-- roof -->
+    <polygon points="
+        40,350
+        300,220
+        560,350"/>
+
+  </g>
+
+
+  <!-- Temple columns -->
+  <g fill="url(#marble)">
+
+    <rect x="120" y="350" width="45" height="270"/>
+    <rect x="220" y="350" width="45" height="270"/>
+    <rect x="335" y="350" width="45" height="270"/>
+    <rect x="435" y="350" width="45" height="270"/>
+
+  </g>
+
+
+  <!-- Sacred flame -->
+  <g>
+
+    <ellipse cx="300"
+             cy="500"
+             rx="90"
+             ry="120"
+             fill="#ffb347"
+             opacity="0.25"
+             filter="url(#soft)"/>
+
+    <path d="
+        M300 560
+        Q260 500 300 430
+        Q340 500 300 560Z"
+        fill="#ffd26a"/>
+
+    <path d="
+        M300 530
+        Q280 500 300 465
+        Q320 500 300 530Z"
+        fill="#fff3b0"/>
+
+  </g>
+
+
+  <!-- Ancient courtyard floor -->
+  <path d="
+      M0 650
+      Q300 580 600 650
+      L600 900
+      L0 900Z"
+      fill="#403124"/>
+
+
+  <!-- Roman mosaic -->
+  <g fill="none"
+     stroke="#b99a58"
+     stroke-width="5"
+     opacity="0.7">
+
+    <circle cx="300" cy="760" r="90"/>
+    <circle cx="300" cy="760" r="55"/>
+
+    <path d="
+        M300 670
+        L300 850
+        M210 760
+        L390 760"/>
+
+  </g>
+
+
+  <!-- Vestal priestess -->
+  <g fill="#08090b">
+
+    <!-- veil -->
+    <path d="
+        M255 540
+        Q300 470 345 540
+        L350 610
+        L250 610Z"/>
+
+    <!-- head -->
+    <circle cx="300"
+            cy="580"
+            r="18"/>
+
+
+    <!-- robe -->
+    <path d="
+        M250 620
+        Q300 580 350 620
+        L410 830
+        L190 830Z"/>
+
+
+    <!-- arm -->
+    <path d="
+        M330 650
+        Q390 700 420 760
+        L390 780
+        Q350 720 300 680Z"/>
+
+  </g>
+
+
+  <!-- Hidden lover silhouette -->
+  <g fill="#101010">
+
+    <circle cx="450" cy="600" r="18"/>
+
+    <path d="
+        M410 720
+        Q450 640 490 720
+        L520 830
+        L380 830Z"/>
+
+  </g>
+
+
+  <!-- Secret letter -->
+  <g>
+
+    <rect x="380" y="520"
+          width="70"
+          height="50"
+          fill="#e8d4a5"
+          transform="rotate(12 380 520)"/>
+
+    <path d="
+        M390 530
+        L420 550
+        L440 530"
+        fill="none"
+        stroke="#8c6030"
+        stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Rose petals -->
+  <g fill="#9b2935">
+
+    <circle cx="180" cy="700" r="6"/>
+    <circle cx="220" cy="740" r="5"/>
+    <circle cx="400" cy="720" r="6"/>
+    <circle cx="460" cy="680" r="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#fff0c8">
+    VESTAL'S
+  </text>
+
+  <text x="300" y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#fff0c8">
+    SECRET
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#ead19a">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e6c990">
+    ROMA BOOKS • 2022
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e0bf75"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

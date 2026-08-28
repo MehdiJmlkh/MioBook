@@ -1,0 +1,336 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="royalNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080d18"/>
+      <stop offset="45%" stop-color="#283447"/>
+      <stop offset="100%" stop-color="#8b633d"/>
+    </linearGradient>
+
+    <linearGradient id="goldMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe8a1"/>
+      <stop offset="50%" stop-color="#c49a42"/>
+      <stop offset="100%" stop-color="#72501d"/>
+    </linearGradient>
+
+    <radialGradient id="candleGlow">
+      <stop offset="0%" stop-color="#ffd778"/>
+      <stop offset="100%" stop-color="#ffd778" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark royal atmosphere -->
+  <rect width="600" height="900" fill="url(#royalNight)"/>
+
+
+  <!-- Candle light -->
+  <circle cx="470"
+          cy="300"
+          r="120"
+          fill="url(#candleGlow)"
+          filter="url(#softGlow)"/>
+
+
+  <!-- Old castle silhouette -->
+  <g fill="#111720">
+
+    <rect x="40"
+          y="350"
+          width="170"
+          height="250"/>
+
+    <rect x="75"
+          y="250"
+          width="55"
+          height="350"/>
+
+    <rect x="390"
+          y="320"
+          width="170"
+          height="280"/>
+
+    <rect x="440"
+          y="210"
+          width="60"
+          height="390"/>
+
+    <!-- towers -->
+    <polygon points="
+        65,250
+        102,170
+        140,250"/>
+
+    <polygon points="
+        425,210
+        470,130
+        515,210"/>
+
+  </g>
+
+
+  <!-- Castle windows -->
+  <g fill="#e7bd65">
+
+    <rect x="95"
+          y="320"
+          width="15"
+          height="35"/>
+
+    <rect x="460"
+          y="280"
+          width="15"
+          height="35"/>
+
+    <rect x="470"
+          y="380"
+          width="15"
+          height="35"/>
+
+  </g>
+
+
+  <!-- Secret chamber floor -->
+  <path d="
+      M0 600
+      L600 600
+      L600 900
+      L0 900Z"
+      fill="#151820"/>
+
+
+  <!-- Ancient royal document -->
+  <g>
+
+    <path d="
+        M150 650
+        Q300 580 450 650
+        L420 800
+        Q300 750 180 800Z"
+        fill="#e5d09a"/>
+
+
+    <!-- parchment edges -->
+    <path d="
+        M170 680
+        Q300 620 430 680"
+        fill="none"
+        stroke="#9b7138"
+        stroke-width="5"/>
+
+
+    <!-- cipher symbols -->
+    <g fill="none"
+       stroke="#60431d"
+       stroke-width="4">
+
+      <circle cx="250"
+              cy="700"
+              r="18"/>
+
+      <path d="
+          M250 680
+          L270 720
+          L230 720Z"/>
+
+
+      <circle cx="340"
+              cy="720"
+              r="20"/>
+
+
+      <line x1="210"
+            y1="760"
+            x2="390"
+            y2="760"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Royal seal -->
+  <g>
+
+    <circle cx="300"
+            cy="760"
+            r="45"
+            fill="#8b2028"/>
+
+    <circle cx="300"
+            cy="760"
+            r="35"
+            fill="none"
+            stroke="#e2bd67"
+            stroke-width="5"/>
+
+
+    <!-- crown symbol -->
+    <path d="
+        M280 770
+        L285 740
+        L300 755
+        L315 740
+        L320 770Z"
+        fill="#e8c96b"/>
+
+  </g>
+
+
+  <!-- Hooded secret agent -->
+  <g fill="#070b11">
+
+    <!-- hood -->
+    <path d="
+        M270 450
+        Q340 380 410 450
+        L390 560
+        L290 560Z"/>
+
+
+    <!-- face shadow -->
+    <ellipse cx="340"
+             cy="510"
+             rx="25"
+             ry="35"
+             fill="#1c222a"/>
+
+
+    <!-- coat -->
+    <path d="
+        M250 620
+        Q340 540 430 620
+        L520 850
+        L160 850Z"/>
+
+
+    <!-- hidden blade -->
+    <rect x="420"
+          y="560"
+          width="8"
+          height="200"
+          fill="#c7c7bc"
+          transform="rotate(-12 420 560)"/>
+
+  </g>
+
+
+  <!-- Cipher wheel -->
+  <g>
+
+    <circle cx="110"
+            cy="730"
+            r="65"
+            fill="none"
+            stroke="url(#goldMetal)"
+            stroke-width="8"/>
+
+    <circle cx="110"
+            cy="730"
+            r="35"
+            fill="none"
+            stroke="#d2aa55"
+            stroke-width="4"/>
+
+
+    <path d="
+        M110 665
+        L110 795
+        M45 730
+        L175 730"
+        stroke="#d2aa55"
+        stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Floating encrypted papers -->
+  <g fill="#d9c79b">
+
+    <path d="
+        M70 180
+        L140 150
+        L120 230Z"/>
+
+    <path d="
+        M490 180
+        L550 220
+        L500 250Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#f2d28a">
+    ROYAL
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        fill="#ffffff">
+    CODE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#e8d39d">
+    THRILLER • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e4c98c">
+    STERLING PRESS • 2007
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d6b86a"
+        stroke-width="2"
+        opacity="0.6"/>
+
+</svg>

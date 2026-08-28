@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="victorianNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#090b14"/>
+      <stop offset="50%" stop-color="#30313b"/>
+      <stop offset="100%" stop-color="#b17b52"/>
+    </linearGradient>
+
+    <linearGradient id="cobbleStreet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34363b"/>
+      <stop offset="100%" stop-color="#0d1015"/>
+    </linearGradient>
+
+    <radialGradient id="lampGlow">
+      <stop offset="0%" stop-color="#ffd77d"/>
+      <stop offset="100%" stop-color="#ffd77d" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glowBlur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Victorian London night -->
+  <rect width="600" height="900" fill="url(#victorianNight)"/>
+
+
+  <!-- Fog -->
+  <ellipse cx="300"
+           cy="420"
+           rx="260"
+           ry="100"
+           fill="#c7c7c0"
+           opacity="0.18"/>
+
+
+  <!-- Moon behind clouds -->
+  <circle cx="440"
+          cy="150"
+          r="55"
+          fill="#e9dcb4"/>
+
+
+  <path d="
+      M360 150
+      Q440 100 520 150"
+      fill="none"
+      stroke="#1b2029"
+      stroke-width="40"
+      opacity="0.7"/>
+
+
+  <!-- Victorian buildings -->
+  <g fill="#11151d">
+
+    <path d="
+        M40 560
+        L40 330
+        L170 260
+        L220 330
+        L220 560Z"/>
+
+
+    <path d="
+        M390 560
+        L390 300
+        L540 360
+        L540 560Z"/>
+
+
+    <!-- windows -->
+    <g fill="#c89b55">
+
+      <rect x="80" y="360" width="25" height="40"/>
+      <rect x="140" y="340" width="25" height="40"/>
+      <rect x="430" y="380" width="25" height="40"/>
+      <rect x="490" y="400" width="25" height="40"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Street -->
+  <path d="
+      M0 560
+      L600 560
+      L600 900
+      L0 900Z"
+      fill="url(#cobbleStreet)"/>
+
+
+  <!-- Cobblestones -->
+  <g stroke="#62626a"
+     opacity="0.3">
+
+    <path d="
+        M0 650
+        Q300 620 600 650"/>
+
+    <path d="
+        M0 730
+        Q300 700 600 730"/>
+
+    <path d="
+        M0 810
+        Q300 780 600 810"/>
+
+  </g>
+
+
+  <!-- Street lamp -->
+  <g>
+
+    <circle cx="120"
+            cy="400"
+            r="120"
+            fill="url(#lampGlow)"
+            filter="url(#glowBlur)"/>
+
+
+    <rect x="105"
+          y="350"
+          width="15"
+          height="300"
+          fill="#17171b"/>
+
+
+    <rect x="70"
+          y="330"
+          width="80"
+          height="50"
+          rx="8"
+          fill="#1b1c21"/>
+
+
+    <rect x="85"
+          y="340"
+          width="50"
+          height="25"
+          fill="#ffd47b"/>
+
+  </g>
+
+
+  <!-- Thief silhouette -->
+  <g fill="#05070b">
+
+    <!-- hat -->
+    <ellipse cx="330"
+             cy="420"
+             rx="45"
+             ry="12"/>
+
+
+    <rect x="305"
+          y="360"
+          width="50"
+          height="60"/>
+
+
+    <!-- face -->
+    <path d="
+        M315 420
+        Q330 450 345 420
+        L345 470
+        L315 470Z"/>
+
+
+    <!-- coat -->
+    <path d="
+        M260 520
+        Q330 450 400 520
+        L470 850
+        L190 850Z"/>
+
+
+    <!-- raised hand -->
+    <path d="
+        M380 530
+        Q450 450 500 480
+        L490 510
+        Q430 530 390 600Z"/>
+
+
+    <!-- mask -->
+    <path d="
+        M315 445
+        L345 445
+        L330 465Z"
+        fill="#30333a"/>
+
+  </g>
+
+
+  <!-- Stolen jewel -->
+  <g>
+
+    <path d="
+        M480 560
+        L520 600
+        L480 640
+        L440 600Z"
+        fill="#1f8a8c"/>
+
+
+    <circle cx="480"
+            cy="600"
+            r="50"
+            fill="none"
+            stroke="#d5b56b"
+            stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Old pocket watch -->
+  <g>
+
+    <circle cx="160"
+            cy="720"
+            r="45"
+            fill="#c8a25a"/>
+
+    <circle cx="160"
+            cy="720"
+            r="35"
+            fill="#25262b"/>
+
+    <line x1="160"
+          y1="720"
+          x2="160"
+          y2="695"
+          stroke="#e7d59b"
+          stroke-width="3"/>
+
+    <line x1="160"
+          y1="720"
+          x2="180"
+          y2="730"
+          stroke="#e7d59b"
+          stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Flying papers -->
+  <g fill="#d8cba8">
+
+    <path d="
+        M470 300
+        L520 280
+        L500 340Z"/>
+
+    <path d="
+        M90 260
+        L140 240
+        L120 300Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="56"
+        font-weight="bold"
+        fill="#f2d49a">
+    VEIL OF
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="64"
+        font-weight="bold"
+        fill="#ffffff">
+    SHADOWS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#e4c88d">
+    ADVENTURE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e3c98c">
+    STERLING PRESS • 1990
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7b86c"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

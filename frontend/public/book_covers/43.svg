@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="kyotoNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050817"/>
+      <stop offset="45%" stop-color="#25344a"/>
+      <stop offset="100%" stop-color="#6d6252"/>
+    </linearGradient>
+
+    <linearGradient id="templeWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b4b32"/>
+      <stop offset="100%" stop-color="#2b1714"/>
+    </linearGradient>
+
+    <radialGradient id="moonGlow">
+      <stop offset="0%" stop-color="#fff2bd"/>
+      <stop offset="100%" stop-color="#fff2bd" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="mist">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Night sky -->
+  <rect width="600" height="900" fill="url(#kyotoNight)"/>
+
+
+  <!-- Moon -->
+  <circle cx="430"
+          cy="220"
+          r="120"
+          fill="url(#moonGlow)"
+          filter="url(#mist)"/>
+
+  <circle cx="430"
+          cy="220"
+          r="55"
+          fill="#f5e7b4"/>
+
+
+  <!-- Mountain silhouette -->
+  <path d="
+      M0 430
+      L170 280
+      L300 430
+      L430 260
+      L600 440
+      L600 650
+      L0 650Z"
+      fill="#101821"/>
+
+
+  <!-- Mist layers -->
+  <path d="
+      M0 500
+      Q150 440 300 520
+      Q450 450 600 520
+      L600 620
+      L0 620Z"
+      fill="#d4d8c7"
+      opacity="0.15"
+      filter="url(#mist)"/>
+
+
+  <!-- Ancient Kyoto temple -->
+  <g>
+
+    <!-- main building -->
+    <rect x="120"
+          y="430"
+          width="360"
+          height="210"
+          fill="url(#templeWood)"/>
+
+
+    <!-- roof -->
+    <path d="
+        M70 430
+        Q300 260 530 430
+        L480 460
+        Q300 340 120 460Z"
+        fill="#191b20"/>
+
+
+    <!-- roof details -->
+    <path d="
+        M100 420
+        Q300 300 500 420"
+        fill="none"
+        stroke="#b49a5a"
+        stroke-width="8"/>
+
+
+    <!-- doors -->
+    <g fill="#050607">
+
+      <rect x="220"
+            y="500"
+            width="70"
+            height="140"/>
+
+      <rect x="310"
+            y="500"
+            width="70"
+            height="140"/>
+
+    </g>
+
+
+    <!-- lanterns -->
+    <g>
+
+      <line x1="170"
+            y1="470"
+            x2="170"
+            y2="650"
+            stroke="#5b321c"
+            stroke-width="5"/>
+
+      <circle cx="170"
+              cy="520"
+              r="22"
+              fill="#ffcc6b"/>
+
+
+      <line x1="430"
+            y1="470"
+            x2="430"
+            y2="650"
+            stroke="#5b321c"
+            stroke-width="5"/>
+
+      <circle cx="430"
+              cy="520"
+              r="22"
+              fill="#ffcc6b"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Secret symbol -->
+  <g>
+
+    <circle cx="300"
+            cy="570"
+            r="55"
+            fill="none"
+            stroke="#c5a95a"
+            stroke-width="5"/>
+
+
+    <path d="
+        M300 530
+        L335 570
+        L300 610
+        L265 570Z"
+        fill="none"
+        stroke="#c5a95a"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Hidden figure -->
+  <g fill="#07090d">
+
+    <!-- hood -->
+    <path d="
+        M250 560
+        Q300 480 350 560
+        L340 650
+        L260 650Z"/>
+
+
+    <!-- body -->
+    <path d="
+        M220 850
+        Q300 620 380 850Z"/>
+
+
+    <!-- scroll -->
+    <rect x="335"
+          y="620"
+          width="45"
+          height="100"
+          fill="#cdb77a"/>
+
+  </g>
+
+
+  <!-- Cherry blossom tree -->
+  <g>
+
+    <path d="
+        M80 700
+        Q120 560 160 450"
+        stroke="#3a2518"
+        stroke-width="15"
+        fill="none"/>
+
+
+    <g fill="#e9a7b8">
+
+      <circle cx="120" cy="500" r="15"/>
+      <circle cx="160" cy="450" r="18"/>
+      <circle cx="100" cy="560" r="13"/>
+      <circle cx="190" cy="500" r="14"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Floating paper charms -->
+  <g fill="#e7d6a5">
+
+    <rect x="90"
+          y="350"
+          width="35"
+          height="55"
+          transform="rotate(-15 90 350)"/>
+
+    <rect x="500"
+          y="390"
+          width="35"
+          height="55"
+          transform="rotate(12 500 390)"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#fff0b0">
+    SILENT
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    PAVILION
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#e7d8a7">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e5d19a">
+    SORA PUBLISHING • 2022
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d9bd71"
+        stroke-width="2"
+        opacity="0.65"/>
+
+</svg>

@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%">
+      <stop offset="0%" stop-color="#120b08"/>
+      <stop offset="45%" stop-color="#5a2415"/>
+      <stop offset="100%" stop-color="#d17a35"/>
+    </linearGradient>
+
+    <linearGradient id="ashGround"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%">
+      <stop offset="0%" stop-color="#3b302c"/>
+      <stop offset="100%" stop-color="#090909"/>
+    </linearGradient>
+
+    <radialGradient id="fireGlow">
+      <stop offset="0%" stop-color="#ffd27a"/>
+      <stop offset="50%" stop-color="#e65c20"/>
+      <stop offset="100%" stop-color="#7a170c" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect width="600" height="900" fill="url(#sky)"/>
+
+
+  <!-- Burning sky glow -->
+  <ellipse cx="300"
+           cy="430"
+           rx="260"
+           ry="220"
+           fill="url(#fireGlow)"
+           opacity="0.55"
+           filter="url(#blur)"/>
+
+
+  <!-- Smoke -->
+  <path d="M120 330
+           C80 250 160 180 240 260
+           C300 120 430 180 410 310
+           C500 240 550 340 480 420"
+        fill="none"
+        stroke="#1a1515"
+        stroke-width="55"
+        opacity="0.35"
+        filter="url(#blur)"/>
+
+
+  <!-- Distant fortress -->
+  <g fill="#171313">
+
+    <rect x="120" y="430" width="360" height="180"/>
+
+    <rect x="90" y="360" width="70" height="250"/>
+    <rect x="440" y="340" width="70" height="270"/>
+
+    <polygon points="90,360 125,310 160,360"/>
+    <polygon points="440,340 475,285 510,340"/>
+
+    <rect x="260" y="390" width="80" height="220"/>
+    <polygon points="260,390 300,320 340,390"/>
+
+  </g>
+
+
+  <!-- Fortress fire windows -->
+  <g fill="#ffb84a">
+    <rect x="115" y="410" width="12" height="25"/>
+    <rect x="470" y="390" width="12" height="25"/>
+    <rect x="280" y="450" width="14" height="35"/>
+    <rect x="310" y="450" width="14" height="35"/>
+  </g>
+
+
+  <!-- Ash ground -->
+  <path d="M0 620
+           Q120 560 250 650
+           Q420 550 600 650
+           L600 900
+           L0 900Z"
+        fill="url(#ashGround)"/>
+
+
+  <!-- Fallen warrior silhouette -->
+  <g fill="#080808">
+
+    <!-- head -->
+    <circle cx="300" cy="650" r="18"/>
+
+    <!-- body armor -->
+    <path d="M260 690
+             Q300 650 340 690
+             L360 790
+             L240 790Z"/>
+
+    <!-- legs -->
+    <path d="M265 770 L230 860 L270 860 L300 790Z"/>
+    <path d="M330 770 L380 850 L415 850 L340 760Z"/>
+
+    <!-- sword -->
+    <rect x="410"
+          y="600"
+          width="8"
+          height="210"
+          transform="rotate(25 414 705)"/>
+
+    <rect x="390"
+          y="700"
+          width="60"
+          height="10"
+          transform="rotate(25 420 705)"/>
+
+  </g>
+
+
+  <!-- Flying ash particles -->
+  <g fill="#f2c28b" opacity="0.8">
+    <circle cx="100" cy="520" r="3"/>
+    <circle cx="160" cy="460" r="2"/>
+    <circle cx="430" cy="520" r="3"/>
+    <circle cx="520" cy="450" r="2"/>
+    <circle cx="370" cy="570" r="2"/>
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#f7e6c1">
+    EMPIRE
+  </text>
+
+  <text x="300"
+        y="165"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#f7e6c1">
+    OF ASH
+  </text>
+
+
+  <!-- Subtitle -->
+  <text x="300"
+        y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="15"
+        letter-spacing="6"
+        fill="#e9c49b">
+    A TALE OF WAR &amp; BETRAYAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="830"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e8d4bc">
+    ROMA BOOKS • 2018
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e6c08b"
+        stroke-width="2"
+        opacity="0.45"/>
+
+</svg>

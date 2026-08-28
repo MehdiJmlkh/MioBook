@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishDawn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#283b36"/>
+      <stop offset="45%" stop-color="#8aa17b"/>
+      <stop offset="100%" stop-color="#d9b878"/>
+    </linearGradient>
+
+    <linearGradient id="greenFields" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#55744b"/>
+      <stop offset="100%" stop-color="#1c3923"/>
+    </linearGradient>
+
+    <linearGradient id="ancientStone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d2c5a6"/>
+      <stop offset="100%" stop-color="#746553"/>
+    </linearGradient>
+
+    <filter id="warmGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Irish sunrise sky -->
+  <rect width="600" height="900" fill="url(#irishDawn)"/>
+
+
+  <!-- Sun -->
+  <circle cx="300"
+          cy="250"
+          r="90"
+          fill="#f6d78c"
+          opacity="0.35"
+          filter="url(#warmGlow)"/>
+
+  <circle cx="300"
+          cy="250"
+          r="45"
+          fill="#f5d68a"/>
+
+
+  <!-- Clouds -->
+  <g fill="#d9dfd1"
+     opacity="0.35">
+
+    <ellipse cx="120" cy="220" rx="80" ry="25"/>
+    <ellipse cx="470" cy="270" rx="100" ry="30"/>
+
+  </g>
+
+
+  <!-- Rolling hills -->
+  <path d="
+      M0 450
+      Q120 350 250 450
+      Q380 300 600 450
+      L600 900
+      L0 900Z"
+      fill="url(#greenFields)"/>
+
+
+  <!-- Field patterns -->
+  <g fill="none"
+     stroke="#91a86c"
+     stroke-width="4"
+     opacity="0.6">
+
+    <path d="M0 560 Q180 500 360 560"/>
+    <path d="M60 650 Q260 590 520 650"/>
+    <path d="M100 740 Q300 680 600 750"/>
+
+  </g>
+
+
+  <!-- Hill of Tara silhouette -->
+  <path d="
+      M130 600
+      Q300 430 470 600"
+      fill="#324b2b"/>
+
+
+  <!-- Ancient standing stones -->
+  <g fill="url(#ancientStone)"
+     stroke="#625646"
+     stroke-width="4">
+
+    <rect x="230"
+          y="470"
+          width="45"
+          height="160"
+          rx="8"/>
+
+    <rect x="325"
+          y="490"
+          width="55"
+          height="140"
+          rx="8"/>
+
+
+    <!-- stone circle -->
+    <ellipse cx="300"
+             cy="620"
+             rx="120"
+             ry="40"
+             fill="none"
+             stroke="#8f816b"
+             stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Archaeological map -->
+  <g>
+
+    <rect x="80"
+          y="690"
+          width="170"
+          height="120"
+          fill="#e6d09a"
+          stroke="#80623b"
+          stroke-width="5"
+          transform="rotate(-12 80 690)"/>
+
+
+    <path d="
+        M120 760
+        Q170 700 220 750"
+        fill="none"
+        stroke="#7b4c2c"
+        stroke-width="4"/>
+
+
+    <circle cx="170"
+            cy="735"
+            r="12"
+            fill="#9c3028"/>
+
+  </g>
+
+
+  <!-- Historian figure -->
+  <g>
+
+    <circle cx="430"
+            cy="620"
+            r="24"
+            fill="#141816"/>
+
+
+    <path d="
+        M390 900
+        Q430 650 470 900Z"
+        fill="#141816"/>
+
+
+    <!-- notebook -->
+    <rect x="350"
+          y="700"
+          width="70"
+          height="90"
+          fill="#d9c28b"/>
+
+
+    <line x1="365"
+          y1="730"
+          x2="405"
+          y2="730"
+          stroke="#775332"
+          stroke-width="3"/>
+
+    <line x1="365"
+          y1="755"
+          x2="405"
+          y2="755"
+          stroke="#775332"
+          stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Ancient crown symbol -->
+  <g>
+
+    <path d="
+        M260 370
+        L280 330
+        L300 370
+        L320 330
+        L340 370
+        L330 410
+        L270 410Z"
+        fill="#b8903d"
+        stroke="#70511e"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#ffffff">
+    FIELDS
+  </text>
+
+
+  <text x="300"
+        y="190"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="80"
+        font-weight="bold"
+        fill="#f0d18b">
+    OF TARA
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="240"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="12"
+        fill="#e9dfbd">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e2c991">
+    EMERALD HOUSE • 1991
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d1ae65"
+        stroke-width="2"/>
+
+</svg>

@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b120d"/>
+      <stop offset="50%" stop-color="#8b4d28"/>
+      <stop offset="100%" stop-color="#d2a15a"/>
+    </linearGradient>
+
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b99b72"/>
+      <stop offset="100%" stop-color="#4a3625"/>
+    </linearGradient>
+
+    <radialGradient id="torch">
+      <stop offset="0%" stop-color="#ffd477"/>
+      <stop offset="45%" stop-color="#f27b22"/>
+      <stop offset="100%" stop-color="#7a2108" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect width="600" height="900" fill="url(#romanSky)"/>
+
+
+  <!-- Sun glow -->
+  <circle cx="310" cy="330"
+          r="160"
+          fill="url(#torch)"
+          opacity="0.7"
+          filter="url(#glow)"/>
+
+
+  <!-- Ancient columns -->
+  <g fill="url(#stone)">
+
+    <rect x="70" y="360" width="70" height="300"/>
+    <rect x="460" y="360" width="70" height="300"/>
+
+    <rect x="55" y="330" width="100" height="35"/>
+    <rect x="445" y="330" width="100" height="35"/>
+
+    <rect x="45" y="660" width="120" height="30"/>
+    <rect x="435" y="660" width="120" height="30"/>
+
+  </g>
+
+
+  <!-- Colosseum silhouette -->
+  <path d="
+      M150 650
+      Q150 380 300 300
+      Q450 380 450 650
+      Z"
+      fill="#3c2b1f"/>
+
+
+  <!-- Colosseum arches -->
+  <g fill="#120e0b">
+
+    <ellipse cx="210" cy="520" rx="30" ry="50"/>
+    <ellipse cx="300" cy="500" rx="30" ry="55"/>
+    <ellipse cx="390" cy="520" rx="30" ry="50"/>
+
+    <ellipse cx="210" cy="620" rx="30" ry="50"/>
+    <ellipse cx="300" cy="600" rx="30" ry="55"/>
+    <ellipse cx="390" cy="620" rx="30" ry="50"/>
+
+  </g>
+
+
+  <!-- Underground ruins -->
+  <path d="
+      M0 690
+      Q150 630 300 700
+      Q450 630 600 690
+      L600 900
+      L0 900Z"
+      fill="#17100c"/>
+
+
+  <!-- Archaeologist silhouette -->
+  <g fill="#050505">
+
+    <circle cx="300" cy="650" r="18"/>
+
+    <path d="
+        M260 700
+        Q300 660 340 700
+        L360 820
+        L240 820Z"/>
+
+    <path d="M270 810 L230 880 L270 880 L305 820Z"/>
+    <path d="M330 810 L370 880 L410 880 L350 810Z"/>
+
+  </g>
+
+
+  <!-- Torch -->
+  <g>
+
+    <rect x="390" y="560"
+          width="10"
+          height="140"
+          fill="#301b0c"/>
+
+    <circle cx="395" cy="550"
+            r="60"
+            fill="url(#torch)"/>
+
+    <path d="
+        M395 580
+        Q370 540 395 510
+        Q420 540 395 580Z"
+        fill="#ffb52e"/>
+
+  </g>
+
+
+  <!-- Dust particles -->
+  <g fill="#e4c07c">
+    <circle cx="120" cy="450" r="3"/>
+    <circle cx="180" cy="390" r="2"/>
+    <circle cx="470" cy="430" r="3"/>
+    <circle cx="520" cy="500" r="2"/>
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#f7dfac">
+    ROMAN
+  </text>
+
+  <text x="300" y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#f7dfac">
+    SHADOWS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#ead0a0">
+    ADVENTURE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e2c79a">
+    ROMA BOOKS • 2020
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d8b77a"
+        stroke-width="2"
+        opacity="0.5"/>
+
+</svg>

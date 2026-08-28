@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="spyNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080c16"/>
+      <stop offset="55%" stop-color="#1c2634"/>
+      <stop offset="100%" stop-color="#4b3b32"/>
+    </linearGradient>
+
+    <linearGradient id="metalGate" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1b2028"/>
+      <stop offset="50%" stop-color="#7c858a"/>
+      <stop offset="100%" stop-color="#161a20"/>
+    </linearGradient>
+
+    <linearGradient id="document" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8dfc7"/>
+      <stop offset="100%" stop-color="#8f8061"/>
+    </linearGradient>
+
+    <filter id="cityGlow">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark diplomatic night -->
+  <rect width="600" height="900" fill="url(#spyNight)"/>
+
+
+  <!-- City lights -->
+  <g opacity="0.35" filter="url(#cityGlow)">
+    <circle cx="110" cy="330" r="30" fill="#e8b85c"/>
+    <circle cx="450" cy="290" r="40" fill="#d95c4a"/>
+    <circle cx="300" cy="250" r="25" fill="#8bc1d6"/>
+  </g>
+
+
+  <!-- Distant government skyline -->
+  <g fill="#111722">
+
+    <rect x="40"
+          y="360"
+          width="90"
+          height="240"/>
+
+    <rect x="170"
+          y="300"
+          width="110"
+          height="300"/>
+
+    <rect x="330"
+          y="340"
+          width="100"
+          height="260"/>
+
+    <rect x="470"
+          y="280"
+          width="80"
+          height="320"/>
+
+  </g>
+
+
+  <!-- Government building columns -->
+  <g fill="#3e4650">
+
+    <rect x="185" y="350" width="15" height="180"/>
+    <rect x="220" y="350" width="15" height="180"/>
+    <rect x="255" y="350" width="15" height="180"/>
+
+    <path d="
+      M160 340
+      L300 340
+      L280 310
+      L180 310Z"
+      fill="#7b8185"/>
+
+  </g>
+
+
+  <!-- Iron gate -->
+  <g>
+
+    <rect x="90"
+          y="450"
+          width="420"
+          height="450"
+          fill="#090d13"
+          opacity="0.7"/>
+
+
+    <!-- vertical bars -->
+    <g stroke="url(#metalGate)"
+       stroke-width="10">
+
+      <line x1="120" y1="430" x2="120" y2="900"/>
+      <line x1="190" y1="430" x2="190" y2="900"/>
+      <line x1="260" y1="430" x2="260" y2="900"/>
+      <line x1="330" y1="430" x2="330" y2="900"/>
+      <line x1="400" y1="430" x2="400" y2="900"/>
+      <line x1="470" y1="430" x2="470" y2="900"/>
+
+    </g>
+
+
+    <path d="
+      M90 480
+      Q300 350 510 480"
+      fill="none"
+      stroke="#9da4aa"
+      stroke-width="12"/>
+
+  </g>
+
+
+  <!-- Missing diplomat silhouette -->
+  <g>
+
+    <!-- empty coat -->
+    <path d="
+      M260 650
+      Q300 560 340 650
+      L380 820
+      L220 820Z"
+      fill="#161b22"/>
+
+
+    <!-- floating identification badge -->
+    <rect x="270"
+          y="610"
+          width="60"
+          height="45"
+          rx="5"
+          fill="#d7c18a"/>
+
+
+    <line x1="285"
+          y1="625"
+          x2="315"
+          y2="625"
+          stroke="#333"
+          stroke-width="3"/>
+
+    <line x1="285"
+          y1="638"
+          x2="320"
+          y2="638"
+          stroke="#333"
+          stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Secret documents -->
+  <g>
+
+    <rect x="60"
+          y="690"
+          width="150"
+          height="100"
+          fill="url(#document)"
+          transform="rotate(-12 60 690)"
+          stroke="#4b3820"
+          stroke-width="4"/>
+
+
+    <text x="95"
+          y="735"
+          font-family="Arial"
+          font-size="14"
+          fill="#7d2525"
+          transform="rotate(-12 95 735)">
+      CONFIDENTIAL
+    </text>
+
+
+    <line x1="95"
+          y1="755"
+          x2="175"
+          y2="755"
+          stroke="#51452f"
+          stroke-width="4"
+          transform="rotate(-12 95 755)"/>
+
+  </g>
+
+
+  <!-- Surveillance camera -->
+  <g>
+
+    <rect x="450"
+          y="560"
+          width="65"
+          height="45"
+          rx="8"
+          fill="#242b33"/>
+
+    <circle cx="465"
+            cy="582"
+            r="12"
+            fill="#d94b4b"/>
+
+    <line x1="480"
+          y1="560"
+          x2="500"
+          y2="520"
+          stroke="#8b9297"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#ffffff">
+    IRON GATE
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="82"
+        font-weight="bold"
+        fill="#c94d45">
+    AFFAIR
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="12"
+        fill="#cfd8df">
+    THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d7b36b">
+    STERLING PRESS • 2004
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#a88a54"
+        stroke-width="2"/>
+
+</svg>

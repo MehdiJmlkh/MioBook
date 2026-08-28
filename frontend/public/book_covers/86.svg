@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#030611"/>
+      <stop offset="55%" stop-color="#121c35"/>
+      <stop offset="100%" stop-color="#3b2028"/>
+    </linearGradient>
+
+    <linearGradient id="cityShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b2330"/>
+      <stop offset="100%" stop-color="#05070d"/>
+    </linearGradient>
+
+    <linearGradient id="tacticalMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c8b91"/>
+      <stop offset="100%" stop-color="#1b2028"/>
+    </linearGradient>
+
+    <filter id="lightBlur">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark operation sky -->
+  <rect width="600" height="900" fill="url(#nightSky)"/>
+
+
+  <!-- Moon glow -->
+  <circle cx="460"
+          cy="220"
+          r="75"
+          fill="#9fb6c8"
+          opacity="0.18"
+          filter="url(#lightBlur)"/>
+
+  <circle cx="460"
+          cy="220"
+          r="35"
+          fill="#d5d9d1"
+          opacity="0.75"/>
+
+
+  <!-- Helicopter silhouette -->
+  <g fill="#05070b">
+
+    <ellipse cx="300"
+             cy="210"
+             rx="80"
+             ry="18"/>
+
+    <rect x="285"
+          y="190"
+          width="30"
+          height="40"/>
+
+    <line x1="220"
+          y1="210"
+          x2="380"
+          y2="210"
+          stroke="#05070b"
+          stroke-width="8"/>
+
+    <line x1="300"
+          y1="150"
+          x2="300"
+          y2="270"
+          stroke="#05070b"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Distant city -->
+  <g fill="url(#cityShadow)">
+
+    <rect x="20"
+          y="390"
+          width="90"
+          height="220"/>
+
+    <rect x="140"
+          y="330"
+          width="120"
+          height="280"/>
+
+    <rect x="300"
+          y="370"
+          width="90"
+          height="240"/>
+
+    <rect x="430"
+          y="300"
+          width="130"
+          height="310"/>
+
+  </g>
+
+
+  <!-- Red emergency lights -->
+  <g fill="#d63232">
+
+    <rect x="170" y="370" width="35" height="8"/>
+    <rect x="470" y="350" width="45" height="8"/>
+    <rect x="330" y="420" width="30" height="8"/>
+
+  </g>
+
+
+  <!-- Rooftop -->
+  <path d="
+      M0 610
+      L600 610
+      L600 900
+      L0 900Z"
+      fill="#080b12"/>
+
+
+  <!-- Agent silhouette -->
+  <g>
+
+    <!-- head -->
+    <circle cx="300"
+            cy="520"
+            r="35"
+            fill="#050609"/>
+
+
+    <!-- coat -->
+    <path d="
+        M210 900
+        Q240 560 300 560
+        Q360 560 390 900Z"
+        fill="#10151d"/>
+
+
+    <!-- shoulder armor -->
+    <path d="
+        M230 650
+        L300 610
+        L370 650
+        L350 700
+        L250 700Z"
+        fill="url(#tacticalMetal)"/>
+
+
+    <!-- earpiece -->
+    <circle cx="335"
+            cy="520"
+            r="8"
+            fill="#c8d5d8"/>
+
+
+    <!-- weapon case -->
+    <rect x="390"
+          y="680"
+          width="100"
+          height="35"
+          rx="8"
+          fill="#252d38"
+          stroke="#697783"
+          stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Secret file -->
+  <g>
+
+    <rect x="70"
+          y="700"
+          width="150"
+          height="95"
+          fill="#25201a"
+          stroke="#b38b4a"
+          stroke-width="4"/>
+
+
+    <line x1="100"
+          y1="735"
+          x2="190"
+          y2="735"
+          stroke="#c89b54"
+          stroke-width="4"/>
+
+
+    <line x1="100"
+          y1="760"
+          x2="170"
+          y2="760"
+          stroke="#c89b54"
+          stroke-width="4"/>
+
+
+    <text x="145"
+          y="720"
+          text-anchor="middle"
+          font-size="14"
+          font-family="Arial"
+          fill="#e5c77d">
+      CLASSIFIED
+    </text>
+
+  </g>
+
+
+  <!-- Laser targeting line -->
+  <line x1="430"
+        y1="430"
+        x2="270"
+        y2="550"
+        stroke="#ff3b3b"
+        stroke-width="2"
+        opacity="0.7"/>
+
+
+  <circle cx="270"
+          cy="550"
+          r="8"
+          fill="#ff3b3b"/>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#ffffff">
+    OPERATION
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="82"
+        font-weight="bold"
+        fill="#e24a4a">
+    NIGHTFALL
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="235"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="8"
+        fill="#cbd4df">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d6b36a">
+    STERLING PRESS • 2018
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#a87d3f"
+        stroke-width="2"/>
+
+</svg>

@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="arenaSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#24120b"/>
+      <stop offset="45%" stop-color="#8a3f1c"/>
+      <stop offset="100%" stop-color="#d19a52"/>
+    </linearGradient>
+
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9b36a"/>
+      <stop offset="100%" stop-color="#6b4220"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#ffd77a"/>
+      <stop offset="100%" stop-color="#d85a18" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Ancient Rome sky -->
+  <rect width="600" height="900" fill="url(#arenaSky)"/>
+
+
+  <!-- Burning sun -->
+  <circle cx="300" cy="280"
+          r="150"
+          fill="url(#sunGlow)"
+          filter="url(#softGlow)"/>
+
+  <circle cx="300" cy="280"
+          r="65"
+          fill="#ffd27a"
+          opacity="0.8"/>
+
+
+  <!-- Colosseum background -->
+  <path d="
+      M40 580
+      Q40 320 300 260
+      Q560 320 560 580
+      Z"
+      fill="#3b2618"/>
+
+
+  <!-- Colosseum arches -->
+  <g fill="#120c08">
+
+    <ellipse cx="130" cy="450" rx="35" ry="60"/>
+    <ellipse cx="220" cy="420" rx="35" ry="65"/>
+    <ellipse cx="300" cy="400" rx="35" ry="70"/>
+    <ellipse cx="380" cy="420" rx="35" ry="65"/>
+    <ellipse cx="470" cy="450" rx="35" ry="60"/>
+
+    <ellipse cx="130" cy="560" rx="35" ry="55"/>
+    <ellipse cx="220" cy="540" rx="35" ry="60"/>
+    <ellipse cx="300" cy="530" rx="35" ry="65"/>
+    <ellipse cx="380" cy="540" rx="35" ry="60"/>
+    <ellipse cx="470" cy="560" rx="35" ry="55"/>
+
+  </g>
+
+
+  <!-- Arena floor -->
+  <path d="
+      M0 650
+      Q300 560 600 650
+      L600 900
+      L0 900Z"
+      fill="url(#sand)"/>
+
+
+  <!-- Broken sword on sand -->
+  <g fill="#34251a">
+
+    <rect x="470" y="700"
+          width="12"
+          height="150"
+          transform="rotate(35 470 700)"/>
+
+    <polygon points="
+        455,700
+        520,680
+        520,710
+        470,730"/>
+
+  </g>
+
+
+  <!-- Gladiator figure -->
+  <g fill="#090909">
+
+    <!-- helmet -->
+    <path d="
+        M255 480
+        Q300 420 345 480
+        L345 530
+        L255 530Z"/>
+
+    <!-- helmet crest -->
+    <path d="
+        M300 420
+        L300 360
+        L330 420Z"/>
+
+
+    <!-- body armor -->
+    <path d="
+        M230 560
+        Q300 500 370 560
+        L400 730
+        L200 730Z"/>
+
+
+    <!-- shield -->
+    <path d="
+        M190 560
+        Q120 620 190 760
+        Q260 620 190 560Z"
+        fill="#4b2d19"/>
+
+
+    <!-- sword -->
+    <rect x="380" y="540"
+          width="14"
+          height="230"
+          transform="rotate(-15 380 540)"
+          fill="#c2b8a0"/>
+
+
+    <!-- legs -->
+    <path d="
+        M250 700
+        L210 850
+        L270 850
+        L300 730Z"/>
+
+    <path d="
+        M340 700
+        L380 850
+        L440 850
+        L370 700Z"/>
+
+  </g>
+
+
+  <!-- Chains representing slavery -->
+  <g fill="none"
+     stroke="#b49b72"
+     stroke-width="6">
+
+    <circle cx="150" cy="780" r="18"/>
+    <circle cx="200" cy="780" r="18"/>
+    <line x1="168" y1="780"
+          x2="182" y2="780"/>
+
+  </g>
+
+
+  <!-- Dust -->
+  <g fill="#f2d08a" opacity="0.5">
+
+    <circle cx="90" cy="610" r="4"/>
+    <circle cx="160" cy="650" r="3"/>
+    <circle cx="500" cy="620" r="5"/>
+    <circle cx="420" cy="590" r="3"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#fff0c2">
+    GLADIATOR'S
+  </text>
+
+  <text x="300" y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#fff0c2">
+    OATH
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#f2d39b">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#ead09a">
+    ROMA BOOKS • 2016
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e6c27a"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="nightSakura" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#070b1b"/>
+      <stop offset="45%" stop-color="#1d3150"/>
+      <stop offset="100%" stop-color="#8d4d59"/>
+    </linearGradient>
+
+    <linearGradient id="streetLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5d68a"/>
+      <stop offset="100%" stop-color="#8c5465"/>
+    </linearGradient>
+
+    <radialGradient id="moon">
+      <stop offset="0%" stop-color="#fff4d0"/>
+      <stop offset="100%" stop-color="#fff4d0" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Midnight sky -->
+  <rect width="600" height="900" fill="url(#nightSakura)"/>
+
+
+  <!-- Moon -->
+  <circle cx="440"
+          cy="180"
+          r="130"
+          fill="url(#moon)"
+          filter="url(#softGlow)"/>
+
+  <circle cx="440"
+          cy="180"
+          r="45"
+          fill="#fff1c4"/>
+
+
+  <!-- Tokyo alley background -->
+  <g fill="#101522">
+
+    <rect x="70"
+          y="420"
+          width="150"
+          height="250"/>
+
+    <rect x="390"
+          y="380"
+          width="150"
+          height="290"/>
+
+  </g>
+
+
+  <!-- Traditional gate -->
+  <g fill="#7b2733">
+
+    <rect x="245"
+          y="400"
+          width="110"
+          height="250"/>
+
+    <polygon points="
+        210,400
+        300,320
+        390,400"/>
+
+  </g>
+
+
+  <!-- Sakura tree -->
+  <g>
+
+    <!-- branches -->
+    <g stroke="#241316"
+       stroke-width="12">
+
+      <path d="
+          M120 520
+          Q180 350 260 300"/>
+
+      <path d="
+          M180 420
+          Q280 450 350 330"/>
+
+      <path d="
+          M240 390
+          Q330 280 450 250"/>
+
+    </g>
+
+
+    <!-- blossoms -->
+    <g fill="#f3b6c5">
+
+      <circle cx="130" cy="430" r="18"/>
+      <circle cx="170" cy="380" r="15"/>
+      <circle cx="230" cy="340" r="20"/>
+      <circle cx="300" cy="370" r="18"/>
+      <circle cx="380" cy="300" r="22"/>
+      <circle cx="430" cy="260" r="16"/>
+      <circle cx="470" cy="330" r="20"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Wet street reflection -->
+  <path d="
+      M0 700
+      Q300 620 600 700
+      L600 900
+      L0 900Z"
+      fill="#111923"/>
+
+
+  <g stroke="url(#streetLight)"
+     opacity="0.5">
+
+    <line x1="100"
+          y1="760"
+          x2="260"
+          y2="720"
+          stroke-width="5"/>
+
+    <line x1="350"
+          y1="750"
+          x2="520"
+          y2="710"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Agent silhouette -->
+  <g fill="#070a10">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="610"
+            r="20"/>
+
+    <!-- coat -->
+    <path d="
+        M250 660
+        Q300 600 350 660
+        L410 850
+        L190 850Z"/>
+
+
+    <!-- briefcase -->
+    <rect x="360"
+          y="700"
+          width="90"
+          height="55"
+          rx="8"/>
+
+
+    <!-- hidden earpiece -->
+    <circle cx="320"
+            cy="615"
+            r="4"
+            fill="#d6b36a"/>
+
+  </g>
+
+
+  <!-- Secret exchange envelope -->
+  <g>
+
+    <rect x="170"
+          y="670"
+          width="110"
+          height="75"
+          fill="#e9d8b0"
+          transform="rotate(-8 170 670)"/>
+
+    <path d="
+        M180 680
+        L225 720
+        L270 680"
+        fill="none"
+        stroke="#8b5b38"
+        stroke-width="4"/>
+
+    <!-- seal -->
+    <circle cx="225"
+            cy="720"
+            r="12"
+            fill="#8b1f35"/>
+
+  </g>
+
+
+  <!-- Ancient symbol -->
+  <g fill="none"
+     stroke="#d4ae63"
+     stroke-width="4"
+     opacity="0.7">
+
+    <circle cx="300"
+            cy="520"
+            r="35"/>
+
+    <path d="
+        M300 485
+        L330 540
+        L270 540Z"/>
+
+  </g>
+
+
+  <!-- Floating petals -->
+  <g fill="#f5b9c8">
+
+    <circle cx="90" cy="600" r="5"/>
+    <circle cx="520" cy="560" r="6"/>
+    <circle cx="150" cy="720" r="4"/>
+    <circle cx="480" cy="740" r="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#fff0d0">
+    MIDNIGHT
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#f6b8c8">
+    SAKURA
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#e7d7b1">
+    THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e8d19c">
+    SORA PUBLISHING • 2024
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e4b7c3"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

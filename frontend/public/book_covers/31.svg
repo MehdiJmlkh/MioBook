@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="polarSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="40%" stop-color="#173c52"/>
+      <stop offset="100%" stop-color="#d0b77b"/>
+    </linearGradient>
+
+    <linearGradient id="snowField" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dbe8e8"/>
+      <stop offset="100%" stop-color="#7d9294"/>
+    </linearGradient>
+
+    <linearGradient id="tentLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffdc8a"/>
+      <stop offset="100%" stop-color="#b25c28"/>
+    </linearGradient>
+
+    <radialGradient id="auroraGlow">
+      <stop offset="0%" stop-color="#79ffd1"/>
+      <stop offset="45%" stop-color="#4db4aa"/>
+      <stop offset="100%" stop-color="#4db4aa" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="auroraBlur">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Polar night sky -->
+  <rect width="600" height="900" fill="url(#polarSky)"/>
+
+
+  <!-- Aurora -->
+  <ellipse cx="300"
+           cy="190"
+           rx="280"
+           ry="120"
+           fill="url(#auroraGlow)"
+           filter="url(#auroraBlur)"/>
+
+
+  <path d="
+      M40 190
+      Q180 60 300 170
+      Q420 280 560 120"
+      fill="none"
+      stroke="#7ff1c7"
+      stroke-width="18"
+      opacity="0.5"/>
+
+
+  <path d="
+      M80 240
+      Q220 120 350 230
+      Q460 320 540 220"
+      fill="none"
+      stroke="#8bc9ff"
+      stroke-width="10"
+      opacity="0.35"/>
+
+
+  <!-- Distant mountains -->
+  <path d="
+      M0 480
+      L130 280
+      L250 450
+      L390 260
+      L600 470
+      L600 650
+      L0 650Z"
+      fill="#18252d"/>
+
+
+  <!-- Snow ground -->
+  <path d="
+      M0 560
+      Q250 500 600 560
+      L600 900
+      L0 900Z"
+      fill="url(#snowField)"/>
+
+
+  <!-- Frozen lake cracks -->
+  <g fill="none"
+     stroke="#6f8d95"
+     stroke-width="4"
+     opacity="0.6">
+
+    <path d="
+        M80 760
+        L200 700
+        L330 760
+        L520 680"/>
+
+    <path d="
+        M150 850
+        L270 770
+        L420 820"/>
+
+  </g>
+
+
+  <!-- Research camp -->
+  <g>
+
+    <!-- tent -->
+    <path d="
+        M210 620
+        L300 470
+        L390 620Z"
+        fill="url(#tentLight)"/>
+
+    <path d="
+        M300 470
+        L300 620"
+        stroke="#402719"
+        stroke-width="5"/>
+
+
+    <!-- entrance -->
+    <path d="
+        M275 620
+        L300 560
+        L325 620Z"
+        fill="#171b20"/>
+
+
+    <!-- antenna -->
+    <line x1="350"
+          y1="520"
+          x2="350"
+          y2="420"
+          stroke="#222b30"
+          stroke-width="5"/>
+
+
+    <line x1="330"
+          y1="440"
+          x2="370"
+          y2="440"
+          stroke="#222b30"
+          stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Lost explorer -->
+  <g fill="#0a1117">
+
+    <!-- hood -->
+    <path d="
+        M300 560
+        Q345 510 390 560
+        L390 610
+        L300 610Z"/>
+
+
+    <!-- body -->
+    <path d="
+        M290 640
+        Q345 590 400 640
+        L470 850
+        L230 850Z"/>
+
+
+    <!-- backpack -->
+    <rect x="255"
+          y="650"
+          width="60"
+          height="120"
+          rx="15"
+          fill="#4a3624"/>
+
+
+    <!-- flare -->
+    <line x1="420"
+          y1="690"
+          x2="470"
+          y2="820"
+          stroke="#3b2515"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Compass in snow -->
+  <g>
+
+    <circle cx="120"
+            cy="720"
+            r="45"
+            fill="#c7a45c"/>
+
+    <circle cx="120"
+            cy="720"
+            r="33"
+            fill="#23343d"/>
+
+    <path d="
+        M120 680
+        L135 735
+        L120 720
+        L105 735Z"
+        fill="#e4d49b"/>
+
+  </g>
+
+
+  <!-- Warning beacon -->
+  <g>
+
+    <circle cx="500"
+            cy="600"
+            r="55"
+            fill="#ff5c48"
+            opacity="0.15"/>
+
+    <circle cx="500"
+            cy="600"
+            r="12"
+            fill="#ff5c48"/>
+
+  </g>
+
+
+  <!-- Snow particles -->
+  <g fill="#ffffff"
+     opacity="0.8">
+
+    <circle cx="90" cy="350" r="4"/>
+    <circle cx="500" cy="380" r="5"/>
+    <circle cx="160" cy="500" r="3"/>
+    <circle cx="540" cy="520" r="4"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#ffffff">
+    AURORA
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#8ff0d1">
+    PERIL
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#e4d9af">
+    ADVENTURE • THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e5cf91">
+    MAPLE LEAF PRESS • 2016
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7c07a"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

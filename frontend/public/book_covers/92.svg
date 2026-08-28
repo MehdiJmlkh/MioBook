@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="stormSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="45%" stop-color="#263747"/>
+      <stop offset="100%" stop-color="#6b2527"/>
+    </linearGradient>
+
+    <linearGradient id="wreckWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#70462d"/>
+      <stop offset="100%" stop-color="#1b1715"/>
+    </linearGradient>
+
+    <linearGradient id="metalCase" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5cbd0"/>
+      <stop offset="100%" stop-color="#3c4249"/>
+    </linearGradient>
+
+    <filter id="redGlow">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Stormy ocean atmosphere -->
+  <rect width="600" height="900" fill="url(#stormSea)"/>
+
+
+  <!-- Red dawn glow -->
+  <ellipse cx="300"
+           cy="330"
+           rx="190"
+           ry="90"
+           fill="#c73838"
+           opacity="0.25"
+           filter="url(#redGlow)"/>
+
+
+  <!-- Storm clouds -->
+  <g fill="#0b1018" opacity="0.7">
+
+    <path d="
+      M0 220
+      Q120 150 240 230
+      Q360 140 600 230
+      L600 330
+      L0 330Z"/>
+
+  </g>
+
+
+  <!-- Ocean waves -->
+  <path d="
+      M0 470
+      Q120 430 240 480
+      Q380 530 600 450
+      L600 900
+      L0 900Z"
+      fill="#102735"/>
+
+
+  <g fill="none"
+     stroke="#587482"
+     stroke-width="5"
+     opacity="0.7">
+
+    <path d="M0 590 Q150 540 300 600 Q450 650 600 570"/>
+    <path d="M0 690 Q180 630 350 700 Q500 740 600 680"/>
+    <path d="M0 790 Q200 730 420 800"/>
+
+  </g>
+
+
+  <!-- Broken shipwreck -->
+  <g>
+
+    <!-- hull -->
+    <path d="
+      M100 560
+      L430 560
+      L360 690
+      L170 690Z"
+      fill="url(#wreckWood)"
+      stroke="#160f0c"
+      stroke-width="8"/>
+
+
+    <!-- broken mast -->
+    <line x1="270"
+          y1="560"
+          x2="300"
+          y2="260"
+          stroke="#4b3422"
+          stroke-width="14"/>
+
+
+    <!-- torn sail -->
+    <path d="
+      M285 290
+      L430 360
+      L300 430Z"
+      fill="#b8b2a3"
+      opacity="0.8"/>
+
+
+    <!-- broken deck -->
+    <line x1="150"
+          y1="610"
+          x2="390"
+          y2="610"
+          stroke="#c08b50"
+          stroke-width="8"/>
+
+
+    <!-- debris -->
+    <rect x="90"
+          y="720"
+          width="80"
+          height="30"
+          fill="#68452c"
+          transform="rotate(-20 90 720)"/>
+
+    <rect x="450"
+          y="760"
+          width="90"
+          height="25"
+          fill="#68452c"
+          transform="rotate(15 450 760)"/>
+
+  </g>
+
+
+  <!-- Hidden metal container -->
+  <g>
+
+    <rect x="210"
+          y="640"
+          width="120"
+          height="70"
+          rx="8"
+          fill="url(#metalCase)"
+          stroke="#151a1f"
+          stroke-width="5"/>
+
+
+    <rect x="245"
+          y="665"
+          width="50"
+          height="20"
+          fill="#8d2424"/>
+
+
+    <text x="270"
+          y="660"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="12"
+          fill="#ffffff">
+      CODEX
+    </text>
+
+  </g>
+
+
+  <!-- Agent searching -->
+  <g>
+
+    <circle cx="480"
+            cy="560"
+            r="22"
+            fill="#11151a"/>
+
+
+    <path d="
+      M450 820
+      Q480 610 510 820Z"
+      fill="#11151a"/>
+
+
+    <!-- flashlight -->
+    <path d="
+      M430 640
+      L360 590"
+      stroke="#e8d58b"
+      stroke-width="8"/>
+
+
+    <path d="
+      M350 580
+      L220 500"
+      stroke="#fff0a3"
+      stroke-width="25"
+      opacity="0.2"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#ffffff">
+    CRIMSON
+  </text>
+
+
+  <text x="300"
+        y="185"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="86"
+        font-weight="bold"
+        fill="#e14b48">
+    WAKE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="235"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="14"
+        fill="#d8dde1">
+    THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d9b46c">
+    STERLING PRESS • 2019
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#b18b54"
+        stroke-width="2"/>
+
+</svg>

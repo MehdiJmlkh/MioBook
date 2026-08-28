@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishMorning" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10241f"/>
+      <stop offset="45%" stop-color="#4d8061"/>
+      <stop offset="100%" stop-color="#d8c58a"/>
+    </linearGradient>
+
+    <linearGradient id="forestFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#50734a"/>
+      <stop offset="100%" stop-color="#1d2c1b"/>
+    </linearGradient>
+
+    <radialGradient id="greenGlow">
+      <stop offset="0%" stop-color="#d7f3b0"/>
+      <stop offset="100%" stop-color="#8bb56b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="mist">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Irish countryside sky -->
+  <rect width="600" height="900" fill="url(#irishMorning)"/>
+
+
+  <!-- Misty light -->
+  <ellipse cx="300"
+           cy="300"
+           rx="240"
+           ry="140"
+           fill="url(#greenGlow)"
+           filter="url(#mist)"/>
+
+
+  <!-- Rolling hills -->
+  <path d="
+      M0 470
+      Q150 300 300 470
+      Q450 300 600 450
+      L600 900
+      L0 900Z"
+      fill="#304c36"/>
+
+
+  <!-- Distant hills -->
+  <path d="
+      M0 520
+      Q120 420 250 520
+      Q400 390 600 500
+      L600 620
+      L0 620Z"
+      fill="#6b8960"/>
+
+
+  <!-- Ancient stone ruins -->
+  <g fill="#5e6752">
+
+    <rect x="90" y="430"
+          width="130"
+          height="160"/>
+
+    <rect x="370" y="450"
+          width="120"
+          height="140"/>
+
+
+    <path d="
+        M80 430
+        Q155 350 230 430"
+        fill="none"
+        stroke="#5e6752"
+        stroke-width="30"/>
+
+
+    <path d="
+        M360 450
+        Q430 380 500 450"
+        fill="none"
+        stroke="#5e6752"
+        stroke-width="25"/>
+
+  </g>
+
+
+  <!-- Ancient symbols on stones -->
+  <g fill="none"
+     stroke="#b8a46a"
+     stroke-width="4">
+
+    <circle cx="155" cy="500" r="25"/>
+
+    <path d="
+        M135 500
+        Q155 470 175 500
+        Q155 530 135 500"/>
+
+
+    <circle cx="430" cy="520" r="22"/>
+
+  </g>
+
+
+  <!-- Hidden forest path -->
+  <path d="
+      M280 900
+      Q240 750 300 620
+      Q350 540 400 480"
+      fill="none"
+      stroke="#c7ae72"
+      stroke-width="35"/>
+
+
+  <!-- Trees -->
+  <g fill="#14251a">
+
+    <path d="
+        M60 600
+        L100 380
+        L140 600Z"/>
+
+    <path d="
+        M520 620
+        L560 350
+        L600 620Z"/>
+
+  </g>
+
+
+  <!-- Traveler with backpack -->
+  <g fill="#101410">
+
+    <!-- hat -->
+    <ellipse cx="300"
+             cy="560"
+             rx="35"
+             ry="12"/>
+
+
+    <!-- head -->
+    <circle cx="300"
+            cy="580"
+            r="18"/>
+
+
+    <!-- body -->
+    <path d="
+        M260 620
+        Q300 580 340 620
+        L390 780
+        L210 780Z"/>
+
+
+    <!-- backpack -->
+    <rect x="220"
+          y="620"
+          width="45"
+          height="100"
+          rx="15"
+          fill="#35291c"/>
+
+
+    <!-- walking stick -->
+    <line x1="230"
+          y1="650"
+          x2="180"
+          y2="820"
+          stroke="#15100a"
+          stroke-width="10"/>
+
+  </g>
+
+
+  <!-- Open field flowers -->
+  <g fill="#d8c477">
+
+    <circle cx="100" cy="760" r="5"/>
+    <circle cx="150" cy="800" r="4"/>
+    <circle cx="470" cy="770" r="5"/>
+    <circle cx="520" cy="820" r="4"/>
+
+  </g>
+
+
+  <!-- Map overlay -->
+  <g opacity="0.7">
+
+    <rect x="390"
+          y="680"
+          width="100"
+          height="70"
+          fill="#e6d4a4"
+          transform="rotate(-8 390 680)"/>
+
+    <path d="
+        M410 720
+        Q450 690 480 730"
+        fill="none"
+        stroke="#80603a"
+        stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#f5edc8">
+    EMERALD
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#f5edc8">
+    PATHWAYS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#dce8c1">
+    GUIDE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e3d09a">
+    EMERALD HOUSE • 1995
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d8c57a"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

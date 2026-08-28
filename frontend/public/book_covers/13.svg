@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="oceanSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071a2d"/>
+      <stop offset="45%" stop-color="#0b5975"/>
+      <stop offset="100%" stop-color="#e3b66b"/>
+    </linearGradient>
+
+    <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06283d"/>
+      <stop offset="50%" stop-color="#0c7892"/>
+      <stop offset="100%" stop-color="#031c2a"/>
+    </linearGradient>
+
+    <radialGradient id="sun">
+      <stop offset="0%" stop-color="#ffe59a"/>
+      <stop offset="100%" stop-color="#ff9d3b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Tropical sky -->
+  <rect width="600" height="900" fill="url(#oceanSky)"/>
+
+
+  <!-- Sunrise -->
+  <circle cx="450" cy="250"
+          r="120"
+          fill="url(#sun)"
+          filter="url(#glow)"/>
+
+  <circle cx="450" cy="250"
+          r="45"
+          fill="#ffe7a3"/>
+
+
+  <!-- Clouds -->
+  <path d="
+      M0 260
+      Q150 180 280 250
+      Q430 160 600 260
+      L600 340
+      Q400 290 0 350Z"
+      fill="#ffffff"
+      opacity="0.12"/>
+
+
+  <!-- Island silhouettes -->
+  <g fill="#102c2c">
+
+    <path d="
+        M0 520
+        Q90 430 180 520
+        L180 620
+        L0 620Z"/>
+
+    <path d="
+        M400 520
+        Q500 410 600 510
+        L600 630
+        L400 630Z"/>
+
+  </g>
+
+
+  <!-- Ocean -->
+  <path d="
+      M0 540
+      Q150 500 300 550
+      Q450 590 600 530
+      L600 900
+      L0 900Z"
+      fill="url(#ocean)"/>
+
+
+  <!-- Speed boat -->
+  <g>
+
+    <!-- wake -->
+    <path d="
+        M120 690
+        Q300 650 480 700"
+        fill="none"
+        stroke="#d7f5ff"
+        stroke-width="8"
+        opacity="0.7"/>
+
+    <!-- hull -->
+    <path d="
+        M180 650
+        L450 650
+        L380 720
+        L230 720Z"
+        fill="#050d13"/>
+
+    <!-- cabin -->
+    <path d="
+        M280 650
+        L330 580
+        L400 650Z"
+        fill="#122c3a"/>
+
+    <!-- windshield -->
+    <polygon points="
+        330,600
+        375,650
+        335,650"
+        fill="#75d4e8"/>
+
+    <!-- engine glow -->
+    <path d="
+        M430 680
+        L510 700
+        L430 710Z"
+        fill="#ffb347"/>
+
+  </g>
+
+
+  <!-- Helicopter / pursuit aircraft -->
+  <g fill="#101820">
+
+    <ellipse cx="160" cy="320"
+             rx="50"
+             ry="15"/>
+
+    <rect x="120" y="300"
+          width="80"
+          height="35"
+          rx="15"/>
+
+    <rect x="80" y="285"
+          width="160"
+          height="5"/>
+
+    <rect x="155" y="335"
+          width="8"
+          height="60"/>
+
+  </g>
+
+
+  <!-- Radar waves -->
+  <g fill="none"
+     stroke="#8deaff"
+     opacity="0.45">
+
+    <path d="M120 450 Q180 380 240 450"/>
+    <path d="M90 450 Q180 330 270 450"/>
+
+  </g>
+
+
+  <!-- Person on boat -->
+  <g fill="#05080b">
+
+    <circle cx="330" cy="600" r="13"/>
+
+    <path d="
+        M300 650
+        Q330 610 360 650
+        L370 700
+        L290 700Z"/>
+
+  </g>
+
+
+  <!-- Waves -->
+  <g fill="none"
+     stroke="#7ed5e6"
+     opacity="0.4">
+
+    <path d="M0 760 Q120 720 240 760 T480 760"/>
+    <path d="M50 820 Q180 780 320 820 T600 820"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="60"
+        font-weight="bold"
+        letter-spacing="4"
+        fill="#ffffff">
+    PACIFIC
+  </text>
+
+  <text x="300" y="175"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="60"
+        font-weight="bold"
+        letter-spacing="4"
+        fill="#8deaff">
+    RUN
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#d8f5fa">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#bce8ef">
+    SORA PUBLISHING • 2022
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#8deaff"
+        stroke-width="2"
+        opacity="0.5"/>
+
+</svg>

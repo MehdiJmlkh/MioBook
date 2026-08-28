@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="mountainSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182938"/>
+      <stop offset="45%" stop-color="#73909a"/>
+      <stop offset="100%" stop-color="#d3b77b"/>
+    </linearGradient>
+
+    <linearGradient id="forestDepth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38513d"/>
+      <stop offset="100%" stop-color="#102319"/>
+    </linearGradient>
+
+    <linearGradient id="leatherBook" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a66b38"/>
+      <stop offset="100%" stop-color="#4c2815"/>
+    </linearGradient>
+
+    <filter id="mist">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Mountain dawn background -->
+  <rect width="600" height="900" fill="url(#mountainSky)"/>
+
+
+  <!-- Mountain mist -->
+  <g fill="#e4e2d2" opacity="0.35" filter="url(#mist)">
+    <ellipse cx="200" cy="340" rx="180" ry="45"/>
+    <ellipse cx="450" cy="390" rx="170" ry="50"/>
+  </g>
+
+
+  <!-- Snow mountains -->
+  <path d="
+      M0 430
+      L140 220
+      L250 410
+      L370 180
+      L600 430
+      L600 560
+      L0 560Z"
+      fill="#d8ded8"/>
+
+
+  <!-- Dark mountain faces -->
+  <path d="
+      M0 430
+      L140 220
+      L210 410
+      L370 180
+      L300 430
+      L600 430
+      L600 560
+      L0 560Z"
+      fill="#3a4b4d"/>
+
+
+  <!-- Pine forest -->
+  <g fill="url(#forestDepth)">
+
+    <path d="M40 700 L90 400 L140 700Z"/>
+    <path d="M100 700 L160 350 L220 700Z"/>
+    <path d="M390 700 L450 360 L510 700Z"/>
+    <path d="M470 700 L540 410 L600 700Z"/>
+
+  </g>
+
+
+  <!-- Trail -->
+  <path d="
+      M240 900
+      Q280 760 330 600
+      Q350 540 390 500
+      L470 900Z"
+      fill="#8c6943"/>
+
+
+  <!-- Trail markers -->
+  <g>
+
+    <rect x="310"
+          y="600"
+          width="10"
+          height="90"
+          fill="#4c321d"/>
+
+    <polygon points="
+      315,600
+      360,620
+      315,645"
+      fill="#c45a38"/>
+
+  </g>
+
+
+  <!-- Explorer backpack -->
+  <g>
+
+    <path d="
+        M120 760
+        Q170 680 230 760
+        L210 850
+        L140 850Z"
+        fill="#7a4a29"
+        stroke="#392317"
+        stroke-width="5"/>
+
+
+    <path d="
+        M150 760
+        Q170 720 200 760"
+        fill="none"
+        stroke="#d0a05b"
+        stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Survival manual -->
+  <g>
+
+    <rect x="350"
+          y="680"
+          width="140"
+          height="170"
+          rx="8"
+          fill="url(#leatherBook)"
+          stroke="#2e1a10"
+          stroke-width="6"/>
+
+
+    <!-- compass emblem -->
+    <circle cx="420"
+            cy="750"
+            r="35"
+            fill="#d8b46b"
+            stroke="#382313"
+            stroke-width="4"/>
+
+
+    <path d="
+        M420 715
+        L435 750
+        L420 785
+        L405 750Z"
+        fill="#6a3822"/>
+
+
+    <!-- manual lines -->
+    <g stroke="#e0c58d"
+       stroke-width="3">
+
+      <line x1="380" y1="805" x2="460" y2="805"/>
+      <line x1="380" y1="820" x2="450" y2="820"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Compass -->
+  <g>
+
+    <circle cx="500"
+            cy="300"
+            r="45"
+            fill="#d8bf7a"
+            stroke="#5b4525"
+            stroke-width="5"/>
+
+    <path d="
+        M500 265
+        L515 300
+        L500 335
+        L485 300Z"
+        fill="#7c3027"/>
+
+    <circle cx="500"
+            cy="300"
+            r="8"
+            fill="#222"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    TIMBERLINE
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#e6c47c">
+    MANUAL
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="7"
+        fill="#eee0bc">
+    GUIDE • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e0c58b">
+    MAPLE LEAF PRESS • 2021
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d4ad63"
+        stroke-width="2"/>
+
+</svg>

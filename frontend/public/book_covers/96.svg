@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishDusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#17221c"/>
+      <stop offset="45%" stop-color="#506347"/>
+      <stop offset="100%" stop-color="#c49a57"/>
+    </linearGradient>
+
+    <linearGradient id="valleyMist" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d7ddd0"/>
+      <stop offset="100%" stop-color="#82937d"/>
+    </linearGradient>
+
+    <linearGradient id="stoneRuins" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8a8170"/>
+      <stop offset="100%" stop-color="#37352f"/>
+    </linearGradient>
+
+    <filter id="softMist">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Ancient Irish valley -->
+  <rect width="600" height="900" fill="url(#irishDusk)"/>
+
+
+  <!-- Distant hills -->
+  <path d="
+      M0 350
+      Q120 230 250 350
+      Q400 180 600 340
+      L600 600
+      L0 600Z"
+      fill="#26362a"/>
+
+
+  <!-- Moon -->
+  <circle cx="430"
+          cy="220"
+          r="55"
+          fill="#e8d6a2"
+          opacity="0.8"/>
+
+
+  <!-- Valley mist -->
+  <g opacity="0.35" filter="url(#softMist)">
+    <ellipse cx="150"
+             cy="500"
+             rx="180"
+             ry="60"
+             fill="#e7eadc"/>
+
+    <ellipse cx="430"
+             cy="560"
+             rx="220"
+             ry="70"
+             fill="#e7eadc"/>
+  </g>
+
+
+  <!-- Old stone circle -->
+  <g fill="url(#stoneRuins)">
+
+    <path d="
+        M120 650
+        L120 520
+        Q160 470 200 520
+        L200 650Z"/>
+
+    <path d="
+        M200 650
+        L200 500
+        Q250 450 300 510
+        L300 650Z"/>
+
+    <path d="
+        M300 650
+        L300 520
+        Q350 470 400 520
+        L400 650Z"/>
+
+  </g>
+
+
+  <!-- Ancient standing stones -->
+  <g fill="#625c4d">
+
+    <rect x="80"
+          y="600"
+          width="35"
+          height="130"
+          rx="8"/>
+
+    <rect x="470"
+          y="570"
+          width="40"
+          height="160"
+          rx="8"/>
+
+  </g>
+
+
+  <!-- Traveler storyteller -->
+  <g>
+
+    <!-- head -->
+    <circle cx="300"
+            cy="520"
+            r="25"
+            fill="#151713"/>
+
+
+    <!-- cloak -->
+    <path d="
+        M250 760
+        Q300 540 350 760Z"
+        fill="#171a16"/>
+
+
+    <!-- walking staff -->
+    <line x1="360"
+          y1="560"
+          x2="390"
+          y2="790"
+          stroke="#76502d"
+          stroke-width="8"/>
+
+
+    <!-- lantern -->
+    <circle cx="370"
+            cy="620"
+            r="18"
+            fill="#f3c96a"/>
+
+  </g>
+
+
+  <!-- Open folklore book -->
+  <g>
+
+    <path d="
+        M130 760
+        Q220 700 300 760
+        Q380 700 470 760
+        L420 850
+        Q300 800 180 850Z"
+        fill="#d8bd7d"
+        stroke="#5a4224"
+        stroke-width="5"/>
+
+
+    <!-- pages -->
+    <g stroke="#81633a"
+       stroke-width="3">
+
+      <line x1="200" y1="780" x2="280" y2="770"/>
+      <line x1="200" y1="805" x2="280" y2="795"/>
+      <line x1="320" y1="770" x2="400" y2="780"/>
+      <line x1="320" y1="795" x2="400" y2="805"/>
+
+    </g>
+
+
+    <!-- Celtic symbol -->
+    <circle cx="300"
+            cy="800"
+            r="18"
+            fill="none"
+            stroke="#7d3925"
+            stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#111812"
+     stroke-width="4">
+
+    <path d="M120 280 Q135 265 150 280"/>
+    <path d="M155 250 Q170 235 185 250"/>
+    <path d="M500 300 Q515 285 530 300"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="100"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#ffffff">
+    SONGS OF THE
+  </text>
+
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        fill="#e5c477">
+    HOLLOW GLEN
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="12"
+        fill="#ffffff">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e8c980">
+    EMERALD HOUSE • 1989
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d1b06b"
+        stroke-width="2"/>
+
+</svg>

@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="northernBattleSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101923"/>
+      <stop offset="50%" stop-color="#52646a"/>
+      <stop offset="100%" stop-color="#c49b68"/>
+    </linearGradient>
+
+    <linearGradient id="romanArmor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d8b86b"/>
+      <stop offset="100%" stop-color="#59411d"/>
+    </linearGradient>
+
+    <linearGradient id="warBanner" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7d1f25"/>
+      <stop offset="100%" stop-color="#240c13"/>
+    </linearGradient>
+
+    <filter id="fireGlow">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Northern battlefield sky -->
+  <rect width="600" height="900" fill="url(#northernBattleSky)"/>
+
+
+  <!-- Distant northern lights -->
+  <path d="
+      M40 200
+      Q180 90 300 190
+      Q450 300 560 130"
+      fill="none"
+      stroke="#9bc8b5"
+      stroke-width="35"
+      opacity="0.2"
+      filter="url(#fireGlow)"/>
+
+
+  <!-- Mountains -->
+  <path d="
+      M0 390
+      L130 220
+      L260 390
+      L400 170
+      L600 400
+      L600 600
+      L0 600Z"
+      fill="#18252b"/>
+
+
+  <!-- Snow on mountains -->
+  <path d="
+      M330 280
+      L400 170
+      L470 300
+      L410 260Z"
+      fill="#d8e4df"
+      opacity="0.8"/>
+
+
+  <!-- Roman camp -->
+  <g>
+
+    <circle cx="130"
+            cy="540"
+            r="70"
+            fill="#f49a42"
+            opacity="0.3"
+            filter="url(#fireGlow)"/>
+
+
+    <circle cx="130"
+            cy="540"
+            r="25"
+            fill="#ffb45c"/>
+
+
+    <path d="
+        M70 520
+        L130 460
+        L190 520Z"
+        fill="#6b4525"/>
+
+  </g>
+
+
+  <!-- Legion banner pole -->
+  <g>
+
+    <line x1="300"
+          y1="250"
+          x2="300"
+          y2="780"
+          stroke="#4c3420"
+          stroke-width="12"/>
+
+
+    <!-- Banner -->
+    <path d="
+        M300 270
+        Q430 300 500 250
+        L500 470
+        Q410 520 300 450Z"
+        fill="url(#warBanner)"
+        stroke="#d3ad5c"
+        stroke-width="5"/>
+
+
+    <!-- Eagle emblem -->
+    <g fill="#d9b66a">
+
+      <ellipse cx="390"
+               cy="370"
+               rx="30"
+               ry="45"/>
+
+
+      <path d="
+          M360 370
+          L420 370
+          L450 330
+          L425 400
+          L390 430
+          L355 400Z"/>
+
+      <circle cx="390"
+              cy="330"
+              r="8"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Legionnaire -->
+  <g>
+
+    <!-- helmet -->
+    <circle cx="250"
+            cy="540"
+            r="35"
+            fill="#161b1e"/>
+
+
+    <path d="
+        M200 800
+        Q250 560 320 800Z"
+        fill="#151a1d"/>
+
+
+    <!-- shield -->
+    <path d="
+        M170 650
+        Q220 600 270 650
+        L250 760
+        Q220 800 190 760Z"
+        fill="url(#romanArmor)"
+        stroke="#322516"
+        stroke-width="5"/>
+
+
+    <!-- sword -->
+    <line x1="315"
+          y1="650"
+          x2="380"
+          y2="820"
+          stroke="#d9d9d2"
+          stroke-width="8"/>
+
+
+    <line x1="300"
+          y1="700"
+          x2="345"
+          y2="680"
+          stroke="#c69c52"
+          stroke-width="10"/>
+
+  </g>
+
+
+  <!-- Ancient map -->
+  <g>
+
+    <path d="
+        M90 760
+        Q160 710 230 760
+        L200 840
+        Q140 810 80 840Z"
+        fill="#d8bd79"
+        stroke="#65421f"
+        stroke-width="4"/>
+
+
+    <path d="
+        M120 790
+        Q160 760 200 790"
+        fill="none"
+        stroke="#8b512b"
+        stroke-width="4"/>
+
+
+    <circle cx="160"
+            cy="790"
+            r="8"
+            fill="#a52d27"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="95"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#ffffff">
+    BANNER OF
+  </text>
+
+
+  <text x="300"
+        y="165"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#e4bb6c">
+    THE NORTH
+  </text>
+
+
+  <text x="300"
+        y="220"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#ffffff">
+    LEGION
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="260"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="11"
+        letter-spacing="8"
+        fill="#e7d2a0">
+    ADVENTURE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e5c77f">
+    ROMA BOOKS • 2023
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d0aa5b"
+        stroke-width="2"/>
+
+</svg>

@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16251b"/>
+      <stop offset="55%" stop-color="#496043"/>
+      <stop offset="100%" stop-color="#b3a36b"/>
+    </linearGradient>
+
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4c6338"/>
+      <stop offset="100%" stop-color="#172518"/>
+    </linearGradient>
+
+    <radialGradient id="mist">
+      <stop offset="0%" stop-color="#e6e0c5" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#e6e0c5" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect width="600" height="900" fill="url(#sky)"/>
+
+
+  <!-- Ancient moon -->
+  <circle cx="430" cy="230" r="100"
+          fill="url(#mist)"
+          filter="url(#soft)"/>
+
+  <circle cx="430" cy="230" r="55"
+          fill="#ded8b7"
+          opacity="0.8"/>
+
+
+  <!-- Mist over hills -->
+  <ellipse cx="280" cy="460"
+           rx="260"
+           ry="120"
+           fill="url(#mist)"
+           opacity="0.55"/>
+
+
+  <!-- Distant Irish hills -->
+  <path d="
+      M0 480
+      Q120 360 240 470
+      Q360 330 600 460
+      L600 900
+      L0 900Z"
+      fill="#263823"/>
+
+
+  <!-- Celtic stone circle -->
+  <g fill="#5d5a45">
+
+    <rect x="190" y="540" width="18" height="110" rx="5"/>
+    <rect x="240" y="510" width="18" height="140" rx="5"/>
+    <rect x="340" y="510" width="18" height="140" rx="5"/>
+    <rect x="390" y="540" width="18" height="110" rx="5"/>
+
+    <path d="
+      M190 545
+      Q300 450 408 545
+      L408 570
+      Q300 500 190 570Z"/>
+
+  </g>
+
+
+  <!-- Field -->
+  <path d="
+      M0 650
+      Q180 590 320 670
+      Q450 730 600 620
+      L600 900
+      L0 900Z"
+      fill="url(#field)"/>
+
+
+  <!-- Ancient tree -->
+  <g fill="#12170d">
+
+    <rect x="115" y="390" width="35" height="260"/>
+
+    <path d="
+      M130 430
+      C40 360 50 270 150 330
+      C220 250 300 350 200 430
+      C260 500 160 520 130 430Z"/>
+
+  </g>
+
+
+  <!-- Celtic knot symbol -->
+  <g fill="none"
+     stroke="#c9b36a"
+     stroke-width="8"
+     opacity="0.8">
+
+    <circle cx="300" cy="650" r="70"/>
+    <path d="
+      M260 650
+      C260 600 340 600 340 650
+      C340 700 260 700 260 650Z"/>
+
+    <path d="
+      M300 580
+      L300 720"/>
+
+  </g>
+
+
+  <!-- Floating leaves -->
+  <g fill="#c8a95b">
+    <path d="M100 300 Q120 280 140 300 Q120 330 100 300Z"/>
+    <path d="M500 370 Q520 350 540 370 Q520 400 500 370Z"/>
+    <path d="M470 500 Q490 480 510 500 Q490 530 470 500Z"/>
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#f4e8bd">
+    CELTIC
+  </text>
+
+  <text x="300" y="165"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#f4e8bd">
+    WHISPERS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="6"
+        fill="#ded3a8">
+    A HISTORICAL TALE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="29"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d8c99c">
+    EMERALD HOUSE • 1978
+  </text>
+
+
+  <!-- Decorative border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d2bd78"
+        stroke-width="2"
+        opacity="0.45"/>
+
+</svg>

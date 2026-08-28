@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="kyotoDusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16162b"/>
+      <stop offset="45%" stop-color="#533344"/>
+      <stop offset="100%" stop-color="#d39b5d"/>
+    </linearGradient>
+
+    <linearGradient id="street" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#211d26"/>
+      <stop offset="100%" stop-color="#5c4637"/>
+    </linearGradient>
+
+    <radialGradient id="lanternLight">
+      <stop offset="0%" stop-color="#ffe6a3"/>
+      <stop offset="45%" stop-color="#ffad4d"/>
+      <stop offset="100%" stop-color="#ff8c3a" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7e6b7"/>
+      <stop offset="100%" stop-color="#b88b4d"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect width="600" height="900" fill="url(#kyotoDusk)"/>
+
+
+  <!-- Moon -->
+  <circle cx="450"
+          cy="150"
+          r="55"
+          fill="#f8e7b8"/>
+
+
+  <!-- Traditional rooftops -->
+  <g fill="#17131a">
+
+    <path d="
+        M0 420
+        L150 280
+        L300 420Z"/>
+
+    <path d="
+        M300 420
+        L450 260
+        L600 420Z"/>
+
+
+    <rect x="50"
+          y="420"
+          width="160"
+          height="180"/>
+
+    <rect x="390"
+          y="420"
+          width="160"
+          height="180"/>
+
+  </g>
+
+
+  <!-- Temple gate -->
+  <g>
+
+    <rect x="245"
+          y="300"
+          width="110"
+          height="300"
+          fill="#6e1f24"/>
+
+
+    <path d="
+        M190 310
+        Q300 220 410 310
+        L390 350
+        L210 350Z"
+        fill="#9b302d"/>
+
+
+    <rect x="230"
+          y="430"
+          width="140"
+          height="170"
+          fill="#271c1b"/>
+
+  </g>
+
+
+  <!-- Lantern festival lights -->
+  <g>
+
+    <circle cx="150"
+            cy="350"
+            r="100"
+            fill="url(#lanternLight)"
+            filter="url(#glow)"/>
+
+
+    <circle cx="450"
+            cy="350"
+            r="100"
+            fill="url(#lanternLight)"
+            filter="url(#glow)"/>
+
+
+    <g fill="#e44b35">
+
+      <ellipse cx="150"
+               cy="350"
+               rx="35"
+               ry="55"/>
+
+      <ellipse cx="450"
+               cy="350"
+               rx="35"
+               ry="55"/>
+
+    </g>
+
+
+    <g stroke="#3d2417"
+       stroke-width="4">
+
+      <line x1="150" y1="295" x2="150" y2="260"/>
+      <line x1="450" y1="295" x2="450" y2="260"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Kyoto alley -->
+  <path d="
+      M220 900
+      L260 520
+      L340 520
+      L380 900Z"
+      fill="url(#street)"/>
+
+
+  <!-- Stone path -->
+  <g fill="#8b7760">
+
+    <ellipse cx="300" cy="650" rx="60" ry="25"/>
+    <ellipse cx="300" cy="730" rx="75" ry="30"/>
+    <ellipse cx="300" cy="820" rx="90" ry="35"/>
+
+  </g>
+
+
+  <!-- Traveler -->
+  <g>
+
+    <circle cx="300"
+            cy="570"
+            r="25"
+            fill="#211916"/>
+
+
+    <path d="
+        M260 850
+        Q300 590 340 850Z"
+        fill="#20252a"/>
+
+
+    <!-- guide book -->
+    <rect x="340"
+          y="680"
+          width="70"
+          height="90"
+          fill="url(#paper)"
+          transform="rotate(-15 340 680)"/>
+
+
+    <line x1="355"
+          y1="710"
+          x2="395"
+          y2="700"
+          stroke="#76552c"
+          stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Map overlay -->
+  <g opacity="0.8">
+
+    <rect x="70"
+          y="650"
+          width="130"
+          height="100"
+          fill="#e9d7a8"
+          transform="rotate(-10 70 650)"/>
+
+
+    <path d="
+        M100 700
+        Q140 660 170 720"
+        fill="none"
+        stroke="#9b6b35"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#ffffff">
+    KYOTO
+  </text>
+
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#ffd88a">
+    LANTERN GUIDE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="10"
+        fill="#f8e7c0">
+    GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#f1d39d">
+    SORA PUBLISHING • 2016
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e5c477"
+        stroke-width="2"/>
+
+</svg>

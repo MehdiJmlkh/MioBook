@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="japanNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101a2c"/>
+      <stop offset="45%" stop-color="#394b62"/>
+      <stop offset="100%" stop-color="#c28a55"/>
+    </linearGradient>
+
+    <linearGradient id="templeStone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8aa8c"/>
+      <stop offset="100%" stop-color="#50483d"/>
+    </linearGradient>
+
+    <linearGradient id="ancientPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2d99b"/>
+      <stop offset="100%" stop-color="#967043"/>
+    </linearGradient>
+
+    <filter id="mysticGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Night sky -->
+  <rect width="600" height="900" fill="url(#japanNight)"/>
+
+
+  <!-- Moon -->
+  <circle cx="460"
+          cy="170"
+          r="65"
+          fill="#f3dda0"
+          opacity="0.75"/>
+
+  <circle cx="460"
+          cy="170"
+          r="110"
+          fill="#f3dda0"
+          opacity="0.12"
+          filter="url(#mysticGlow)"/>
+
+
+  <!-- Stars -->
+  <g fill="#ffffff">
+
+    <circle cx="100" cy="120" r="3"/>
+    <circle cx="180" cy="170" r="2"/>
+    <circle cx="330" cy="100" r="3"/>
+    <circle cx="520" cy="250" r="2"/>
+
+  </g>
+
+
+  <!-- Temple mountain -->
+  <path d="
+      M0 470
+      L140 300
+      L260 460
+      L390 250
+      L600 470
+      L600 650
+      L0 650Z"
+      fill="#17232a"/>
+
+
+  <!-- Temple gate -->
+  <g>
+
+    <!-- roof -->
+    <path d="
+        M130 420
+        L300 300
+        L470 420Z"
+        fill="#241913"/>
+
+
+    <path d="
+        M100 410
+        Q300 330 500 410"
+        fill="none"
+        stroke="#b03b2f"
+        stroke-width="12"/>
+
+
+    <!-- pillars -->
+    <rect x="170"
+          y="420"
+          width="35"
+          height="220"
+          fill="#4c3324"/>
+
+    <rect x="395"
+          y="420"
+          width="35"
+          height="220"
+          fill="#4c3324"/>
+
+
+    <!-- gate floor -->
+    <rect x="200"
+          y="530"
+          width="200"
+          height="110"
+          fill="#2b211b"/>
+
+  </g>
+
+
+  <!-- Stone path -->
+  <path d="
+      M260 900
+      L340 900
+      L320 600
+      L280 600Z"
+      fill="url(#templeStone)"/>
+
+
+  <!-- Ancient inscription wall -->
+  <g>
+
+    <rect x="60"
+          y="540"
+          width="120"
+          height="180"
+          fill="url(#templeStone)"
+          stroke="#33291f"
+          stroke-width="5"/>
+
+
+    <!-- symbols -->
+    <g stroke="#33291f"
+       stroke-width="5"
+       fill="none">
+
+      <path d="M100 580 L140 620 L100 660 L140 700"/>
+      <circle cx="120" cy="640" r="25"/>
+      <path d="M90 690 L150 570"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Cipher scroll -->
+  <g>
+
+    <rect x="220"
+          y="670"
+          width="160"
+          height="120"
+          rx="8"
+          fill="url(#ancientPaper)"
+          transform="rotate(-8 220 670)"
+          stroke="#6c4b28"
+          stroke-width="4"/>
+
+
+    <!-- map lines -->
+    <g stroke="#704b29"
+       stroke-width="3"
+       fill="none">
+
+      <path d="M250 710 Q300 680 350 720"/>
+      <path d="M260 740 L340 700"/>
+      <circle cx="300" cy="720" r="12"/>
+
+    </g>
+
+
+    <!-- cipher mark -->
+    <path d="
+        M290 685
+        L320 730
+        L280 750"
+        fill="none"
+        stroke="#9a3029"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Scholar explorer -->
+  <g>
+
+    <circle cx="450"
+            cy="650"
+            r="24"
+            fill="#11161c"/>
+
+
+    <path d="
+        M410 900
+        Q450 680 490 900Z"
+        fill="#11161c"/>
+
+
+    <!-- flashlight -->
+    <line x1="430"
+          y1="720"
+          x2="360"
+          y2="620"
+          stroke="#d7bd75"
+          stroke-width="8"/>
+
+
+    <circle cx="355"
+            cy="615"
+            r="18"
+            fill="#ffe39a"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#ffffff">
+    TEMPLE
+  </text>
+
+
+  <text x="300"
+        y="185"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="82"
+        font-weight="bold"
+        fill="#e6b96a">
+    CIPHER
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="235"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="8"
+        fill="#e9d9b5">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#ddc48b">
+    SORA PUBLISHING • 2023
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c49b52"
+        stroke-width="2"/>
+
+</svg>

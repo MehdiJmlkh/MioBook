@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="borealSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071927"/>
+      <stop offset="45%" stop-color="#31576a"/>
+      <stop offset="100%" stop-color="#d3c28b"/>
+    </linearGradient>
+
+    <linearGradient id="forestMist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b7d0c9" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#b7d0c9" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6ca3ad"/>
+      <stop offset="100%" stop-color="#122d3b"/>
+    </linearGradient>
+
+    <linearGradient id="tentFabric" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d27c3c"/>
+      <stop offset="100%" stop-color="#71351c"/>
+    </linearGradient>
+
+    <filter id="fog">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Arctic wilderness sky -->
+  <rect width="600" height="900" fill="url(#borealSky)"/>
+
+
+  <!-- Northern lights -->
+  <g fill="none"
+     stroke-linecap="round"
+     filter="url(#fog)">
+
+    <path d="
+      M-50 180
+      Q170 60 330 180
+      Q470 270 650 120"
+      stroke="#8fd6bf"
+      stroke-width="35"
+      opacity="0.5"/>
+
+    <path d="
+      M-40 260
+      Q170 160 370 270
+      Q500 340 640 230"
+      stroke="#6da8d8"
+      stroke-width="25"
+      opacity="0.45"/>
+
+  </g>
+
+
+  <!-- Stars -->
+  <g fill="#ffffff">
+
+    <circle cx="90" cy="130" r="3"/>
+    <circle cx="170" cy="200" r="2"/>
+    <circle cx="480" cy="110" r="3"/>
+    <circle cx="390" cy="170" r="2"/>
+
+  </g>
+
+
+  <!-- Mountain range -->
+  <path d="
+      M0 470
+      L120 300
+      L230 450
+      L350 260
+      L500 450
+      L600 330
+      L600 650
+      L0 650Z"
+      fill="#1b3138"/>
+
+
+  <!-- Snow peaks -->
+  <path d="
+      M350 260
+      L300 370
+      L350 340
+      L400 390
+      L470 450
+      Z"
+      fill="#dce8e7"/>
+
+  <path d="
+      M120 300
+      L80 370
+      L120 350
+      L160 390
+      Z"
+      fill="#e4eded"/>
+
+
+  <!-- Boreal forest -->
+  <g fill="#102820">
+
+    <path d="M40 620 L80 430 L120 620Z"/>
+    <path d="M100 620 L150 390 L200 620Z"/>
+    <path d="M430 620 L480 410 L530 620Z"/>
+    <path d="M500 620 L550 450 L590 620Z"/>
+
+  </g>
+
+
+  <!-- River crossing -->
+  <path d="
+      M230 900
+      Q310 700 380 560
+      Q430 500 600 470
+      L600 900Z"
+      fill="url(#river)"/>
+
+
+  <!-- Wooden bridge -->
+  <g>
+
+    <polygon points="
+      130,730
+      360,650
+      390,700
+      160,790"
+      fill="#7a512b"/>
+
+    <g stroke="#3d2615"
+       stroke-width="6">
+
+      <line x1="170" y1="730" x2="190" y2="780"/>
+      <line x1="230" y1="710" x2="250" y2="760"/>
+      <line x1="290" y1="690" x2="310" y2="740"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Explorer camp -->
+  <g>
+
+    <!-- tent -->
+    <path d="
+        M390 650
+        L470 520
+        L550 650Z"
+        fill="url(#tentFabric)"
+        stroke="#392116"
+        stroke-width="5"/>
+
+    <line x1="470"
+          y1="520"
+          x2="470"
+          y2="650"
+          stroke="#5a321c"
+          stroke-width="4"/>
+
+
+    <!-- camp fire -->
+    <path d="
+        M510 720
+        Q540 670 570 720
+        Q540 760 510 720Z"
+        fill="#e57b32"/>
+
+    <circle cx="540"
+            cy="720"
+            r="15"
+            fill="#ffd26b"/>
+
+  </g>
+
+
+  <!-- Explorer silhouette -->
+  <g>
+
+    <circle cx="260"
+            cy="600"
+            r="22"
+            fill="#0d1317"/>
+
+    <path d="
+        M220 900
+        Q260 620 300 900Z"
+        fill="#0d1317"/>
+
+
+    <!-- backpack -->
+    <rect x="285"
+          y="680"
+          width="45"
+          height="80"
+          rx="10"
+          fill="#26332d"/>
+
+
+    <!-- walking pole -->
+    <line x1="220"
+          y1="700"
+          x2="180"
+          y2="870"
+          stroke="#74502c"
+          stroke-width="7"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#ffffff">
+    BOREAL
+  </text>
+
+
+  <text x="300"
+        y="190"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#cde1d5">
+    CROSSING
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="240"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="12"
+        fill="#e8dfc1">
+    ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d8c99d">
+    MAPLE LEAF PRESS • 2025
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c7d8cb"
+        stroke-width="2"/>
+
+</svg>

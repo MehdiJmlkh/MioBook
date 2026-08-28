@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="gaulSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101923"/>
+      <stop offset="45%" stop-color="#59614d"/>
+      <stop offset="100%" stop-color="#c29a63"/>
+    </linearGradient>
+
+    <linearGradient id="battleGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b583e"/>
+      <stop offset="100%" stop-color="#1d1915"/>
+    </linearGradient>
+
+    <radialGradient id="fireGlow">
+      <stop offset="0%" stop-color="#ffcc6a"/>
+      <stop offset="100%" stop-color="#d85b25" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="fireBlur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Ancient Gaul atmosphere -->
+  <rect width="600" height="900" fill="url(#gaulSky)"/>
+
+
+  <!-- Fire ritual glow -->
+  <ellipse cx="300"
+           cy="420"
+           rx="200"
+           ry="170"
+           fill="url(#fireGlow)"
+           filter="url(#fireBlur)"/>
+
+
+  <!-- Mountain background -->
+  <path d="
+      M0 430
+      L130 250
+      L260 430
+      L390 220
+      L600 450
+      L600 600
+      L0 600Z"
+      fill="#29352e"/>
+
+
+  <!-- Tribal stone circle -->
+  <g fill="#514536">
+
+    <ellipse cx="300"
+             cy="650"
+             rx="250"
+             ry="90"/>
+
+
+    <g fill="#75654d">
+
+      <rect x="90"
+            y="500"
+            width="40"
+            height="140"/>
+
+      <rect x="470"
+            y="500"
+            width="40"
+            height="140"/>
+
+      <rect x="190"
+            y="460"
+            width="45"
+            height="160"/>
+
+      <rect x="365"
+            y="460"
+            width="45"
+            height="160"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Fire altar -->
+  <g>
+
+    <ellipse cx="300"
+             cy="620"
+             rx="80"
+             ry="40"
+             fill="#20130b"/>
+
+
+    <path d="
+        M300 620
+        Q240 550 300 470
+        Q360 550 300 620Z"
+        fill="#ffb84d"/>
+
+
+    <path d="
+        M300 590
+        Q275 550 300 510
+        Q325 550 300 590Z"
+        fill="#fff1a3"/>
+
+  </g>
+
+
+  <!-- Warrior silhouette -->
+  <g fill="#080b0c">
+
+    <!-- helmet -->
+    <path d="
+        M250 500
+        Q300 450 350 500
+        L350 530
+        L250 530Z"/>
+
+
+    <!-- head -->
+    <circle cx="300"
+            cy="540"
+            r="22"/>
+
+
+    <!-- body armor -->
+    <path d="
+        M245 600
+        Q300 540 355 600
+        L430 850
+        L170 850Z"/>
+
+
+    <!-- shield -->
+    <path d="
+        M390 610
+        Q470 650 430 780
+        Q390 740 390 610Z"
+        fill="#3d2818"/>
+
+
+    <!-- shield emblem -->
+    <circle cx="410"
+            cy="690"
+            r="35"
+            fill="none"
+            stroke="#c69a4c"
+            stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Spear -->
+  <g>
+
+    <line x1="300"
+          y1="620"
+          x2="300"
+          y2="260"
+          stroke="#392517"
+          stroke-width="12"/>
+
+
+    <polygon points="
+        300,180
+        270,270
+        330,270"
+        fill="#bfc6bb"/>
+
+  </g>
+
+
+  <!-- Flying ravens -->
+  <g fill="none"
+     stroke="#101010"
+     stroke-width="6">
+
+    <path d="
+        M100 250
+        Q140 210 180 250"/>
+
+    <path d="
+        M420 220
+        Q460 180 500 220"/>
+
+  </g>
+
+
+  <!-- Ancient Celtic markings -->
+  <g fill="none"
+     stroke="#c69b50"
+     stroke-width="4">
+
+    <circle cx="300"
+            cy="730"
+            r="55"/>
+
+    <path d="
+        M260 730
+        Q300 680 340 730
+        Q300 780 260 730"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="55"
+        font-weight="bold"
+        fill="#f5dfaa">
+    TRIAL OF
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#ffffff">
+    SPEARS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#e2c987">
+    ADVENTURE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e4c98e">
+    ROMA BOOKS • 2019
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d5b56b"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

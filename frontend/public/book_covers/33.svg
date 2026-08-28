@@ -1,0 +1,322 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="tokyoNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10162b"/>
+      <stop offset="45%" stop-color="#344a63"/>
+      <stop offset="100%" stop-color="#d3a46a"/>
+    </linearGradient>
+
+    <linearGradient id="streetGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd47a"/>
+      <stop offset="100%" stop-color="#d75b5b"/>
+    </linearGradient>
+
+    <radialGradient id="cityLight">
+      <stop offset="0%" stop-color="#ffdf8b"/>
+      <stop offset="100%" stop-color="#ffdf8b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="cityBlur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Tokyo evening sky -->
+  <rect width="600" height="900" fill="url(#tokyoNight)"/>
+
+
+  <!-- City glow -->
+  <ellipse cx="300"
+           cy="350"
+           rx="260"
+           ry="130"
+           fill="url(#cityLight)"
+           filter="url(#cityBlur)"/>
+
+
+  <!-- Tokyo tower silhouette -->
+  <g fill="#171b26">
+
+    <polygon points="
+        290,450
+        310,450
+        310,220
+        290,220"/>
+
+    <polygon points="
+        250,450
+        350,450
+        300,180"/>
+
+  </g>
+
+
+  <!-- City buildings -->
+  <g fill="#10141d">
+
+    <rect x="40"
+          y="350"
+          width="100"
+          height="260"/>
+
+    <rect x="160"
+          y="300"
+          width="90"
+          height="310"/>
+
+    <rect x="390"
+          y="320"
+          width="110"
+          height="290"/>
+
+    <rect x="510"
+          y="400"
+          width="60"
+          height="210"/>
+
+  </g>
+
+
+  <!-- Building windows -->
+  <g fill="#e9bb63">
+
+    <rect x="70" y="390" width="12" height="18"/>
+    <rect x="100" y="430" width="12" height="18"/>
+    <rect x="190" y="350" width="12" height="18"/>
+    <rect x="420" y="380" width="12" height="18"/>
+    <rect x="460" y="420" width="12" height="18"/>
+    <rect x="530" y="450" width="12" height="18"/>
+
+  </g>
+
+
+  <!-- Hidden alley -->
+  <path d="
+      M0 620
+      L600 620
+      L600 900
+      L0 900Z"
+      fill="#17191f"/>
+
+
+  <!-- Street lines -->
+  <g stroke="url(#streetGlow)"
+     opacity="0.6">
+
+    <line x1="80"
+          y1="900"
+          x2="280"
+          y2="620"
+          stroke-width="8"/>
+
+    <line x1="520"
+          y1="900"
+          x2="320"
+          y2="620"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Paper map -->
+  <g>
+
+    <path d="
+        M120 650
+        Q210 600 310 660
+        Q400 700 480 640
+        L450 770
+        Q300 720 150 790Z"
+        fill="#e8d3a2"/>
+
+
+    <!-- route lines -->
+    <g fill="none"
+       stroke="#9b6435"
+       stroke-width="5">
+
+      <path d="
+          M180 700
+          Q260 650 340 720
+          Q400 750 450 680"/>
+
+
+      <path d="
+          M260 650
+          L260 760"/>
+
+    </g>
+
+
+    <!-- destination mark -->
+    <circle cx="350"
+            cy="720"
+            r="14"
+            fill="#c23b3b"/>
+
+  </g>
+
+
+  <!-- Traveler with camera -->
+  <g fill="#090c12">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="500"
+            r="22"/>
+
+
+    <!-- backpack -->
+    <rect x="260"
+          y="560"
+          width="70"
+          height="130"
+          rx="15"
+          fill="#493726"/>
+
+
+    <!-- body -->
+    <path d="
+        M240 610
+        Q300 550 360 610
+        L430 850
+        L170 850Z"/>
+
+
+    <!-- camera -->
+    <rect x="340"
+          y="590"
+          width="60"
+          height="45"
+          rx="5"
+          fill="#252a31"/>
+
+
+    <circle cx="370"
+            cy="612"
+            r="12"
+            fill="#7da0aa"/>
+
+  </g>
+
+
+  <!-- Temple gate -->
+  <g fill="#a52b32">
+
+    <rect x="90"
+          y="520"
+          width="20"
+          height="100"/>
+
+    <rect x="160"
+          y="520"
+          width="20"
+          height="100"/>
+
+    <rect x="60"
+          y="500"
+          width="150"
+          height="20"/>
+
+  </g>
+
+
+  <!-- Floating lanterns -->
+  <g>
+
+    <circle cx="120"
+            cy="250"
+            r="18"
+            fill="#ffcf70"/>
+
+    <circle cx="500"
+            cy="280"
+            r="15"
+            fill="#ffcf70"/>
+
+  </g>
+
+
+  <!-- Cherry blossoms -->
+  <g fill="#f1b6c5">
+
+    <circle cx="90" cy="180" r="10"/>
+    <circle cx="130" cy="210" r="8"/>
+    <circle cx="480" cy="170" r="10"/>
+    <circle cx="520" cy="210" r="8"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#ffffff">
+    TOKYO
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#f5c978">
+    ROUTES
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="8"
+        fill="#e7d7aa">
+    GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e6ca91">
+    SORA PUBLISHING • 2020
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d9bc72"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

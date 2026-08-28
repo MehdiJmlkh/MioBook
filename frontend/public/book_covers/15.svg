@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="royalNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080b16"/>
+      <stop offset="45%" stop-color="#27243a"/>
+      <stop offset="100%" stop-color="#8b6940"/>
+    </linearGradient>
+
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1d79b"/>
+      <stop offset="100%" stop-color="#9d7440"/>
+    </linearGradient>
+
+    <radialGradient id="candleGlow">
+      <stop offset="0%" stop-color="#ffd77a"/>
+      <stop offset="100%" stop-color="#d98222" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark royal atmosphere -->
+  <rect width="600" height="900" fill="url(#royalNight)"/>
+
+
+  <!-- Candle light -->
+  <circle cx="420" cy="380"
+          r="150"
+          fill="url(#candleGlow)"
+          filter="url(#blur)"/>
+
+
+  <!-- Ancient archive room -->
+  <g fill="#161522">
+
+    <!-- shelves -->
+    <rect x="40" y="350" width="120" height="300"/>
+    <rect x="440" y="350" width="120" height="300"/>
+
+  </g>
+
+
+  <!-- Old books on shelves -->
+  <g fill="#8b5a35">
+
+    <rect x="60" y="390" width="25" height="120"/>
+    <rect x="95" y="410" width="30" height="100"/>
+    <rect x="475" y="390" width="30" height="130"/>
+    <rect x="520" y="420" width="20" height="90"/>
+
+  </g>
+
+
+  <!-- Royal parchment -->
+  <g>
+
+    <rect x="180" y="350"
+          width="240"
+          height="260"
+          rx="8"
+          fill="url(#parchment)"
+          transform="rotate(-4 300 480)"/>
+
+
+    <!-- cipher lines -->
+    <g stroke="#5a3b20"
+       stroke-width="4"
+       opacity="0.7">
+
+      <line x1="220" y1="420" x2="380" y2="420"/>
+      <line x1="220" y1="460" x2="360" y2="460"/>
+      <line x1="220" y1="500" x2="390" y2="500"/>
+      <line x1="220" y1="540" x2="340" y2="540"/>
+
+    </g>
+
+
+    <!-- hidden symbol -->
+    <circle cx="300"
+            cy="475"
+            r="45"
+            fill="none"
+            stroke="#6b451d"
+            stroke-width="5"/>
+
+    <path d="
+        M300 430
+        L330 500
+        L270 500Z"
+        fill="none"
+        stroke="#6b451d"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Crown shadow -->
+  <g fill="#05070c">
+
+    <path d="
+        M220 300
+        L250 220
+        L300 280
+        L350 220
+        L380 300
+        Z"/>
+
+    <rect x="220" y="300"
+          width="160"
+          height="25"/>
+
+  </g>
+
+
+  <!-- Spy silhouette -->
+  <g fill="#07090e">
+
+    <circle cx="300" cy="650" r="18"/>
+
+    <path d="
+        M250 720
+        Q300 670 350 720
+        L380 850
+        L220 850Z"/>
+
+
+    <!-- hand holding document -->
+    <rect x="330" y="700"
+          width="70"
+          height="15"
+          transform="rotate(-20 330 700)"/>
+
+  </g>
+
+
+  <!-- Cipher particles -->
+  <g fill="#d8bd72"
+     font-family="monospace"
+     font-size="18"
+     opacity="0.5">
+
+    <text x="80" y="260">X7Q9</text>
+    <text x="430" y="260">K4M2</text>
+    <text x="80" y="720">A13Z</text>
+    <text x="450" y="740">9R8P</text>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#f6dfaa">
+    CIPHER
+  </text>
+
+  <text x="300" y="165"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#f6dfaa">
+    OF KINGS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#d9c28c">
+    THRILLER • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#dbc18b">
+    STERLING PRESS • 2005
+  </text>
+
+
+  <!-- Frame -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7b86a"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

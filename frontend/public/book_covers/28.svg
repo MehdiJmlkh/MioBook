@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="japanDusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#090d1a"/>
+      <stop offset="45%" stop-color="#273b52"/>
+      <stop offset="100%" stop-color="#c18a63"/>
+    </linearGradient>
+
+    <linearGradient id="oldPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0dfb1"/>
+      <stop offset="100%" stop-color="#a67d45"/>
+    </linearGradient>
+
+    <radialGradient id="lanternGlow">
+      <stop offset="0%" stop-color="#ffd47a"/>
+      <stop offset="100%" stop-color="#ff9d3d" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softLight">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Japanese twilight -->
+  <rect width="600" height="900" fill="url(#japanDusk)"/>
+
+
+  <!-- Lantern atmosphere -->
+  <circle cx="470"
+          cy="300"
+          r="130"
+          fill="url(#lanternGlow)"
+          filter="url(#softLight)"/>
+
+
+  <!-- Moon -->
+  <circle cx="420"
+          cy="170"
+          r="45"
+          fill="#f8eac0"/>
+
+
+  <!-- Mountain background -->
+  <path d="
+      M0 430
+      L120 260
+      L230 420
+      L360 220
+      L520 430
+      L600 330
+      L600 560
+      L0 560Z"
+      fill="#17242d"/>
+
+
+  <!-- Torii gate -->
+  <g fill="#7d1e2a">
+
+    <rect x="240"
+          y="350"
+          width="35"
+          height="250"/>
+
+    <rect x="325"
+          y="350"
+          width="35"
+          height="250"/>
+
+    <rect x="180"
+          y="320"
+          width="240"
+          height="35"/>
+
+    <rect x="140"
+          y="290"
+          width="320"
+          height="30"/>
+
+  </g>
+
+
+  <!-- Ancient path -->
+  <path d="
+      M260 900
+      Q300 720 300 580
+      Q300 520 300 450"
+      fill="none"
+      stroke="#b79a68"
+      stroke-width="80"/>
+
+
+  <!-- Stone lantern -->
+  <g fill="#3d4546">
+
+    <rect x="100"
+          y="550"
+          width="55"
+          height="150"/>
+
+    <polygon points="
+        70,550
+        130,500
+        185,550"/>
+
+    <rect x="115"
+          y="580"
+          width="25"
+          height="40"
+          fill="#f7c96c"/>
+
+  </g>
+
+
+  <!-- Ancient treasure map -->
+  <g>
+
+    <rect x="150"
+          y="600"
+          width="250"
+          height="150"
+          rx="10"
+          fill="url(#oldPaper)"
+          transform="rotate(-8 150 600)"/>
+
+
+    <!-- map lines -->
+    <g fill="none"
+       stroke="#74542b"
+       stroke-width="4">
+
+      <path d="
+          M190 680
+          Q240 620 290 690
+          Q340 720 370 650"/>
+
+      <path d="
+          M230 640
+          L260 700"/>
+
+    </g>
+
+
+    <!-- secret mark -->
+    <circle cx="310"
+            cy="680"
+            r="18"
+            fill="none"
+            stroke="#9b2525"
+            stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Samurai silhouette -->
+  <g fill="#070a0e">
+
+    <!-- helmet -->
+    <path d="
+        M250 490
+        Q300 440 350 490
+        L360 520
+        L240 520Z"/>
+
+
+    <!-- head -->
+    <circle cx="300"
+            cy="535"
+            r="20"/>
+
+
+    <!-- armor -->
+    <path d="
+        M240 600
+        Q300 540 360 600
+        L430 850
+        L170 850Z"/>
+
+
+    <!-- sword -->
+    <rect x="375"
+          y="600"
+          width="12"
+          height="220"
+          transform="rotate(-18 375 600)"
+          fill="#d8d7c8"/>
+
+
+    <!-- sword handle -->
+    <rect x="350"
+          y="600"
+          width="60"
+          height="18"
+          fill="#7b4028"
+          transform="rotate(-18 350 600)"/>
+
+  </g>
+
+
+  <!-- Falling maple leaves -->
+  <g fill="#d65b3f">
+
+    <path d="
+        M90 350
+        l20 -20
+        l20 20
+        l-20 20Z"/>
+
+    <path d="
+        M500 420
+        l18 -18
+        l18 18
+        l-18 18Z"/>
+
+    <path d="
+        M120 520
+        l15 -15
+        l15 15
+        l-15 15Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#fff0c8">
+    SAMURAI'S
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#f2c987">
+    MAP
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="7"
+        fill="#e8d8af">
+    ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e4c88c">
+    SORA PUBLISHING • 2021
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#dfbd70"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanDawn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#21151a"/>
+      <stop offset="45%" stop-color="#7a4030"/>
+      <stop offset="100%" stop-color="#d1a06a"/>
+    </linearGradient>
+
+    <linearGradient id="marbleStone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ded4bd"/>
+      <stop offset="100%" stop-color="#786c59"/>
+    </linearGradient>
+
+    <radialGradient id="battleLight">
+      <stop offset="0%" stop-color="#ffd27d"/>
+      <stop offset="100%" stop-color="#d05b32" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="warmGlow">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Roman sunset -->
+  <rect width="600" height="900" fill="url(#romanDawn)"/>
+
+
+  <!-- Sun behind battlefield -->
+  <circle cx="300"
+          cy="330"
+          r="150"
+          fill="url(#battleLight)"
+          filter="url(#warmGlow)"/>
+
+
+  <!-- Ancient city ruins -->
+  <g fill="#302a27">
+
+    <rect x="40"
+          y="390"
+          width="120"
+          height="220"/>
+
+    <rect x="440"
+          y="350"
+          width="120"
+          height="260"/>
+
+
+    <!-- columns -->
+    <g fill="#887b64">
+
+      <rect x="80"
+            y="340"
+            width="20"
+            height="180"/>
+
+      <rect x="120"
+            y="340"
+            width="20"
+            height="180"/>
+
+      <rect x="480"
+            y="300"
+            width="20"
+            height="220"/>
+
+      <rect x="520"
+            y="300"
+            width="20"
+            height="220"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Broken arch -->
+  <path d="
+      M200 500
+      L200 330
+      Q300 220 400 330
+      L400 500"
+      fill="none"
+      stroke="#7f725f"
+      stroke-width="35"/>
+
+
+  <!-- Battlefield ground -->
+  <path d="
+      M0 600
+      Q300 530 600 600
+      L600 900
+      L0 900Z"
+      fill="#33251b"/>
+
+
+  <!-- Fallen banners -->
+  <g>
+
+    <line x1="150"
+          y1="560"
+          x2="120"
+          y2="760"
+          stroke="#25180f"
+          stroke-width="10"/>
+
+
+    <path d="
+        M120 570
+        L230 610
+        L120 660Z"
+        fill="#8b2025"/>
+
+
+    <line x1="450"
+          y1="540"
+          x2="480"
+          y2="760"
+          stroke="#25180f"
+          stroke-width="10"/>
+
+
+    <path d="
+        M480 560
+        L370 600
+        L480 650Z"
+        fill="#d0a54c"/>
+
+  </g>
+
+
+  <!-- Woman warrior -->
+  <g fill="#090b0e">
+
+    <!-- hair -->
+    <path d="
+        M260 450
+        Q320 390 370 460
+        L350 520
+        L270 520Z"/>
+
+
+    <!-- face -->
+    <circle cx="320"
+            cy="510"
+            r="22"/>
+
+
+    <!-- cloak -->
+    <path d="
+        M250 580
+        Q320 520 390 580
+        L470 850
+        L170 850Z"/>
+
+
+    <!-- armor belt -->
+    <rect x="245"
+          y="620"
+          width="150"
+          height="20"
+          fill="#9b7541"/>
+
+
+    <!-- spear -->
+    <line x1="420"
+          y1="500"
+          x2="500"
+          y2="820"
+          stroke="#24160d"
+          stroke-width="10"/>
+
+
+    <polygon points="
+        420,450
+        400,520
+        450,520"
+        fill="#b9b8a8"/>
+
+  </g>
+
+
+  <!-- Roman shield -->
+  <g>
+
+    <ellipse cx="170"
+             cy="680"
+             rx="60"
+             ry="90"
+             fill="url(#marbleStone)"/>
+
+
+    <circle cx="170"
+            cy="680"
+            r="35"
+            fill="none"
+            stroke="#a12d2d"
+            stroke-width="8"/>
+
+
+    <path d="
+        M170 650
+        L190 680
+        L170 710
+        L150 680Z"
+        fill="#a12d2d"/>
+
+  </g>
+
+
+  <!-- Olive branches -->
+  <g stroke="#87965a"
+     stroke-width="5"
+     fill="none">
+
+    <path d="
+        M80 820
+        Q140 750 200 820"/>
+
+    <path d="
+        M400 820
+        Q460 750 520 820"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#f3d39a">
+    SABINE'S
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    WAR
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="8"
+        fill="#e8c987">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e5c98d">
+    ROMA BOOKS • 2023
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d5b56a"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

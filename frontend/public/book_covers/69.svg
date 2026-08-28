@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="nightJapan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050812"/>
+      <stop offset="50%" stop-color="#182b3d"/>
+      <stop offset="100%" stop-color="#46302a"/>
+    </linearGradient>
+
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9e4df" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d9e4df" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="templeWood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#251611"/>
+      <stop offset="100%" stop-color="#6b3924"/>
+    </linearGradient>
+
+    <radialGradient id="moon">
+      <stop offset="0%" stop-color="#fff1bb"/>
+      <stop offset="100%" stop-color="#fff1bb" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background -->
+  <rect width="600" height="900" fill="url(#nightJapan)"/>
+
+
+  <!-- Moon -->
+  <circle cx="420"
+          cy="170"
+          r="120"
+          fill="url(#moon)"
+          filter="url(#blur)"/>
+
+  <circle cx="420"
+          cy="170"
+          r="45"
+          fill="#f5e8b0"/>
+
+
+  <!-- Mountain silhouettes -->
+  <path d="
+      M0 430
+      L170 250
+      L310 430Z"
+      fill="#0b1118"/>
+
+  <path d="
+      M260 430
+      L450 220
+      L650 430Z"
+      fill="#0a1015"/>
+
+
+  <!-- Hidden temple -->
+  <g>
+
+    <rect x="170"
+          y="430"
+          width="260"
+          height="210"
+          fill="url(#templeWood)"/>
+
+
+    <path d="
+        M110 440
+        L300 300
+        L490 440Z"
+        fill="#17100f"/>
+
+
+    <path d="
+        M130 420
+        L300 320
+        L470 420"
+        fill="none"
+        stroke="#c05b32"
+        stroke-width="10"/>
+
+
+    <!-- doorway -->
+    <rect x="260"
+          y="500"
+          width="80"
+          height="140"
+          fill="#08090c"/>
+
+
+    <!-- lantern -->
+    <circle cx="300"
+            cy="470"
+            r="35"
+            fill="#ffb347"
+            opacity="0.8"/>
+
+  </g>
+
+
+  <!-- Fog -->
+  <path d="
+      M0 560
+      Q160 470 300 560
+      Q450 470 600 570
+      L600 760
+      Q450 670 300 760
+      Q150 670 0 760Z"
+      fill="url(#mist)"
+      filter="url(#blur)"/>
+
+
+  <!-- Ninja silhouette -->
+  <g>
+
+    <!-- head -->
+    <circle cx="300"
+            cy="580"
+            r="32"
+            fill="#050607"/>
+
+
+    <!-- mask -->
+    <path d="
+        M260 575
+        Q300 550 340 575
+        L340 610
+        L260 610Z"
+        fill="#111820"/>
+
+
+    <!-- body -->
+    <path d="
+        M210 900
+        Q230 600 300 610
+        Q370 600 390 900Z"
+        fill="#050607"/>
+
+
+    <!-- scarf -->
+    <path d="
+        M280 620
+        Q360 650 450 620
+        L430 660
+        Q350 690 280 650Z"
+        fill="#9b1d24"/>
+
+
+    <!-- sword -->
+    <path d="
+        M370 820
+        L500 600"
+        stroke="#d8d9d4"
+        stroke-width="8"/>
+
+
+    <path d="
+        M460 650
+        L520 620"
+        stroke="#b77b32"
+        stroke-width="15"/>
+
+  </g>
+
+
+  <!-- Ancient scroll -->
+  <g>
+
+    <rect x="80"
+          y="650"
+          width="120"
+          height="150"
+          fill="#d8c18b"
+          transform="rotate(-15 80 650)"/>
+
+
+    <path d="
+        M110 700
+        Q140 680 170 730"
+        fill="none"
+        stroke="#7a5229"
+        stroke-width="4"/>
+
+
+    <circle cx="150"
+            cy="760"
+            r="18"
+            fill="none"
+            stroke="#9c632b"
+            stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Hidden code symbols -->
+  <g font-family="monospace"
+     font-size="20"
+     fill="#e95c45"
+     opacity="0.8">
+
+    <text x="70" y="350">忍</text>
+    <text x="500" y="390">影</text>
+    <text x="90" y="450">01</text>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    SHINOBI
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="72"
+        font-weight="bold"
+        fill="#e85b45">
+    PASSAGE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="8"
+        fill="#f5dfb0">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e7d0a2">
+    SORA PUBLISHING • 2024
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c98648"
+        stroke-width="2"/>
+
+</svg>

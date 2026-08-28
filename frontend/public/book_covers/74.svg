@@ -1,0 +1,292 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="coastalSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87c9e8"/>
+      <stop offset="45%" stop-color="#d7edf0"/>
+      <stop offset="100%" stop-color="#f3c77b"/>
+    </linearGradient>
+
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#246b87"/>
+      <stop offset="100%" stop-color="#092c43"/>
+    </linearGradient>
+
+    <linearGradient id="oldWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b57942"/>
+      <stop offset="100%" stop-color="#4a2918"/>
+    </linearGradient>
+
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff0b8"/>
+      <stop offset="100%" stop-color="#cda75e"/>
+    </linearGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#coastalSky)"/>
+
+
+  <!-- Sun -->
+  <circle cx="440"
+          cy="180"
+          r="80"
+          fill="#ffe5a0"
+          opacity="0.7"
+          filter="url(#softGlow)"/>
+
+  <circle cx="440"
+          cy="180"
+          r="35"
+          fill="#ffe6a3"/>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#24333b"
+     stroke-width="3">
+
+    <path d="M80 180 Q95 165 110 180 Q125 165 140 180"/>
+    <path d="M160 220 Q175 205 190 220 Q205 205 220 220"/>
+
+  </g>
+
+
+  <!-- Ocean -->
+  <path d="
+      M0 470
+      Q200 430 400 470
+      Q500 450 600 480
+      L600 900
+      L0 900Z"
+      fill="url(#ocean)"/>
+
+
+  <!-- Waves -->
+  <g fill="none"
+     stroke="#8bd0dd"
+     opacity="0.7">
+
+    <path d="M20 560 Q120 520 220 560"/>
+    <path d="M300 620 Q420 580 560 620"/>
+    <path d="M80 700 Q220 660 360 700"/>
+
+  </g>
+
+
+  <!-- Harbor town -->
+  <g>
+
+    <rect x="70"
+          y="430"
+          width="120"
+          height="90"
+          fill="url(#oldWood)"/>
+
+    <path d="
+        M50 430
+        L130 350
+        L210 430Z"
+        fill="#432719"/>
+
+
+    <rect x="220"
+          y="390"
+          width="130"
+          height="130"
+          fill="#6e4a2b"/>
+
+    <path d="
+        M200 390
+        L285 310
+        L370 390Z"
+        fill="#342118"/>
+
+
+    <!-- lighthouse -->
+    <rect x="470"
+          y="300"
+          width="40"
+          height="220"
+          fill="#ded5b8"/>
+
+    <path d="
+        M450 300
+        L490 240
+        L530 300Z"
+        fill="#c54c38"/>
+
+    <circle cx="490"
+            cy="280"
+            r="12"
+            fill="#ffd875"/>
+
+  </g>
+
+
+  <!-- Giant kite -->
+  <g>
+
+    <path d="
+        M300 180
+        L380 270
+        L300 360
+        L220 270Z"
+        fill="#d94b42"
+        stroke="#5a3020"
+        stroke-width="5"/>
+
+
+    <path d="
+        M300 180
+        L300 360"
+        stroke="#f6d16b"
+        stroke-width="5"/>
+
+    <path d="
+        M220 270
+        L380 270"
+        stroke="#f6d16b"
+        stroke-width="5"/>
+
+
+    <!-- kite tail -->
+    <path d="
+        M300 360
+        Q260 430 330 480
+        Q390 520 340 590"
+        fill="none"
+        stroke="#f1d078"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Hidden map scroll -->
+  <g>
+
+    <rect x="160"
+          y="620"
+          width="150"
+          height="110"
+          rx="8"
+          fill="url(#paper)"
+          transform="rotate(-10 160 620)"/>
+
+
+    <path d="
+        M190 660
+        Q240 630 290 680"
+        fill="none"
+        stroke="#7c5427"
+        stroke-width="3"/>
+
+
+    <circle cx="250"
+            cy="680"
+            r="12"
+            fill="#c33c32"/>
+
+  </g>
+
+
+  <!-- Child silhouette holding kite -->
+  <g>
+
+    <circle cx="420"
+            cy="620"
+            r="22"
+            fill="#12171b"/>
+
+
+    <path d="
+        M390 900
+        Q420 640 450 900Z"
+        fill="#12171b"/>
+
+
+    <line x1="410"
+          y1="660"
+          x2="300"
+          y2="360"
+          stroke="#ddddcc"
+          stroke-width="2"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="72"
+        font-weight="bold"
+        fill="#17384c">
+    HARBOR
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="82"
+        font-weight="bold"
+        fill="#b63832">
+    OF KITES
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="10"
+        fill="#35505c">
+    ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d7d0a5">
+    SORA PUBLISHING • 2015
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e5c875"
+        stroke-width="2"/>
+
+</svg>

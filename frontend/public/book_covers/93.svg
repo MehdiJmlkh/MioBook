@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="iceSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071827"/>
+      <stop offset="45%" stop-color="#6ca7bc"/>
+      <stop offset="100%" stop-color="#e7e4d4"/>
+    </linearGradient>
+
+    <linearGradient id="glacier" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5fbff"/>
+      <stop offset="45%" stop-color="#a9d3e3"/>
+      <stop offset="100%" stop-color="#4c8299"/>
+    </linearGradient>
+
+    <linearGradient id="iceCave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ee5ff"/>
+      <stop offset="100%" stop-color="#173b52"/>
+    </linearGradient>
+
+    <filter id="coldGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Frozen atmosphere -->
+  <rect width="600" height="900" fill="url(#iceSky)"/>
+
+
+  <!-- Polar light -->
+  <path d="
+      M50 170
+      Q180 80 320 170
+      Q450 250 560 120"
+      fill="none"
+      stroke="#9ce4dc"
+      stroke-width="35"
+      opacity="0.35"
+      filter="url(#coldGlow)"/>
+
+
+  <!-- Snow particles -->
+  <g fill="#ffffff" opacity="0.8">
+
+    <circle cx="90" cy="250" r="4"/>
+    <circle cx="170" cy="310" r="3"/>
+    <circle cx="430" cy="220" r="5"/>
+    <circle cx="520" cy="340" r="3"/>
+    <circle cx="350" cy="280" r="2"/>
+
+  </g>
+
+
+  <!-- Massive glaciers -->
+  <path d="
+      M0 470
+      L120 300
+      L230 440
+      L350 220
+      L600 470
+      L600 650
+      L0 650Z"
+      fill="url(#glacier)"/>
+
+
+  <!-- Glacier cracks -->
+  <g fill="none"
+     stroke="#5d9eb8"
+     stroke-width="5">
+
+    <path d="M350 250 L320 420 L370 520"/>
+    <path d="M180 360 L210 470"/>
+    <path d="M460 400 L420 540"/>
+
+  </g>
+
+
+  <!-- Ice valley -->
+  <path d="
+      M0 560
+      Q160 500 300 620
+      Q450 500 600 570
+      L600 900
+      L0 900Z"
+      fill="#203e52"/>
+
+
+  <!-- Frozen river pathway -->
+  <path d="
+      M280 900
+      Q250 760 330 650
+      Q390 570 320 500"
+      fill="none"
+      stroke="#bcecff"
+      stroke-width="90"/>
+
+
+  <path d="
+      M280 900
+      Q250 760 330 650
+      Q390 570 320 500"
+      fill="none"
+      stroke="#6ea9c2"
+      stroke-width="4"
+      stroke-dasharray="15 15"/>
+
+
+  <!-- Expedition camp -->
+  <g>
+
+    <!-- tent -->
+    <path d="
+        M90 650
+        L160 540
+        L230 650Z"
+        fill="#d56b45"
+        stroke="#31251c"
+        stroke-width="5"/>
+
+    <line x1="160"
+          y1="540"
+          x2="160"
+          y2="650"
+          stroke="#f3d2a8"
+          stroke-width="3"/>
+
+
+    <!-- research beacon -->
+    <rect x="470"
+          y="500"
+          width="18"
+          height="120"
+          fill="#303942"/>
+
+    <circle cx="479"
+            cy="490"
+            r="18"
+            fill="#a6f2ff"/>
+
+  </g>
+
+
+  <!-- Explorer -->
+  <g>
+
+    <circle cx="360"
+            cy="650"
+            r="25"
+            fill="#11161b"/>
+
+
+    <path d="
+        M320 880
+        Q360 690 400 880Z"
+        fill="#10161d"/>
+
+
+    <!-- backpack -->
+    <rect x="385"
+          y="700"
+          width="45"
+          height="90"
+          rx="12"
+          fill="#384c55"/>
+
+
+    <!-- trekking poles -->
+    <line x1="300"
+          y1="720"
+          x2="260"
+          y2="860"
+          stroke="#c5a36a"
+          stroke-width="6"/>
+
+  </g>
+
+
+  <!-- Compass -->
+  <g>
+
+    <circle cx="120"
+            cy="780"
+            r="55"
+            fill="#d8e4e7"
+            stroke="#263b44"
+            stroke-width="5"/>
+
+    <polygon points="
+        120,735
+        140,780
+        120,825
+        100,780"
+        fill="#4e8397"/>
+
+    <circle cx="120"
+            cy="780"
+            r="8"
+            fill="#1a2830"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#ffffff">
+    GLACIER
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="72"
+        font-weight="bold"
+        fill="#d7f5ff">
+    PATHWAYS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="7"
+        fill="#ffffff">
+    GUIDE • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#c7e8ef">
+    MAPLE LEAF PRESS • 2022
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#bde7ef"
+        stroke-width="2"/>
+
+</svg>

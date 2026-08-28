@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="desertSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#21140d"/>
+      <stop offset="45%" stop-color="#b85d2d"/>
+      <stop offset="100%" stop-color="#f0b66c"/>
+    </linearGradient>
+
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9c27c"/>
+      <stop offset="100%" stop-color="#8b4e23"/>
+    </linearGradient>
+
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1d37b"/>
+      <stop offset="50%" stop-color="#a96b22"/>
+      <stop offset="100%" stop-color="#3b210c"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#ffd98a"/>
+      <stop offset="100%" stop-color="#ff9f42" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Desert sky -->
+  <rect width="600" height="900" fill="url(#desertSky)"/>
+
+
+  <!-- Sun -->
+  <circle cx="450"
+          cy="190"
+          r="90"
+          fill="url(#sunGlow)"
+          filter="url(#blur)"/>
+
+  <circle cx="450"
+          cy="190"
+          r="35"
+          fill="#ffd991"/>
+
+
+  <!-- Desert dunes -->
+  <path d="
+      M0 500
+      Q180 390 350 520
+      Q500 600 600 470
+      L600 900
+      L0 900Z"
+      fill="url(#sand)"/>
+
+
+  <path d="
+      M0 620
+      Q200 520 420 650
+      Q520 700 600 620"
+      fill="none"
+      stroke="#f4d29a"
+      stroke-width="20"
+      opacity="0.5"/>
+
+
+  <!-- Ancient ruins -->
+  <g fill="#65401f"
+     opacity="0.8">
+
+    <rect x="70"
+          y="410"
+          width="120"
+          height="160"/>
+
+    <rect x="85"
+          y="350"
+          width="90"
+          height="80"/>
+
+
+    <path d="
+        M60 350
+        Q130 270 200 350Z"/>
+
+  </g>
+
+
+  <!-- Roman banners -->
+  <g>
+
+    <line x1="150"
+          y1="330"
+          x2="150"
+          y2="600"
+          stroke="#3b2613"
+          stroke-width="8"/>
+
+
+    <path d="
+        M150 350
+        L250 390
+        L150 450Z"
+        fill="#a82b1d"/>
+
+
+    <circle cx="150"
+            cy="330"
+            r="12"
+            fill="url(#bronze)"/>
+
+  </g>
+
+
+  <!-- Legion soldier -->
+  <g>
+
+    <!-- helmet -->
+    <path d="
+        M270 430
+        Q350 360 430 430
+        L420 490
+        L280 490Z"
+        fill="url(#bronze)"/>
+
+
+    <!-- plume -->
+    <path d="
+        M330 380
+        Q370 290 410 370"
+        fill="none"
+        stroke="#b52b22"
+        stroke-width="15"/>
+
+
+    <!-- face shadow -->
+    <ellipse cx="350"
+             cy="500"
+             rx="55"
+             ry="70"
+             fill="#241710"/>
+
+
+    <!-- armor -->
+    <path d="
+        M250 850
+        Q260 540 350 560
+        Q440 540 470 850Z"
+        fill="#30343a"
+        stroke="#b88b35"
+        stroke-width="5"/>
+
+
+    <!-- armor plates -->
+    <g stroke="#c89b43"
+       stroke-width="4">
+
+      <line x1="290" y1="620" x2="410" y2="620"/>
+      <line x1="280" y1="670" x2="420" y2="670"/>
+      <line x1="270" y1="720" x2="430" y2="720"/>
+
+    </g>
+
+
+    <!-- spear -->
+    <line x1="460"
+          y1="350"
+          x2="520"
+          y2="820"
+          stroke="#5c3c1c"
+          stroke-width="8"/>
+
+
+    <path d="
+        M460 350
+        L500 350
+        L480 280Z"
+        fill="#d8b15a"/>
+
+  </g>
+
+
+  <!-- Shield -->
+  <g>
+
+    <path d="
+        M100 680
+        Q180 620 240 680
+        L220 800
+        Q160 850 100 800Z"
+        fill="url(#bronze)"
+        stroke="#e4c06a"
+        stroke-width="5"/>
+
+
+    <circle cx="170"
+            cy="720"
+            r="40"
+            fill="#8b261d"/>
+
+
+    <path d="
+        M170 680
+        L170 760
+        M130 720
+        L210 720"
+        stroke="#e8c978"
+        stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Sand footprints -->
+  <g fill="#6d3d20"
+     opacity="0.5">
+
+    <ellipse cx="260" cy="760" rx="18" ry="8"/>
+    <ellipse cx="300" cy="800" rx="18" ry="8"/>
+    <ellipse cx="340" cy="840" rx="18" ry="8"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    LEGION
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="72"
+        font-weight="bold"
+        fill="#f6d18a">
+    OF SAND
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#ffe5b2">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#f3d49c">
+    ROMA BOOKS • 2017
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d9b05b"
+        stroke-width="2"
+        opacity="0.9"/>
+
+</svg>

@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="celticSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#24384a"/>
+      <stop offset="45%" stop-color="#809a83"/>
+      <stop offset="100%" stop-color="#d6b879"/>
+    </linearGradient>
+
+    <linearGradient id="ancientScroll" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0dfae"/>
+      <stop offset="100%" stop-color="#9c7440"/>
+    </linearGradient>
+
+    <radialGradient id="mistGlow">
+      <stop offset="0%" stop-color="#f8e6b0"/>
+      <stop offset="100%" stop-color="#f8e6b0" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="mistBlur">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Irish dawn -->
+  <rect width="600" height="900" fill="url(#celticSky)"/>
+
+
+  <!-- Morning mist -->
+  <ellipse cx="300"
+           cy="350"
+           rx="270"
+           ry="120"
+           fill="url(#mistGlow)"
+           filter="url(#mistBlur)"/>
+
+
+  <!-- Ancient hill landscape -->
+  <path d="
+      M0 500
+      Q130 330 260 470
+      Q420 280 600 470
+      L600 650
+      L0 650Z"
+      fill="#384d3d"/>
+
+
+  <path d="
+      M0 570
+      Q180 460 350 560
+      Q500 450 600 540
+      L600 720
+      L0 720Z"
+      fill="#6c8357"/>
+
+
+  <!-- Celtic standing stones -->
+  <g fill="#77776c">
+
+    <path d="
+        M90 560
+        L120 340
+        L170 560Z"/>
+
+    <path d="
+        M180 570
+        L215 390
+        L260 570Z"/>
+
+    <path d="
+        M450 570
+        L490 350
+        L530 570Z"/>
+
+  </g>
+
+
+  <!-- Ancient castle ruins -->
+  <g fill="#353a34">
+
+    <rect x="360"
+          y="390"
+          width="150"
+          height="180"/>
+
+    <rect x="390"
+          y="300"
+          width="45"
+          height="270"/>
+
+    <rect x="470"
+          y="340"
+          width="40"
+          height="230"/>
+
+  </g>
+
+
+  <!-- Celtic spiral carvings -->
+  <g fill="none"
+     stroke="#c7a768"
+     stroke-width="5">
+
+    <circle cx="412"
+            cy="430"
+            r="25"/>
+
+    <path d="
+        M412 405
+        Q450 430 412 455
+        Q380 430 412 405"/>
+
+  </g>
+
+
+  <!-- Grass foreground -->
+  <path d="
+      M0 700
+      Q300 620 600 700
+      L600 900
+      L0 900Z"
+      fill="#26352a"/>
+
+
+  <!-- Historical manuscript -->
+  <g>
+
+    <path d="
+        M130 650
+        Q300 590 470 650
+        L450 800
+        Q300 750 150 800Z"
+        fill="url(#ancientScroll)"/>
+
+
+    <!-- parchment folds -->
+    <path d="
+        M150 680
+        Q300 640 450 680"
+        fill="none"
+        stroke="#876033"
+        stroke-width="4"/>
+
+
+    <!-- old writing -->
+    <g stroke="#74542e"
+       stroke-width="3">
+
+      <line x1="190" y1="700" x2="390" y2="700"/>
+      <line x1="180" y1="730" x2="360" y2="730"/>
+      <line x1="200" y1="760" x2="410" y2="760"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Historian silhouette -->
+  <g fill="#090d0c">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="500"
+            r="22"/>
+
+
+    <!-- coat -->
+    <path d="
+        M240 590
+        Q300 530 360 590
+        L440 850
+        L160 850Z"/>
+
+
+    <!-- walking stick -->
+    <line x1="390"
+          y1="600"
+          x2="470"
+          y2="840"
+          stroke="#201508"
+          stroke-width="9"/>
+
+  </g>
+
+
+  <!-- Celtic knot emblem -->
+  <g fill="none"
+     stroke="#d4b66d"
+     stroke-width="7">
+
+    <circle cx="120"
+            cy="760"
+            r="55"/>
+
+    <path d="
+        M120 705
+        Q170 760 120 815
+        Q70 760 120 705"/>
+
+    <path d="
+        M65 760
+        Q120 710 175 760
+        Q120 810 65 760"/>
+
+  </g>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#222b28"
+     stroke-width="4">
+
+    <path d="
+        M90 250
+        Q110 230 130 250
+        Q150 230 170 250"/>
+
+    <path d="
+        M420 230
+        Q440 210 460 230
+        Q480 210 500 230"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#fff2c9">
+    IRELAND
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#e8c87d">
+    UNVEILED
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="8"
+        fill="#e6d9b0">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e4c98e">
+    EMERALD HOUSE • 1975
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7bd75"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

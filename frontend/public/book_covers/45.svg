@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="oceanNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050b18"/>
+      <stop offset="45%" stop-color="#16344d"/>
+      <stop offset="100%" stop-color="#8b6d52"/>
+    </linearGradient>
+
+    <linearGradient id="harborWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#18384c"/>
+      <stop offset="100%" stop-color="#07131e"/>
+    </linearGradient>
+
+    <radialGradient id="lighthouseGlow">
+      <stop offset="0%" stop-color="#fff1a8"/>
+      <stop offset="100%" stop-color="#fff1a8" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="encryptedPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0dfae"/>
+      <stop offset="100%" stop-color="#92754b"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Night harbor -->
+  <rect width="600" height="900" fill="url(#oceanNight)"/>
+
+
+  <!-- Lighthouse glow -->
+  <ellipse cx="450"
+           cy="260"
+           rx="170"
+           ry="140"
+           fill="url(#lighthouseGlow)"
+           filter="url(#glow)"/>
+
+
+  <!-- Moon -->
+  <circle cx="150"
+          cy="200"
+          r="55"
+          fill="#e8dfb9"/>
+
+
+  <!-- Distant city -->
+  <g fill="#0c1721">
+
+    <rect x="20"
+          y="350"
+          width="80"
+          height="170"/>
+
+    <rect x="120"
+          y="300"
+          width="110"
+          height="220"/>
+
+    <rect x="470"
+          y="330"
+          width="90"
+          height="190"/>
+
+  </g>
+
+
+  <!-- Harbor water -->
+  <path d="
+      M0 520
+      Q150 490 300 530
+      Q450 480 600 520
+      L600 900
+      L0 900Z"
+      fill="url(#harborWater)"/>
+
+
+  <!-- Reflections -->
+  <g stroke="#d6bc68"
+     opacity="0.7">
+
+    <line x1="440" y1="500" x2="440" y2="750" stroke-width="5"/>
+    <line x1="460" y1="520" x2="460" y2="780" stroke-width="3"/>
+    <line x1="420" y1="540" x2="420" y2="700" stroke-width="2"/>
+
+  </g>
+
+
+  <!-- Lighthouse -->
+  <g>
+
+    <path d="
+        M400 520
+        L440 250
+        L480 520Z"
+        fill="#d9d3b8"/>
+
+
+    <rect x="420"
+          y="200"
+          width="40"
+          height="70"
+          fill="#252c32"/>
+
+
+    <path d="
+        M410 200
+        Q440 160 470 200Z"
+        fill="#343a40"/>
+
+
+    <!-- light -->
+    <circle cx="440"
+            cy="230"
+            r="18"
+            fill="#ffe98c"/>
+
+  </g>
+
+
+  <!-- Speed boat -->
+  <g>
+
+    <path d="
+        M120 690
+        L270 690
+        L220 740
+        L150 740Z"
+        fill="#10171e"/>
+
+
+    <path d="
+        M180 680
+        L210 620
+        L240 680Z"
+        fill="#b6c4c9"/>
+
+
+    <!-- wake -->
+    <path d="
+        M80 760
+        Q180 720 300 760"
+        fill="none"
+        stroke="#8db4c4"
+        stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Coded message -->
+  <g>
+
+    <rect x="80"
+          y="420"
+          width="160"
+          height="130"
+          fill="url(#encryptedPaper)"
+          transform="rotate(-8 80 420)"/>
+
+
+    <g fill="#3d3020">
+
+      <rect x="105"
+            y="460"
+            width="90"
+            height="8"/>
+
+      <rect x="110"
+            y="490"
+            width="70"
+            height="8"/>
+
+      <rect x="100"
+            y="520"
+            width="110"
+            height="8"/>
+
+    </g>
+
+
+    <!-- cipher symbol -->
+    <circle cx="150"
+            cy="470"
+            r="25"
+            fill="none"
+            stroke="#8b2525"
+            stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Spy silhouette -->
+  <g fill="#05080d">
+
+    <!-- head -->
+    <circle cx="330"
+            cy="470"
+            r="28"/>
+
+
+    <!-- coat -->
+    <path d="
+        M270 850
+        Q330 520 400 650
+        L470 850Z"/>
+
+
+    <!-- binoculars -->
+    <circle cx="300"
+            cy="500"
+            r="15"
+            fill="#26313a"/>
+
+    <circle cx="350"
+            cy="500"
+            r="15"
+            fill="#26313a"/>
+
+  </g>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#101820"
+     stroke-width="4">
+
+    <path d="
+        M120 280
+        Q150 250 180 280
+        Q150 265 120 280"/>
+
+    <path d="
+        M280 220
+        Q310 190 340 220
+        Q310 205 280 220"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#ffffff">
+    HARBOR
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#f5d878">
+    LIGHTS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#d9c98d">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e1cf94">
+    STERLING PRESS • 2012
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d8bd72"
+        stroke-width="2"
+        opacity="0.65"/>
+
+</svg>

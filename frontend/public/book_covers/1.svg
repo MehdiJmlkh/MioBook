@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#061326"/>
+      <stop offset="45%" stop-color="#18324d"/>
+      <stop offset="100%" stop-color="#7a8fa3"/>
+    </linearGradient>
+
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#b9c9d6"/>
+    </linearGradient>
+
+    <radialGradient id="aurora">
+      <stop offset="0%" stop-color="#8ef0d0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3a8f9d" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+
+  <!-- Cover background -->
+  <rect width="600" height="900" fill="url(#sky)"/>
+
+
+  <!-- Northern lights -->
+  <ellipse cx="300" cy="210" rx="260" ry="130"
+           fill="url(#aurora)" filter="url(#blur)"/>
+
+  <path d="M0 180 Q160 80 320 190 T600 140"
+        fill="none"
+        stroke="#83e6c9"
+        stroke-width="35"
+        opacity="0.18"/>
+
+
+  <!-- Moon -->
+  <circle cx="450" cy="190" r="70"
+          fill="#eef6ff"
+          opacity="0.9"/>
+
+  <circle cx="450" cy="190" r="90"
+          fill="#d5ecff"
+          opacity="0.12"/>
+
+
+  <!-- Snow mountains -->
+  <path d="
+      M0 520
+      L120 350
+      L210 480
+      L330 300
+      L450 470
+      L600 330
+      L600 900
+      L0 900Z"
+      fill="#26394b"/>
+
+  <path d="
+      M120 350
+      L75 420
+      L120 400
+      L160 445
+      L210 480
+      L150 390Z"
+      fill="url(#snow)"/>
+
+  <path d="
+      M330 300
+      L260 420
+      L320 390
+      L360 430
+      L450 470
+      L380 350Z"
+      fill="url(#snow)"/>
+
+
+  <!-- Frozen town -->
+  <g fill="#111c2b">
+    <rect x="120" y="570" width="90" height="100"/>
+    <polygon points="110,570 165,520 220,570"/>
+
+    <rect x="245" y="590" width="110" height="100"/>
+    <polygon points="230,590 300,530 370,590"/>
+
+    <rect x="410" y="560" width="90" height="120"/>
+    <polygon points="395,560 455,505 515,560"/>
+  </g>
+
+
+  <!-- Windows -->
+  <g fill="#f5d98b">
+    <rect x="145" y="610" width="15" height="20"/>
+    <rect x="180" y="610" width="15" height="20"/>
+    <rect x="275" y="630" width="18" height="22"/>
+    <rect x="320" y="630" width="18" height="22"/>
+    <rect x="440" y="610" width="18" height="22"/>
+  </g>
+
+
+  <!-- Detective silhouette -->
+  <g fill="#050a13">
+    <circle cx="300" cy="500" r="20"/>
+    <path d="
+      M260 610
+      Q300 540 340 610
+      L350 720
+      L250 720Z"/>
+    <path d="M270 720 L250 800 L275 800 L300 720Z"/>
+    <path d="M330 720 L350 800 L375 800 L340 720Z"/>
+  </g>
+
+
+  <!-- Snow path -->
+  <path d="
+      M300 900
+      Q320 780 300 700
+      Q290 650 300 610"
+      stroke="#dce9f5"
+      stroke-width="18"
+      fill="none"
+      opacity="0.8"/>
+
+
+  <!-- Title -->
+  <text x="300" y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#ffffff">
+    Shadows
+  </text>
+
+  <text x="300" y="155"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#ffffff">
+    of the North
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="16"
+        letter-spacing="5"
+        fill="#d8edf5">
+    A THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="840"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="28"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher mark -->
+  <text x="300" y="870"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d4e2ea">
+    MAPLE LEAF PRESS • 2015
+  </text>
+
+
+  <!-- Border -->
+  <rect x="20" y="20"
+        width="560"
+        height="860"
+        fill="none"
+        stroke="#dce9f5"
+        stroke-width="2"
+        opacity="0.4"/>
+
+</svg>

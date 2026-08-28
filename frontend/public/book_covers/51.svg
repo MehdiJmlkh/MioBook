@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="polarSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071526"/>
+      <stop offset="45%" stop-color="#28506b"/>
+      <stop offset="100%" stop-color="#d4b47a"/>
+    </linearGradient>
+
+    <linearGradient id="iceField" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9f4f2"/>
+      <stop offset="100%" stop-color="#7fa4b3"/>
+    </linearGradient>
+
+    <linearGradient id="explorerCoat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#263846"/>
+      <stop offset="100%" stop-color="#090f16"/>
+    </linearGradient>
+
+    <radialGradient id="aurora">
+      <stop offset="0%" stop-color="#b8ffdc" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#65d6b2" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#65d6b2" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="auroraBlur">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Arctic night sky -->
+  <rect width="600" height="900" fill="url(#polarSky)"/>
+
+
+  <!-- Northern lights -->
+  <ellipse cx="300"
+           cy="180"
+           rx="250"
+           ry="120"
+           fill="url(#aurora)"
+           filter="url(#auroraBlur)"/>
+
+  <path d="
+      M0 180
+      Q150 80 300 170
+      Q450 250 600 120"
+      fill="none"
+      stroke="#9af0c5"
+      stroke-width="25"
+      opacity="0.35"/>
+
+
+  <!-- Stars -->
+  <g fill="#ffffff">
+
+    <circle cx="90" cy="120" r="3"/>
+    <circle cx="170" cy="80" r="4"/>
+    <circle cx="430" cy="110" r="3"/>
+    <circle cx="520" cy="180" r="4"/>
+
+  </g>
+
+
+  <!-- Snow mountains -->
+  <path d="
+      M0 420
+      L130 260
+      L250 420
+      L380 230
+      L600 430
+      L600 650
+      L0 650Z"
+      fill="#dbe8e9"/>
+
+
+  <!-- Mountain shadows -->
+  <path d="
+      M130 260
+      L250 420
+      L190 390
+      L120 450
+      Z"
+      fill="#9bb4bf"/>
+
+  <path d="
+      M380 230
+      L600 430
+      L470 390
+      L330 420
+      Z"
+      fill="#8ba5b2"/>
+
+
+  <!-- Ice valley -->
+  <path d="
+      M0 600
+      Q300 480 600 600
+      L600 900
+      L0 900Z"
+      fill="url(#iceField)"/>
+
+
+  <!-- Frozen river -->
+  <path d="
+      M260 900
+      Q300 700 350 520
+      Q370 480 410 430
+      Q330 520 210 900Z"
+      fill="#c7e6ed"/>
+
+
+  <!-- Expedition tent -->
+  <g>
+
+    <path d="
+        M90 650
+        L180 520
+        L270 650Z"
+        fill="#c45a3a"/>
+
+    <path d="
+        M180 520
+        L180 650"
+        stroke="#8c3927"
+        stroke-width="5"/>
+
+    <rect x="150"
+          y="590"
+          width="60"
+          height="60"
+          fill="#202a30"/>
+
+  </g>
+
+
+  <!-- Explorers -->
+  <g>
+
+    <!-- explorer one -->
+    <circle cx="350"
+            cy="530"
+            r="24"
+            fill="#161d25"/>
+
+    <path d="
+        M290 850
+        Q350 560 420 700
+        L470 850Z"
+        fill="url(#explorerCoat)"/>
+
+
+    <!-- explorer two -->
+    <circle cx="460"
+            cy="590"
+            r="20"
+            fill="#161d25"/>
+
+    <path d="
+        M420 850
+        Q460 620 520 740
+        L560 850Z"
+        fill="#202c35"/>
+
+  </g>
+
+
+  <!-- Research equipment -->
+  <g>
+
+    <!-- telescope -->
+    <line x1="330"
+          y1="650"
+          x2="420"
+          y2="580"
+          stroke="#4a3522"
+          stroke-width="10"/>
+
+    <circle cx="430"
+            cy="575"
+            r="25"
+            fill="#394b54"/>
+
+
+    <!-- ice sample box -->
+    <rect x="70"
+          y="730"
+          width="100"
+          height="70"
+          fill="#425965"/>
+
+    <line x1="90"
+          y1="750"
+          x2="150"
+          y2="750"
+          stroke="#b9dce5"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Ancient expedition journal -->
+  <g>
+
+    <rect x="390"
+          y="720"
+          width="130"
+          height="100"
+          fill="#d8bf86"
+          transform="rotate(-12 390 720)"/>
+
+    <path d="
+        M410 760
+        L490 745"
+        stroke="#765633"
+        stroke-width="4"/>
+
+    <path d="
+        M420 790
+        L480 775"
+        stroke="#765633"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#ffffff">
+    CROSSING
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#bde8e8">
+    THE DIVIDE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#dce9e5">
+    ADVENTURE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d6e2dc">
+    MAPLE LEAF PRESS • 2021
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c8e3df"
+        stroke-width="2"
+        opacity="0.7"/>
+
+</svg>

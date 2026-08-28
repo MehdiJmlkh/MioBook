@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="atlanticSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#25465a"/>
+      <stop offset="45%" stop-color="#8bb4b2"/>
+      <stop offset="100%" stop-color="#e4c889"/>
+    </linearGradient>
+
+    <linearGradient id="irishSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#39758a"/>
+      <stop offset="100%" stop-color="#102f3c"/>
+    </linearGradient>
+
+    <linearGradient id="cliffStone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8a58b"/>
+      <stop offset="100%" stop-color="#51493d"/>
+    </linearGradient>
+
+    <linearGradient id="oldMap" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2dda5"/>
+      <stop offset="100%" stop-color="#a7834c"/>
+    </linearGradient>
+
+    <filter id="mist">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#atlanticSky)"/>
+
+
+  <!-- Morning mist -->
+  <ellipse cx="300"
+           cy="360"
+           rx="250"
+           ry="90"
+           fill="#e9eee6"
+           opacity="0.25"
+           filter="url(#mist)"/>
+
+
+  <!-- Sun -->
+  <circle cx="450"
+          cy="150"
+          r="55"
+          fill="#ffe4a0"/>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#23343b"
+     stroke-width="3">
+
+    <path d="M90 180 Q110 160 130 180 Q150 160 170 180"/>
+    <path d="M180 240 Q195 225 210 240 Q225 225 240 240"/>
+
+  </g>
+
+
+  <!-- Ocean -->
+  <path d="
+      M0 450
+      Q160 420 300 460
+      Q450 420 600 460
+      L600 900
+      L0 900Z"
+      fill="url(#irishSea)"/>
+
+
+  <!-- Island cliffs -->
+  <path d="
+      M0 520
+      L100 360
+      L210 410
+      L280 330
+      L380 450
+      L500 350
+      L600 480
+      L600 650
+      L0 650Z"
+      fill="url(#cliffStone)"/>
+
+
+  <!-- Cliff grass tops -->
+  <g fill="#4c6842">
+
+    <path d="
+        M0 520
+        L100 360
+        L210 410
+        L190 460
+        L80 430Z"/>
+
+    <path d="
+        M280 330
+        L380 450
+        L330 500
+        L250 410Z"/>
+
+    <path d="
+        M500 350
+        L600 480
+        L530 500
+        L460 420Z"/>
+
+  </g>
+
+
+  <!-- Lighthouse -->
+  <g>
+
+    <rect x="450"
+          y="300"
+          width="45"
+          height="220"
+          fill="#e8dfc6"/>
+
+    <path d="
+        M430 300
+        L472 235
+        L515 300Z"
+        fill="#b44235"/>
+
+    <rect x="445"
+          y="340"
+          width="55"
+          height="12"
+          fill="#33312b"/>
+
+    <circle cx="472"
+            cy="275"
+            r="15"
+            fill="#ffd978"/>
+
+  </g>
+
+
+  <!-- Wooden boat -->
+  <g>
+
+    <path d="
+        M110 610
+        Q220 590 310 620
+        L260 690
+        L150 690Z"
+        fill="#713f22"/>
+
+    <line x1="210"
+          y1="610"
+          x2="210"
+          y2="520"
+          stroke="#4b3320"
+          stroke-width="8"/>
+
+
+    <path d="
+        M215 530
+        L300 590
+        L215 590Z"
+        fill="#eee2b5"/>
+
+  </g>
+
+
+  <!-- Traveler map -->
+  <g>
+
+    <rect x="170"
+          y="650"
+          width="180"
+          height="130"
+          fill="url(#oldMap)"
+          stroke="#70502b"
+          stroke-width="5"
+          transform="rotate(-8 170 650)"/>
+
+
+    <!-- route -->
+    <path d="
+        M210 720
+        Q260 660 320 730"
+        fill="none"
+        stroke="#9e3c2f"
+        stroke-width="5"
+        stroke-dasharray="10 8"/>
+
+
+    <!-- compass -->
+    <circle cx="270"
+            cy="720"
+            r="25"
+            fill="none"
+            stroke="#634526"
+            stroke-width="3"/>
+
+    <path d="
+        M270 700
+        L280 720
+        L270 740
+        L260 720Z"
+        fill="#634526"/>
+
+  </g>
+
+
+  <!-- Walking traveler silhouette -->
+  <g>
+
+    <circle cx="390"
+            cy="680"
+            r="22"
+            fill="#15191a"/>
+
+
+    <path d="
+        M360 900
+        Q390 700 420 900Z"
+        fill="#15191a"/>
+
+
+    <!-- walking stick -->
+    <line x1="420"
+          y1="750"
+          x2="470"
+          y2="880"
+          stroke="#5c4327"
+          stroke-width="6"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    ISLAND
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="75"
+        font-weight="bold"
+        fill="#e9d39a">
+    WAYFINDER
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="10"
+        fill="#f5e7c1">
+    GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e3d29b">
+    EMERALD HOUSE • 1984
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d6b76c"
+        stroke-width="2"/>
+
+</svg>

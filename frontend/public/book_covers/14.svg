@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="highlandSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#17202a"/>
+      <stop offset="45%" stop-color="#607b72"/>
+      <stop offset="100%" stop-color="#d1bc83"/>
+    </linearGradient>
+
+    <linearGradient id="valley" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6d8755"/>
+      <stop offset="100%" stop-color="#26351f"/>
+    </linearGradient>
+
+    <radialGradient id="sunLight">
+      <stop offset="0%" stop-color="#ffe6a0"/>
+      <stop offset="100%" stop-color="#d9a85c" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Highland sky -->
+  <rect width="600" height="900" fill="url(#highlandSky)"/>
+
+
+  <!-- Morning light -->
+  <circle cx="420" cy="220"
+          r="140"
+          fill="url(#sunLight)"
+          filter="url(#soft)"/>
+
+  <circle cx="420" cy="220"
+          r="45"
+          fill="#ffe7a4"/>
+
+
+  <!-- Clouds -->
+  <path d="
+      M0 250
+      Q130 170 260 250
+      Q400 140 600 250
+      L600 330
+      Q400 280 0 350Z"
+      fill="#18241f"
+      opacity="0.5"/>
+
+
+  <!-- Highland mountains -->
+  <path d="
+      M0 520
+      L130 300
+      L240 470
+      L350 260
+      L500 460
+      L600 340
+      L600 900
+      L0 900Z"
+      fill="#334b35"/>
+
+
+  <!-- Mountain snow caps -->
+  <path d="
+      M350 260
+      L315 350
+      L350 330
+      L385 370
+      L420 330Z"
+      fill="#dce5dd"
+      opacity="0.8"/>
+
+
+  <!-- Valley -->
+  <path d="
+      M0 600
+      Q200 520 350 620
+      Q470 540 600 620
+      L600 900
+      L0 900Z"
+      fill="url(#valley)"/>
+
+
+  <!-- Stone path -->
+  <path d="
+      M300 900
+      Q260 760 300 650
+      Q340 560 370 500"
+      fill="none"
+      stroke="#bca77a"
+      stroke-width="25"
+      opacity="0.8"/>
+
+
+  <!-- Ancient stone bridge -->
+  <g fill="#5b5948">
+
+    <rect x="80" y="590" width="180" height="40"/>
+
+    <path d="
+        M100 590
+        Q170 520 240 590"
+        fill="none"
+        stroke="#5b5948"
+        stroke-width="25"/>
+
+  </g>
+
+
+  <!-- Traveler figure -->
+  <g fill="#101512">
+
+    <!-- hat -->
+    <ellipse cx="360" cy="500"
+             rx="25"
+             ry="10"/>
+
+    <!-- head -->
+    <circle cx="360" cy="520" r="15"/>
+
+    <!-- backpack body -->
+    <path d="
+        M330 550
+        Q360 520 390 550
+        L420 720
+        L300 720Z"/>
+
+    <!-- walking stick -->
+    <line x1="300"
+          y1="570"
+          x2="250"
+          y2="780"
+          stroke="#16110c"
+          stroke-width="10"/>
+
+  </g>
+
+
+  <!-- Open guide book -->
+  <g>
+
+    <path d="
+        M150 730
+        L250 690
+        L250 790
+        L150 820Z"
+        fill="#e8d7ae"/>
+
+    <path d="
+        M250 690
+        L350 730
+        L350 820
+        L250 790Z"
+        fill="#f1e2bd"/>
+
+    <line x1="250"
+          y1="690"
+          x2="250"
+          y2="790"
+          stroke="#8c7750"
+          stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Celtic decorative symbols -->
+  <g fill="none"
+     stroke="#d1b36a"
+     stroke-width="5"
+     opacity="0.8">
+
+    <circle cx="300" cy="350" r="35"/>
+
+    <path d="
+      M275 350
+      Q300 320 325 350
+      Q300 380 275 350Z"/>
+
+  </g>
+
+
+  <!-- Birds -->
+  <g fill="none"
+     stroke="#151b17"
+     stroke-width="3">
+
+    <path d="M120 280 Q135 265 150 280"/>
+    <path d="M170 240 Q185 225 200 240"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="52"
+        font-weight="bold"
+        fill="#fff0c4">
+    HIGHLAND
+  </text>
+
+  <text x="300" y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#fff0c4">
+    GUIDE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#e4d6ae">
+    GUIDE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e6d3a1">
+    EMERALD HOUSE • 1990
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7bb73"
+        stroke-width="2"
+        opacity="0.5"/>
+
+</svg>

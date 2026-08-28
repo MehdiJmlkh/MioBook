@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanDawn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b1720"/>
+      <stop offset="45%" stop-color="#8d4a32"/>
+      <stop offset="100%" stop-color="#d5a25b"/>
+    </linearGradient>
+
+    <linearGradient id="bronzeMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2d47a"/>
+      <stop offset="45%" stop-color="#b87832"/>
+      <stop offset="100%" stop-color="#5c3218"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#ffd982"/>
+      <stop offset="100%" stop-color="#ffd982" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Ancient battlefield sky -->
+  <rect width="600" height="900" fill="url(#romanDawn)"/>
+
+
+  <!-- Rising sun -->
+  <circle cx="300"
+          cy="310"
+          r="150"
+          fill="url(#sunGlow)"
+          filter="url(#softGlow)"/>
+
+
+  <!-- Distant mountains -->
+  <path d="
+      M0 470
+      L150 300
+      L270 450
+      L420 260
+      L600 460
+      L600 650
+      L0 650Z"
+      fill="#33261f"/>
+
+
+  <!-- Desert road -->
+  <path d="
+      M260 900
+      Q300 650 340 520
+      Q390 450 420 400
+      Q300 450 180 400
+      Q240 520 260 900Z"
+      fill="#b58a52"/>
+
+
+  <!-- Roman ruins -->
+  <g fill="#6c5740">
+
+    <rect x="70"
+          y="390"
+          width="100"
+          height="180"/>
+
+    <rect x="430"
+          y="360"
+          width="100"
+          height="220"/>
+
+
+    <path d="
+        M50 390
+        Q120 300 190 390Z"/>
+
+    <path d="
+        M410 360
+        Q480 260 550 360Z"/>
+
+  </g>
+
+
+  <!-- Falcon banner -->
+  <g>
+
+    <!-- pole -->
+    <line x1="300"
+          y1="220"
+          x2="300"
+          y2="760"
+          stroke="#4a321b"
+          stroke-width="12"/>
+
+
+    <!-- banner -->
+    <path d="
+        M310 240
+        Q470 280 420 520
+        Q360 470 310 500Z"
+        fill="#9d2228"/>
+
+
+    <!-- golden falcon -->
+    <path d="
+        M350 330
+        Q420 290 390 380
+        Q440 400 360 450
+        Q370 390 330 370Z"
+        fill="url(#bronzeMetal)"/>
+
+
+    <!-- feathers -->
+    <path d="
+        M370 350
+        L430 330
+        L390 390Z"
+        fill="#f1d27a"/>
+
+  </g>
+
+
+  <!-- Fallen legionnaire -->
+  <g fill="#101316">
+
+    <!-- helmet -->
+    <path d="
+        M210 500
+        Q280 420 350 500
+        L330 550
+        L230 550Z"/>
+
+
+    <!-- red plume -->
+    <path d="
+        M270 450
+        Q300 340 330 450"
+        fill="#a52c29"/>
+
+
+    <!-- armor -->
+    <path d="
+        M190 700
+        Q280 530 390 700
+        L470 870
+        L120 870Z"/>
+
+
+    <!-- sword -->
+    <line x1="390"
+          y1="600"
+          x2="500"
+          y2="820"
+          stroke="#c8b98d"
+          stroke-width="10"/>
+
+
+    <polygon points="
+        380,580
+        410,630
+        370,630"
+        fill="#ddd5b8"/>
+
+  </g>
+
+
+  <!-- Ancient helmet on ground -->
+  <g>
+
+    <path d="
+        M80 760
+        Q150 680 220 760
+        L200 820
+        L100 820Z"
+        fill="url(#bronzeMetal)"/>
+
+
+    <line x1="120"
+          y1="760"
+          x2="180"
+          y2="800"
+          stroke="#6c3c1b"
+          stroke-width="6"/>
+
+  </g>
+
+
+  <!-- Flying falcon -->
+  <g fill="none"
+     stroke="#1c1510"
+     stroke-width="5">
+
+    <path d="
+        M100 260
+        Q160 210 220 260
+        Q160 240 100 260"/>
+
+
+    <path d="
+        M380 200
+        Q440 150 500 210
+        Q440 180 380 200"/>
+
+  </g>
+
+
+  <!-- Dust particles -->
+  <g fill="#e9c57d">
+
+    <circle cx="90" cy="500" r="5"/>
+    <circle cx="520" cy="530" r="4"/>
+    <circle cx="160" cy="340" r="3"/>
+    <circle cx="450" cy="300" r="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#ffe09a">
+    FALCON
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    STANDARD
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="10"
+        fill="#f1d59a">
+    ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#efd49a">
+    ROMA BOOKS • 2016
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d8b15d"
+        stroke-width="2"
+        opacity="0.65"/>
+
+</svg>

@@ -1,0 +1,317 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanSunrise" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241512"/>
+      <stop offset="45%" stop-color="#b84e2f"/>
+      <stop offset="100%" stop-color="#f2c36b"/>
+    </linearGradient>
+
+    <linearGradient id="arenaSand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9b36b"/>
+      <stop offset="100%" stop-color="#80532c"/>
+    </linearGradient>
+
+    <linearGradient id="bronzeArmor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe29a"/>
+      <stop offset="40%" stop-color="#c48732"/>
+      <stop offset="100%" stop-color="#573017"/>
+    </linearGradient>
+
+    <radialGradient id="sunDisk">
+      <stop offset="0%" stop-color="#fff0a5"/>
+      <stop offset="100%" stop-color="#ffb34c" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dawn sky -->
+  <rect width="600" height="900" fill="url(#romanSunrise)"/>
+
+
+  <!-- Rising sun -->
+  <circle cx="300"
+          cy="280"
+          r="150"
+          fill="url(#sunDisk)"
+          filter="url(#blur)"/>
+
+
+  <circle cx="300"
+          cy="280"
+          r="65"
+          fill="#ffd983"/>
+
+
+  <!-- Roman arena background -->
+  <g fill="#35251d">
+
+    <!-- Colosseum -->
+    <path d="
+        M40 500
+        Q300 250 560 500
+        L520 620
+        L80 620Z"/>
+
+    <g fill="#b28a58">
+
+      <circle cx="150" cy="480" r="25"/>
+      <circle cx="230" cy="430" r="25"/>
+      <circle cx="310" cy="410" r="25"/>
+      <circle cx="390" cy="430" r="25"/>
+      <circle cx="470" cy="480" r="25"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Arena floor -->
+  <path d="
+      M0 620
+      Q300 500 600 620
+      L600 900
+      L0 900Z"
+      fill="url(#arenaSand)"/>
+
+
+  <!-- Dust cloud -->
+  <path d="
+      M40 650
+      Q180 560 330 650
+      Q470 570 600 650"
+      fill="none"
+      stroke="#e7c28a"
+      stroke-width="60"
+      opacity="0.3"/>
+
+
+  <!-- Chariot -->
+  <g>
+
+    <!-- wheels -->
+    <circle cx="220"
+            cy="700"
+            r="65"
+            fill="none"
+            stroke="#4a2915"
+            stroke-width="18"/>
+
+    <circle cx="420"
+            cy="700"
+            r="65"
+            fill="none"
+            stroke="#4a2915"
+            stroke-width="18"/>
+
+
+    <circle cx="220"
+            cy="700"
+            r="12"
+            fill="#c68b3c"/>
+
+    <circle cx="420"
+            cy="700"
+            r="12"
+            fill="#c68b3c"/>
+
+
+    <!-- body -->
+    <path d="
+        M180 690
+        Q320 580 460 690
+        L430 770
+        L200 770Z"
+        fill="url(#bronzeArmor)"/>
+
+
+    <!-- reins -->
+    <path d="
+        M260 680
+        Q180 540 120 520"
+        fill="none"
+        stroke="#24150c"
+        stroke-width="5"/>
+
+    <path d="
+        M340 680
+        Q420 540 500 520"
+        fill="none"
+        stroke="#24150c"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Horses -->
+  <g fill="#17130f">
+
+    <path d="
+        M100 620
+        Q160 540 220 620
+        L250 700
+        L80 700Z"/>
+
+    <path d="
+        M350 620
+        Q420 530 490 620
+        L530 700
+        L340 700Z"/>
+
+
+    <!-- manes -->
+    <path d="
+        M120 570
+        Q180 500 220 570"
+        fill="none"
+        stroke="#0a0908"
+        stroke-width="12"/>
+
+  </g>
+
+
+  <!-- Gladiator driver -->
+  <g fill="#101215">
+
+    <!-- helmet -->
+    <path d="
+        M280 450
+        Q330 390 380 450
+        L370 500
+        L290 500Z"/>
+
+
+    <!-- plume -->
+    <path d="
+        M330 420
+        Q350 330 390 420"
+        fill="#8d2222"/>
+
+
+    <!-- body -->
+    <path d="
+        M240 720
+        Q330 500 420 720
+        L470 850
+        L180 850Z"/>
+
+
+    <!-- spear -->
+    <line x1="430"
+          y1="500"
+          x2="500"
+          y2="820"
+          stroke="#d8c28a"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Laurel wreath -->
+  <g fill="none"
+     stroke="#d8b44e"
+     stroke-width="5">
+
+    <path d="
+        M120 260
+        Q200 200 280 260"/>
+
+    <path d="
+        M320 260
+        Q400 200 480 260"/>
+
+  </g>
+
+
+  <!-- Flying banners -->
+  <g fill="#9b2727">
+
+    <path d="
+        M40 300
+        L140 260
+        L120 380
+        L40 350Z"/>
+
+    <path d="
+        M460 260
+        L560 300
+        L560 350
+        L480 380Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#ffe09a">
+    CHARIOTS
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        fill="#ffffff">
+    OF DAWN
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#f6d49a">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#f0d59a">
+    ROMA BOOKS • 2021
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e0bd6a"
+        stroke-width="2"
+        opacity="0.7"/>
+
+</svg>

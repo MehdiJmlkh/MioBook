@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="shadowCity" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="50%" stop-color="#202a3a"/>
+      <stop offset="100%" stop-color="#8b7760"/>
+    </linearGradient>
+
+    <linearGradient id="metalPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0e4c2"/>
+      <stop offset="100%" stop-color="#8d7a58"/>
+    </linearGradient>
+
+    <radialGradient id="alarmGlow">
+      <stop offset="0%" stop-color="#ff514b"/>
+      <stop offset="100%" stop-color="#ff514b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blurGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark thriller atmosphere -->
+  <rect width="600" height="900" fill="url(#shadowCity)"/>
+
+
+  <!-- Red warning glow -->
+  <circle cx="470"
+          cy="250"
+          r="130"
+          fill="url(#alarmGlow)"
+          filter="url(#blurGlow)"/>
+
+
+  <!-- Modern city silhouette -->
+  <g fill="#080b12">
+
+    <rect x="50"
+          y="370"
+          width="100"
+          height="260"/>
+
+    <rect x="180"
+          y="300"
+          width="120"
+          height="330"/>
+
+    <rect x="350"
+          y="340"
+          width="150"
+          height="290"/>
+
+
+    <!-- antennas -->
+    <line x1="240"
+          y1="300"
+          x2="240"
+          y2="220"
+          stroke="#080b12"
+          stroke-width="8"/>
+
+    <line x1="420"
+          y1="340"
+          x2="420"
+          y2="260"
+          stroke="#080b12"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Surveillance grid -->
+  <g stroke="#607084"
+     opacity="0.25">
+
+    <line x1="0"
+          y1="420"
+          x2="600"
+          y2="420"/>
+
+    <line x1="0"
+          y1="500"
+          x2="600"
+          y2="500"/>
+
+    <line x1="100"
+          y1="350"
+          x2="100"
+          y2="620"/>
+
+    <line x1="500"
+          y1="350"
+          x2="500"
+          y2="620"/>
+
+  </g>
+
+
+  <!-- Classified document -->
+  <g>
+
+    <rect x="160"
+          y="560"
+          width="280"
+          height="170"
+          rx="8"
+          fill="url(#metalPaper)"
+          transform="rotate(-7 160 560)"/>
+
+
+    <!-- black classified strip -->
+    <rect x="190"
+          y="610"
+          width="170"
+          height="25"
+          fill="#11151c"
+          transform="rotate(-7 190 610)"/>
+
+
+    <!-- text lines -->
+    <g stroke="#5d4d36"
+       stroke-width="5">
+
+      <line x1="210"
+            y1="670"
+            x2="370"
+            y2="650"/>
+
+      <line x1="220"
+            y1="700"
+            x2="340"
+            y2="685"/>
+
+    </g>
+
+
+    <!-- wax seal -->
+    <circle cx="380"
+            cy="680"
+            r="22"
+            fill="#8b1f27"/>
+
+  </g>
+
+
+  <!-- Agent silhouette -->
+  <g fill="#05070a">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="480"
+            r="22"/>
+
+
+    <!-- coat -->
+    <path d="
+        M240 560
+        Q300 500 360 560
+        L420 850
+        L180 850Z"/>
+
+
+    <!-- raised hand with device -->
+    <rect x="350"
+          y="500"
+          width="18"
+          height="100"
+          transform="rotate(-25 350 500)"/>
+
+
+    <rect x="365"
+          y="460"
+          width="55"
+          height="35"
+          rx="5"
+          fill="#101820"/>
+
+  </g>
+
+
+  <!-- Digital countdown -->
+  <g>
+
+    <rect x="80"
+          y="690"
+          width="120"
+          height="65"
+          fill="#0b0f15"
+          stroke="#d14a42"
+          stroke-width="3"/>
+
+    <text x="140"
+          y="735"
+          text-anchor="middle"
+          font-family="monospace"
+          font-size="32"
+          fill="#ff635c">
+      00:09
+    </text>
+
+  </g>
+
+
+  <!-- Broken communication signal -->
+  <g fill="none"
+     stroke="#d7b46b"
+     stroke-width="4"
+     opacity="0.7">
+
+    <path d="
+        M450 550
+        Q500 500 550 550"/>
+
+    <path d="
+        M470 580
+        Q510 540 540 580"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="56"
+        font-weight="bold"
+        letter-spacing="4"
+        fill="#f3dfb1">
+    SILENT
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        letter-spacing="4"
+        fill="#ffffff">
+    DECREE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="7"
+        fill="#e0c27c">
+    THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d9c18a">
+    STERLING PRESS • 2010
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d7b66b"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

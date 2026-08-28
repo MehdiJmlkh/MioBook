@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6aa4a0"/>
+      <stop offset="45%" stop-color="#d7c78b"/>
+      <stop offset="100%" stop-color="#355b3a"/>
+    </linearGradient>
+
+    <linearGradient id="grassHill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5f9a55"/>
+      <stop offset="100%" stop-color="#183c22"/>
+    </linearGradient>
+
+    <linearGradient id="oldPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2dfae"/>
+      <stop offset="100%" stop-color="#b8864c"/>
+    </linearGradient>
+
+    <filter id="mist">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Irish countryside sky -->
+  <rect width="600" height="900" fill="url(#irishSky)"/>
+
+
+  <!-- Morning mist -->
+  <ellipse cx="280"
+           cy="330"
+           rx="260"
+           ry="70"
+           fill="#ffffff"
+           opacity="0.18"
+           filter="url(#mist)"/>
+
+
+  <!-- Rolling hills -->
+  <path d="
+      M0 450
+      Q130 340 260 450
+      Q400 300 600 450
+      L600 650
+      L0 650Z"
+      fill="url(#grassHill)"/>
+
+
+  <!-- Stone walls -->
+  <g fill="#777164">
+
+    <path d="
+        M0 590
+        L180 560
+        L190 600
+        L0 630Z"/>
+
+    <path d="
+        M420 520
+        L600 500
+        L600 550
+        L430 570Z"/>
+
+  </g>
+
+
+  <!-- Green road winding through landscape -->
+  <path d="
+      M300 900
+      Q260 760 350 650
+      Q430 560 370 470
+      Q330 420 420 370"
+      fill="none"
+      stroke="#caa85b"
+      stroke-width="85"/>
+
+
+  <path d="
+      M300 900
+      Q260 760 350 650
+      Q430 560 370 470
+      Q330 420 420 370"
+      fill="none"
+      stroke="#8a6b39"
+      stroke-width="5"
+      stroke-dasharray="20 15"/>
+
+
+  <!-- Village -->
+  <g fill="#2b2923">
+
+    <path d="
+        M70 460
+        L140 400
+        L210 460Z"/>
+
+    <rect x="90"
+          y="460"
+          width="100"
+          height="70"/>
+
+
+    <path d="
+        M430 440
+        L510 380
+        L580 440Z"/>
+
+    <rect x="455"
+          y="440"
+          width="100"
+          height="75"/>
+
+  </g>
+
+
+  <!-- Celtic standing stone -->
+  <g>
+
+    <path d="
+        M120 650
+        Q150 560 180 650
+        L170 760
+        L130 760Z"
+        fill="#8e8b7b"/>
+
+
+    <circle cx="150"
+            cy="640"
+            r="15"
+            fill="#5e5b51"/>
+
+  </g>
+
+
+  <!-- Traveler with walking stick -->
+  <g>
+
+    <circle cx="430"
+            cy="650"
+            r="25"
+            fill="#171914"/>
+
+
+    <path d="
+        M390 850
+        Q430 690 470 850Z"
+        fill="#171914"/>
+
+
+    <line x1="485"
+          y1="720"
+          x2="500"
+          y2="850"
+          stroke="#9a6c39"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Vintage map -->
+  <g>
+
+    <rect x="80"
+          y="700"
+          width="150"
+          height="110"
+          rx="5"
+          fill="url(#oldPaper)"
+          stroke="#62472a"
+          stroke-width="5"/>
+
+
+    <path d="
+        M110 770
+        Q150 720 200 755
+        Q170 780 130 790"
+        fill="none"
+        stroke="#76502c"
+        stroke-width="4"/>
+
+
+    <circle cx="160"
+            cy="755"
+            r="8"
+            fill="#a7352b"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="100"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#ffffff">
+    BALLAD OF
+  </text>
+
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="78"
+        font-weight="bold"
+        fill="#d8c16b">
+    THE GREEN ROAD
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="8"
+        fill="#ffffff">
+    GUIDE • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e4cd82">
+    EMERALD HOUSE • 1993
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d6b866"
+        stroke-width="2"/>
+
+</svg>

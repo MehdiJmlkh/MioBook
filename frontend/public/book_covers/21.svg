@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="mistSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1115"/>
+      <stop offset="50%" stop-color="#34454a"/>
+      <stop offset="100%" stop-color="#9b8c67"/>
+    </linearGradient>
+
+    <linearGradient id="forestDepth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#24362d"/>
+      <stop offset="100%" stop-color="#080f0d"/>
+    </linearGradient>
+
+    <radialGradient id="mysteriousLight">
+      <stop offset="0%" stop-color="#e6f0d0"/>
+      <stop offset="100%" stop-color="#b7c89b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="fogBlur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Misty night sky -->
+  <rect width="600" height="900" fill="url(#mistSky)"/>
+
+
+  <!-- Strange glow in forest -->
+  <ellipse cx="320"
+           cy="350"
+           rx="170"
+           ry="150"
+           fill="url(#mysteriousLight)"
+           filter="url(#fogBlur)"/>
+
+
+  <!-- Old town background -->
+  <g fill="#171c1c">
+
+    <!-- houses -->
+    <path d="
+        M70 470
+        L150 390
+        L230 470
+        L230 600
+        L70 600Z"/>
+
+    <path d="
+        M390 470
+        L470 400
+        L540 470
+        L540 600
+        L390 600Z"/>
+
+  </g>
+
+
+  <!-- Abandoned church tower -->
+  <g fill="#252725">
+
+    <rect x="260"
+          y="300"
+          width="90"
+          height="300"/>
+
+    <polygon points="
+        240,300
+        305,210
+        370,300"/>
+
+    <rect x="285"
+          y="360"
+          width="40"
+          height="70"
+          fill="#080d0d"/>
+
+  </g>
+
+
+  <!-- Forest -->
+  <g fill="url(#forestDepth)">
+
+    <path d="
+        M0 650
+        L70 350
+        L140 650Z"/>
+
+    <path d="
+        M500 650
+        L560 300
+        L620 650Z"/>
+
+    <path d="
+        M100 650
+        L180 420
+        L250 650Z"/>
+
+    <path d="
+        M400 650
+        L470 390
+        L540 650Z"/>
+
+  </g>
+
+
+  <!-- Fog layers -->
+  <g fill="#dce5db"
+     opacity="0.16">
+
+    <ellipse cx="150"
+             cy="580"
+             rx="250"
+             ry="45"/>
+
+    <ellipse cx="430"
+             cy="650"
+             rx="230"
+             ry="50"/>
+
+  </g>
+
+
+  <!-- Ancient journal -->
+  <g>
+
+    <rect x="120"
+          y="680"
+          width="150"
+          height="110"
+          rx="8"
+          fill="#70502d"
+          transform="rotate(-12 120 680)"/>
+
+    <rect x="135"
+          y="690"
+          width="120"
+          height="85"
+          fill="#d7c49a"
+          transform="rotate(-12 135 690)"/>
+
+
+    <!-- strange symbol -->
+    <circle cx="195"
+            cy="735"
+            r="22"
+            fill="none"
+            stroke="#563b22"
+            stroke-width="4"/>
+
+    <path d="
+        M180 735
+        L210 735
+        M195 720
+        L195 750"
+        stroke="#563b22"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Investigator silhouette -->
+  <g fill="#080b0c">
+
+    <!-- hat -->
+    <ellipse cx="380"
+             cy="590"
+             rx="35"
+             ry="12"/>
+
+    <!-- head -->
+    <circle cx="380"
+            cy="610"
+            r="18"/>
+
+    <!-- coat -->
+    <path d="
+        M330 660
+        Q380 600 430 660
+        L470 850
+        L290 850Z"/>
+
+
+    <!-- flashlight -->
+    <rect x="420"
+          y="650"
+          width="12"
+          height="90"
+          transform="rotate(-30 420 650)"/>
+
+  </g>
+
+
+  <!-- Mysterious footprints -->
+  <g fill="#0b1211"
+     opacity="0.6">
+
+    <ellipse cx="280" cy="760" rx="8" ry="16"/>
+    <ellipse cx="300" cy="800" rx="8" ry="16"/>
+    <ellipse cx="320" cy="840" rx="8" ry="16"/>
+
+  </g>
+
+
+  <!-- Historical artifact -->
+  <g>
+
+    <circle cx="500"
+            cy="760"
+            r="35"
+            fill="#b18b45"/>
+
+    <circle cx="500"
+            cy="760"
+            r="22"
+            fill="none"
+            stroke="#51371d"
+            stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#edf0d8">
+    MISTWOOD
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#edf0d8">
+    INCIDENT
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#cdd8bd">
+    THRILLER • HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d8c89a">
+    MAPLE LEAF PRESS • 2013
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c8bd82"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

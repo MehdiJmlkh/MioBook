@@ -1,0 +1,292 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="arcticSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#102235"/>
+      <stop offset="45%" stop-color="#7ba6b0"/>
+      <stop offset="100%" stop-color="#e4d5a7"/>
+    </linearGradient>
+
+    <linearGradient id="coldOcean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4d91a5"/>
+      <stop offset="100%" stop-color="#112c3a"/>
+    </linearGradient>
+
+    <radialGradient id="aurora">
+      <stop offset="0%" stop-color="#c8f1d5"/>
+      <stop offset="40%" stop-color="#75c8a8"/>
+      <stop offset="100%" stop-color="#75c8a8" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="auroraBlur">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Northern sky -->
+  <rect width="600" height="900" fill="url(#arcticSky)"/>
+
+
+  <!-- Northern lights -->
+  <ellipse cx="300"
+           cy="180"
+           rx="260"
+           ry="120"
+           fill="url(#aurora)"
+           filter="url(#auroraBlur)"/>
+
+
+  <path d="
+      M40 200
+      Q170 80 300 170
+      Q430 260 560 120"
+      fill="none"
+      stroke="#a6e5c1"
+      stroke-width="18"
+      opacity="0.5"/>
+
+
+  <!-- Moon -->
+  <circle cx="470"
+          cy="170"
+          r="35"
+          fill="#f7edc7"/>
+
+
+  <!-- Rocky northern coastline -->
+  <path d="
+      M0 500
+      L120 360
+      L220 470
+      L340 340
+      L470 470
+      L600 350
+      L600 650
+      L0 650Z"
+      fill="#34484d"/>
+
+
+  <!-- Ocean -->
+  <path d="
+      M0 600
+      Q300 540 600 600
+      L600 900
+      L0 900Z"
+      fill="url(#coldOcean)"/>
+
+
+  <!-- Ice reflections -->
+  <g fill="#d9edf0"
+     opacity="0.55">
+
+    <polygon points="
+        90,650
+        150,560
+        210,650"/>
+
+    <polygon points="
+        430,650
+        500,550
+        560,650"/>
+
+  </g>
+
+
+  <!-- Lighthouse -->
+  <g>
+
+    <rect x="390"
+          y="390"
+          width="45"
+          height="170"
+          fill="#e8dfc5"/>
+
+    <polygon points="
+        380,390
+        412,330
+        445,390"
+        fill="#d54d43"/>
+
+
+    <rect x="400"
+          y="420"
+          width="25"
+          height="35"
+          fill="#27323a"/>
+
+  </g>
+
+
+  <!-- Wooden travel map -->
+  <g>
+
+    <rect x="120"
+          y="620"
+          width="150"
+          height="110"
+          rx="8"
+          fill="#d8bd83"
+          transform="rotate(-10 120 620)"/>
+
+
+    <path d="
+        M150 660
+        Q200 630 240 690
+        Q200 720 160 700"
+        fill="none"
+        stroke="#80613a"
+        stroke-width="4"/>
+
+
+    <circle cx="210"
+            cy="680"
+            r="8"
+            fill="#b12b2b"/>
+
+  </g>
+
+
+  <!-- Traveler -->
+  <g fill="#0b1013">
+
+    <!-- hood -->
+    <path d="
+        M290 590
+        Q330 540 370 590
+        L370 620
+        L290 620Z"/>
+
+    <!-- body -->
+    <path d="
+        M280 650
+        Q330 590 380 650
+        L450 850
+        L220 850Z"/>
+
+
+    <!-- backpack -->
+    <rect x="245"
+          y="650"
+          width="55"
+          height="120"
+          rx="15"
+          fill="#4a3422"/>
+
+
+    <!-- walking pole -->
+    <line x1="240"
+          y1="680"
+          x2="180"
+          y2="840"
+          stroke="#1b1209"
+          stroke-width="9"/>
+
+  </g>
+
+
+  <!-- Compass -->
+  <g>
+
+    <circle cx="480"
+            cy="730"
+            r="45"
+            fill="#caa35b"/>
+
+    <circle cx="480"
+            cy="730"
+            r="32"
+            fill="#26363b"/>
+
+    <path d="
+        M480 700
+        L495 750
+        L480 730
+        L465 750Z"
+        fill="#d8c27e"/>
+
+  </g>
+
+
+  <!-- Snow particles -->
+  <g fill="#ffffff"
+     opacity="0.7">
+
+    <circle cx="80" cy="300" r="4"/>
+    <circle cx="520" cy="280" r="5"/>
+    <circle cx="150" cy="420" r="3"/>
+    <circle cx="550" cy="470" r="4"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#ffffff">
+    NORTH SHORE
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#e9d7a2">
+    GUIDE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#e1f1ed">
+    TRAVEL GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e7d19a">
+    MAPLE LEAF PRESS • 2022
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d9c27b"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

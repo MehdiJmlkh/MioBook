@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="politicalNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#090d18"/>
+      <stop offset="45%" stop-color="#263044"/>
+      <stop offset="100%" stop-color="#6e5441"/>
+    </linearGradient>
+
+    <linearGradient id="marbleHall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ded4bd"/>
+      <stop offset="100%" stop-color="#716657"/>
+    </linearGradient>
+
+    <radialGradient id="spotlight">
+      <stop offset="0%" stop-color="#ffe9a6"/>
+      <stop offset="100%" stop-color="#d89a42" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Dark political atmosphere -->
+  <rect width="600" height="900" fill="url(#politicalNight)"/>
+
+
+  <!-- Hidden spotlight -->
+  <ellipse cx="300"
+           cy="360"
+           rx="230"
+           ry="160"
+           fill="url(#spotlight)"
+           filter="url(#blur)"/>
+
+
+  <!-- Parliament building silhouette -->
+  <g fill="#111722">
+
+    <!-- dome -->
+    <path d="
+        M160 380
+        Q300 170 440 380
+        Z"/>
+
+    <!-- main building -->
+    <rect x="130"
+          y="380"
+          width="340"
+          height="230"/>
+
+  </g>
+
+
+  <!-- Dome details -->
+  <ellipse cx="300"
+           cy="240"
+           rx="30"
+           ry="50"
+           fill="#0b1018"/>
+
+
+  <!-- Parliament columns -->
+  <g fill="url(#marbleHall)">
+
+    <rect x="170" y="400" width="35" height="180"/>
+    <rect x="230" y="400" width="35" height="180"/>
+    <rect x="330" y="400" width="35" height="180"/>
+    <rect x="395" y="400" width="35" height="180"/>
+
+  </g>
+
+
+  <!-- Red carpet -->
+  <path d="
+      M260 900
+      L340 900
+      L320 580
+      L280 580Z"
+      fill="#7d2028"/>
+
+
+  <!-- Political chess pieces -->
+  <g fill="#0a0b0d">
+
+    <path d="
+        M120 680
+        Q150 640 180 680
+        L180 780
+        L120 780Z"/>
+
+    <circle cx="150"
+            cy="620"
+            r="35"/>
+
+
+    <path d="
+        M420 680
+        Q450 640 480 680
+        L480 780
+        L420 780Z"/>
+
+    <circle cx="450"
+            cy="620"
+            r="35"/>
+
+  </g>
+
+
+  <!-- Secret document -->
+  <g>
+
+    <rect x="240"
+          y="500"
+          width="130"
+          height="90"
+          fill="#ead8ae"
+          transform="rotate(-12 240 500)"/>
+
+    <line x1="270"
+          y1="530"
+          x2="340"
+          y2="530"
+          stroke="#80603d"
+          stroke-width="4"/>
+
+    <line x1="270"
+          y1="555"
+          x2="330"
+          y2="555"
+          stroke="#80603d"
+          stroke-width="4"/>
+
+    <!-- red seal -->
+    <circle cx="330"
+            cy="575"
+            r="12"
+            fill="#8c1f25"/>
+
+  </g>
+
+
+  <!-- Shadowed politician -->
+  <g fill="#07090d">
+
+    <circle cx="300"
+            cy="650"
+            r="18"/>
+
+    <path d="
+        M250 850
+        Q300 680 350 850
+        Z"/>
+
+    <!-- hand gesture -->
+    <path d="
+        M340 690
+        L410 640
+        L420 660
+        L350 720Z"/>
+
+  </g>
+
+
+  <!-- Surveillance camera -->
+  <g fill="#141a24">
+
+    <rect x="60"
+          y="300"
+          width="80"
+          height="40"
+          rx="10"/>
+
+    <circle cx="130"
+            cy="320"
+            r="12"
+            fill="#d35b52"/>
+
+  </g>
+
+
+  <!-- Digital threat lines -->
+  <g stroke="#d7b46a"
+     opacity="0.35">
+
+    <line x1="70" y1="470" x2="130" y2="470"/>
+    <line x1="470" y1="500" x2="530" y2="500"/>
+    <line x1="80" y1="520" x2="150" y2="520"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        fill="#f6e2b0">
+    PARLIAMENT
+  </text>
+
+  <text x="300"
+        y="165"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#f6e2b0">
+    PLOTS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="6"
+        fill="#d9c89a">
+    A POLITICAL THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d8c18c">
+    STERLING PRESS • 1997
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d6b66e"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

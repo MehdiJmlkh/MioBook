@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="stormSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#091522"/>
+      <stop offset="45%" stop-color="#28485d"/>
+      <stop offset="100%" stop-color="#d68a4b"/>
+    </linearGradient>
+
+    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#111820"/>
+      <stop offset="100%" stop-color="#465969"/>
+    </linearGradient>
+
+    <radialGradient id="stormEye">
+      <stop offset="0%" stop-color="#dff6ff"/>
+      <stop offset="35%" stop-color="#6db5d2"/>
+      <stop offset="100%" stop-color="#1b2935" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="windGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#stormSky)"/>
+
+
+  <!-- Storm eye -->
+  <ellipse cx="360"
+           cy="330"
+           rx="180"
+           ry="150"
+           fill="url(#stormEye)"
+           filter="url(#windGlow)"/>
+
+
+  <!-- Massive storm clouds -->
+  <path d="
+      M0 280
+      Q100 120 250 230
+      Q370 70 600 220
+      L600 400
+      Q450 340 300 390
+      Q120 420 0 350Z"
+      fill="url(#cloud)"/>
+
+
+  <!-- Lightning -->
+  <path d="
+      M390 180
+      L340 330
+      L390 320
+      L330 470
+      L470 280
+      L410 290Z"
+      fill="#e8f7ff"
+      opacity="0.8"/>
+
+
+  <!-- Ocean below -->
+  <path d="
+      M0 570
+      Q140 500 300 570
+      Q470 500 600 560
+      L600 900
+      L0 900Z"
+      fill="#052333"/>
+
+
+  <!-- Ocean waves -->
+  <g fill="none"
+     stroke="#4cb6d0"
+     opacity="0.5">
+
+    <path d="M0 650 Q150 590 300 650 T600 650"
+          stroke-width="8"/>
+
+    <path d="M0 740 Q150 680 300 740 T600 740"
+          stroke-width="5"/>
+
+    <path d="M50 820 Q200 760 400 820"
+          stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Fighter aircraft -->
+  <g fill="#11161d">
+
+    <!-- wings -->
+    <polygon points="
+        160,520
+        330,470
+        500,520
+        330,550"/>
+
+    <!-- body -->
+    <path d="
+        M240 500
+        Q330 430 430 510
+        Q330 570 240 540Z"/>
+
+    <!-- cockpit -->
+    <ellipse cx="335"
+             cy="505"
+             rx="45"
+             ry="18"
+             fill="#62d3ef"/>
+
+    <!-- tail -->
+    <polygon points="
+        260,510
+        180,450
+        220,530"/>
+
+  </g>
+
+
+  <!-- Pilot helmet reflection -->
+  <circle cx="330"
+          cy="505"
+          r="8"
+          fill="#eafcff"/>
+
+
+  <!-- Wind trails -->
+  <g fill="none"
+     stroke="#bdefff"
+     opacity="0.5">
+
+    <path d="
+        M80 470
+        Q220 420 400 470"
+        stroke-width="5"/>
+
+    <path d="
+        M40 500
+        Q200 450 430 510"
+        stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Mountain island below -->
+  <path d="
+      M0 620
+      L120 500
+      L220 620
+      L350 530
+      L500 650
+      L600 560
+      L600 700
+      L0 700Z"
+      fill="#101c22"
+      opacity="0.8"/>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        letter-spacing="5"
+        fill="#ffffff">
+    WIND
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        letter-spacing="5"
+        fill="#9eeaff">
+    CHASER
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#d7eff5">
+    ADVENTURE • THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#bde6ef">
+    SORA PUBLISHING • 2017
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#9be6fa"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

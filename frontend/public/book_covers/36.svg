@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="polarStorm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050d18"/>
+      <stop offset="45%" stop-color="#29465b"/>
+      <stop offset="100%" stop-color="#9bb5b8"/>
+    </linearGradient>
+
+    <linearGradient id="iceCrystal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9ffff"/>
+      <stop offset="50%" stop-color="#8bd0e2"/>
+      <stop offset="100%" stop-color="#39758d"/>
+    </linearGradient>
+
+    <radialGradient id="blueGlow">
+      <stop offset="0%" stop-color="#8ff5ff"/>
+      <stop offset="100%" stop-color="#8ff5ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="iceBlur">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Frozen sky -->
+  <rect width="600" height="900" fill="url(#polarStorm)"/>
+
+
+  <!-- Strange light from glacier -->
+  <ellipse cx="300"
+           cy="450"
+           rx="180"
+           ry="180"
+           fill="url(#blueGlow)"
+           filter="url(#iceBlur)"/>
+
+
+  <!-- Storm clouds -->
+  <path d="
+      M0 180
+      Q120 100 250 180
+      Q400 70 600 170
+      L600 280
+      L0 280Z"
+      fill="#111b28"
+      opacity="0.8"/>
+
+
+  <!-- Giant glacier -->
+  <path d="
+      M0 600
+      L120 390
+      L240 500
+      L350 300
+      L600 600
+      L600 900
+      L0 900Z"
+      fill="url(#iceCrystal)"/>
+
+
+  <!-- Glacier cracks -->
+  <g fill="none"
+     stroke="#ffffff"
+     opacity="0.55">
+
+    <path d="
+        M350 340
+        L320 500
+        L380 620"/>
+
+    <path d="
+        M220 520
+        L260 640
+        L200 760"/>
+
+    <path d="
+        M450 560
+        L400 700
+        L480 820"/>
+
+  </g>
+
+
+  <!-- Frozen research station -->
+  <g>
+
+    <path d="
+        M120 560
+        L260 430
+        L400 560Z"
+        fill="#d9e6e7"/>
+
+    <rect x="150"
+          y="560"
+          width="220"
+          height="120"
+          fill="#5d7580"/>
+
+
+    <!-- windows -->
+    <g fill="#bff5ff">
+
+      <rect x="190"
+            y="590"
+            width="35"
+            height="35"/>
+
+      <rect x="290"
+            y="590"
+            width="35"
+            height="35"/>
+
+    </g>
+
+
+    <!-- antenna -->
+    <line x1="260"
+          y1="430"
+          x2="260"
+          y2="350"
+          stroke="#18222b"
+          stroke-width="6"/>
+
+
+    <circle cx="260"
+            cy="340"
+            r="10"
+            fill="#ff6455"/>
+
+  </g>
+
+
+  <!-- Scientist silhouette -->
+  <g fill="#081017">
+
+    <!-- helmet -->
+    <circle cx="350"
+            cy="500"
+            r="35"/>
+
+
+    <rect x="315"
+          y="500"
+          width="70"
+          height="30"
+          rx="10"
+          fill="#27343c"/>
+
+
+    <!-- body -->
+    <path d="
+        M280 620
+        Q350 530 420 620
+        L500 850
+        L200 850Z"/>
+
+
+    <!-- equipment case -->
+    <rect x="400"
+          y="650"
+          width="80"
+          height="100"
+          rx="10"
+          fill="#344955"/>
+
+  </g>
+
+
+  <!-- Frozen eye symbol inside ice -->
+  <g>
+
+    <path d="
+        M190 430
+        Q300 340 410 430
+        Q300 520 190 430Z"
+        fill="none"
+        stroke="#d9ffff"
+        stroke-width="8"/>
+
+
+    <circle cx="300"
+            cy="430"
+            r="38"
+            fill="#55cbe0"/>
+
+
+    <circle cx="300"
+            cy="430"
+            r="12"
+            fill="#102936"/>
+
+  </g>
+
+
+  <!-- Ancient frozen object -->
+  <g>
+
+    <polygon points="
+        90,760
+        140,700
+        190,760
+        140,820"
+        fill="#9ed9e8"/>
+
+    <path d="
+        M140 720
+        L140 800"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Snow particles -->
+  <g fill="#ffffff">
+
+    <circle cx="90" cy="330" r="5"/>
+    <circle cx="510" cy="350" r="4"/>
+    <circle cx="160" cy="280" r="3"/>
+    <circle cx="470" cy="250" r="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#ffffff">
+    GLACIER’S
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#9eefff">
+    EYE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="6"
+        fill="#d7edf0">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d5e7e5">
+    MAPLE LEAF PRESS • 2019
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#bde7ee"
+        stroke-width="2"
+        opacity="0.6"/>
+
+</svg>

@@ -1,0 +1,286 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="mountainSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1d38"/>
+      <stop offset="45%" stop-color="#4d91c2"/>
+      <stop offset="100%" stop-color="#e8d9b5"/>
+    </linearGradient>
+
+    <linearGradient id="snowPeak" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#9bc5da"/>
+    </linearGradient>
+
+    <linearGradient id="leatherBook" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b542d"/>
+      <stop offset="100%" stop-color="#332016"/>
+    </linearGradient>
+
+    <filter id="sunGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#mountainSky)"/>
+
+
+  <!-- Sun over mountains -->
+  <circle cx="430"
+          cy="220"
+          r="90"
+          fill="#ffe8a3"
+          opacity="0.35"
+          filter="url(#sunGlow)"/>
+
+  <circle cx="430"
+          cy="220"
+          r="45"
+          fill="#ffd98a"/>
+
+
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.25">
+
+    <ellipse cx="130"
+             cy="280"
+             rx="90"
+             ry="25"/>
+
+    <ellipse cx="360"
+             cy="340"
+             rx="120"
+             ry="30"/>
+
+  </g>
+
+
+  <!-- Giant mountain range -->
+  <path d="
+      M0 520
+      L150 260
+      L250 430
+      L370 180
+      L600 520
+      L600 700
+      L0 700Z"
+      fill="#273a4a"/>
+
+
+  <!-- Snow caps -->
+  <path d="
+      M110 330
+      L150 260
+      L205 350
+      L160 330Z"
+      fill="url(#snowPeak)"/>
+
+
+  <path d="
+      M310 300
+      L370 180
+      L450 330
+      L380 285Z"
+      fill="url(#snowPeak)"/>
+
+
+  <!-- Mountain trail -->
+  <path d="
+      M300 900
+      Q250 760 330 640
+      Q400 560 350 470"
+      fill="none"
+      stroke="#d9b67a"
+      stroke-width="18"/>
+
+
+  <path d="
+      M300 900
+      Q250 760 330 640
+      Q400 560 350 470"
+      fill="none"
+      stroke="#fff0c4"
+      stroke-width="3"
+      stroke-dasharray="12 12"/>
+
+
+  <!-- Explorer -->
+  <g>
+
+    <circle cx="350"
+            cy="560"
+            r="22"
+            fill="#111820"/>
+
+
+    <path d="
+        M310 780
+        Q350 590 390 780Z"
+        fill="#111820"/>
+
+
+    <!-- backpack -->
+    <rect x="390"
+          y="620"
+          width="45"
+          height="100"
+          rx="15"
+          fill="#784b2c"/>
+
+
+    <!-- walking pole -->
+    <line x1="300"
+          y1="650"
+          x2="250"
+          y2="830"
+          stroke="#65401f"
+          stroke-width="7"/>
+
+  </g>
+
+
+  <!-- Altimeter instrument -->
+  <g>
+
+    <circle cx="120"
+            cy="690"
+            r="65"
+            fill="#dce8e8"
+            stroke="#273640"
+            stroke-width="6"/>
+
+
+    <circle cx="120"
+            cy="690"
+            r="42"
+            fill="#203746"/>
+
+
+    <line x1="120"
+          y1="690"
+          x2="150"
+          y2="650"
+          stroke="#ffcf67"
+          stroke-width="6"/>
+
+
+    <text x="120"
+          y="740"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="12"
+          fill="#ffffff">
+      4800m
+    </text>
+
+  </g>
+
+
+  <!-- Guidebook -->
+  <g>
+
+    <path d="
+        M180 770
+        L300 720
+        L420 770
+        L300 850Z"
+        fill="url(#leatherBook)"
+        stroke="#e0bc76"
+        stroke-width="5"/>
+
+
+    <path d="
+        M300 720
+        L300 850"
+        stroke="#e0bc76"
+        stroke-width="4"/>
+
+
+    <circle cx="300"
+            cy="785"
+            r="18"
+            fill="#dcb86b"/>
+
+
+    <path d="
+        M290 785
+        L300 770
+        L310 785
+        L300 800Z"
+        fill="#6a3d24"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#ffffff">
+    SKYBOUND
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#ffe1a0">
+    GUIDEBOOK
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="14"
+        fill="#ffffff">
+    GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#ffe0a1">
+    MAPLE LEAF PRESS • 2016
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e3c27a"
+        stroke-width="2"/>
+
+</svg>

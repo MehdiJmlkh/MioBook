@@ -1,0 +1,311 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishCountryside" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#243b35"/>
+      <stop offset="45%" stop-color="#7c9b75"/>
+      <stop offset="100%" stop-color="#d6c08a"/>
+    </linearGradient>
+
+    <linearGradient id="oldMap" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1dfaf"/>
+      <stop offset="100%" stop-color="#a67b45"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#fff0bd"/>
+      <stop offset="100%" stop-color="#fff0bd" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softMist">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Countryside sky -->
+  <rect width="600" height="900" fill="url(#irishCountryside)"/>
+
+
+  <!-- Morning sunlight -->
+  <circle cx="450"
+          cy="210"
+          r="120"
+          fill="url(#sunGlow)"
+          filter="url(#softMist)"/>
+
+
+  <!-- Rolling hills -->
+  <path d="
+      M0 470
+      Q130 350 260 470
+      Q420 300 600 450
+      L600 620
+      L0 620Z"
+      fill="#526b4b"/>
+
+
+  <path d="
+      M0 540
+      Q160 420 330 550
+      Q470 450 600 520
+      L600 700
+      L0 700Z"
+      fill="#78905e"/>
+
+
+  <!-- Stone bridge -->
+  <g fill="#686455">
+
+    <rect x="210"
+          y="560"
+          width="180"
+          height="80"/>
+
+    <path d="
+        M190 560
+        Q300 470 410 560"
+        fill="none"
+        stroke="#686455"
+        stroke-width="35"/>
+
+
+    <path d="
+        M260 580
+        Q300 610 340 580"
+        fill="none"
+        stroke="#2b3430"
+        stroke-width="12"/>
+
+  </g>
+
+
+  <!-- River -->
+  <path d="
+      M0 700
+      Q250 620 600 700
+      L600 900
+      L0 900Z"
+      fill="#35606b"/>
+
+
+  <!-- River reflections -->
+  <g fill="none"
+     stroke="#a7d2d2"
+     opacity="0.45">
+
+    <path d="
+        M50 760
+        Q220 720 400 760"
+        stroke-width="5"/>
+
+    <path d="
+        M100 830
+        Q300 780 520 830"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Old village houses -->
+  <g fill="#26332b">
+
+    <path d="
+        M70 520
+        L140 450
+        L210 520
+        L210 590
+        L70 590Z"/>
+
+    <path d="
+        M420 500
+        L500 430
+        L570 500
+        L570 590
+        L420 590Z"/>
+
+  </g>
+
+
+  <!-- Traveler -->
+  <g fill="#0c1210">
+
+    <!-- hat -->
+    <ellipse cx="310"
+             cy="560"
+             rx="38"
+             ry="12"/>
+
+
+    <!-- head -->
+    <circle cx="310"
+            cy="580"
+            r="18"/>
+
+
+    <!-- coat -->
+    <path d="
+        M260 630
+        Q310 590 360 630
+        L430 850
+        L190 850Z"/>
+
+
+    <!-- backpack -->
+    <rect x="230"
+          y="640"
+          width="55"
+          height="110"
+          rx="12"
+          fill="#49321e"/>
+
+
+    <!-- walking stick -->
+    <line x1="230"
+          y1="660"
+          x2="170"
+          y2="840"
+          stroke="#1b1208"
+          stroke-width="9"/>
+
+  </g>
+
+
+  <!-- Open travel map -->
+  <g>
+
+    <path d="
+        M120 670
+        L260 630
+        L380 700
+        L240 760Z"
+        fill="url(#oldMap)"
+        transform="rotate(-8 120 670)"/>
+
+
+    <!-- roads -->
+    <g fill="none"
+       stroke="#75552d"
+       stroke-width="3">
+
+      <path d="
+          M170 690
+          Q240 660 300 720"/>
+
+      <path d="
+          M230 650
+          L260 730"/>
+
+    </g>
+
+
+    <!-- compass mark -->
+    <circle cx="260"
+            cy="690"
+            r="15"
+            fill="none"
+            stroke="#9a2727"
+            stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Celtic stone marker -->
+  <g>
+
+    <ellipse cx="500"
+             cy="720"
+             rx="45"
+             ry="80"
+             fill="#596257"/>
+
+
+    <circle cx="500"
+            cy="710"
+            r="22"
+            fill="none"
+            stroke="#c3a866"
+            stroke-width="4"/>
+
+
+    <path d="
+        M500 690
+        L520 730
+        L480 730Z"
+        fill="none"
+        stroke="#c3a866"
+        stroke-width="3"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="56"
+        font-weight="bold"
+        fill="#fff0c8">
+    COUNTY
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="62"
+        font-weight="bold"
+        fill="#f2d08d">
+    PASSAGE
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="7"
+        fill="#e9e2bf">
+    GUIDE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#ead39b">
+    EMERALD HOUSE • 1981
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d8c27d"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanTwilight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#17151c"/>
+      <stop offset="45%" stop-color="#694d42"/>
+      <stop offset="100%" stop-color="#d09a55"/>
+    </linearGradient>
+
+    <linearGradient id="desertRoad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b98a52"/>
+      <stop offset="100%" stop-color="#3e2920"/>
+    </linearGradient>
+
+    <linearGradient id="bronzeArmor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d1a34f"/>
+      <stop offset="100%" stop-color="#5a3518"/>
+    </linearGradient>
+
+    <filter id="sunGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Twilight sky -->
+  <rect width="600" height="900" fill="url(#romanTwilight)"/>
+
+
+  <!-- Setting sun -->
+  <circle cx="300"
+          cy="330"
+          r="80"
+          fill="#f2bb65"
+          opacity="0.25"
+          filter="url(#sunGlow)"/>
+
+  <circle cx="300"
+          cy="330"
+          r="45"
+          fill="#e7a85b"/>
+
+
+  <!-- Distant mountains -->
+  <path d="
+      M0 470
+      L130 320
+      L260 450
+      L410 280
+      L600 470
+      L600 560
+      L0 560Z"
+      fill="#29272b"/>
+
+
+  <!-- Roman frontier wall -->
+  <g fill="#514337">
+
+    <rect x="0"
+          y="470"
+          width="600"
+          height="80"/>
+
+    <rect x="80"
+          y="390"
+          width="30"
+          height="130"/>
+
+    <rect x="490"
+          y="380"
+          width="30"
+          height="140"/>
+
+  </g>
+
+
+  <!-- Watch tower -->
+  <g>
+
+    <rect x="70"
+          y="290"
+          width="80"
+          height="220"
+          fill="#62503d"/>
+
+    <path d="
+        M55 300
+        L110 240
+        L165 300Z"
+        fill="#34261c"/>
+
+
+    <rect x="90"
+          y="360"
+          width="40"
+          height="60"
+          fill="#171717"/>
+
+  </g>
+
+
+  <!-- Endless road -->
+  <path d="
+      M260 900
+      L350 900
+      L320 560
+      L280 560Z"
+      fill="url(#desertRoad)"/>
+
+
+  <!-- Road stones -->
+  <g fill="#5d4933">
+
+    <ellipse cx="290" cy="700" rx="20" ry="8"/>
+    <ellipse cx="315" cy="780" rx="25" ry="10"/>
+    <ellipse cx="305" cy="850" rx="30" ry="12"/>
+
+  </g>
+
+
+  <!-- Roman soldier -->
+  <g>
+
+    <!-- helmet -->
+    <path d="
+        M190 570
+        Q250 500 310 570
+        L300 610
+        L200 610Z"
+        fill="url(#bronzeArmor)"
+        stroke="#3d2814"
+        stroke-width="5"/>
+
+
+    <path d="
+        M250 500
+        L250 450"
+        stroke="#8b642b"
+        stroke-width="8"/>
+
+
+    <!-- body armor -->
+    <path d="
+        M170 900
+        Q240 580 330 900Z"
+        fill="#4b3320"/>
+
+
+    <!-- armor plates -->
+    <g stroke="#d1a14c"
+       stroke-width="5">
+
+      <line x1="210" y1="650" x2="290" y2="650"/>
+      <line x1="200" y1="700" x2="300" y2="700"/>
+      <line x1="195" y1="750" x2="305" y2="750"/>
+
+    </g>
+
+
+    <!-- shield -->
+    <path d="
+        M350 620
+        Q420 600 440 700
+        Q420 800 350 760Z"
+        fill="#7b3b28"
+        stroke="#d2a34f"
+        stroke-width="6"/>
+
+
+    <!-- eagle emblem -->
+    <path d="
+        M390 650
+        L405 690
+        L390 730
+        L375 690Z"
+        fill="#d7b15b"/>
+
+
+    <!-- spear -->
+    <line x1="150"
+          y1="500"
+          x2="120"
+          y2="850"
+          stroke="#6c4824"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Fallen eagle standard -->
+  <g>
+
+    <line x1="450"
+          y1="400"
+          x2="450"
+          y2="700"
+          stroke="#6c4824"
+          stroke-width="7"/>
+
+
+    <path d="
+        M450 420
+        Q520 450 450 500"
+        fill="#b54432"/>
+
+
+    <path d="
+        M450 450
+        L500 470
+        L450 490Z"
+        fill="#d7a948"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="100"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        fill="#ffffff">
+    EMPIRE'S
+  </text>
+
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="76"
+        font-weight="bold"
+        fill="#e8bc6a">
+    LAST ROAD
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="7"
+        fill="#f0dfbb">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e1c187">
+    ROMA BOOKS • 2024
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c89b54"
+        stroke-width="2"/>
+
+</svg>

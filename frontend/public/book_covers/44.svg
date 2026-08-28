@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="irishHistorySky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#26313a"/>
+      <stop offset="45%" stop-color="#8b795c"/>
+      <stop offset="100%" stop-color="#d8c49a"/>
+    </linearGradient>
+
+    <linearGradient id="oldPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5e6bd"/>
+      <stop offset="100%" stop-color="#9d7951"/>
+    </linearGradient>
+
+    <linearGradient id="fieldGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#61734a"/>
+      <stop offset="100%" stop-color="#263829"/>
+    </linearGradient>
+
+    <radialGradient id="warmHope">
+      <stop offset="0%" stop-color="#ffd982"/>
+      <stop offset="100%" stop-color="#ffd982" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Historical Ireland atmosphere -->
+  <rect width="600" height="900" fill="url(#irishHistorySky)"/>
+
+
+  <!-- Hopeful light -->
+  <ellipse cx="380"
+           cy="320"
+           rx="180"
+           ry="130"
+           fill="url(#warmHope)"
+           filter="url(#softGlow)"/>
+
+
+  <!-- Distant Irish hills -->
+  <path d="
+      M0 430
+      Q150 300 300 430
+      Q450 300 600 420
+      L600 650
+      L0 650Z"
+      fill="#384936"/>
+
+
+  <!-- Fields -->
+  <path d="
+      M0 600
+      Q150 520 300 620
+      Q450 530 600 610
+      L600 900
+      L0 900Z"
+      fill="url(#fieldGreen)"/>
+
+
+  <!-- Old stone cottage -->
+  <g>
+
+    <rect x="90"
+          y="500"
+          width="210"
+          height="150"
+          fill="#766653"/>
+
+
+    <!-- roof -->
+    <path d="
+        M60 500
+        L190 390
+        L330 500Z"
+        fill="#312a25"/>
+
+
+    <!-- door -->
+    <rect x="170"
+          y="550"
+          width="55"
+          height="100"
+          fill="#2b211b"/>
+
+
+    <!-- windows -->
+    <rect x="115"
+          y="550"
+          width="35"
+          height="35"
+          fill="#ffd88a"/>
+
+
+    <rect x="250"
+          y="550"
+          width="35"
+          height="35"
+          fill="#ffd88a"/>
+
+  </g>
+
+
+  <!-- Abandoned famine field -->
+  <g>
+
+    <path d="
+        M340 650
+        Q430 500 520 650"
+        fill="none"
+        stroke="#1c281e"
+        stroke-width="18"/>
+
+
+    <!-- empty crop rows -->
+    <g stroke="#20281b"
+       stroke-width="5">
+
+      <line x1="360" y1="700" x2="520" y2="760"/>
+      <line x1="350" y1="760" x2="500" y2="820"/>
+      <line x1="400" y1="680" x2="560" y2="730"/>
+
+    </g>
+
+  </g>
+
+
+  <!-- Family silhouette -->
+  <g fill="#121716">
+
+    <!-- adult -->
+    <circle cx="400"
+            cy="520"
+            r="28"/>
+
+    <path d="
+        M350 700
+        Q400 560 450 700
+        L500 850
+        L300 850Z"/>
+
+
+    <!-- child -->
+    <circle cx="470"
+            cy="610"
+            r="18"/>
+
+
+    <path d="
+        M450 850
+        Q470 650 500 850Z"/>
+
+  </g>
+
+
+  <!-- Transition symbol: empty bowl becoming full -->
+  <g>
+
+    <!-- bowl -->
+    <path d="
+        M120 760
+        Q180 820 240 760
+        L220 850
+        L140 850Z"
+        fill="#b57b3b"/>
+
+
+    <!-- grain -->
+    <g fill="#e9c65c">
+
+      <circle cx="150" cy="750" r="8"/>
+      <circle cx="180" cy="740" r="8"/>
+      <circle cx="210" cy="755" r="8"/>
+
+    </g>
+
+
+    <!-- old spoon -->
+    <line x1="220"
+          y1="720"
+          x2="260"
+          y2="850"
+          stroke="#51402b"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Floating pages -->
+  <g fill="url(#oldPaper)">
+
+    <path d="
+        M470 300
+        L530 260
+        L540 340
+        L480 370Z"/>
+
+
+    <path d="
+        M80 280
+        L130 240
+        L150 320
+        L100 350Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="58"
+        font-weight="bold"
+        fill="#fff0c2">
+    FAMINE
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        fill="#ffffff">
+    TO FEAST
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="220"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="10"
+        fill="#ead6a1">
+    HISTORICAL
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Beatrix O'Malley
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#ead49c">
+    EMERALD HOUSE • 1983
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#ddc28a"
+        stroke-width="2"
+        opacity="0.7"/>
+
+</svg>

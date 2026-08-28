@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="deepOcean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#03131f"/>
+      <stop offset="45%" stop-color="#06485b"/>
+      <stop offset="100%" stop-color="#0b1823"/>
+    </linearGradient>
+
+    <linearGradient id="sunkenMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4b86a"/>
+      <stop offset="50%" stop-color="#55635c"/>
+      <stop offset="100%" stop-color="#1c2526"/>
+    </linearGradient>
+
+    <radialGradient id="diveLight">
+      <stop offset="0%" stop-color="#e8f8ff"/>
+      <stop offset="100%" stop-color="#9ed6e8" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="waterGlow">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Deep sea -->
+  <rect width="600" height="900" fill="url(#deepOcean)"/>
+
+
+  <!-- Surface light -->
+  <ellipse cx="300"
+           cy="150"
+           rx="240"
+           ry="130"
+           fill="url(#diveLight)"
+           filter="url(#waterGlow)"/>
+
+
+  <!-- Water rays -->
+  <g stroke="#8bd5e5"
+     opacity="0.25">
+
+    <path d="
+        M80 0
+        L250 600"
+        stroke-width="12"/>
+
+    <path d="
+        M260 0
+        L320 620"
+        stroke-width="10"/>
+
+    <path d="
+        M520 0
+        L380 620"
+        stroke-width="14"/>
+
+  </g>
+
+
+  <!-- Bubbles -->
+  <g fill="none"
+     stroke="#b8e7ef"
+     opacity="0.6">
+
+    <circle cx="120" cy="300" r="18"/>
+    <circle cx="160" cy="240" r="10"/>
+    <circle cx="470" cy="280" r="16"/>
+    <circle cx="420" cy="190" r="9"/>
+
+  </g>
+
+
+  <!-- Sunken ship wreck -->
+  <g>
+
+    <path d="
+        M80 680
+        Q260 560 500 680
+        L430 790
+        L130 780Z"
+        fill="url(#sunkenMetal)"/>
+
+
+    <!-- broken mast -->
+    <line x1="300"
+          y1="650"
+          x2="300"
+          y2="420"
+          stroke="#514638"
+          stroke-width="12"/>
+
+
+    <!-- torn sail -->
+    <path d="
+        M300 430
+        Q410 470 360 600
+        L300 550Z"
+        fill="#8c9585"
+        opacity="0.7"/>
+
+
+    <!-- holes -->
+    <circle cx="200" cy="700" r="25" fill="#263334"/>
+    <circle cx="380" cy="720" r="20" fill="#263334"/>
+
+  </g>
+
+
+  <!-- Diver -->
+  <g>
+
+    <!-- helmet -->
+    <circle cx="380"
+            cy="430"
+            r="45"
+            fill="#202a30"
+            stroke="#d7c27b"
+            stroke-width="8"/>
+
+
+    <!-- glass -->
+    <circle cx="395"
+            cy="420"
+            r="22"
+            fill="#9ddbe8"/>
+
+
+    <!-- body -->
+    <path d="
+        M320 850
+        Q370 470 450 560
+        L520 850Z"
+        fill="#10171d"/>
+
+
+    <!-- oxygen tank -->
+    <rect x="300"
+          y="550"
+          width="55"
+          height="160"
+          rx="20"
+          fill="#738a91"/>
+
+  </g>
+
+
+  <!-- Ancient message capsule -->
+  <g>
+
+    <ellipse cx="170"
+             cy="620"
+             rx="80"
+             ry="45"
+             fill="#182628"
+             stroke="#d4b45c"
+             stroke-width="8"/>
+
+
+    <rect x="120"
+          y="605"
+          width="100"
+          height="30"
+          fill="#e0c98b"/>
+
+
+    <path d="
+        M140 620
+        L200 620"
+        stroke="#6b5128"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Mysterious glowing symbol -->
+  <g>
+
+    <circle cx="470"
+            cy="560"
+            r="60"
+            fill="none"
+            stroke="#7ee1df"
+            stroke-width="5"/>
+
+
+    <path d="
+        M440 560
+        L470 520
+        L500 560
+        L470 600Z"
+        fill="none"
+        stroke="#7ee1df"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Sea plants -->
+  <g fill="#176b62">
+
+    <path d="
+        M40 850
+        Q80 650 120 850Z"/>
+
+    <path d="
+        M520 850
+        Q550 650 580 850Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="64"
+        font-weight="bold"
+        fill="#ffffff">
+    TIDAL
+  </text>
+
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#8ee1e8">
+    SECRETS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#c5edf0">
+    THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#aee1e5">
+    SORA PUBLISHING • 2019
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#82d7df"
+        stroke-width="2"
+        opacity="0.7"/>
+
+</svg>

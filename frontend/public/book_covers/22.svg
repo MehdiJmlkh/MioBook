@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="imperialSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#160d16"/>
+      <stop offset="45%" stop-color="#6e3d32"/>
+      <stop offset="100%" stop-color="#d3a35b"/>
+    </linearGradient>
+
+    <linearGradient id="goldMarble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1dfb0"/>
+      <stop offset="100%" stop-color="#806b48"/>
+    </linearGradient>
+
+    <radialGradient id="torchLight">
+      <stop offset="0%" stop-color="#ffd77a"/>
+      <stop offset="100%" stop-color="#d36d20" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Imperial Rome atmosphere -->
+  <rect width="600" height="900" fill="url(#imperialSky)"/>
+
+
+  <!-- Torch glow -->
+  <circle cx="470"
+          cy="300"
+          r="140"
+          fill="url(#torchLight)"
+          filter="url(#glow)"/>
+
+
+  <!-- Palace background -->
+  <g fill="#251b18">
+
+    <!-- palace roof -->
+    <polygon points="
+        80,360
+        300,220
+        520,360"/>
+
+    <!-- palace body -->
+    <rect x="90"
+          y="360"
+          width="420"
+          height="250"/>
+
+  </g>
+
+
+  <!-- Roman columns -->
+  <g fill="url(#goldMarble)">
+
+    <rect x="130" y="370" width="40" height="230"/>
+    <rect x="210" y="370" width="40" height="230"/>
+    <rect x="350" y="370" width="40" height="230"/>
+    <rect x="430" y="370" width="40" height="230"/>
+
+  </g>
+
+
+  <!-- Imperial eagle symbol -->
+  <g fill="#b28a42">
+
+    <circle cx="300"
+            cy="330"
+            r="45"/>
+
+    <path d="
+        M300 300
+        L260 350
+        L300 335
+        L340 350Z"/>
+
+    <path d="
+        M300 320
+        L300 380"
+        stroke="#b28a42"
+        stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Marble floor -->
+  <path d="
+      M0 650
+      Q300 570 600 650
+      L600 900
+      L0 900Z"
+      fill="#4b4034"/>
+
+
+  <!-- Mosaic pattern -->
+  <g fill="none"
+     stroke="#c29b52"
+     stroke-width="4"
+     opacity="0.7">
+
+    <circle cx="300" cy="780" r="120"/>
+    <circle cx="300" cy="780" r="70"/>
+
+    <path d="
+        M180 780
+        L420 780"/>
+
+    <path d="
+        M300 660
+        L300 900"/>
+
+  </g>
+
+
+  <!-- Young heir silhouette -->
+  <g fill="#090b10">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="560"
+            r="22"/>
+
+
+    <!-- laurel crown -->
+    <path d="
+        M260 540
+        Q300 500 340 540"
+        fill="none"
+        stroke="#c7a75b"
+        stroke-width="8"/>
+
+
+    <!-- robe -->
+    <path d="
+        M250 620
+        Q300 570 350 620
+        L430 850
+        L170 850Z"/>
+
+
+    <!-- hand holding scroll -->
+    <rect x="360"
+          y="650"
+          width="90"
+          height="25"
+          fill="#cdb27b"
+          transform="rotate(-20 360 650)"/>
+
+  </g>
+
+
+  <!-- Hidden dagger -->
+  <g>
+
+    <path d="
+        M160 720
+        L220 600
+        L240 620
+        L180 740Z"
+        fill="#c9c6b2"/>
+
+    <rect x="210"
+          y="600"
+          width="15"
+          height="60"
+          fill="#6b3b22"
+          transform="rotate(30 210 600)"/>
+
+  </g>
+
+
+  <!-- Falling red banners -->
+  <g fill="#7c2028">
+
+    <path d="
+        M80 300
+        L150 340
+        L130 500
+        L70 450Z"/>
+
+    <path d="
+        M520 300
+        L450 340
+        L470 500
+        L530 450Z"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="50"
+        font-weight="bold"
+        fill="#f7e4ad">
+    AUGUSTUS'
+  </text>
+
+  <text x="300"
+        y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="60"
+        font-weight="bold"
+        fill="#f7e4ad">
+    HEIR
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="5"
+        fill="#e5c989">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e5cf98">
+    ROMA BOOKS • 2018
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d6b66c"
+        stroke-width="2"
+        opacity="0.55"/>
+
+</svg>

@@ -1,0 +1,318 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="arcticSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#061421"/>
+      <stop offset="45%" stop-color="#24546a"/>
+      <stop offset="100%" stop-color="#d7e3dc"/>
+    </linearGradient>
+
+    <linearGradient id="snowField" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2fbff"/>
+      <stop offset="100%" stop-color="#9ab7c1"/>
+    </linearGradient>
+
+    <linearGradient id="compassMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4dc8c"/>
+      <stop offset="45%" stop-color="#9c7130"/>
+      <stop offset="100%" stop-color="#302315"/>
+    </linearGradient>
+
+    <radialGradient id="auroraGlow">
+      <stop offset="0%" stop-color="#a8ffe1" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#a8ffe1" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Arctic sky -->
+  <rect width="600" height="900" fill="url(#arcticSky)"/>
+
+
+  <!-- Aurora -->
+  <ellipse cx="300"
+           cy="180"
+           rx="260"
+           ry="120"
+           fill="url(#auroraGlow)"
+           filter="url(#soft)"/>
+
+
+  <path d="
+      M0 170
+      Q160 70 300 170
+      Q440 250 600 130"
+      fill="none"
+      stroke="#9deacb"
+      stroke-width="18"
+      opacity="0.35"/>
+
+
+  <!-- Stars -->
+  <g fill="#ffffff">
+
+    <circle cx="90" cy="120" r="3"/>
+    <circle cx="180" cy="80" r="4"/>
+    <circle cx="420" cy="110" r="3"/>
+    <circle cx="520" cy="180" r="4"/>
+
+  </g>
+
+
+  <!-- Mountain range -->
+  <path d="
+      M0 450
+      L120 260
+      L240 430
+      L370 220
+      L600 450
+      L600 650
+      L0 650Z"
+      fill="#dcebed"/>
+
+
+  <!-- Mountain shadows -->
+  <path d="
+      M120 260
+      L240 430
+      L170 400
+      L100 460Z"
+      fill="#9bb3be"/>
+
+  <path d="
+      M370 220
+      L600 450
+      L470 400
+      L330 430Z"
+      fill="#89a4b0"/>
+
+
+  <!-- Snow ground -->
+  <path d="
+      M0 560
+      Q250 500 600 580
+      L600 900
+      L0 900Z"
+      fill="url(#snowField)"/>
+
+
+  <!-- Expedition route -->
+  <path d="
+      M300 900
+      Q290 760 340 650
+      Q380 560 450 500"
+      fill="none"
+      stroke="#8b7355"
+      stroke-width="10"
+      stroke-dasharray="20 18"/>
+
+
+  <!-- Explorer -->
+  <g>
+
+    <!-- head -->
+    <circle cx="300"
+            cy="530"
+            r="28"
+            fill="#10171c"/>
+
+
+    <!-- jacket -->
+    <path d="
+        M220 850
+        Q260 560 340 580
+        Q420 650 450 850Z"
+        fill="#18242b"/>
+
+
+    <!-- backpack -->
+    <rect x="240"
+          y="620"
+          width="90"
+          height="150"
+          rx="25"
+          fill="#58624c"/>
+
+
+    <!-- hiking poles -->
+    <line x1="260"
+          y1="650"
+          x2="200"
+          y2="860"
+          stroke="#725535"
+          stroke-width="8"/>
+
+    <line x1="390"
+          y1="650"
+          x2="440"
+          y2="860"
+          stroke="#725535"
+          stroke-width="8"/>
+
+  </g>
+
+
+  <!-- Compass -->
+  <g>
+
+    <circle cx="430"
+            cy="650"
+            r="90"
+            fill="url(#compassMetal)"
+            stroke="#f5dc94"
+            stroke-width="6"/>
+
+
+    <circle cx="430"
+            cy="650"
+            r="65"
+            fill="#18242b"
+            stroke="#d5b45e"
+            stroke-width="4"/>
+
+
+    <!-- compass needle -->
+    <path d="
+        M430 590
+        L455 680
+        L430 650
+        L405 680Z"
+        fill="#e8d08a"/>
+
+
+    <text x="430"
+          y="625"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="18"
+          fill="#ffffff">
+      N
+    </text>
+
+  </g>
+
+
+  <!-- Field journal -->
+  <g>
+
+    <rect x="70"
+          y="700"
+          width="140"
+          height="100"
+          fill="#8b6336"
+          transform="rotate(-12 70 700)"/>
+
+
+    <line x1="100"
+          y1="740"
+          x2="180"
+          y2="720"
+          stroke="#ead29a"
+          stroke-width="5"/>
+
+
+    <line x1="105"
+          y1="770"
+          x2="175"
+          y2="750"
+          stroke="#ead29a"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Tent -->
+  <g>
+
+    <path d="
+        M40 650
+        L130 530
+        L220 650Z"
+        fill="#c45d39"/>
+
+
+    <line x1="130"
+          y1="530"
+          x2="130"
+          y2="650"
+          stroke="#8c3c27"
+          stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    NORTHERN
+  </text>
+
+
+  <text x="300"
+        y="180"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="75"
+        font-weight="bold"
+        fill="#bce7e2">
+    COMPASS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        letter-spacing="7"
+        fill="#e4f0e8">
+    GUIDE • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Elara Vance
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#d5e6df">
+    MAPLE LEAF PRESS • 2024
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#bde4df"
+        stroke-width="2"
+        opacity="0.8"/>
+
+</svg>

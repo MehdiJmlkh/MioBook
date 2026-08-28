@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="nightLondon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="55%" stop-color="#26364a"/>
+      <stop offset="100%" stop-color="#101820"/>
+    </linearGradient>
+
+    <linearGradient id="street" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#343c45"/>
+      <stop offset="100%" stop-color="#090d12"/>
+    </linearGradient>
+
+    <radialGradient id="lampGlow">
+      <stop offset="0%" stop-color="#ffd98a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="fog">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Background sky -->
+  <rect width="600" height="900" fill="url(#nightLondon)"/>
+
+
+  <!-- Fog -->
+  <path d="
+      M0 350
+      Q150 290 300 360
+      Q450 430 600 330"
+      fill="none"
+      stroke="#d7dde2"
+      stroke-width="80"
+      opacity="0.12"
+      filter="url(#fog)"/>
+
+
+  <!-- Moon -->
+  <circle cx="430" cy="180" r="90"
+          fill="#d9e1e8"
+          opacity="0.12"/>
+
+  <circle cx="430" cy="180" r="45"
+          fill="#eef1dc"
+          opacity="0.85"/>
+
+
+  <!-- London skyline -->
+  <g fill="#0b1118">
+
+    <rect x="70" y="390" width="90" height="260"/>
+    <rect x="185" y="340" width="120" height="310"/>
+    <rect x="330" y="380" width="100" height="270"/>
+    <rect x="465" y="300" width="70" height="350"/>
+
+    <!-- rooftops -->
+    <polygon points="70,390 115,320 160,390"/>
+    <polygon points="185,340 245,260 305,340"/>
+    <polygon points="330,380 380,320 430,380"/>
+    <polygon points="465,300 500,240 535,300"/>
+
+  </g>
+
+
+  <!-- Big Ben silhouette -->
+  <g fill="#10151c">
+
+    <rect x="250" y="210" width="55" height="220"/>
+
+    <polygon points="250,210 277,140 305,210"/>
+
+    <circle cx="277" cy="250" r="25"
+            fill="#222a33"/>
+
+    <rect x="260" y="430" width="35" height="80"/>
+
+  </g>
+
+
+  <!-- Street -->
+  <path d="
+      M0 650
+      L600 650
+      L600 900
+      L0 900Z"
+      fill="url(#street)"/>
+
+
+  <!-- Wet street reflections -->
+  <g fill="#73808c" opacity="0.3">
+    <rect x="120" y="690" width="20" height="150"/>
+    <rect x="280" y="690" width="30" height="170"/>
+    <rect x="470" y="680" width="20" height="140"/>
+  </g>
+
+
+  <!-- Street lamp -->
+  <g fill="#10151a">
+
+    <rect x="120" y="410" width="10" height="300"/>
+
+    <path d="
+      M125 420
+      Q180 410 180 470"
+      fill="none"
+      stroke="#10151a"
+      stroke-width="12"/>
+
+  </g>
+
+
+  <!-- Lamp glow -->
+  <circle cx="180" cy="480"
+          r="90"
+          fill="url(#lampGlow)"/>
+
+  <circle cx="180" cy="480"
+          r="12"
+          fill="#ffd98a"/>
+
+
+  <!-- Journalist silhouette -->
+  <g fill="#05080c">
+
+    <circle cx="360" cy="620" r="18"/>
+
+    <path d="
+      M320 720
+      Q360 650 400 720
+      L420 820
+      L300 820Z"/>
+
+    <!-- camera/notebook -->
+    <rect x="395" y="680"
+          width="35"
+          height="25"
+          transform="rotate(20 395 680)"/>
+
+  </g>
+
+
+  <!-- Rain -->
+  <g stroke="#9eb4c5" opacity="0.45">
+    <line x1="80" y1="250" x2="50" y2="340"/>
+    <line x1="200" y1="180" x2="170" y2="270"/>
+    <line x1="520" y1="200" x2="490" y2="290"/>
+    <line x1="560" y1="400" x2="530" y2="490"/>
+  </g>
+
+
+  <!-- Title -->
+  <text x="300" y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="56"
+        font-weight="bold"
+        fill="#f1f3f5">
+    LONDON
+  </text>
+
+  <text x="300" y="170"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="56"
+        font-weight="bold"
+        fill="#f1f3f5">
+    VEIL
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="6"
+        fill="#c6d2dc">
+    A THRILLER
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Julian Thorne
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#c7d1d8">
+    STERLING PRESS • 1992
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#c8d2da"
+        stroke-width="2"
+        opacity="0.4"/>
+
+</svg>

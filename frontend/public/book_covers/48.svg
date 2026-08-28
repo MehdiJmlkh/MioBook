@@ -1,0 +1,317 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="mythicSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#160f2b"/>
+      <stop offset="45%" stop-color="#5b416f"/>
+      <stop offset="100%" stop-color="#d28b54"/>
+    </linearGradient>
+
+    <linearGradient id="mountainMist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b9c9c0"/>
+      <stop offset="100%" stop-color="#38464a"/>
+    </linearGradient>
+
+    <linearGradient id="dragonScale" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4de0b0"/>
+      <stop offset="45%" stop-color="#16705d"/>
+      <stop offset="100%" stop-color="#092c2b"/>
+    </linearGradient>
+
+    <radialGradient id="spiritGlow">
+      <stop offset="0%" stop-color="#ffd86b"/>
+      <stop offset="100%" stop-color="#ffd86b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="mistBlur">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Fantasy Japan sky -->
+  <rect width="600" height="900" fill="url(#mythicSky)"/>
+
+
+  <!-- Moon -->
+  <circle cx="430"
+          cy="230"
+          r="90"
+          fill="url(#spiritGlow)"
+          filter="url(#mistBlur)"/>
+
+  <circle cx="430"
+          cy="230"
+          r="45"
+          fill="#ffe9aa"/>
+
+
+  <!-- Mountain range -->
+  <path d="
+      M0 480
+      L130 290
+      L240 420
+      L380 220
+      L600 470
+      L600 650
+      L0 650Z"
+      fill="url(#mountainMist)"/>
+
+
+  <!-- Ancient road -->
+  <path d="
+      M260 900
+      Q300 650 350 520
+      Q390 440 450 390
+      Q320 450 170 390
+      Q240 650 260 900Z"
+      fill="#9a7047"/>
+
+
+  <!-- Torii gate -->
+  <g>
+
+    <rect x="90"
+          y="390"
+          width="20"
+          height="230"
+          fill="#8c1f27"/>
+
+    <rect x="250"
+          y="390"
+          width="20"
+          height="230"
+          fill="#8c1f27"/>
+
+
+    <rect x="50"
+          y="350"
+          width="260"
+          height="35"
+          rx="10"
+          fill="#b82d35"/>
+
+
+    <path d="
+        M70 350
+        Q180 290 290 350"
+        fill="none"
+        stroke="#b82d35"
+        stroke-width="30"/>
+
+  </g>
+
+
+  <!-- Dragon -->
+  <g>
+
+    <!-- body -->
+    <path d="
+        M130 300
+        Q250 160 430 270
+        Q500 320 420 390
+        Q300 470 180 370
+        Q100 340 130 300Z"
+        fill="url(#dragonScale)"/>
+
+
+    <!-- wings -->
+    <path d="
+        M260 250
+        Q200 80 330 150
+        L390 270Z"
+        fill="#235f5b"/>
+
+
+    <path d="
+        M350 260
+        Q470 100 500 260
+        L410 330Z"
+        fill="#235f5b"/>
+
+
+    <!-- head -->
+    <path d="
+        M410 270
+        Q520 240 540 330
+        Q480 380 390 330Z"
+        fill="#12534a"/>
+
+
+    <!-- horns -->
+    <path d="
+        M470 280
+        L520 220
+        L495 300Z"
+        fill="#e5c47a"/>
+
+
+    <path d="
+        M420 290
+        L380 230
+        L405 320Z"
+        fill="#e5c47a"/>
+
+
+    <!-- eye -->
+    <circle cx="480"
+            cy="315"
+            r="10"
+            fill="#ffd45a"/>
+
+
+    <!-- whiskers -->
+    <path d="
+        M500 350
+        Q570 380 540 410"
+        fill="none"
+        stroke="#d9c48b"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Adventurer -->
+  <g fill="#11151b">
+
+    <!-- head -->
+    <circle cx="300"
+            cy="560"
+            r="25"/>
+
+
+    <!-- cloak -->
+    <path d="
+        M240 850
+        Q300 600 380 700
+        L450 850Z"/>
+
+
+    <!-- sword -->
+    <line x1="400"
+          y1="620"
+          x2="500"
+          y2="820"
+          stroke="#d8d3b2"
+          stroke-width="8"/>
+
+
+    <path d="
+        M380 620
+        L430 650"
+        stroke="#9a642d"
+        stroke-width="12"/>
+
+  </g>
+
+
+  <!-- Floating ancient scroll -->
+  <g>
+
+    <rect x="70"
+          y="650"
+          width="120"
+          height="170"
+          rx="10"
+          fill="#e6d19a"
+          transform="rotate(-12 70 650)"/>
+
+
+    <path d="
+        M100 710
+        Q130 680 160 710"
+        fill="none"
+        stroke="#80603b"
+        stroke-width="4"/>
+
+
+    <path d="
+        M95 750
+        L170 750"
+        stroke="#80603b"
+        stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Cherry blossoms -->
+  <g fill="#f3b8c7">
+
+    <circle cx="100" cy="240" r="12"/>
+    <circle cx="140" cy="210" r="10"/>
+    <circle cx="180" cy="260" r="13"/>
+    <circle cx="520" cy="190" r="12"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="105"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="65"
+        font-weight="bold"
+        fill="#ffffff">
+    DRAGON
+  </text>
+
+  <text x="300"
+        y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffd77a">
+    ROADS
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="225"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="12"
+        fill="#f4dba0">
+    ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e8d39b">
+    SORA PUBLISHING • 2020
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#e4c878"
+        stroke-width="2"
+        opacity="0.7"/>
+
+</svg>

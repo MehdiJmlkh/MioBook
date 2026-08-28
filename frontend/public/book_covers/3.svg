@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="nightSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#061522"/>
+      <stop offset="50%" stop-color="#0d3545"/>
+      <stop offset="100%" stop-color="#021017"/>
+    </linearGradient>
+
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#051923"/>
+      <stop offset="50%" stop-color="#12465b"/>
+      <stop offset="100%" stop-color="#051923"/>
+    </linearGradient>
+
+    <radialGradient id="moon">
+      <stop offset="0%" stop-color="#fff4d0"/>
+      <stop offset="100%" stop-color="#c8d4dc"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#nightSea)"/>
+
+
+  <!-- Stars -->
+  <g fill="#dcecf5">
+    <circle cx="90" cy="120" r="2"/>
+    <circle cx="150" cy="180" r="1.5"/>
+    <circle cx="240" cy="90" r="2"/>
+    <circle cx="390" cy="130" r="1.5"/>
+    <circle cx="520" cy="170" r="2"/>
+    <circle cx="470" cy="90" r="1"/>
+  </g>
+
+
+  <!-- Moon -->
+  <circle cx="430" cy="220" r="95"
+          fill="#dbe8ee"
+          opacity="0.15"
+          filter="url(#glow)"/>
+
+  <circle cx="430" cy="220" r="60"
+          fill="url(#moon)"/>
+
+
+  <!-- Ocean -->
+  <path d="
+      M0 470
+      Q150 430 300 480
+      Q450 520 600 460
+      L600 900
+      L0 900Z"
+      fill="url(#water)"/>
+
+
+  <!-- Waves -->
+  <g fill="none" stroke="#8bb9c8" opacity="0.35">
+    <path d="M0 560 Q100 530 200 560 T400 560 T600 560"
+          stroke-width="4"/>
+
+    <path d="M0 650 Q120 620 250 650 T500 650"
+          stroke-width="3"/>
+
+    <path d="M0 740 Q150 710 300 740 T600 740"
+          stroke-width="2"/>
+  </g>
+
+
+  <!-- Fog -->
+  <path d="
+      M0 420
+      Q180 350 330 430
+      Q470 500 600 410"
+      fill="none"
+      stroke="#d4e6eb"
+      stroke-width="60"
+      opacity="0.12"
+      filter="url(#glow)"/>
+
+
+  <!-- Ship silhouette -->
+  <g fill="#050c12">
+
+    <!-- hull -->
+    <path d="
+        M150 600
+        L450 600
+        L390 670
+        L210 670Z"/>
+
+    <!-- cabin -->
+    <rect x="260" y="520" width="90" height="80"/>
+
+    <!-- mast -->
+    <rect x="300" y="390" width="8" height="140"/>
+
+    <!-- sail -->
+    <path d="
+        M308 410
+        L410 510
+        L308 510Z"/>
+
+    <!-- flag -->
+    <path d="
+        M308 400
+        L360 420
+        L308 440Z"
+        fill="#102735"/>
+
+  </g>
+
+
+  <!-- Mysterious light on ship -->
+  <circle cx="305" cy="550" r="8" fill="#ffd87a"/>
+  <circle cx="305" cy="550" r="25"
+          fill="#ffd87a"
+          opacity="0.2"
+          filter="url(#glow)"/>
+
+
+  <!-- Title -->
+  <text x="300" y="115"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#f4f7f8">
+    SILENT
+  </text>
+
+  <text x="300" y="175"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="54"
+        font-weight="bold"
+        fill="#f4f7f8">
+    TIDES
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300" y="230"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        letter-spacing="5"
+        fill="#b7d9e2">
+    A THRILLER • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300" y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+    Hiroshi Tanaka
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300" y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#c5dde5">
+    SORA PUBLISHING • 2021
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22" y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#b9d8df"
+        stroke-width="2"
+        opacity="0.4"/>
+
+</svg>

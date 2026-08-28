@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+
+  <defs>
+
+    <linearGradient id="romanSunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2b1711"/>
+      <stop offset="45%" stop-color="#9b542d"/>
+      <stop offset="100%" stop-color="#d8b06a"/>
+    </linearGradient>
+
+    <linearGradient id="battleGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#705033"/>
+      <stop offset="100%" stop-color="#21150e"/>
+    </linearGradient>
+
+    <linearGradient id="bronzeArmor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0c36a"/>
+      <stop offset="50%" stop-color="#9b6424"/>
+      <stop offset="100%" stop-color="#3d2610"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#ffd98b"/>
+      <stop offset="100%" stop-color="#ffd98b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+
+  </defs>
+
+
+  <!-- Sky -->
+  <rect width="600" height="900" fill="url(#romanSunset)"/>
+
+
+  <!-- Sun -->
+  <circle cx="300"
+          cy="250"
+          r="140"
+          fill="url(#sunGlow)"
+          filter="url(#soft)"/>
+
+  <circle cx="300"
+          cy="250"
+          r="55"
+          fill="#ffd98d"/>
+
+
+  <!-- Distant battlefield hills -->
+  <path d="
+      M0 500
+      Q160 360 310 500
+      Q450 380 600 500
+      L600 900
+      L0 900Z"
+      fill="#3b2518"/>
+
+
+  <!-- Roman road -->
+  <path d="
+      M240 900
+      L360 900
+      L330 500
+      L270 500Z"
+      fill="#b39a73"/>
+
+
+  <!-- Road stones -->
+  <g stroke="#78634a"
+     stroke-width="3">
+
+    <line x1="260" y1="750" x2="340" y2="750"/>
+    <line x1="265" y1="680" x2="335" y2="680"/>
+    <line x1="270" y1="610" x2="330" y2="610"/>
+
+  </g>
+
+
+  <!-- Broken battlefield banners -->
+  <g>
+
+    <rect x="90"
+          y="380"
+          width="8"
+          height="260"
+          fill="#5c381d"/>
+
+    <path d="
+        M98 390
+        L200 430
+        L98 480Z"
+        fill="#7f2020"/>
+
+
+    <rect x="510"
+          y="350"
+          width="8"
+          height="280"
+          fill="#5c381d"/>
+
+    <path d="
+        M510 360
+        L420 410
+        L510 460Z"
+        fill="#8b6a26"/>
+
+  </g>
+
+
+  <!-- Centurion warrior -->
+  <g>
+
+    <!-- helmet -->
+    <circle cx="300"
+            cy="560"
+            r="42"
+            fill="url(#bronzeArmor)"/>
+
+
+    <!-- helmet crest -->
+    <path d="
+        M250 525
+        Q300 470 350 525"
+        fill="#8c1e20"/>
+
+
+    <!-- face shadow -->
+    <rect x="270"
+          y="570"
+          width="60"
+          height="40"
+          fill="#2a211b"/>
+
+
+    <!-- armor body -->
+    <path d="
+        M190 900
+        Q210 610 300 600
+        Q390 610 410 900Z"
+        fill="url(#bronzeArmor)"/>
+
+
+    <!-- armor details -->
+    <g stroke="#d9ad56"
+       stroke-width="4">
+
+      <line x1="250" y1="680" x2="350" y2="680"/>
+      <line x1="240" y1="740" x2="360" y2="740"/>
+
+    </g>
+
+
+    <!-- cape -->
+    <path d="
+        M340 630
+        Q470 700 450 900
+        L350 900Z"
+        fill="#5e1820"/>
+
+
+    <!-- sword -->
+    <path d="
+        M180 780
+        L120 570"
+        stroke="#d8d6ca"
+        stroke-width="12"/>
+
+
+    <path d="
+        M105 580
+        L145 580"
+        stroke="#b88436"
+        stroke-width="18"/>
+
+
+    <!-- shield -->
+    <path d="
+        M120 650
+        Q180 620 210 680
+        L170 800
+        Q120 760 120 650Z"
+        fill="#72251d"
+        stroke="#d3a14c"
+        stroke-width="5"/>
+
+
+    <circle cx="165"
+            cy="700"
+            r="25"
+            fill="none"
+            stroke="#d3a14c"
+            stroke-width="4"/>
+
+  </g>
+
+
+  <!-- Fallen helmet -->
+  <g>
+
+    <path d="
+        M70 820
+        Q120 760 170 820"
+        fill="#17130f"/>
+
+    <path d="
+        M85 810
+        Q120 850 155 810"
+        fill="none"
+        stroke="#b47a29"
+        stroke-width="5"/>
+
+  </g>
+
+
+  <!-- Title -->
+  <text x="300"
+        y="110"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="70"
+        font-weight="bold"
+        fill="#ffffff">
+    CENTURION’S
+  </text>
+
+
+  <text x="300"
+        y="185"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="80"
+        font-weight="bold"
+        fill="#f2c873">
+    PATH
+  </text>
+
+
+  <!-- Genre -->
+  <text x="300"
+        y="235"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="8"
+        fill="#ffe1a8">
+    HISTORICAL • ADVENTURE
+  </text>
+
+
+  <!-- Author -->
+  <text x="300"
+        y="825"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="32"
+        fill="#ffffff">
+    Marcus Valerius
+  </text>
+
+
+  <!-- Publisher -->
+  <text x="300"
+        y="865"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12"
+        letter-spacing="3"
+        fill="#e6c98d">
+    ROMA BOOKS • 2011
+  </text>
+
+
+  <!-- Border -->
+  <rect x="22"
+        y="22"
+        width="556"
+        height="856"
+        fill="none"
+        stroke="#d3a052"
+        stroke-width="2"/>
+
+</svg>
