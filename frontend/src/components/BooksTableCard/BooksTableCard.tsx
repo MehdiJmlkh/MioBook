@@ -8,6 +8,7 @@ import "./BooksTableCard.css";
 import NoResult from "../../assets/no-result.svg";
 import EmptyIcon from "../EmptyIcon";
 import BookImage from "../BookImage";
+import Link from "../Link";
 
 interface Props {
   className?: string;
@@ -40,12 +41,29 @@ const BooksTableCard = ({ className }: Props) => {
           </thead>
           <tbody>
             {books?.map((book) => (
-              <tr>
+              <tr className="book-table__row">
                 <td className="table-image-row">
-                  <BookImage className="table-image"  imageLink={book.imageLink} noImage={noImage}/>
+                  <Link to={`/books/${book.id}`}>
+                    <BookImage
+                      className="table-image"
+                      imageLink={book.imageLink}
+                      noImage={noImage}
+                    />
+                  </Link>
                 </td>
-                <td data-label="Name">{book.title}</td>
-                <td data-label="Author">{book.author}</td>
+                <td data-label="Name">
+                  <Link className="link--padded" to={`/books/${book.id}`}>
+                    {book.title}{" "}
+                  </Link>
+                </td>
+                <td data-label="Author">
+                  <Link
+                    className="link--padded"
+                    to={`/authors/${book.authorId}`}
+                  >
+                    {book.author}
+                  </Link>
+                </td>
                 <td data-label="Genre">{book.genres.join(", ")}</td>
                 <td data-label="Publisher">{book.publisher}</td>
                 <td data-label="Published Year">{book.year}</td>
