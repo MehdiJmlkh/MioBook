@@ -14,6 +14,7 @@ public class CartItemDto {
     private String publisher;
     private Set<String> genres;
     private Integer year;
+    private String imageLink;
     private Boolean isBorrowed;
     private Integer borrowDays;
     private Integer price;
@@ -31,6 +32,7 @@ public class CartItemDto {
         cartItemDto.publisher = book.getPublisher();
         cartItemDto.genres = book.getGenreNames();
         cartItemDto.year = book.getYear();
+        cartItemDto.imageLink = book.getImageLink();
         cartItemDto.price = book.getPrice();
         cartItemDto.isBorrowed = cartItem.getIsBorrowed();
         cartItemDto.borrowDays = cartItem.getBorrowDays();
