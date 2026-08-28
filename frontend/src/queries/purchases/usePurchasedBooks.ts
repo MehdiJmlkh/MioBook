@@ -9,6 +9,7 @@ interface PurchasedBook {
   publisher: string;
   genres: string[];
   year: number;
+  imageLink: string;
   isBorrowed: boolean;
   expiredDate: string;
 }

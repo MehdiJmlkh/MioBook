@@ -1,6 +1,6 @@
 import Table from "../Table";
 import "./PurchasedBooks.css";
-import BookImage from "../../assets/book.svg";
+import noImage from "../../assets/book.svg";
 import BookIcon from "../../assets/book-icon.svg";
 import Button from "../Button";
 import Card from "../Card";
@@ -11,6 +11,7 @@ import Link from "../Link";
 import NoResult from "../../assets/no-result.svg";
 import { useAuth } from "../../queries/auth/useAuth";
 import EmptyIcon from "../EmptyIcon";
+import BookImage from "../BookImage";
 
 interface Props {
   className?: string;
@@ -51,7 +52,11 @@ const PurchasedBooks = ({ className }: Props) => {
                   className="table-image-row"
                   onClick={() => navigate(`/books/${book.id}`)}
                 >
-                  <img className="table-image" src={BookImage} alt="" />
+                  <BookImage
+                    className="table-image"
+                    imageLink={book.imageLink}
+                    noImage={noImage}
+                  />
                 </td>
                 <td data-label="Name">
                   <Link className="link--padded" to={`/books/${book.id}`}>
