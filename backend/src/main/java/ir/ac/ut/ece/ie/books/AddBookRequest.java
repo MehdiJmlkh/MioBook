@@ -21,6 +21,7 @@ public class AddBookRequest {
     private Integer price;
     private String synopsis;
     private String content;
+    private String imageLink;
 
     @NotEmpty(message = "Genres must not be empty")
     private Set<String> genres;
