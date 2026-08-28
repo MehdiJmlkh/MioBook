@@ -29,6 +29,10 @@
   border-bottom: 1px solid var(--color-secondary);
 }
 
+.table-image-row {
+  justify-self: center;
+} 
+
 @media (max-width: 768px) {
   .table thead {
     display: none;
