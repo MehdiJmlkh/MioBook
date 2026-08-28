@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SearchBox = ({ className }: Props) => {
-  const filters = ["Author", "Title", "Genre"];
+  const filters = ["Title", "Author", "Genre"];
 
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
