@@ -14,6 +14,7 @@ public class PurchasedBookDto {
     private Set<String> genres;
     private Integer year;
     private Integer price;
+    private String imageLink;
     private Boolean isBorrowed;
     private String expiredDate;
 }

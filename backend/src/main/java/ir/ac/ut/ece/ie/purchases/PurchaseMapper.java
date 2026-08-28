@@ -24,6 +24,7 @@ public interface PurchaseMapper {
         dto.setGenres(book.getGenreNames());
         dto.setYear(book.getYear());
         dto.setPrice(item.getPrice());
+        dto.setImageLink(book.getImageLink());
         dto.setIsBorrowed(item.getIsBorrowed());
         if (item.getIsBorrowed()) {
             dto.setExpiredDate(
