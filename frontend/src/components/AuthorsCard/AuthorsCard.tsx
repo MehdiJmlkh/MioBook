@@ -5,6 +5,7 @@ import EmptyIcon from "../EmptyIcon";
 import Table from "../Table";
 import NoResult from "../../assets/no-result.svg";
 import "./AuthorsCard.css";
+import Link from "../Link";
 
 const AuthorsCard = () => {
   const { data: authors } = useAuthors();
@@ -31,7 +32,11 @@ const AuthorsCard = () => {
                 <td className="table-image-row">
                   <img className="table-image" src={author.imageLink} alt="" />
                 </td>
-                <td data-label="Name">{author.name}</td>
+                <td data-label="Name">
+                  <Link className="link--padded" to={`/authors/${author.id}`}>
+                    {author.name}
+                  </Link>
+                </td>
                 <td data-label="Pen Name">{author.penName}</td>
                 <td data-label="Nationality">{author.nationality}</td>
                 <td data-label="Born">{author.born}</td>
