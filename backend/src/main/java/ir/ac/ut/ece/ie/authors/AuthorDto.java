@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 @Data
 public class AuthorDto {
+    private Long id;
     private String name;
     private String penName;
     private String nationality;
