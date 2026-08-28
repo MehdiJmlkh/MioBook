@@ -30,7 +30,13 @@ const AuthorsCard = () => {
             {authors?.map((author) => (
               <tr>
                 <td className="table-image-row">
-                  <img className="table-image" src={author.imageLink} alt="" />
+                  <Link className="link--padded" to={`/authors/${author.id}`}>
+                    <img
+                      className="table-image"
+                      src={author.imageLink}
+                      alt=""
+                    />
+                  </Link>
                 </td>
                 <td data-label="Name">
                   <Link className="link--padded" to={`/authors/${author.id}`}>
