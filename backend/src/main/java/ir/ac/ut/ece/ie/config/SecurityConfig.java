@@ -76,8 +76,14 @@ public class SecurityConfig {
                 c.authenticationEntryPoint(
                         new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
                 c.accessDeniedHandler(
-                        (request, response, accessDeniedException) ->
-                        response.setStatus(HttpStatus.FORBIDDEN.value()));
+                        (request, response, accessDeniedException) -> {
+                            response.setStatus(HttpStatus.FORBIDDEN.value());
+                            response.setContentType("application/json");
+                            response.getWriter().write("""
+                                {"error": "You don't have permission for this action"}
+                            """);
+                        }
+                        );
             });
 
         return http.build();
