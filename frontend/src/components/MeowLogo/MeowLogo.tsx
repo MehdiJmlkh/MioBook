@@ -1,5 +1,5 @@
 import "./MeowLogo.css";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
 const MeowIcon = () => {
