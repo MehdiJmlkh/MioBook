@@ -1,5 +1,5 @@
 import BookIcon from "../../assets/book-icon.svg";
-import BookImage from "../../assets/book.svg";
+import noImage from "../../assets/book.svg";
 import { useBooks } from "../../queries/books/useBooks";
 import Card from "../Card";
 import Price from "../Price";
@@ -7,6 +7,7 @@ import Table from "../Table";
 import "./BooksTableCard.css";
 import NoResult from "../../assets/no-result.svg";
 import EmptyIcon from "../EmptyIcon";
+import BookImage from "../BookImage";
 
 interface Props {
   className?: string;
@@ -41,7 +42,7 @@ const BooksTableCard = ({ className }: Props) => {
             {books?.map((book) => (
               <tr>
                 <td className="table-image-row">
-                  <img className="table-image" src={BookImage} alt="" />
+                  <BookImage className="table-image"  imageLink={book.imageLink} noImage={noImage}/>
                 </td>
                 <td data-label="Name">{book.title}</td>
                 <td data-label="Author">{book.author}</td>
