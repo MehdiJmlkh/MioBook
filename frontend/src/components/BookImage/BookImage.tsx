@@ -12,9 +12,7 @@ const BookImage = ({
   className,
   noImage = defaultNoImage,
 }: Props) => {
-  const baseUrl = window.location.origin;
-
-  const imageSrc = imageLink ? imageLink : noImage;
+  const imageSrc = imageLink ? `/${imageLink}` : noImage;
 
   return (
     <img
