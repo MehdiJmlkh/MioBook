@@ -3,6 +3,7 @@ import { BookPage } from "../queries/books/useFilteredBooks";
 import apiClient from "./apiClient";
 
 export interface Author {
+  id: number;
   name: string;
   penName: string;
   nationality: string;
