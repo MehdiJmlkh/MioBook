@@ -10,6 +10,7 @@ interface CartItem {
   isBorrowed: boolean;
   borrowDays: number;
   price: number;
+  imageLink: string;
   finalPrice: number;
 }
 

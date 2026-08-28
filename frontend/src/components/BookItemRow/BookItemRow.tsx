@@ -1,4 +1,5 @@
-import BookImage from "../../assets/book.svg";
+import noImage from "../../assets/book.svg";
+import BookImage from "../BookImage";
 import Button from "../Button";
 import Link from "../Link";
 import Price from "../Price";
@@ -12,6 +13,7 @@ interface Item {
   isBorrowed: boolean;
   borrowDays?: number;
   price: number;
+  imageLink: string;
   finalPrice: number;
 }
 
@@ -26,14 +28,22 @@ const BookItemRow = <T extends Item>({ item, addBtn, onClick }: Props<T>) => {
     <tr>
       <td className="table-image-row">
         <Link to={`/books/${item.bookId}`}>
-          <img className="table-image" src={BookImage} alt="" />
+          <BookImage
+            className="table-image"
+            imageLink={item.imageLink}
+            noImage={noImage}
+          />
         </Link>
       </td>
       <td data-label="Name">
-        <Link className="link--padded" to={`/books/${item.bookId}`}>{item.title}</Link>
+        <Link className="link--padded" to={`/books/${item.bookId}`}>
+          {item.title}
+        </Link>
       </td>
       <td data-label="Author">
-        <Link className="link--padded" to={`/authors/${item.authorId}`}>{item.author}</Link>
+        <Link className="link--padded" to={`/authors/${item.authorId}`}>
+          {item.author}
+        </Link>
       </td>
       <td data-label="Price">
         <span>
