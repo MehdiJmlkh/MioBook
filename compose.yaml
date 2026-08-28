@@ -16,6 +16,7 @@ services:
       start_period: 10s
 
   backend:
+    image: mehdijmlkh/miobook-backend:latest
     build: ./backend
     environment:
       SPRING_FRONTEND_URL: http://localhost
@@ -36,6 +37,7 @@ services:
       start_period: 20s
 
   frontend:
+    image: mehdijmlkh/miobook-frontend:latest
     build: ./frontend
     ports:
       - "80:80"
