@@ -37,7 +37,10 @@ const Profile = () => {
             <HiOutlineUserCircle className="profile-menu__icon" />
             Profile
           </Link>
-          <Link to="/user" className="profile-menu__item">
+          <Link
+            to={user?.role === "ADMIN" ? "/admin" : "/user"}
+            className="profile-menu__item"
+          >
             <MdOutlineArticle className="profile-menu__icon" />
             My Books
           </Link>
