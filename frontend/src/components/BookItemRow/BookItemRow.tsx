@@ -25,7 +25,7 @@ interface Props<T> {
 
 const BookItemRow = <T extends Item>({ item, addBtn, onClick }: Props<T>) => {
   return (
-    <tr>
+    <tr className="book-item-row">
       <td className="table-image-row">
         <Link to={`/books/${item.bookId}`}>
           <BookImage
