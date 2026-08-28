@@ -39,7 +39,6 @@
   .table tr,
   .table td {
     display: block;
-    width: 100%;
   }
 
   .table tbody tr {
