@@ -6,6 +6,7 @@ interface PurchaseItem {
   authorId: number;
   title: string;
   author: string;
+  imageLink: string;
   isBorrowed: boolean;
   borrowDays: number;
   price: number;
