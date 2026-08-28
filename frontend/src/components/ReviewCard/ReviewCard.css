@@ -5,8 +5,8 @@
   align-items: center;
   grid-template-areas:
     "avatar heading rating"
-    "avatar date rating"
-    "avatar content rating";
+    "avatar date date"
+    "avatar content content";
 }
 
 .review__avatar {
@@ -25,7 +25,7 @@
 .review__heading {
   font-size: 1.6rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   grid-area: heading;
 }
 
@@ -41,7 +41,8 @@
   font-weight: 300;
   color: #aaa;
   grid-area: date;
-  text-align: right;
+  text-align: left;
+  margin: 1rem 0;
 }
 
 .review__rating {
