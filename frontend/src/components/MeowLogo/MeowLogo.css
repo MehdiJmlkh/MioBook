@@ -1,12 +1,11 @@
 .meow-icon {
-  background: var(--color-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 8.5rem;
   border-radius: 4.25rem;
-  padding: 0.2rem 0;
   cursor: pointer;
+  transform: scale(1.6);
+  margin-left: 1rem;
 }
 
 .meow-icon img {
