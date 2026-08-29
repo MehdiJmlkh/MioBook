@@ -27,16 +27,16 @@ INSERT INTO users (id, username, password, email, address_id) VALUES (11, 'noah_
 INSERT INTO customers (id) VALUES (2), (3), (4), (5), (6), (7), (8), (9), (10), (11);
 INSERT INTO admins (id) VALUES (1);
 
-INSERT INTO wallets (customer_id, balance) VALUES (2, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (3, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (4, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (5, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (6, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (7, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (8, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (9, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (10, 50);
-INSERT INTO wallets (customer_id, balance) VALUES (11, 50);
+INSERT INTO wallets (customer_id, balance) VALUES (2, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (3, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (4, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (5, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (6, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (7, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (8, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (9, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (10, 5000);
+INSERT INTO wallets (customer_id, balance) VALUES (11, 5000);
 
 INSERT INTO carts (customer_id) VALUES (2);
 INSERT INTO carts (customer_id) VALUES (3);

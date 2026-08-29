@@ -13,7 +13,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (10, 
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (11, 3, 'I really enjoyed this book and found the story engaging.', CURRENT_DATE, 11, 89);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (12, 5, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 7, 73);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (13, 2, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 6, 69);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (14, 2, 'Thrilling from beginning to end.', CURRENT_DATE, 2, 77);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (15, 2, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 11, 87);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (16, 4, 'Historical details were very immersive.', CURRENT_DATE, 10, 60);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (17, 3, 'I learned a lot while reading this.', CURRENT_DATE, 9, 83);
@@ -45,7 +44,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (43, 
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (44, 2, 'The guide sections were clear and useful.', CURRENT_DATE, 8, 73);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (45, 3, 'The guide sections were clear and useful.', CURRENT_DATE, 6, 80);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (46, 2, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 3, 84);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (47, 5, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 2, 59);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (48, 3, 'Historical details were very immersive.', CURRENT_DATE, 6, 100);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (49, 3, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 11, 72);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (50, 2, 'Well written and easy to follow.', CURRENT_DATE, 3, 59);
@@ -57,7 +55,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (56, 
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (57, 3, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 4, 85);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (58, 2, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 8, 69);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (59, 4, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 11, 86);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (61, 4, 'Thrilling from beginning to end.', CURRENT_DATE, 2, 73);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (62, 3, 'I expected more depth from the story.', CURRENT_DATE, 5, 96);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (63, 3, 'I expected more depth from the story.', CURRENT_DATE, 11, 63);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (64, 3, 'I really enjoyed this book and found the story engaging.', CURRENT_DATE, 8, 60);
@@ -120,7 +117,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (130,
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (131, 5, 'Some parts dragged but the ending was satisfying.', CURRENT_DATE, 11, 95);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (133, 2, 'Thrilling from beginning to end.', CURRENT_DATE, 3, 74);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (134, 5, 'Historical details were very immersive.', CURRENT_DATE, 8, 57);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (136, 2, 'I really enjoyed this book and found the story engaging.', CURRENT_DATE, 2, 83);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (137, 1, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 8, 84);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (138, 3, 'A decent read for a quiet weekend.', CURRENT_DATE, 8, 58);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (140, 1, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 10, 82);
@@ -149,7 +145,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (175,
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (176, 5, 'I learned a lot while reading this.', CURRENT_DATE, 9, 90);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (177, 1, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 4, 74);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (178, 4, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 5, 73);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (179, 2, 'The pacing was a little slow but overall it was a good read.', CURRENT_DATE, 2, 97);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (180, 3, 'The adventure elements were exciting.', CURRENT_DATE, 2, 99);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (181, 2, 'The adventure elements were exciting.', CURRENT_DATE, 7, 70);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (184, 1, 'Thrilling from beginning to end.', CURRENT_DATE, 11, 94);
@@ -212,17 +207,14 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (275,
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (277, 1, 'Thrilling from beginning to end.', CURRENT_DATE, 3, 89);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (282, 1, 'The adventure elements were exciting.', CURRENT_DATE, 6, 62);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (283, 1, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 3, 86);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (285, 5, 'I learned a lot while reading this.', CURRENT_DATE, 2, 91);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (286, 4, 'Plot twists made this a very entertaining experience.', CURRENT_DATE, 4, 86);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (289, 5, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 10, 72);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (290, 5, 'Plot twists made this a very entertaining experience.', CURRENT_DATE, 5, 87);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (292, 2, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 7, 59);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (294, 1, 'Some parts dragged but the ending was satisfying.', CURRENT_DATE, 4, 92);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (300, 1, 'I expected more depth from the story.', CURRENT_DATE, 2, 69);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (304, 4, 'Well written and easy to follow.', CURRENT_DATE, 4, 76);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (306, 3, 'Thrilling from beginning to end.', CURRENT_DATE, 4, 99);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (310, 2, 'I expected more depth from the story.', CURRENT_DATE, 10, 77);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (311, 2, 'I really enjoyed this book and found the story engaging.', CURRENT_DATE, 2, 98);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (315, 4, 'The guide sections were clear and useful.', CURRENT_DATE, 5, 58);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (318, 4, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 4, 67);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (319, 1, 'Plot twists made this a very entertaining experience.', CURRENT_DATE, 10, 81);
@@ -242,7 +234,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (346,
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (347, 2, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 4, 57);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (350, 2, 'Well written and easy to follow.', CURRENT_DATE, 4, 71);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (354, 3, 'A decent read for a quiet weekend.', CURRENT_DATE, 4, 61);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (355, 3, 'Some parts dragged but the ending was satisfying.', CURRENT_DATE, 2, 72);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (357, 4, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 11, 82);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (360, 2, 'Some parts dragged but the ending was satisfying.', CURRENT_DATE, 8, 99);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (363, 4, 'Characters were interesting and the setting felt vivid.', CURRENT_DATE, 9, 67);
@@ -368,7 +359,6 @@ INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (775,
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (779, 2, 'Well written and easy to follow.', CURRENT_DATE, 11, 58);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (786, 4, 'The pacing was a little slow but overall it was a good read.', CURRENT_DATE, 3, 91);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (789, 4, 'Not my favorite but it still had some memorable moments.', CURRENT_DATE, 2, 88);
-INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (801, 2, 'A fantastic book that kept me turning pages.', CURRENT_DATE, 2, 63);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (807, 2, 'Plot twists made this a very entertaining experience.', CURRENT_DATE, 7, 76);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (809, 1, 'I learned a lot while reading this.', CURRENT_DATE, 7, 64);
 INSERT INTO reviews (id, rate, comment, date, customer_id, book_id) VALUES (813, 1, 'Plot twists made this a very entertaining experience.', CURRENT_DATE, 3, 81);
