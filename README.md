@@ -1,8 +1,24 @@
 
+# MioBook: A Bookstore Web Application
+
+A full-stack bookstore application developed incrementally across multiple phases, covering domain logic, backend development, frontend integration, databases, security, containerization, and orchestration.
+
+
+## Live Demo
+
+The website is publicly accessible at [**miobook.up.railway.app**](https://miobook.up.railway.app).
+
+To explore the application with populated data, you can use one of the following accounts:
+
+| Role     | Username | Password |
+| -------- | -------- | -------- |
+| Customer | `user`   | `1234`   |
+| Manager  | `admin`  | `1234`   |
+
+Alternatively, you can create a new account by signing up.
+
 
 ## How to Run
-
-The website is publicly accessible at **[miobook.up.railway.app](https://miobook.up.railway.app)**.
 
 Alternatively, you can run the project locally using Docker Compose.
 
