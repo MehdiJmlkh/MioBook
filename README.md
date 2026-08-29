@@ -8,15 +8,14 @@ A full-stack bookstore application developed incrementally across multiple phase
 
 The website is publicly accessible at [**miobook.up.railway.app**](https://miobook.up.railway.app).
 
-To explore the application with populated data, you can use one of the following accounts:
+To explore the application with pre-populated data, use one of the following accounts:
 
 | Role     | Username | Password |
 | -------- | -------- | -------- |
 | Customer | `user`   | `1234`   |
 | Manager  | `admin`  | `1234`   |
 
-Alternatively, you can create a new account by signing up.
-
+You can also create a new account by signing up.
 
 ## How to Run
 
@@ -83,7 +82,7 @@ Dockerized the frontend and backend and used Docker Compose to run the complete 
 
 ### Phase 8 - Kubernetes
 
-Orchestrated the containerized application using Kubernetes, introducing distributed container management and orchestration.
+Orchestrated and managed the containerized application using Kubernetes across a distributed environment.
 
 ### Phase 9 - Deployment
 
