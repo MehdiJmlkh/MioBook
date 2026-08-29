@@ -95,3 +95,6 @@ Orchestrated and managed the containerized application using Kubernetes across a
 ### Phase 9 - Deployment
 
 Deployed the frontend, backend, and database on Railway.
+
+
+> For detailed descriptions and requirements of each phase, see the corresponding documents in the [`docs`](docs/) directory.
