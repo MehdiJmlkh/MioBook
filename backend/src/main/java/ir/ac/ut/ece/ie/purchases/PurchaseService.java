@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 @AllArgsConstructor
 @Service
@@ -19,6 +20,7 @@ public class PurchaseService {
         var purchases = purchaseRepository.findByUsername(username);
 
         var purchaseDtoList = purchases.stream()
+                .sorted(Comparator.comparing(Purchase::getDate).reversed())
                 .map(purchaseMapper::toDto)
                 .toList();
 
