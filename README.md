@@ -34,3 +34,41 @@ docker compose up --build
 
 > **Note:** If you run the project locally, Google login is not available because the Google OAuth client secret is not provided.
 
+
+## Phases
+
+### Phase 1 - Domain & Static Frontend
+
+Implemented the core bookstore domain logic with Spring Boot, built static pages using HTML and CSS, and added unit tests.
+
+### Phase 2 - Completed RESTful Backend
+
+Added new features, completed the RESTful HTTP APIs with Spring Boot, and expanded the unit test coverage.
+
+### Phase 3 - React Frontend
+
+Rebuilt the frontend using React and connected it to the backend APIs, while adding and updating application pages.
+
+### Phase 4 - MySQL & ORM
+
+Introduced persistent data storage with MySQL, designed the relational database schema, and integrated it with the application using ORM.
+
+### Phase 5 - Redis Sessions
+
+Introduced Redis as a NoSQL database for efficient and persistent user session management.
+
+### Phase 6 - Authentication & Security
+
+Implemented authentication, authorization, and essential security measures to protect application resources and user data.
+
+### Phase 7 - Docker
+
+Dockerized the frontend and backend and used Docker Compose to run the complete application stack together with its database.
+
+### Phase 8 - Kubernetes
+
+Orchestrated the containerized application using Kubernetes, introducing distributed container management and orchestration.
+
+### Phase 9 - Deployment
+
+Deployed the frontend, backend, and database on Railway.
