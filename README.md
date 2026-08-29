@@ -50,6 +50,14 @@ docker compose up --build
 > **Note:** If you run the project locally, Google login is not available because the Google OAuth client secret is not provided.
 
 
+## Technologies
+
+- **Backend:** Java, Spring Boot, Spring Security, JPA/Hibernate
+- **Frontend:** React, HTML, CSS, Bootstrap
+- **Databases:** MySQL, Redis
+- **DevOps & Deployment:** Docker, Docker Compose, Kubernetes, Railway
+
+
 ## Phases
 
 ### Phase 1 - Domain & Static Frontend
