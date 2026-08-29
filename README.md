@@ -47,6 +47,8 @@ If you prefer to build the images locally, run:
 docker compose up --build
 ```
 
+Once the services are running, open **http://localhost** to access the application.
+
 > **Note:** If you run the project locally, Google login is not available because the Google OAuth client secret is not provided.
 
 
