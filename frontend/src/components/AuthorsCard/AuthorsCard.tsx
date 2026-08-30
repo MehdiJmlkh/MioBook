@@ -6,6 +6,7 @@ import Table from "../Table";
 import NoResult from "../../assets/no-result.svg";
 import "./AuthorsCard.css";
 import Link from "../Link";
+import NoImage from "../../assets/author.svg";
 
 const AuthorsCard = () => {
   const { data: authors } = useAuthors();
@@ -33,8 +34,12 @@ const AuthorsCard = () => {
                   <Link className="link--padded" to={`/authors/${author.id}`}>
                     <img
                       className="table-image"
-                      src={author.imageLink}
+                      src={author.imageLink || NoImage}
                       alt=""
+                      onError={(error) => {
+                        error.currentTarget.onerror = null;
+                        error.currentTarget.src = NoImage;
+                      }}
                     />
                   </Link>
                 </td>
