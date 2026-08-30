@@ -34,6 +34,13 @@ const SearchResultPage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   useNoScroll([showSidebar]);
 
+  const title = searchParams.get("title");
+  const author = searchParams.get("author");
+  const genre = searchParams.get("genre");
+  const year = searchParams.get("year");
+
+  const shownSearchParam = title || author || genre;
+
   return (
     <div>
       <Backdrop enabled={showSidebar} />
@@ -44,7 +51,11 @@ const SearchResultPage = () => {
       <div className="page-container search-result__main ">
         <div className="search-result__heading">
           <h1 className="search-result__title">
-            Results for &lt;Search Parameters&gt;{" "}
+            {shownSearchParam
+              ? `Results for "${shownSearchParam}"`
+              : year
+                ? `Results for books from ${year}`
+                : "Search Results"}
           </h1>
           <Button
             onClick={() => setShowSidebar(true)}
