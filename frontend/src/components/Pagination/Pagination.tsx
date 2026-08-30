@@ -17,28 +17,30 @@ const Pagination = ({ pageNumber, totalPages, onClick }: Props) => {
   }
 
   return (
-    <div className="pagination">
-      <IoChevronBack
-        className="pagination__icon"
-        onClick={() => onClick(Math.max(pageNumber - 1, 1))}
-      />
+    <div className="pagination-container">
+      <div className="pagination">
+        <IoChevronBack
+          className="pagination__icon"
+          onClick={() => onClick(Math.max(pageNumber - 1, 1))}
+        />
 
-      {pages.slice(startIndex, endIndex).map((page) => (
-        <span
-          key={page}
-          className={`page-number ${
-            page === pageNumber ? "page-number--current-page" : ""
-          }`}
-          onClick={() => onClick(page)}
-        >
-          {page}
-        </span>
-      ))}
+        {pages.slice(startIndex, endIndex).map((page) => (
+          <span
+            key={page}
+            className={`page-number ${
+              page === pageNumber ? "page-number--current-page" : ""
+            }`}
+            onClick={() => onClick(page)}
+          >
+            {page}
+          </span>
+        ))}
 
-      <IoChevronForward
-        className="pagination__icon"
-        onClick={() => onClick(Math.min(pageNumber + 1, totalPages))}
-      />
+        <IoChevronForward
+          className="pagination__icon"
+          onClick={() => onClick(Math.min(pageNumber + 1, totalPages))}
+        />
+      </div>
     </div>
   );
 };
