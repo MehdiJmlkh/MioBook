@@ -4,10 +4,9 @@ import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.books.BookNotInStockException;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
-import ir.ac.ut.ece.ie.common.UserNotFoundException;
+import ir.ac.ut.ece.ie.common.ProdProfileException;
+import ir.ac.ut.ece.ie.config.ProfileConfig;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
-import ir.ac.ut.ece.ie.users.CustomerRepository;
-import ir.ac.ut.ece.ie.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -23,6 +22,7 @@ public class ReviewService {
     private final PurchaseItemRepository purchaseItemRepository;
     private final ReviewMapper reviewMapper;
     private final AuthService authService;
+    private final ProfileConfig profileConfig;
 
     public ReviewListDto getAllReviews(Long bookId, Integer page, Integer size) {
         var book = bookRepository.findById(bookId)
@@ -66,7 +66,12 @@ public class ReviewService {
         review.setComment(request.getComment());
         review.setDate(LocalDate.now());
 
-        reviewRepository.save(review);
+        if (profileConfig.isDev()) {
+            reviewRepository.save(review);
+        }
+        else {
+            throw new ProdProfileException();
+        }
         return reviewMapper.toDto(review);
     }
 }

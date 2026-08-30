@@ -2,6 +2,8 @@ package ir.ac.ut.ece.ie.books;
 
 import ir.ac.ut.ece.ie.auth.AuthService;
 import ir.ac.ut.ece.ie.authors.AuthorRepository;
+import ir.ac.ut.ece.ie.common.ProdProfileException;
+import ir.ac.ut.ece.ie.config.ProfileConfig;
 import ir.ac.ut.ece.ie.purchases.PurchaseItemRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
 import ir.ac.ut.ece.ie.common.BookNotFoundException;
@@ -25,6 +27,7 @@ public class BookService {
     private final PurchaseItemRepository purchaseItemRepository;
     private final GenreRepository genreRepository;
     private final BookMapper bookMapper;
+    private final ProfileConfig profileConfig;
 
     public BookDto getBook(Long id) {
         var book = bookRepository.findById(id)
@@ -67,7 +70,13 @@ public class BookService {
         book.setReviews(new LinkedHashSet<>());
         book.setAdmin(authService.currentAdmin());
 
-        bookRepository.save(book);
+        if (profileConfig.isDev()) {
+            bookRepository.save(book);
+        }
+        else {
+            throw new ProdProfileException();
+        }
+
         return bookMapper.toDto(book);
     }
 

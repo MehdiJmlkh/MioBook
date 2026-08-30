@@ -58,4 +58,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest()
                 .body(new ErrorDto("Another user already logged in"));
     }
+
+    @ExceptionHandler(ProdProfileException.class)
+    public ResponseEntity<ErrorDto> ProdProfileException() {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new ErrorDto("This action is unavailable in demo mode. Run MioBook locally to enable it"));
+    }
 }

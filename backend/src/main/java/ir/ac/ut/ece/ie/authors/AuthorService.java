@@ -5,6 +5,8 @@ import ir.ac.ut.ece.ie.books.BookMapper;
 import ir.ac.ut.ece.ie.books.BookPageDto;
 import ir.ac.ut.ece.ie.books.BookRepository;
 import ir.ac.ut.ece.ie.common.AuthorNotFoundException;
+import ir.ac.ut.ece.ie.common.ProdProfileException;
+import ir.ac.ut.ece.ie.config.ProfileConfig;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,6 +22,7 @@ public class AuthorService {
     private final BookRepository bookRepository;
     private final AuthorMapper authorMapper;
     private final BookMapper bookMapper;
+    private final ProfileConfig profileConfig;
 
     public AuthorDto getAuthor(Long id) {
         var author =  authorRepository.findById(id)
@@ -35,7 +38,14 @@ public class AuthorService {
 
         var author = authorMapper.toAuthor(request);
         author.setAdmin(authService.currentAdmin());
-        authorRepository.save(author);
+
+        if (profileConfig.isDev()) {
+            authorRepository.save(author);
+        }
+        else {
+            throw new ProdProfileException();
+        }
+
         return authorMapper.toDto(author);
     }
 
