@@ -9,12 +9,14 @@ import RatingStars from "../RatingStars";
 import TextArea from "../TextArea";
 import "./AddReviewModal.css";
 import { useAuth } from "../../queries/auth/useAuth";
+import BookImage from "../BookImage";
 
 interface Props {
   className?: string;
   onClose: () => void;
   bookTitle?: string;
   bookId?: number;
+  bookImageLink?: string;
 }
 
 const schema = z.object({
@@ -24,7 +26,13 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const AddReviewModal = ({ className, onClose, bookTitle, bookId }: Props) => {
+const AddReviewModal = ({
+  className,
+  onClose,
+  bookTitle,
+  bookId,
+  bookImageLink,
+}: Props) => {
   const {
     register,
     control,
@@ -54,7 +62,12 @@ const AddReviewModal = ({ className, onClose, bookTitle, bookId }: Props) => {
       <div>
         <CloseIcon onClose={onClose} />
         <h1 className="add-review__heading">Add Review</h1>
-        <img src={NoImage} alt="" className="add-review__img" />
+        {/* <img src={NoImage} alt="" className="add-review__img" /> */}
+        <BookImage
+          className="add-review__img"
+          imageLink={bookImageLink}
+          noImage={NoImage}
+        />
         <h2 className="add-review__book-title">{bookTitle}</h2>
         <div className="add-review__rating">
           <h3 className="add-review__rating__heading">Rating</h3>

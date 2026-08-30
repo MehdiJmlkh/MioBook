@@ -37,6 +37,7 @@ const BookPage = () => {
         onClose={() => setShowReviewModal(false)}
         bookTitle={book?.title}
         bookId={book?.id}
+        bookImageLink={book?.imageLink}
       />
       <BookDetailCard book={book} onAddToCart={() => setShowCartModal(true)} />
       <ReviewsBlock
