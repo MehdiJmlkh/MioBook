@@ -35,6 +35,7 @@ public class PurchaseService {
         var items = purchaseItemRepository.findNotExpiredPurchaseItems(username, LocalDateTime.now());
 
         var purchasedBooks = items.stream()
+                .sorted(Comparator.comparing(PurchaseItem::getDate).reversed())
                 .map(purchaseMapper::toDto)
                 .toList();
 
