@@ -12,11 +12,7 @@ const BookImage = ({
   className,
   noImage = defaultNoImage,
 }: Props) => {
-  const imageSrc = !imageLink
-    ? noImage
-    : imageLink.startsWith("http")
-      ? imageLink
-      : `/${imageLink}`;
+  const imageSrc = imageLink ? imageLink : noImage;
 
   return (
     <img
