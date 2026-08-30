@@ -13,8 +13,6 @@ spring:
     url: jdbc:mysql://localhost:3306/miobook?createDatabaseIfNotExist=true
     username: root
     password: ${db_root_password}
-  jpa:
-    show-sql: true
   jwt:
     secret: ${jwt_secret}
     accessTokenExpiration: 300 # 5m
@@ -23,3 +21,5 @@ spring:
     google:
       clientId: 312476898368-5t065nkj5j3miq5m8omg6osm7ldgcg24.apps.googleusercontent.com
       clientSecret: ${oauth_google_client_secret}
+  profiles:
+    active: dev
