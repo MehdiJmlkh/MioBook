@@ -1,7 +1,9 @@
 
 # MioBook: A Bookstore Web Application
 
-A full-stack bookstore application developed incrementally across multiple phases, covering domain logic, backend development, frontend integration, databases, security, containerization, and orchestration.
+This repository contains projects for the Internet Engineering course at the University of Tehran. 
+
+MioBook is a full-stack online bookstore application developed incrementally across multiple phases, covering domain logic, backend development, frontend integration, databases, security, containerization, and orchestration.
 
 
 ## Live Demo
