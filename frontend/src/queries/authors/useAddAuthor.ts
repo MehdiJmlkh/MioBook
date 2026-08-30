@@ -6,6 +6,7 @@ import authorService, {
 
 interface addAuthorError {
   name: string;
+  error: string;
 }
 
 export const useAddAuthor = () => {

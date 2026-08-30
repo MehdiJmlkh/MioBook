@@ -8,6 +8,7 @@ import Input from "../Input";
 import TextArea from "../TextArea";
 import "./AddBookModal.css";
 import { useAuth } from "../../queries/auth/useAuth";
+import { toast } from "react-toastify";
 
 interface Props {
   className?: string;
@@ -139,6 +140,14 @@ const AddBookModal = ({ className, onClose }: Props) => {
                       reset();
                       setPage(1);
                       onClose();
+                    },
+                    onError: (error) => {
+                      if (error.error) {
+                        toast.info(error.error);
+                        reset();
+                        setPage(1);
+                        onClose();
+                      }
                     },
                   },
                 ),

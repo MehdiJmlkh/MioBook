@@ -4,6 +4,7 @@ import bookService, { AddBookRequest, Book } from "../../services/bookService";
 interface addBookError {
   title: string;
   author: string;
+  error: string;
 }
 
 export const useAddBook = () => {

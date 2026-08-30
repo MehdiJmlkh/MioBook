@@ -8,6 +8,7 @@ import DateInput from "../DateInput";
 import Input from "../Input";
 import "./AddAuthorModal.css";
 import { useAuth } from "../../queries/auth/useAuth";
+import { toast } from "react-toastify";
 
 interface Props {
   className?: string;
@@ -46,6 +47,13 @@ const AddAuthorModal = ({ className, onClose }: Props) => {
         onSuccess: () => {
           reset();
           onClose();
+        },
+        onError: (error) => {
+          if (error.error) {
+            toast.info(error.error);
+            reset();
+            onClose();
+          }
         },
       },
     ),
