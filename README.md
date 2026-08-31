@@ -68,7 +68,8 @@ Once the services are running, open **http://localhost** to access the applicati
 
 The core bookstore domain logic is implemented using Spring Boot following the MVC architectural pattern.<br>
 Unit tests are written with JUnit to verify the service layer.<br>
-Static frontend pages are built using HTML and CSS based on the provided Figma design.
+Static frontend pages are built using HTML and CSS based on the provided Figma design.<br>
+The pages are fully responsive, supporting mobile devices (from 320px) to desktop screens.
 
 
 ### Phase 2 - RESTful Backend
@@ -82,7 +83,6 @@ The frontend is rebuilt using React to closely match the provided Figma design.<
 New and updated pages are integrated into the application.<br>
 Data fetching and server-state management are implemented using React Query.<br>
 Client-side navigation and routing are implemented using React Router.
-
 
 ### Phase 4 - Database & ORM
 
