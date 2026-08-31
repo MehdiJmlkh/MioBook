@@ -66,39 +66,72 @@ Once the services are running, open **http://localhost** to access the applicati
 
 ### Phase 1 - Domain & Static Frontend
 
-Implemented the core bookstore domain logic with Spring Boot, built static pages using HTML and CSS, and added unit tests.
+The core bookstore domain logic is implemented using Spring Boot following the MVC architectural pattern.<br>
+Unit tests are written with JUnit to verify the service layer.<br>
+Static frontend pages are built using HTML and CSS based on the provided Figma design.
 
-### Phase 2 - Completed RESTful Backend
 
-Added new features, completed the RESTful HTTP APIs with Spring Boot, and expanded the unit test coverage.
+### Phase 2 - RESTful Backend
+
+New features are added and the backend is completed with RESTful HTTP APIs using Spring Boot.<br>
+Unit test coverage is expanded to cover the service layer.
+
 
 ### Phase 3 - React Frontend
 
-Rebuilt the frontend using React and connected it to the backend APIs, while adding and updating application pages.
+The frontend is rebuilt using React to closely match the provided Figma design.<br>
+New and updated pages are integrated into the application.<br>
+Data fetching and server-state management are implemented using React Query.<br>
+Client-side navigation and routing are implemented using React Router.
 
-### Phase 4 - MySQL & ORM
 
-Introduced persistent data storage with MySQL, designed the relational database schema, and integrated it with the application using ORM.
+### Phase 4 - Database & ORM
+
+A relational database schema is designed to support persistent data storage using MySQL.<br>
+MySQL is integrated with the application using Hibernate ORM and JPA annotations.<br>
+Database access is implemented through Spring Data JPA repositories.<br>
+Composable and dynamic queries are built using the Spring Data JPA Specification API.<br>
+Filtering and pagination are handled at the database level to improve query efficiency.
+
 
 ### Phase 5 - Redis Sessions
 
-Introduced Redis as a NoSQL database for efficient and persistent user session management.
+Redis is used as a NoSQL database for user session management.<br>
+A unique session token is generated on login and stored in Redis with the user's identity.<br>
+Protected endpoints authenticate requests by validating session tokens against Redis.
+
 
 ### Phase 6 - Authentication & Security
 
-Implemented authentication, authorization, and essential security measures to protect application resources and user data.
+User passwords are hashed before being stored in the database.<br>
+Redis-based session management is replaced with stateless authentication and authorization using JSON Web Tokens.<br>
+Access tokens are stored in LocalStorage and sent with requests using the Bearer authorization scheme.<br>
+Refresh tokens are stored in cookies and used to obtain new access tokens when the current access token expires.<br>
+Google Sign-In is integrated to support OAuth authorization and OpenID Connect authentication.
+
 
 ### Phase 7 - Docker
 
-Dockerized the frontend and backend and used Docker Compose to run the complete application stack together with its database.
+The back-end and front-end applications are containerized using Dockerfiles.<br>
+Nginx serves the front-end and acts as a reverse proxy, forwarding API requests to the back-end.<br>
+The resulting Docker images are built and pushed to Docker Hub.<br>
+Docker Compose is used to run the complete application stack, including the MySQL database.<br>
+Environment variables, secrets, and service health checks are configured through Docker Compose.
+
 
 ### Phase 8 - Kubernetes
 
-Orchestrated and managed the containerized application using Kubernetes across a distributed environment.
+A multi-node local Kubernetes cluster is created using Kind and managed with kubectl.<br>
+ConfigMaps and secrets are used to manage application configuration and sensitive credentials.<br>
+Deployments and services are configured for the front-end, the back-end and the MySQL database, with resource limits and health checks defined.<br>
+The MySQL database is deployed with persistent storage using a persistent volume claim.<br>
+The front-end application is exposed locally using kubectl port-forwarding.
 
-### Phase 9 - Deployment
 
-Deployed the frontend, backend, and database on Railway.
+### Phase 9 - Deployment
+
+The front-end, back-end, and MySQL database are deployed to Railway using Docker images.<br>
+Production environment variables and secrets are configured through Railway.
 
 
 > For detailed descriptions and requirements of each phase, see the corresponding documents in the [`docs`](docs/) directory.
