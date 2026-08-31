@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: miobook
-      MYSQL_ROOT_PASSWORD_FILE: run/secrets/db_root_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
     volumes:
       - mysql_data:/var/lib/mysql
     secrets:
