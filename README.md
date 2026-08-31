@@ -74,8 +74,7 @@ Static frontend pages are built using HTML and CSS based on the provided Figma d
 ### Phase 2 - RESTful Backend
 
 New features are added and the backend is completed with RESTful HTTP APIs using Spring Boot.<br>
-Unit test coverage is expanded to cover the service layer.
-
+Unit test coverage is expanded for the service layer.
 
 ### Phase 3 - React Frontend
 
@@ -105,7 +104,7 @@ Protected endpoints authenticate requests by validating session tokens against R
 
 User passwords are hashed before being stored in the database.<br>
 Redis-based session management is replaced with stateless authentication and authorization using JSON Web Tokens.<br>
-Access tokens are stored in LocalStorage and sent with requests using the Bearer authorization scheme.<br>
+Access tokens are stored in LocalStorage and sent with requests using the Bearer token.<br>
 Refresh tokens are stored in cookies and used to obtain new access tokens when the current access token expires.<br>
 Google Sign-In is integrated to support OAuth authorization and OpenID Connect authentication.
 
