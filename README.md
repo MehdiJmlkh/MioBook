@@ -122,7 +122,7 @@ Environment variables, secrets, and service health checks are configured through
 
 A multi-node local Kubernetes cluster is created using Kind and managed with kubectl.<br>
 ConfigMaps and secrets are used to manage application configuration and sensitive credentials.<br>
-Deployments and services are configured for the front-end, the back-end and the MySQL database, with resource limits and health checks defined.<br>
+Deployments and Services are configured with resource limits and health checks for the front-end, back-end, and MySQL.<br>
 The MySQL database is deployed with persistent storage using a persistent volume claim.<br>
 The front-end application is exposed locally using kubectl port-forwarding.
 
