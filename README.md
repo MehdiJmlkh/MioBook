@@ -64,7 +64,7 @@ Once the services are running, open **http://localhost** to access the applicati
 
 ## Phases
 
-### Phase 1 - Domain & Static Frontend
+### P1: Domain & Static Frontend
 
 The core bookstore domain logic is implemented using Spring Boot following the MVC architectural pattern.<br>
 Unit tests are written with JUnit to verify the service layer.<br>
@@ -72,19 +72,19 @@ Static frontend pages are built using HTML and CSS based on the provided Figma d
 The pages are fully responsive, supporting mobile devices (from 320px) to desktop screens.
 
 
-### Phase 2 - RESTful Backend
+### P2: RESTful Backend
 
 New features are added and the backend is completed with RESTful HTTP APIs using Spring Boot.<br>
 Unit test coverage is expanded for the service layer.
 
-### Phase 3 - React Frontend
+### P3: React Frontend
 
 The frontend is rebuilt using React to closely match the provided Figma design.<br>
 New and updated pages are integrated into the application.<br>
 Data fetching and server-state management are implemented using React Query.<br>
 Client-side navigation and routing are implemented using React Router.
 
-### Phase 4 - Database & ORM
+### P4: Database & ORM
 
 A relational database schema is designed to support persistent data storage using MySQL.<br>
 MySQL is integrated with the application using Hibernate ORM and JPA annotations.<br>
@@ -93,14 +93,14 @@ Composable and dynamic queries are built using the Spring Data JPA Specification
 Filtering and pagination are handled at the database level to improve query efficiency.
 
 
-### Phase 5 - Redis Sessions
+### P5: Redis Sessions
 
 Redis is used as a NoSQL database for user session management.<br>
 A unique session token is generated on login and stored in Redis with the user's identity.<br>
 Protected endpoints authenticate requests by validating session tokens against Redis.
 
 
-### Phase 6 - Authentication & Security
+### P6: Authentication & Security
 
 User passwords are hashed before being stored in the database.<br>
 Redis sessions are replaced with stateless authentication and authorization using JSON Web Tokens.<br>
@@ -109,7 +109,7 @@ Refresh tokens are stored in cookies to renew expired access tokens.<br>
 Google Sign-In is integrated to support OAuth authorization and OpenID Connect authentication.
 
 
-### Phase 7 - Docker
+### P7: Docker
 
 The back-end and front-end applications are containerized using Dockerfiles.<br>
 Nginx serves the front-end and acts as a reverse proxy, forwarding API requests to the back-end.<br>
@@ -118,7 +118,7 @@ Docker Compose is used to run the complete application stack, including the MySQ
 Environment variables, secrets, and service health checks are configured through Docker Compose.
 
 
-### Phase 8 - Kubernetes
+### P8: Kubernetes
 
 A multi-node local Kubernetes cluster is created using Kind and managed with kubectl.<br>
 ConfigMaps and secrets are used to manage application configuration and sensitive credentials.<br>
@@ -128,7 +128,7 @@ The MySQL database is deployed with persistent storage using a persistent volume
 The front-end application is exposed locally using kubectl port-forwarding.
 
 
-### Phase 9 - Deployment
+### P9: Deployment
 
 The front-end, back-end, and MySQL database are deployed to Railway using Docker images.<br>
 Production environment variables and secrets are configured through Railway.
