@@ -9,11 +9,15 @@ services:
     secrets:
       - db_root_password
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=$$(cat /run/secrets/db_root_password)"]
+      test:
+        [
+          "CMD-SHELL",
+          "mysql -h localhost -u root -p$$(cat /run/secrets/db_root_password) -e 'SELECT 1' miobook"
+        ]
       interval: 5s
       timeout: 5s
-      retries: 10
-      start_period: 10s
+      retries: 20
+      start_period: 30s
 
   backend:
     image: mehdijmlkh/miobook-backend:latest
